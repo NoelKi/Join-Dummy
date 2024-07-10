@@ -46,6 +46,11 @@ aside {
     border-radius: 8px;
 }
 
+.nav-container:hover.active {
+    background-color:  #D2E3FF;
+    border-radius: 8px;
+}
+
 .nav-container img{
     padding-right: 8px;
     height: 24px;
