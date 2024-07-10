@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+header {
+    width: 1440px;
+    height: 56px;
+    padding: 20px 39px;
+    margin: 0 auto;
+    gap: 0px;
+    color: white;
+    background-color: #4589FF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.join-logo  {
+    width: 45.93px;
+    height: 56px;
+}
+
+.nav-bar-side {
+    width: 200px;
+
+}
+
+.wrap {
+    margin: 0 auto;
+}
+
+.right-header-section {
+    width: 433px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 19px;
+}
+
+.help-icon-container {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.help-icon {
+    height: 100%
+}
+
+.profil-btn-container {
+    border: 3px solid white;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profil-btn {
+    border-radius: 50%;
+    background-color: white;
+    border-style: none;
+    width: 51px;
+    height: 51px;
+    font-size: 19px;
+    color: #005DFF;
+
+}
