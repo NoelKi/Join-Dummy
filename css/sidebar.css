@@ -34,6 +34,8 @@ aside {
     flex-direction: row;
     margin-bottom: 10px;
     cursor: pointer;
+    text-decoration: none;
+    color: #2A3647;
 }
 
 .nav-container:hover {
