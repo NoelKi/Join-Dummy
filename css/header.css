@@ -1,5 +1,21 @@
 /* Header */
 
+header {
+    width: 1362px;
+    height: 56px;
+    padding: 20px 39px;
+    margin: 0 auto;
+    gap: 0px;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    background-color: #4589FF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 0px 4px  #2a36472e;
+}
+
 .join-logo  {
     width: 45.93px;
     height: 56px;

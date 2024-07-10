@@ -1,5 +1,24 @@
 /* Nav-Bar-Side */
 
+nav {
+    height: 205px;
+    width: 186px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+aside {
+    width: 186px;
+    height: 932px;
+    padding: 40px 23px;
+    box-shadow: 0px 4px 6px  #2a36472e;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
 .wrap {
     width: 1440px;
     height: 932px;
