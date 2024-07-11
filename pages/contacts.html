@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="../assets/fonts/fonts.css">
     <link rel="icon" type="image/png" href="../assets/img/j.svg">
     <script src="../js/main.js"></script>
+    <script src="../js/contacts.js"></script>
     <script src="../js/w3c.js"></script>
 </head>
 
-<body onload="includeHTML();">
+<body onload="includeHTML(); renderContacts();">
     <div w3-include-html="../assets/templates/header.html"> </div>
     <div class="wrap">
         <div w3-include-html="../assets/templates/sidebar.html"> </div>
@@ -28,8 +29,18 @@
                 <img class="contact-icon" src="../assets/img/contact.svg" alt="contact-img">
             </button>
            </div>
-           <div class="contacts-container">
-
+           <div class="contacts-container" id="contacts-content">
+                <div class="letter-container">
+                    <p id="letter">A</p>
+                    <div class="contacts-separator"></div>
+                </div>
+                <div class="contact-card" id="contact-card">
+                    <div class="initials" id="initials">KM</div>
+                    <div class="contact-data">
+                        <p id="contact-name">Kieran</p>
+                        <p id="contact-email">kieran.noel@icloud.com</p>
+                    </div>
+                </div>
            </div>
         </div>
 

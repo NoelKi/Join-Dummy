@@ -6,7 +6,7 @@
 }
 
 .add-contacts-container {
-    width: 100%;
+    width: calc(100% - 12.5px);
     height: 104px;
     display: flex;
     align-items: center;
@@ -28,6 +28,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
 }
 
 .add-contacts-btn:hover {
@@ -42,9 +43,89 @@
 }
 
 .contacts-container {
-    background-color: rgba(0, 0, 0, 0.344);
     width: 100%;
     flex: 1;
-    overflow:scroll;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
+.contact-card {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 352px;
+    height: 77px;
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.contact-card:hover {
+    background-color:  #4589FF;
+}
+
+.contact-card:hover #contact-name {
+    color: white;
+}
+
+.contact-card:hover #contact-email {
+    color: white;
+}
+
+.initials {
+    color:white;
+    background-color: aquamarine;
+    height: 40px;
+    width: 40px;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.contact-data {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 200;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#contact-name {
+    font-size: 19px;
+    color: black;
+    margin: 0;
+}
+
+#contact-email {
+
+    margin: 0;
+    font-size: 16px;
+    color: #4589FF;
+}
+
+.letter-container {
+    height: 72px;
+}
+
+#letter {
+    font-size: 18px;
+    color: black;
+    margin-left: 45px;
+}
+
+.contacts-separator {
+    margin: 8px 8px;
+    height: 1px;
+    width: 352px;
+    background-color: rgba(1, 1, 1, 0.2)
+}
