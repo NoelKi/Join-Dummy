@@ -3,11 +3,17 @@
     src: url(../assets/fonts/open-sans-v40-latin-700.woff2);
 }
 
+@font-face {
+    font-family: 'open sans';
+    src: url(../assets/fonts/open-sans-v40-latin-regular.woff2);
+}
+
 body {
     margin: 0;
     font-family: open sans;
-    overflow: hidden; /* Prevent scrolling during animation */
-    background-color: #ffffff; /* White background */
+    /* Prevent scrolling during animation */
+    background-color: #ffffff;
+    /* White background */
 }
 
 .loadingScreen {
@@ -16,26 +22,31 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #4589FF; /* Blue background */
+    background-color: #4589FF;
+    /* Blue background */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    animation: fadeOut 1s forwards 2s; /* Delay fade out to allow logo animation */
+    animation: fadeOut 1s forwards 2s;
+    /* Delay fade out to allow logo animation */
 }
 
 .loadingLogo {
     width: 150px;
     height: 150px;
-    animation: moveLogo 2s ease-in-out forwards; /* Move logo and then stop */
+    animation: moveLogo 2s ease-in-out forwards;
+    /* Move logo and then stop */
 }
 
 @keyframes moveLogo {
     0% {
         transform: translate(0, 0) scale(1);
     }
+
     100% {
-        transform: translate(calc(-50vw + 50px), calc(-50vh + 50px)) scale(0.667); /* Adjust values to keep the logo in view */
+        transform: translate(calc(-50vw + 50px), calc(-50vh + 50px)) scale(0.667);
+        /* Adjust values to keep the logo in view */
     }
 }
 
@@ -43,6 +54,7 @@ body {
     0% {
         opacity: 1;
     }
+
     100% {
         opacity: 0;
         visibility: hidden;
@@ -54,7 +66,8 @@ body {
     height: 100vh;
     opacity: 1;
     visibility: visible;
-    position: relative; /* Ensure proper stacking order */
+    position: relative;
+    /* Ensure proper stacking order */
 }
 
 .secondContent {
@@ -84,7 +97,6 @@ body {
 .loginSection {
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
 }
 
@@ -145,7 +157,8 @@ body {
 form {
     width: 355px;
     height: 23px;
-    gap: 35px;
+    display: flex;
+    align-items: center;
 }
 
 input[type="checkbox"] {
@@ -154,7 +167,8 @@ input[type="checkbox"] {
     appearance: none;
     width: 20px;
     height: 20px;
-    border: 2px solid #4589FF; /* Blue border */
+    border: 2px solid #4589FF;
+    /* Blue border */
     border-radius: 4px;
     outline: none;
     cursor: pointer;
@@ -166,30 +180,49 @@ input[type="checkbox"]:checked::before {
     position: absolute;
     width: 6px;
     height: 10px;
-    border: solid #4589FF; /* Blue checkmark */
+    border: solid #4589FF;
+    /* Blue checkmark */
     border-width: 0 2px 2px 0;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
+.divFooter {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.divFooter a {
+    width: 108px;
+    height: 35px;
+    padding: 8px 0px 0px 0px;
+    gap: 8px;
+    opacity: 0px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #42526E;
+
+}
+
 .loadingLogo {
-    transition: fill 1s ease-in-out; /* Transition for SVG fill color */
+    transition: fill 1s ease-in-out;
+    /* Transition for SVG fill color */
 }
 
 .loadingLogo path {
-    fill: #4589FF; /* Initial color */
+    fill: #4589FF;
+    /* Initial color */
 }
 
 .loadingLogo.moveLogo {
-    transform: translate(calc(-50vw + 50px), calc(-50vh + 50px)) scale(0.667); /* Adjust values to keep the logo in view */
+    transform: translate(calc(-50vw + 50px), calc(-50vh + 50px)) scale(0.667);
+    /* Adjust values to keep the logo in view */
 }
 
 .loadingLogo.moveLogo path {
-    fill: #ffffff; /* Change color to white when logo moves to the corner */
+    fill: #ffffff;
+    /* Change color to white when logo moves to the corner */
 }
-
-
-
-
-
