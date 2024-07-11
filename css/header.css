@@ -1,7 +1,7 @@
 /* Header */
 
 header {
-    width: 1362px;
+    max-width: 1362px;
     height: 56px;
     padding: 20px 39px;
     margin: 0 auto;

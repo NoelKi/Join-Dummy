@@ -10,18 +10,18 @@ nav {
 
 aside {
     width: 186px;
-    height: 932px;
+    height: calc(100vh - 176px);
     padding: 40px 23px;
-    box-shadow: 0px 4px 6px  #2a36472e;
+    box-shadow: 2px 0px 4px  #2a36472e;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     flex-direction: column;
+    align-self: stretch;
 }
 
 .wrap {
-    width: 1440px;
-    height: 932px;
+    max-width: 1440px;
     margin: 0 auto;
 }
 
