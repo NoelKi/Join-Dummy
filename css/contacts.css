@@ -1,0 +1,5 @@
+.contacts-container {
+    height: calc(100vh - 192px);
+    width: 456px;
+    background-color: aqua;
+}
