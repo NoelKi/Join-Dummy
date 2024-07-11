@@ -20,34 +20,42 @@
     <div w3-include-html="../assets/templates/header.html"> </div>
     <div class="wrap">
         <div w3-include-html="../assets/templates/sidebar.html"> </div>
-        
-        
+
         <div class="contacts-section">
-           <div class="add-contacts-container">
-            <button class="add-contacts-btn">
-                Add new contact 
-                <img class="contact-icon" src="../assets/img/contact.svg" alt="contact-img">
-            </button>
-           </div>
-           <div class="contacts-container" id="contacts-content">
-                <div class="letter-container">
-                    <p id="letter">A</p>
-                    <div class="contacts-separator"></div>
-                </div>
-                <div class="contact-card" id="contact-card">
-                    <div class="initials" id="initials">KM</div>
-                    <div class="contact-data">
-                        <p id="contact-name">Kieran</p>
-                        <p id="contact-email">kieran.noel@icloud.com</p>
+            <div class="contacts-container" id="contacts-content">
+            </div>
+        </div>
+        <div class="contact-detail-section">
+            <div class="contact-detail-card">
+                <div class="top-contact-container">
+                    <div class="initials-big" style="background-color: salmon;" id="initials">SK</div>
+                    <div class="contact-name-container">
+                        <p class="contact-detail-name">Sabine Konrad</p>
+
+                        <div class="contact-edit-container">
+                            <div class="contact-edit-inner-container">
+                                <img src="../assets/img/pencil.svg" alt="pencil">Edit
+                            </div>
+                            <div class="contact-edit-inner-container">
+                                <img src="../assets/img/bin.svg" alt="bin">Delete
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-           </div>
+                <div class="contact-detail-container">
+                    <p class="contact-information"><b>Contact Information</b></p>
+                    <p class="contact-sign">Email</p>
+                    <p class="contact-email">sabine.konrad@gmx.de</p>
+                    <p class="contact-sign">Phone</p>
+                    <p class="contact-phoneNumber">01528383828293</p>
+
+                </div>
+            </div>
+
         </div>
-
-
-
     </div>
-    
+
 </body>
 
 </html>

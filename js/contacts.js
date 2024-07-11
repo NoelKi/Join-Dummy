@@ -4,35 +4,40 @@ let users = [
         'name': 'Paul',
         'surname': 'Blau',
         'email': 'paul.blau@icloud.com',
-        'phoneNumber': '+05123249320448'
+        'phoneNumber': '+05123249320448',
+        'color':'salmon'
     },
     {
         'id': 1,
         'name': 'Hans',
         'surname': 'Gelb',
         'email': 'hans.gelb@icloud.com',
-        'phoneNumber': '+05123249320448'
+        'phoneNumber': '+05123249320448',
+        'color':'palegreen'
     },
     {
         'id': 2,
         'name': 'Achim',
         'surname': 'rot',
         'email': 'achim.rot@icloud.com',
-        'phoneNumber': '+05123249320448'
+        'phoneNumber': '+05123249320448',
+        'color':'sandybrown'
     },
     {
         'id': 2,
         'name': 'Anette',
         'surname': 'rot',
         'email': 'anette.rot@icloud.com',
-        'phoneNumber': '+05123249320448'
+        'phoneNumber': '+05123249320448',
+        'color':'indianred'
     },
     {
         'id': 3,
         'name': 'Johannes',
         'surname': 'Grün',
         'email': 'johannes.gruen@icloud.com',
-        'phoneNumber': '+05123249320448'
+        'phoneNumber': '+05123249320448',
+        'color':'aquamarine'
     },
 ]
 
@@ -55,7 +60,7 @@ function groupByInitials(arr) {
         if (!acc[initial]) {
             acc[initial] = [];
         }
-        acc[initial].push({name: user.name, email: user.email});
+        acc[initial].push({name: user.name, surname: user.surname, email: user.email, phoneNumber: user.phoneNumber, color: user.color});
         return acc;
     }, {});
 }
@@ -65,24 +70,26 @@ function renderContacts() {
     let names = sortUsersByName();
     let groupedNames = groupByInitials(names);
     content.innerHTML = '';
+    content.innerHTML = createButtonCard();
     for (const k in groupedNames) {
         if (Object.hasOwnProperty.call(groupedNames, k)) {
             const elements = groupedNames[k];
             content.innerHTML += createLetterCard(k);
             elements.forEach(element => {
-                content.innerHTML += createContactCard(element.name,element.email)
+                const initials = `${getFirstLetterOfName(element.name)}${getFirstLetterOfName(element.surname)}`;
+                content.innerHTML += createContactCard(element.name,element.email,initials,element.color)
             });
         }
     }
 }
 
-function createContactCard(name, email, initials = 'G') {
+function createContactCard(name, email='add adress', initials, color='green') {
     return `
     <div class="contact-card" id="contact-card">
-        <div class="initials" id="initials">${initials}</div>
+        <div class="initials" style="background-color: ${color};" id="initials">${initials}</div>
         <div class="contact-data">
             <p id="contact-name">${name}</p>
-            <p id="contact-email">${email}</p>
+            <p class="contact-email">${email}</p>
         </div>
     </div>`;
 }
@@ -95,7 +102,17 @@ function createLetterCard(letter) {
     </div>`;
 }
 
+function createButtonCard() {
+    return `
+    <div class="add-contacts-container">
+        <button class="add-contacts-btn">
+            Add new contact 
+            <img class="contact-icon" src="../assets/img/contact.svg" alt="contact-img">
+        </button>
+    </div>`;
+}
+
 function getFirstLetterOfName(name) {
     name = name.slice(0, 1);
-    return name
+    return name.toUpperCase()
 }
