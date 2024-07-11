@@ -32,6 +32,7 @@
     align-items: center;
     justify-content: center;
     padding: 0;
+    cursor: pointer;
 }
 
 .add-contacts-btn:hover {
@@ -83,6 +84,7 @@
     border-radius: 10px;
     align-items: center;
     justify-content: flex-start;
+    cursor: pointer;
 }
 
 .contact-card:hover {
@@ -114,7 +116,7 @@
 
 .contact-data {
     font-family: 'Open Sans', sans-serif;
-    font-weight: 200;
+    font-weight: 300;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -132,7 +134,9 @@
     margin: 0;
     margin-bottom: 12px;
     font-size: 16px;
+    font-weight: 300;
     color: #4589FF;
+    cursor: pointer;
 }
 
 .letter-container {
@@ -155,6 +159,7 @@
 .contact-detail-section {
     background-color: #4589ff2d;
     flex: 1;
+    color: black;
 }
 
 .contact-detail-card {
@@ -204,6 +209,9 @@
 .contact-edit-inner-container {
     display: flex;
     align-items: center;
+    font-size: 16px;
+    font-weight: 300;
+    cursor: pointer;
 }
 
 .contact-edit-inner-container img {
@@ -223,4 +231,10 @@
 .contact-sign {
     font-size: 16px;
     font-weight: 600;
+}
+
+.contact-phoneNumber {
+    font-size: 16px;
+    font-weight: 300;
+    color: black;
 }
