@@ -157,7 +157,6 @@
 }
 
 .contact-detail-section {
-    background-color: #4589ff2d;
     flex: 1;
     color: black;
 }
@@ -172,7 +171,6 @@
 
 .initials-big {
     color:white;
-    background-color: aquamarine;
     min-height: 120px;
     min-width: 120px;
     border: 3px solid white;
@@ -221,20 +219,42 @@
 .contact-detail-name {
     font-size: 47px;
     margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
 }
 
 .contact-information {
     font-size: 23px;
     font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .contact-sign {
     font-size: 16px;
     font-weight: 600;
+    margin-top: 14px;
+    margin-bottom: 14px;
 }
 
 .contact-phoneNumber {
     font-size: 16px;
     font-weight: 300;
     color: black;
+    margin: 0;
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
