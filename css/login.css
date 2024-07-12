@@ -176,6 +176,10 @@ body {
     width: 24px;
 }
 
+.inputWrapper input:focus::placeholder {
+    color: transparent;
+  }
+
 .checkboxWrapper {
     display: flex;
     align-items: center;
