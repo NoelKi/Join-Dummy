@@ -11,9 +11,7 @@
 body {
     margin: 0;
     font-family: open sans;
-    /* Prevent scrolling during animation */
     background-color: #ffffff;
-    /* White background */
 }
 
 .loadingScreen {
@@ -23,20 +21,17 @@ body {
     width: 100%;
     height: 100%;
     background-color: #4589FF;
-    /* Blue background */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     animation: fadeOut 1s forwards 2s;
-    /* Delay fade out to allow logo animation */
 }
 
 .loadingLogo {
     width: 150px;
     height: 150px;
     animation: moveLogo 2s ease-in-out forwards;
-    /* Move logo and then stop */
 }
 
 @keyframes moveLogo {
@@ -46,7 +41,6 @@ body {
 
     100% {
         transform: translate(calc(-50vw + 50px), calc(-50vh + 50px)) scale(0.667);
-        /* Adjust values to keep the logo in view */
     }
 }
 
@@ -62,12 +56,11 @@ body {
 }
 
 .mainContent {
-    max-width: 1440px;
+    max-width: 1920px;
     height: 100vh;
     opacity: 1;
     visibility: visible;
     position: relative;
-    /* Ensure proper stacking order */
 }
 
 .secondContent {
@@ -92,12 +85,26 @@ body {
 
 .h1Login {
     font-weight: 700;
+    font-size: 48px;
+    margin: 20px 0 20px 0;
+    text-align: center;
+}
+
+.seperator {
+    width: 150px;
+    opacity: 0px;
+    border-radius: 8px;
+    border: 2px solid #4589FF;
 }
 
 .loginSection {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 422px;
+    height: 195px;
+    gap: 20px;
+    opacity: 0px;
 }
 
 .loginInput {
@@ -113,6 +120,9 @@ body {
 .inputWrapper {
     position: relative;
     width: 100%;
+    color: #D1D1D1;
+    font-size: 19px;
+    font-weight: 400;
 }
 
 .loginInput input {
@@ -135,23 +145,26 @@ body {
 
 .loginButton {
     font-weight: 400;
+    font-size: 23px;
     width: 135px;
     height: 48px;
     padding: 10px 35px;
     border-radius: 8px;
-    border: 1px solid #647188;
+    border: none;
     background: #4589FF;
     color: white;
 }
 
 .guestLogin {
     font-weight: 400;
+    font-size: 23px;
     width: 197px;
     height: 48px;
     padding: 10px 35px;
     border-radius: 8px;
     background: #FFFFFF;
     border: 1px solid #647188;
+    color: #647188;
 }
 
 form {
@@ -165,11 +178,10 @@ input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     border: 2px solid #4589FF;
-    /* Blue border */
-    border-radius: 4px;
+    border-radius: 3px;
     outline: none;
     cursor: pointer;
     position: relative;
@@ -181,11 +193,15 @@ input[type="checkbox"]:checked::before {
     width: 6px;
     height: 10px;
     border: solid #4589FF;
-    /* Blue checkmark */
     border-width: 0 2px 2px 0;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.rememberMe {
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .divFooter {
@@ -204,25 +220,22 @@ input[type="checkbox"]:checked::before {
     font-weight: 400;
     font-size: 16px;
     color: #42526E;
-
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .loadingLogo {
     transition: fill 1s ease-in-out;
-    /* Transition for SVG fill color */
 }
 
 .loadingLogo path {
     fill: #4589FF;
-    /* Initial color */
 }
 
 .loadingLogo.moveLogo {
     transform: translate(calc(-50vw + 50px), calc(-50vh + 50px)) scale(0.667);
-    /* Adjust values to keep the logo in view */
 }
 
 .loadingLogo.moveLogo path {
     fill: #ffffff;
-    /* Change color to white when logo moves to the corner */
 }
