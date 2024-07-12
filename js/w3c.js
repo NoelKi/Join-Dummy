@@ -14,19 +14,25 @@ async function includeHTML() {
 }
 
 function setActive() {
-    const pathName = window.location.pathname;
-    switch (true) {
+  const pathName = window.location.pathname;
+  switch (true) {
       case pathName.includes('index.html'):
-        document.getElementById('index-active').className += ' active';
-        break;
+          document.getElementById('index-active').className += ' active';
+          break;
       case pathName.includes('contacts.html'):
-        document.getElementById('contacts-active').className += ' active';
-        break;
+          document.getElementById('contacts-active').className += ' active';
+          break;
       case pathName.includes('addTask.html'):
-        document.getElementById('addTask-active').className += ' active';
-        break;
+          document.getElementById('addTask-active').className += ' active';
+          break;
       case pathName.includes('board.html'):
-        document.getElementById('board-active').className += ' active';
-        break;
-    }
+          document.getElementById('board-active').className += ' active';
+          break;
+      case pathName.includes('privacyPolicy.html'):
+          document.getElementById('privacy-police-active').className += 'bottom-links-active';
+          break;
+      case pathName.includes('legalNotice.html'):
+          document.getElementById('legal-notice-active').className += 'bottom-links-active';
+          break;
   }
+}
