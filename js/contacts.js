@@ -1,4 +1,4 @@
-let users = [
+let contacts = [
     {
         'id': 0,
         'name': 'Paul',
@@ -42,7 +42,7 @@ let users = [
 ]
 
 function sortUsersByName() {
-    let names = users.sort(function (a, b) {
+    let names = contacts.sort(function (a, b) {
         if (a.name.toLowerCase() < b.name.toLowerCase()) {
             return -1;
         }
@@ -129,7 +129,7 @@ function getObjectById(array, id) {
 }
 
 function createDetailedContactCard(id, initials) {
-    const user = getObjectById(users,id);
+    const user = getObjectById(contacts,id);
     return `
     <div class="top-contact-container">
         <div class="initials-big" style="background-color: ${user.color};" id="initials">${initials}</div>

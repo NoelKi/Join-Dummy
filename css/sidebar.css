@@ -80,3 +80,10 @@ aside {
 .impress-container a:hover {
     color: #005DFF;
 }
+
+.bottom-links-active {
+    border-radius: 10px;
+    padding: 8px;
+    background-color: #4589FF;
+    color: white !important;
+}
