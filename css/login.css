@@ -70,6 +70,40 @@ body {
     align-items: center;
 }
 
+.signUpContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 315px;
+    height: 48px;
+    gap: 35px;
+    position: absolute;
+    left: 1039px;
+    top: 67px;
+}
+
+.signUpContent label {
+    width: 168px;
+    height: 28px;
+    font-weight: 400;
+    font-size: 23px;
+}
+
+.signUpContent button {
+    font-weight: 400;
+    font-size: 23px;
+    width: 112px;
+    height: 48px;
+    padding: 10px 16px 10px 16px;
+    gap: 10px;
+    border-radius: 8px;
+    border: none;
+    opacity: 0px;
+    background: #4589FF;
+    color: white;
+    cursor: pointer;
+}
+
 .loginContent {
     display: flex;
     justify-content: center;
@@ -153,6 +187,7 @@ body {
     border: none;
     background: #4589FF;
     color: white;
+    cursor: pointer;
 }
 
 .guestLogin {
@@ -165,6 +200,7 @@ body {
     background: #FFFFFF;
     border: 1px solid #647188;
     color: #647188;
+    cursor: pointer;
 }
 
 form {
@@ -175,8 +211,6 @@ form {
 }
 
 input[type="checkbox"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     width: 16px;
     height: 16px;
