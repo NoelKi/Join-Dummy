@@ -12,31 +12,27 @@
     <link rel="stylesheet" href="../assets/fonts/fonts.css">
     <link rel="icon" type="image/png" href="../assets/img/j.svg">
     <script src="../js/main.js"></script>
+    <script src="../js/contacts.js"></script>
     <script src="../js/w3c.js"></script>
 </head>
 
-<body onload="includeHTML();">
+<body onload="includeHTML(); renderContacts();">
     <div w3-include-html="../assets/templates/header.html"> </div>
     <div class="wrap">
         <div w3-include-html="../assets/templates/sidebar.html"> </div>
-        
-        
+
         <div class="contacts-section">
-           <div class="add-contacts-container">
-            <button class="add-contacts-btn">
-                Add new contact 
-                <img class="contact-icon" src="../assets/img/contact.svg" alt="contact-img">
-            </button>
-           </div>
-           <div class="contacts-container">
-
-           </div>
+            <div class="contacts-container" id="contacts-content">
+            </div>
         </div>
+        <div class="contact-detail-section">
+            <div class="contact-detail-card" id="contact-detail-card">
+                
+            </div>
 
-
-
+        </div>
     </div>
-    
+
 </body>
 
 </html>

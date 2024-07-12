@@ -1,0 +1,282 @@
+@font-face {
+    font-family: 'open sans';
+    src: url(../assets/fonts/open-sans-v40-latin-700.woff2);
+}
+
+@font-face {
+    font-family: 'open sans';
+    src: url(../assets/fonts/open-sans-v40-latin-regular.woff2);
+}
+
+body {
+    margin: 0;
+    font-family: open sans;
+    background-color: #ffffff;
+}
+
+.loadingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #4589FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeOut 1s forwards 2s;
+}
+
+.loadingLogo {
+    width: 150px;
+    height: 150px;
+    animation: moveLogo 2s ease-in-out forwards;
+}
+
+@keyframes moveLogo {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(calc(-50vw + 50px), calc(-50vh + 50px)) scale(0.667);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.mainContent {
+    max-width: 1920px;
+    height: 100vh;
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+}
+
+.secondContent {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signUpContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 315px;
+    height: 48px;
+    gap: 35px;
+    position: absolute;
+    left: 1039px;
+    top: 67px;
+}
+
+.signUpContent label {
+    width: 168px;
+    height: 28px;
+    font-weight: 400;
+    font-size: 23px;
+}
+
+.signUpContent button {
+    font-weight: 400;
+    font-size: 23px;
+    width: 112px;
+    height: 48px;
+    padding: 10px 16px 10px 16px;
+    gap: 10px;
+    border-radius: 8px;
+    border: none;
+    opacity: 0px;
+    background: #4589FF;
+    color: white;
+    cursor: pointer;
+}
+
+.loginContent {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    width: 652px;
+    height: 491px;
+    gap: 39px;
+    box-shadow: 0px 0px 10px 3px #00000014;
+    border-radius: 30px;
+    gap: 8px;
+}
+
+.h1Login {
+    font-size: 48px;
+    margin: 20px 0 20px 0;
+    text-align: center;
+}
+
+.seperator {
+    width: 150px;
+    opacity: 0px;
+    border-radius: 8px;
+    border: 2px solid #4589FF;
+}
+
+.loginSection {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 422px;
+    height: 195px;
+    gap: 20px;
+    opacity: 0px;
+}
+
+.loginInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 422px;
+    height: 152px;
+    gap: 32px;
+}
+
+.inputWrapper {
+    position: relative;
+    width: 100%;
+    color: #D1D1D1;
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.inputWrapper input {
+    width: 100%;
+    height: 48px;
+    padding: 12px 50px 12px 21px;
+    border: none;
+    border-bottom: 1px solid #D1D1D1;
+    box-sizing: border-box;
+}
+
+.inputWrapper img {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 24px;
+    width: 24px;
+}
+
+.inputWrapper input:focus::placeholder {
+    color: transparent;
+  }
+
+.checkboxWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.loginButton {
+    font-weight: 400;
+    font-size: 23px;
+    width: 135px;
+    height: 48px;
+    padding: 10px 35px;
+    border-radius: 8px;
+    border: none;
+    background: #4589FF;
+    color: white;
+    cursor: pointer;
+}
+
+.guestLogin {
+    font-weight: 400;
+    font-size: 23px;
+    width: 197px;
+    height: 48px;
+    padding: 10px 35px;
+    border-radius: 8px;
+    background: #FFFFFF;
+    border: 1px solid #647188;
+    color: #647188;
+    cursor: pointer;
+}
+
+form {
+    width: 100%;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #4589FF;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+input[type="checkbox"]:checked::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 10px;
+    border: solid #4589FF;
+    border-width: 0 2px 2px 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.rememberMe {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.divFooter {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.divFooter a {
+    width: 108px;
+    height: 35px;
+    padding: 8px 0px 0px 0px;
+    gap: 8px;
+    opacity: 0px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #42526E;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.loadingLogo {
+    transition: fill 1s ease-in-out;
+}
+
+.loadingLogo path {
+    fill: #4589FF;
+}
+
+.loadingLogo.moveLogo {
+    transform: translate(calc(-50vw + 50px), calc(-50vh + 50px)) scale(0.667);
+}
+
+.loadingLogo.moveLogo path {
+    fill: #ffffff;
+}

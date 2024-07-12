@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+    <div class="loadingScreen">
+        <img class="loadingLogo" src="../assets/img/joinLoad.svg" alt="Loading">
+    </div>
+
+    <div class="mainContent">
+        <div class="signUpContent">
+            <label for="signUp">Not a Join user?</label>
+            <button id="signUp" href="../pages/signUp.html">Sign up</button>
+        </div>
+        <div class="secondContent">
+            <div class="loginContent">
+                <div>
+                    <h1 class="h1Login">Log in</h1>
+                    <div class="seperator"></div>
+                </div>
+                <div class="loginSection">
+                    <div class="loginInput">
+                        <div class="inputWrapper">
+                            <input type="text" placeholder="Email" required>
+                            <img src="../assets/img/mail.svg" alt="Email Icon">
+                        </div>
+                        <div class="inputWrapper">
+                            <input type="password" placeholder="Password" required>
+                            <img src="../assets/img/lock.svg" alt="Password Icon">
+                        </div>
+                        <form action="">
+                            <div class="checkboxWrapper">
+                                <input type="checkbox" id="rememberMe" name="rememberMe">
+                                <label for="rememberMe" class="rememberMe">Remember me</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div>
+                    <button class="loginButton">Log in</button>
+                    <button class="guestLogin">Guest log in</button>
+                </div>
+            </div>
+        </div>
+        <div class="divFooter">
+            <a href="../pages/privacyPolicy.html">Privacy Policy</a>
+            <a href="../pages/legalNotice.html">Legal Notice</a>
+        </div>
+    </div>
+</body>
+
+</html>
