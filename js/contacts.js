@@ -41,30 +41,6 @@ let contacts = [
     },
 ]
 
-function sortUsersByName() {
-    let names = contacts.sort(function (a, b) {
-        if (a.name.toLowerCase() < b.name.toLowerCase()) {
-            return -1;
-        }
-        if (a.name.toLowerCase() > b.name.toLowerCase()) {
-            return 1;
-        }
-        return 0;
-    });
-    return names
-}
-
-function groupByInitials(arr) {
-    return arr.reduce((acc, user) => {
-        const initial = user.name.charAt(0).toUpperCase();
-        if (!acc[initial]) {
-            acc[initial] = [];
-        }
-        acc[initial].push({id: user.id, name: user.name, surname: user.surname, email: user.email, phoneNumber: user.phoneNumber, color: user.color});
-        return acc;
-    }, {});
-}
-
 function renderContacts() {
     const content = document.getElementById('contacts-content');
     let names = sortUsersByName();
@@ -90,29 +66,76 @@ function renderContactDetailCard(id,initials) {
     content.classList.add('slide-in');
 }
 
-function createContactCard(user, initials) {
+function renderEditOverlay(id,initials) {
+    const content = document.getElementById('overlay-section');
+    content.style.display = 'block';
+    content.innerHTML = '';
+    content.innerHTML = createEditOverlay(id,initials);
+}
+
+function renderAddOverlay(id,initials) {
+    const content = document.getElementById('overlay-section');
+    content.style.display = 'block';
+    content.innerHTML = '';
+    content.innerHTML = createAddOverlay(id);
+}
+
+function closeEditOverlay() {
+    const content = document.getElementById('overlay-section');
+    content.style.display = 'none';
+}
+
+function deleteContact(id) {
+    // delete with fetch.delete
+}
+
+function sortUsersByName() {
+    let names = contacts.sort(function (a, b) {
+        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+            return -1;
+        }
+        if (a.name.toLowerCase() > b.name.toLowerCase()) {
+            return 1;
+        }
+        return 0;
+    });
+    return names
+}
+
+function groupByInitials(arr) {
+    return arr.reduce((acc, user) => {
+        const initial = user.name.charAt(0).toUpperCase();
+        if (!acc[initial]) {
+            acc[initial] = [];
+        }
+        acc[initial].push({id: user.id, name: user.name, surname: user.surname, email: user.email, phoneNumber: user.phoneNumber, color: user.color});
+        return acc;
+    }, {});
+}
+
+function createContactCard(contact, initials) {
     return `
-    <div class="contact-card" id="contact-card" onclick="renderContactDetailCard(${user.id},'${initials}')">
-        <div class="initials" style="background-color: ${user.color};" id="initials">${initials}</div>
-        <div class="contact-data">
-            <p id="contact-name">${user.name}</p>
-            <p class="contact-email">${user.email}</p>
-        </div>
+    <div class="contact-card" id="contact-card" onclick="renderContactDetailCard(${contact.id},'${initials}')">
+    <div class="initials" style="background-color: ${contact.color};" id="initials">${initials}</div>
+    <div class="contact-data">
+    <p id="contact-name">${contact.name}</p>
+    <p class="contact-email">${contact.email}</p>
+    </div>
     </div>`;
 }
 
 function createLetterCard(letter) {
     return `
     <div class="letter-container">
-        <p id="letter">${letter}</p>
-        <div class="contacts-separator"></div>
+    <p id="letter">${letter}</p>
+    <div class="contacts-separator"></div>
     </div>`;
 }
 
 function createButtonCard() {
     return `
     <div class="add-contacts-container">
-        <button class="add-contacts-btn">
+        <button class="add-contacts-btn" onclick="renderAddOverlay()">
             Add new contact 
             <img class="contact-icon" src="../assets/img/contact.svg" alt="contact-img">
         </button>
@@ -129,14 +152,14 @@ function getObjectById(array, id) {
 }
 
 function createDetailedContactCard(id, initials) {
-    const user = getObjectById(contacts,id);
+    const contact = getObjectById(contacts,id);
     return `
     <div class="top-contact-container">
-        <div class="initials-big" style="background-color: ${user.color};" id="initials">${initials}</div>
+        <div class="initials-big" style="background-color: ${contact.color};" id="initials">${initials}</div>
         <div class="contact-name-container">
-            <p class="contact-detail-name">${user.name} ${user.surname}</p>
+            <p class="contact-detail-name">${contact.name} ${contact.surname}</p>
             <div class="contact-edit-container">
-                <div class="contact-edit-inner-container" onclick="console.log('edit');">
+                <div class="contact-edit-inner-container" onclick="renderEditOverlay(${contact.id},'${initials}');">
                     <img src="../assets/img/pencil.svg" alt="pencil">Edit
                 </div>
                 <div class="contact-edit-inner-container" onclick="console.log('delete');">
@@ -149,9 +172,99 @@ function createDetailedContactCard(id, initials) {
     <div class="contact-detail-container">
         <p class="contact-information"><b>Contact Information</b></p>
         <p class="contact-sign">email</p>
-        <p class="contact-email">${user.email}</p>
+        <p class="contact-email">${contact.email}</p>
         <p class="contact-sign">Phone</p>
-        <p class="contact-phoneNumber">${user.phoneNumber}</p>
+        <p class="contact-phoneNumber">${contact.phoneNumber}</p>
     </div>
     `;
+}
+
+function createEditOverlay(id,initials) {
+    const contact = getObjectById(contacts,id);
+    return `
+    <div class="overlay-section">
+        <div class="edit-overlay-container" id="edit-overlay-container">
+            <div class="edit-top-container">
+                <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
+                <p class="overlay-headline">Edit Contact</p>
+                <button class="close-btn-overlay" onclick="closeEditOverlay()">
+                    <img src="../assets/img/closeOverlay.svg" alt="X">
+                </button>
+            </div>
+            <div class="edit-bottom-container">
+                <div class="edit-container">
+                    <div class="initials-overlay" style="background-color: blue;">${initials}</div>
+                    <form class="overlay-form">
+                        <div class="overlay-input-container">
+                            <input class="overlay-input-field" value="${contact.name} ${contact.surname}">
+                            <img src="../assets/img/personOverlay.svg" alt="person">
+                        </div>
+                        <div class="overlay-input-container">
+                            <input class="overlay-input-field" value="${contact.email}">
+                            <img src="../assets/img/letterOverlay.svg" alt="letter">
+                        </div>
+                        <div class="overlay-input-container">
+                            <input class="overlay-input-field" value="${contact.phoneNumber}">
+                            <img src="../assets/img/phoneOverlay.svg" alt="phone">
+                        </div>
+                        <div class="overlay-btn">
+                            <button class="overlay-white-btn" onclick="console.log('delete');">
+                                Delete
+                            </button>
+                            <button class="overlay-blue-btn" onclick="console.log('save');">
+                                Save &emsp; <img src="../assets/img/checkOverlay.svg" alt="check">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+
+function createAddOverlay(id) {
+    return `        
+    <div class="overlay-section">
+        <div class="add-overlay-container" id="edit-overlay-container">
+            <div class="add-top-container">
+                <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
+                <p class="overlay-headline">Edit Contact</p>
+                <button class="close-btn-overlay" onclick="closeEditOverlay()">
+                    <img src="../assets/img/closeOverlay.svg" alt="X">
+                </button>
+            </div>
+            <div class="edit-bottom-container">
+                <div class="edit-container">
+                    <div class="initials-overlay" style="background-color: #D1D1D1;">
+                        <img class="initials-placeholder" src="../assets/img/personOverlay.svg" alt="">
+                    </div>
+                    <form class="overlay-form">
+                        <div class="overlay-input-container">
+                            <input class="overlay-input-field"  placeholder="Name">
+                            <img src="../assets/img/personOverlay.svg" alt="person">
+                        </div>
+                        <div class="overlay-input-container">
+                            <input class="overlay-input-field" placeholder="Email">
+                            <img src="../assets/img/letterOverlay.svg" alt="letter">
+                        </div>
+                        <div class="overlay-input-container">
+                            <input class="overlay-input-field" placeholder="Phone">
+                            <img src="../assets/img/phoneOverlay.svg" alt="phone">
+                        </div>
+                        <div class="overlay-btn">
+                            <button class="overlay-white-btn" onclick="console.log('delete');">
+                                Delete
+                            </button>
+                            <button class="overlay-blue-btn" onclick="console.log('save');">
+                                Create Contact &ensp; <img src="../assets/img/checkOverlay.svg" alt="check">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+`;
 }
