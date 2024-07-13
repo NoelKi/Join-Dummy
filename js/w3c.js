@@ -34,5 +34,11 @@ function setActive() {
       case pathName.includes('legalNotice.html'):
           document.getElementById('legal-notice-active').className += 'bottom-links-active';
           break;
+      case pathName.includes('privacyPolicyGuest.html'):
+          document.getElementById('privacy-police-active').className += 'bottom-links-active';
+          break;
+      case pathName.includes('legalNoticeGuest.html'):
+          document.getElementById('legal-notice-active').className += 'bottom-links-active';
+          break;
   }
 }
