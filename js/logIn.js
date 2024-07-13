@@ -1,3 +1,3 @@
 function changeToSignUp() {
-    window.location.href='../pages/signUp.html';
+    window.location.href = '../pages/signUp.html';
 }
