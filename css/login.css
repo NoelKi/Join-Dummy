@@ -270,6 +270,10 @@ input[type="checkbox"]:checked::before {
     cursor: pointer;
 }
 
+.divFooter a:hover {
+   color: #4589FF;
+}
+
 .loadingLogo {
     transition: fill 1s ease-in-out;
 }
