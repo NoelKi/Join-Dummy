@@ -15,9 +15,6 @@ function myFunction() {
 
 function handleKeyPress(e) {
   switch (e.key) {
-    case 'ArrowLeft':
-    case 'ArrowRight':
-    case 'Backspace':
     case 'Escape':
       closeNav();
       break;
