@@ -1,40 +1,33 @@
+let isPopupVisible = false;
+
 function myFunction() {
   const popupNav = document.getElementById("popup-nav");
-  if (popupNav.style.display === "block") {
-    popupNav.style.display = "none";
-    document.removeEventListener('keydown', handleKeyPress);
-    document.removeEventListener('click', handleClickOutside);
-    isPopupVisible = false;
-  } else {
-    popupNav.style.display = "block";
+  isPopupVisible = !isPopupVisible;
+  popupNav.style.display = isPopupVisible ? "block" : "none";
+  if (isPopupVisible) {
     document.addEventListener('keydown', handleKeyPress);
     document.addEventListener('click', handleClickOutside);
-    isPopupVisible = true;
+  } else {
+    document.removeEventListener('keydown', handleKeyPress);
+    document.removeEventListener('click', handleClickOutside);
   }
 }
 
 function handleKeyPress(e) {
   switch (e.key) {
     case 'Escape':
-      closeNav();
+      myFunction();
       break;
   }
-}
-
-function closeNav() {
-  const popupNav = document.getElementById("popup-nav");
-  popupNav.style.display = "none";
-  isPopupVisible = false;
 }
 
 function handleClickOutside(event) {
   const popupNav = document.getElementById("popup-nav");
   const toggleNav = document.getElementById("toggle-nav");
-  if (!popupNav.contains(event.target) && event.target!== toggleNav) {
-    closeNav();
+  if (!popupNav.contains(event.target) && event.target !== toggleNav) {
+    myFunction();
   }
 }
-
 
 //document.addEventListener("DOMContentLoaded", function () {
 //  const toggleNav = document.getElementById("toggle-nav");
