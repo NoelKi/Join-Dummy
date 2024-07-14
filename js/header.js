@@ -1,38 +1,33 @@
+let isPopupVisible = false;
+
 function myFunction() {
   const popupNav = document.getElementById("popup-nav");
-  if (popupNav.style.display === "block") {
-    popupNav.style.display = "none";
-    document.removeEventListener('keydown', handleKeyPress);
-    isPopupVisible = false;
+  isPopupVisible = !isPopupVisible;
+  popupNav.style.display = isPopupVisible ? "block" : "none";
+  if (isPopupVisible) {
+    document.addEventListener('keydown', keyPress);
+    document.addEventListener('click', clickOutside);
   } else {
-    popupNav.style.display = "block";
-    document.addEventListener('keydown', handleKeyPress);
-    isPopupVisible = true;
+    document.removeEventListener('keydown', keyPress);
+    document.removeEventListener('click', clickOutside);
   }
 }
 
-function handleKeyPress(e) {
+function keyPress(e) {
   switch (e.key) {
     case 'Escape':
-      closeNav();
+      myFunction();
       break;
   }
 }
 
-function closeNav() {
-  const popupNav = document.getElementById("popup-nav");
-  popupNav.style.display = "none";
-  isPopupVisible = false;
-}
-
-document.addEventListener('click', function(event) {
+function clickOutside(event) {
   const popupNav = document.getElementById("popup-nav");
   const toggleNav = document.getElementById("toggle-nav");
-  if (isPopupVisible &&!popupNav.contains(event.target) && event.target!== toggleNav) {
-    closeNav();
+  if (!popupNav.contains(event.target) && event.target !== toggleNav) {
+    myFunction();
   }
-});
-
+}
 
 //document.addEventListener("DOMContentLoaded", function () {
 //  const toggleNav = document.getElementById("toggle-nav");
