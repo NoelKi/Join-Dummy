@@ -60,10 +60,9 @@ body {
 
 .seperator {
     width: 150px;
-    height: 2px;
-    background-color: #4589FF;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    opacity: 0px;
+    border-radius: 8px;
+    border: 2px solid #4589FF;
 }
 
 .signUpContent {
