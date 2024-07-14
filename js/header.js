@@ -3,16 +3,21 @@ function myFunction() {
   if (popupNav.style.display === "block") {
     popupNav.style.display = "none";
     document.removeEventListener('keydown', handleKeyPress);
+    document.removeEventListener('click', handleClickOutside);
     isPopupVisible = false;
   } else {
     popupNav.style.display = "block";
     document.addEventListener('keydown', handleKeyPress);
+    document.addEventListener('click', handleClickOutside);
     isPopupVisible = true;
   }
 }
 
 function handleKeyPress(e) {
   switch (e.key) {
+    case 'ArrowLeft':
+    case 'ArrowRight':
+    case 'Backspace':
     case 'Escape':
       closeNav();
       break;
@@ -25,13 +30,13 @@ function closeNav() {
   isPopupVisible = false;
 }
 
-document.addEventListener('click', function(event) {
+function handleClickOutside(event) {
   const popupNav = document.getElementById("popup-nav");
   const toggleNav = document.getElementById("toggle-nav");
-  if (isPopupVisible &&!popupNav.contains(event.target) && event.target!== toggleNav) {
+  if (!popupNav.contains(event.target) && event.target!== toggleNav) {
     closeNav();
   }
-});
+}
 
 
 //document.addEventListener("DOMContentLoaded", function () {
