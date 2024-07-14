@@ -8,20 +8,18 @@
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/sidebar.css" />
     <link rel="stylesheet" href="../assets/fonts/fonts.css" />
-    <link rel="stylesheet" href="../css/summary.css">
+    <link rel="stylesheet" href="../css/summary.css" />
     <link rel="icon" type="image/png" href="../assets/img/j.svg" />
     <script src="../js/w3c.js"></script>
     <script src="../js/header.js"></script>
-    <script src="../js/summary.js"></script>
+    <script src="../js/summary.js" defer></script>
   </head>
   <body onload="includeHTML(); updateGreeting();">
     <div w3-include-html="../assets/templates/header.html"></div>
     <div class="wrap">
       <div w3-include-html="../assets/templates/sidebar.html"></div>
 
-      <p class="welcome-text" id="welcome-time">Good Morning</p>
-       
-
+      <p class="welcome-text" id="welcome-time"></p>
     </div>
   </body>
 </html>
