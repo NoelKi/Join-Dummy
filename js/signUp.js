@@ -29,10 +29,10 @@ async function signUp() {
     const confirmPassword = document.getElementById('confirmPassword').value;
     const acceptTerms = document.getElementById('acceptTerms').checked;
     if (!acceptTerms) {
-       return alert('You must accept the privacy policy to sign up.');
+        return alert('You must accept the privacy policy to sign up.');
     }
     if (password !== confirmPassword) {
-       return alert('Passwords do not match.');
+        return alert('Passwords do not match.');
     }
     const newUser = {
         name,
