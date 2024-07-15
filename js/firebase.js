@@ -101,12 +101,14 @@ async function putData(path = "", data = {}) {
 function addUsers() {
     for (let i = 0; i < users.length; i++) {
         const e = users[i];
-        postData(`/user`, {'name': `${e.name}`,
+        postData(`/users`, {'name': `${e.name}`,
                                 'surname': `${e.surname}`,
                                 'id': `${e.id}`,
                                 'email': `${e.email}`,'password': `${e.password}`,
                                 'phoneNumber': `${e.phoneNumber}`,
-                                'color': `${e.color}`});
+                                'color': `${e.color}`,
+                                'contacts': ``
+                            });
     }
 }
 
@@ -117,15 +119,20 @@ function addUser(id, name, surname, email, phoneNumber, password, color) {
                             'id': `${id}`,
                             'email': `${email}`,'password': `${password}`,
                             'phoneNumber': `${phoneNumber}`,
-                            'color': `${color}`});
+                            'color': `${color}`,                            
+                        });
+                        
+}
+
+async function editSingleUser(id = 1, user = { name: 'Kieran' }) {
+    putData(`users/${id}`, user);
 }
 
 async function getUser(path) {
     let response = await fetch(BASE_URL + path + ".json");
-    return responseToJson = await response.json();
+    return responseToJson = await response.json;
 }
 
-
-
-
+const usersFirebase = getUser('/users');
+console.log(usersFirebase);
 
