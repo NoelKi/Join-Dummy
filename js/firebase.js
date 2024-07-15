@@ -97,11 +97,11 @@ async function putData(path = "", data = {}) {
     return responseJson;
 }
 
-// Add a new user to Firestore
+// Add a new user array to Firebase
 function addUsers() {
     for (let i = 0; i < users.length; i++) {
         const e = users[i];
-        putData(`/user/${e.id}`, {'name': `${e.name}`,
+        postData(`/user`, {'name': `${e.name}`,
                                 'surname': `${e.surname}`,
                                 'id': `${e.id}`,
                                 'email': `${e.email}`,'password': `${e.password}`,
@@ -110,6 +110,7 @@ function addUsers() {
     }
 }
 
+// Add a new user to Firebase
 function addUser(id, name, surname, email, phoneNumber, password, color) {
     putData(`/user/${id}`,  {'name': `${name}`,
                             'surname': `${surname}`,
@@ -119,6 +120,12 @@ function addUser(id, name, surname, email, phoneNumber, password, color) {
                             'color': `${color}`});
 }
 
-function addContacts() {
-    
+async function getUser(path) {
+    let response = await fetch(BASE_URL + path + ".json");
+    return responseToJson = await response.json();
 }
+
+
+
+
+
