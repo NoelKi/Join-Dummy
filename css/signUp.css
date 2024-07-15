@@ -217,7 +217,8 @@ input[type="checkbox"]:checked::before {
 
 .topLeftImage {
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
+    top: 30px;
+    left: 30px;
+    width: 100px;
+    height: auto;
 }

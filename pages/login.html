@@ -6,15 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="../css/login.css">
-    <script src="../js/logIn.js"></script>
+    <script src="../js/logIn.js" defer></script>
 </head>
 
 <body>
-    <div class="loadingScreen">
-        <img class="loadingLogo" src="../assets/img/joinLoad.svg" alt="Loading">
+    <div class="loadingScreen" id="loadingScreen">
+        <img class="loadingLogo" id="loadingLogo" src="../assets/img/joinLoad.svg" alt="Loading">
     </div>
 
-    <div class="mainContent">
+    <div class="mainContent" id="mainContent">
+        <img class="jLogo" src="../assets/img/j.svg" alt="">
         <div class="signUpButton">
             <label for="signUp">Not a Join user?</label>
             <button id="signUp" onclick="changeToSignUp()">Sign up</button>
