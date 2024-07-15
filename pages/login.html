@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/firebase.js" defer></script>
     <script src="../js/logIn.js" defer></script>
 </head>
 
@@ -29,11 +30,11 @@
                 <div class="loginSection">
                     <div class="loginInput">
                         <div class="inputWrapper">
-                            <input type="text" placeholder="Email" required>
+                            <input type="text" id="email" placeholder="Email" required>
                             <img src="../assets/img/mail.svg" alt="Email Icon">
                         </div>
                         <div class="inputWrapper">
-                            <input type="password" placeholder="Password" required>
+                            <input type="password" id="password" placeholder="Password" required>
                             <img src="../assets/img/lock.svg" alt="Password Icon">
                         </div>
                         <form action="">
@@ -45,7 +46,7 @@
                     </div>
                 </div>
                 <div>
-                    <button class="loginButton">Log in</button>
+                    <button class="loginButton" id="loginButton">Log in</button>
                     <button class="guestLogin">Guest log in</button>
                 </div>
             </div>
@@ -58,3 +59,4 @@
 </body>
 
 </html>
+
