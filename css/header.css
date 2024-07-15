@@ -9,8 +9,8 @@ header {
 }
 
 .wrap-header {
-  margin: 0 auto;
-  max-width: 1362px;
+  /* margin: 0 auto;
+  max-width: 1362px; */
   display: flex;
   height: 56px;
   padding: 20px 39px;
