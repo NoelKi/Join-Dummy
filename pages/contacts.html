@@ -15,9 +15,11 @@
     <script src="../js/contacts.js"></script>
     <script src="../js/w3c.js"></script>
     <script src="../js/header.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
 </head>
 
-<body onload="includeHTML(); renderContacts(); addUsers();">
+<body onload="includeHTML(); renderContacts();">
     <div w3-include-html="../assets/templates/header.html"> </div>
     <div class="wrap">
         <div w3-include-html="../assets/templates/sidebar.html"> </div>
@@ -28,7 +30,7 @@
         </div>
         <div class="contact-detail-section">
             <div class="contact-detail-card" id="contact-detail-card">
-                
+
             </div>
 
         </div>

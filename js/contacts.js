@@ -171,7 +171,7 @@ function createDetailedContactCard(id, initials) {
     </div>
     <div class="contact-detail-container">
         <p class="contact-information"><b>Contact Information</b></p>
-        <p class="contact-sign">email</p>
+        <p class="contact-sign">Email</p>
         <p class="contact-email">${contact.email}</p>
         <p class="contact-sign">Phone</p>
         <p class="contact-phoneNumber">${contact.phoneNumber}</p>
@@ -186,7 +186,7 @@ function createEditOverlay(id,initials) {
         <div class="edit-overlay-container" id="edit-overlay-container">
             <div class="edit-top-container">
                 <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
-                <p class="overlay-headline">Edit Contact</p>
+                <p class="overlay-headline">Edit contact</p>
                 <button class="close-btn-overlay" onclick="closeEditOverlay()">
                     <img src="../assets/img/closeOverlay.svg" alt="X">
                 </button>
@@ -230,7 +230,8 @@ function createAddOverlay(id) {
         <div class="add-overlay-container" id="edit-overlay-container">
             <div class="add-top-container">
                 <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
-                <p class="overlay-headline">Edit Contact</p>
+                <p class="overlay-headline">Add contact</p>
+                <p class="overlay-p">Tasks are better with a team!</p>
                 <button class="close-btn-overlay" onclick="closeEditOverlay()">
                     <img src="../assets/img/closeOverlay.svg" alt="X">
                 </button>
@@ -254,8 +255,8 @@ function createAddOverlay(id) {
                             <img src="../assets/img/phoneOverlay.svg" alt="phone">
                         </div>
                         <div class="overlay-btn">
-                            <button class="overlay-white-btn" onclick="console.log('delete');">
-                                Delete
+                            <button class="overlay-white-btn" onclick="closeEditOverlay();">
+                                Cancel <img src='../assets/img/closeAddContacts.svg' alt="x">
                             </button>
                             <button class="overlay-blue-btn" onclick="console.log('save');">
                                 Create Contact &ensp; <img src="../assets/img/checkOverlay.svg" alt="check">
