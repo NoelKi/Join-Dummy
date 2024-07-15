@@ -401,6 +401,7 @@
     font-size: 19px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
+    width: 100%;
 }
 
 .overlay-input-field:focus-visible {
