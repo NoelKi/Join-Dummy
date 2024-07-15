@@ -4,45 +4,45 @@ let users = [
         'name': 'Paul',
         'surname': 'Blau',
         'email': 'paul.blau@icloud.com',
-        'password':'test123',
+        'password': 'test123',
         'phoneNumber': '+05123249320448',
-        'color':'salmon'
+        'color': 'salmon'
     },
     {
         'id': 1,
         'name': 'Hans',
         'surname': 'Gelb',
         'email': 'hans.gelb@icloud.com',
-        'password':'test123',
+        'password': 'test123',
         'phoneNumber': '+05123249320448',
-        'color':'palegreen'
+        'color': 'palegreen'
     },
     {
         'id': 2,
         'name': 'Achim',
         'surname': 'Rot',
         'email': 'achim.rot@icloud.com',
-        'password':'test123',
+        'password': 'test123',
         'phoneNumber': '+05123249320448',
-        'color':'sandybrown'
+        'color': 'sandybrown'
     },
     {
         'id': 3,
         'name': 'Anette',
         'surname': 'Rot',
         'email': 'anette.rot@icloud.com',
-        'password':'test123',
+        'password': 'test123',
         'phoneNumber': '+05123249320448',
-        'color':'indianred'
+        'color': 'indianred'
     },
     {
         'id': 4,
         'name': 'Johannes',
         'surname': 'Grün',
         'email': 'johannes.gruen@icloud.com',
-        'password':'test123',
+        'password': 'test123',
         'phoneNumber': '+05123249320448',
-        'color':'aquamarine'
+        'color': 'aquamarine'
     },
 ]
 
@@ -97,42 +97,32 @@ async function putData(path = "", data = {}) {
     return responseJson;
 }
 
-// Add a new user array to Firebase
+// Add a new user to Firestore
 function addUsers() {
     for (let i = 0; i < users.length; i++) {
         const e = users[i];
-        postData(`/users`, {'name': `${e.name}`,
-                                'surname': `${e.surname}`,
-                                'id': `${e.id}`,
-                                'email': `${e.email}`,'password': `${e.password}`,
-                                'phoneNumber': `${e.phoneNumber}`,
-                                'color': `${e.color}`,
-                                'contacts': ``
-                            });
+        putData(`/user/${e.id}`, {
+            'name': `${e.name}`,
+            'surname': `${e.surname}`,
+            'id': `${e.id}`,
+            'email': `${e.email}`, 'password': `${e.password}`,
+            'phoneNumber': `${e.phoneNumber}`,
+            'color': `${e.color}`
+        });
     }
 }
 
-// Add a new user to Firebase
 function addUser(id, name, surname, email, phoneNumber, password, color) {
-    putData(`/user/${id}`,  {'name': `${name}`,
-                            'surname': `${surname}`,
-                            'id': `${id}`,
-                            'email': `${email}`,'password': `${password}`,
-                            'phoneNumber': `${phoneNumber}`,
-                            'color': `${color}`,                            
-                        });
-                        
+    putData(`/user/${id}`, {
+        'name': `${name}`,
+        'surname': `${surname}`,
+        'id': `${id}`,
+        'email': `${email}`, 'password': `${password}`,
+        'phoneNumber': `${phoneNumber}`,
+        'color': `${color}`
+    });
 }
 
-async function editSingleUser(id = 1, user = { name: 'Kieran' }) {
-    putData(`users/${id}`, user);
+function addContacts() {
+
 }
-
-async function getUser(path) {
-    let response = await fetch(BASE_URL + path + ".json");
-    return responseToJson = await response.json;
-}
-
-const usersFirebase = getUser('/users');
-console.log(usersFirebase);
-
