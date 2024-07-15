@@ -33,7 +33,7 @@ async function fetchUsers() {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       if (await checkLogInData(email, password)) {
-        window.location.href = 'index.html';
+        window.location.href = 'login.html';
       } else {
         alert('Login failed: Incorrect email or password');
       }

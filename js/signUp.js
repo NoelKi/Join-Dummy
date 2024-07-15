@@ -43,7 +43,7 @@ async function signUp() {
     const result = await postSignUpData(newUser);
     if (result) {
         alert('Sign up successful!');
-        window.location.href = 'index.html';
+        window.location.href = 'login.html';
     }
 }
 
