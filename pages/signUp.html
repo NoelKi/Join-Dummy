@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="../css/signUp.css">
+    <title>Sign Up Page</title>
     <script src="../js/signUp.js"></script>
+    <link rel="stylesheet" href="../css/signUp.css">
 </head>
 
 <body>
@@ -14,49 +14,47 @@
     <div class="mainContent">
         <div class="secondContent">
             <div class="signUpContent">
-                <div class="h1AndButtonContainer">
-                    <div class="backTologIn">
-                        <button id="signUp" onclick="backToLogIn()"><img src="../assets/img/arrow-left-line.svg" alt=""></button>
-                    </div>
-                    <div class="h1Container">
-                        <h1 class="h1signUp">Sign up</h1>
-                        <div class="seperator"></div>
-                    </div>
+                <img class="arrowBack" id="signUp" onclick="history.back()" src="../assets/img/arrow-left-line.svg"
+                    alt="">
+                <div class="h1Container">
+                    <h1 class="h1signUp">Sign up</h1>
+                    <div class="seperator"></div>
                 </div>
                 <div class="signUpSection">
                     <div class="signUpInput">
                         <div class="inputWrapper">
-                            <input type="text" placeholder="Name" required>
+                            <input type="text" id="name" placeholder="Name" required>
                             <img src="../assets/img/lock.svg" alt="Password Icon">
                         </div>
                         <div class="inputWrapper">
-                            <input type="text" placeholder="Email" required>
+                            <input type="text" id="email" placeholder="Email" required>
                             <img src="../assets/img/mail.svg" alt="Email Icon">
                         </div>
                         <div class="inputWrapper">
-                            <input type="password" placeholder="Password" required>
+                            <input type="password" id="password" placeholder="Password" required>
                             <img src="../assets/img/lock.svg" alt="Password Icon">
                         </div>
                         <div class="inputWrapper">
-                            <input type="password" placeholder="Confirm Password" required>
+                            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
                             <img src="../assets/img/lock.svg" alt="Password Icon">
                         </div>
                         <form action="">
                             <div class="checkboxWrapper">
-                                <input type="checkbox" id="rememberMe" name="rememberMe">
-                                <label for="rememberMe" class="rememberMe">I accept the <a href="../pages/privacyPolicy.html">Privacy policy</a></label>
+                                <input type="checkbox" id="acceptTerms" name="acceptTerms">
+                                <label for="acceptTerms" class="rememberMe">I accept the <a
+                                        href="../pages/privacyPolicy.html">Privacy policy</a></label>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div>
-                    <button class="signUpButton">Sign up</button>
+                    <button class="signUpButton" onclick="signUp()">Sign up</button>
                 </div>
             </div>
-            <div class="divFooter">
-                <a href="../pages/privacyPolicy.html">Privacy Policy</a>
-                <a href="../pages/legalNotice.html">Legal Notice</a>
-            </div>
+        </div>
+        <div class="divFooter">
+            <a href="../pages/privacyPolicy.html">Privacy Policy</a>
+            <a href="../pages/legalNotice.html">Legal Notice</a>
         </div>
     </div>
 </body>

@@ -14,15 +14,40 @@
     <script src="../js/header.js"></script>
   </head>
 
-  <body onload="includeHTML();">
-    <div w3-include-html="../assets/templates/header.html"></div>
-    <div class="wrap">
-      <div w3-include-html="../assets/templates/sidebar.html"></div>
+  <body onload="setActive()">
+    <header>
+      <div class="wrap-header">
+        <img class="join-logo" src="../assets/img/join.svg" alt="Join-Logo" />
+        <div class="right-header-section-guest">
+          <span onclick="myFunction()" class="cursor-pointer" id="toggle-nav"
+            >Kanban Project Management Tool</span
+          >
+        </div>
+      </div>
+    </header>
 
+    <nav class="popup-nav" id="popup-nav">
+      <ul>
+        <li><a href="/pages/privacyPolicyGuest.html">Privacy Policy</a></li>
+        <li><a href="/pages/legalNoticeGuest.html">Legal Notice</a></li>
+      </ul>
+    </nav>
+
+    <div class="wrap">
+      <aside>
+        <div class="impress-container guest-mode">
+          <a href="privacyPolicyGuest.html" id="privacy-police-active">
+            Privacy Policy
+          </a>
+          <a href="legalNoticeGuest.html" id="legal-notice-active">
+            Legal notice
+          </a>
+        </div>
+      </aside>
       <div class="legal-notice-policy-help">
         <div class="top-of-div">
           <h3>Privacy Policy</h3>
-          <a onclick="history.back()"
+          <a href="login.html"
             ><img
               class="arrow-left"
               src="../assets/img/arrow-left-line.svg"

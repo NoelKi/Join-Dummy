@@ -31,31 +31,25 @@ body {
     background-color: #4589FF;
 }
 
-.backTologIn {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 32px;
+.arrowBack {
     height: 32px;
-    margin-right: 10px;
-    margin-left: 20px;
-}
-
-.backTologIn button {
     width: 32px;
-    height: 32px;
-    border-radius: 100%;
-    border: none;
+    position: absolute;
+    left: 24px;
+    top: 40px;
     cursor: pointer;
-    background-color: transparent;
 }
 
-.h1AndButtonContainer {
+.arrowBack:hover {
+    border-radius: 100%;
+    background-color: #D1D2D4;
+}
+
+.h1Container {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    gap: 20px;
+    flex-direction: column;
 }
 
 .h1signUp {
@@ -66,20 +60,19 @@ body {
 
 .seperator {
     width: 150px;
-    height: 2px;
-    background-color: #4589FF;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    opacity: 0px;
+    border-radius: 8px;
+    border: 2px solid #4589FF;
 }
 
 .signUpContent {
+    position: relative;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
     width: 652px;
     height: 607px;
-    gap: 39px;
     box-shadow: 0px 0px 10px 3px #00000014;
     border-radius: 30px;
     gap: 8px;
@@ -196,6 +189,11 @@ input[type="checkbox"]:checked::before {
     cursor: pointer;
 }
 
+.rememberMe a:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
 .divFooter {
     position: absolute;
     bottom: 0;
@@ -221,5 +219,5 @@ input[type="checkbox"]:checked::before {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1; 
+    z-index: -1;
 }

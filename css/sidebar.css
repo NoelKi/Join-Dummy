@@ -87,3 +87,13 @@ aside {
     background-color: #4589FF;
     color: white !important;
 }
+
+.d-none {
+    display: none;
+}
+
+.guest-mode {
+    position: absolute;
+    bottom: 42px;
+}
+
