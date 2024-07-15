@@ -1,9 +1,10 @@
-let contacts = [
+let users = [
     {
         'id': 0,
         'name': 'Paul',
         'surname': 'Blau',
         'email': 'paul.blau@icloud.com',
+        'password':'test123',
         'phoneNumber': '+05123249320448',
         'color':'salmon'
     },
@@ -12,6 +13,7 @@ let contacts = [
         'name': 'Hans',
         'surname': 'Gelb',
         'email': 'hans.gelb@icloud.com',
+        'password':'test123',
         'phoneNumber': '+05123249320448',
         'color':'palegreen'
     },
@@ -20,6 +22,7 @@ let contacts = [
         'name': 'Achim',
         'surname': 'Rot',
         'email': 'achim.rot@icloud.com',
+        'password':'test123',
         'phoneNumber': '+05123249320448',
         'color':'sandybrown'
     },
@@ -28,6 +31,7 @@ let contacts = [
         'name': 'Anette',
         'surname': 'Rot',
         'email': 'anette.rot@icloud.com',
+        'password':'test123',
         'phoneNumber': '+05123249320448',
         'color':'indianred'
     },
@@ -36,14 +40,13 @@ let contacts = [
         'name': 'Johannes',
         'surname': 'Grün',
         'email': 'johannes.gruen@icloud.com',
+        'password':'test123',
         'phoneNumber': '+05123249320448',
         'color':'aquamarine'
     },
 ]
 
 BASE_URL = 'https://join-dummy-backend-default-rtdb.europe-west1.firebasedatabase.app/';
-
-
 
 async function postData(path = "", data = {}) {
 
@@ -94,4 +97,28 @@ async function putData(path = "", data = {}) {
     return responseJson;
 }
 
-postData(BASE_URL,contacts);
+// Add a new user to Firestore
+function addUsers() {
+    for (let i = 0; i < users.length; i++) {
+        const e = users[i];
+        putData(`/user/${e.id}`, {'name': `${e.name}`,
+                                'surname': `${e.surname}`,
+                                'id': `${e.id}`,
+                                'email': `${e.email}`,'password': `${e.password}`,
+                                'phoneNumber': `${e.phoneNumber}`,
+                                'color': `${e.color}`});
+    }
+}
+
+function addUser(id, name, surname, email, phoneNumber, password, color) {
+    putData(`/user/${id}`,  {'name': `${name}`,
+                            'surname': `${surname}`,
+                            'id': `${id}`,
+                            'email': `${email}`,'password': `${password}`,
+                            'phoneNumber': `${phoneNumber}`,
+                            'color': `${color}`});
+}
+
+function addContacts() {
+    
+}
