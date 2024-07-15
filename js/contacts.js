@@ -18,7 +18,7 @@ let contacts = [
     {
         'id': 2,
         'name': 'Achim',
-        'surname': 'rot',
+        'surname': 'Rot',
         'email': 'achim.rot@icloud.com',
         'phoneNumber': '+05123249320448',
         'color':'sandybrown'
@@ -26,7 +26,7 @@ let contacts = [
     {
         'id': 3,
         'name': 'Anette',
-        'surname': 'rot',
+        'surname': 'Rot',
         'email': 'anette.rot@icloud.com',
         'phoneNumber': '+05123249320448',
         'color':'indianred'
@@ -118,7 +118,7 @@ function createContactCard(contact, initials) {
     <div class="contact-card" id="contact-card" onclick="renderContactDetailCard(${contact.id},'${initials}')">
     <div class="initials" style="background-color: ${contact.color};" id="initials">${initials}</div>
     <div class="contact-data">
-    <p id="contact-name">${contact.name}</p>
+    <p id="contact-name">${contact.name} ${contact.surname}</p>
     <p class="contact-email">${contact.email}</p>
     </div>
     </div>`;
