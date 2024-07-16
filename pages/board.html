@@ -7,6 +7,7 @@
     <title>Join</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/board.css">
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../assets/fonts/fonts.css">
     <link rel="icon" type="image/png" href="../assets/img/j.svg">
@@ -19,7 +20,51 @@
     <div w3-include-html="../assets/templates/header.html"> </div>
     <div class="wrap">
         <div w3-include-html="../assets/templates/sidebar.html"> </div>
+        <div class="board-section">
+            <div class="top-board-section">
+                <div class="searchbar-container">
+                    <input type="text" class="searchbar-board" placeholder="Find Task">
+                    <button class="add-task-btn">Add Task</button>
+                </div>
+                <div class="board-headline-container">
+                    <div class="board-top-container">
+                        <button class="add-task-btn-small">
+                            <img src="../assets/img/addTaskBtn.svg" alt="+">
+                        </button>
+                    </div>
+                    <div class="board-top-container">
+                        <h4 ></h4>
+                        <button class="add-task-btn-small">
+                            <img src="../assets/img/addTaskBtn.svg" alt="+">
+                        </button>
+                    </div>
+                    <div class="board-top-container">
+                        <button class="add-task-btn-small">
+                            <img src="../assets/img/addTaskBtn.svg" alt="+">
+                        </button>
+                    </div>
+                    <div class="board-top-container">
+                        <button class="add-task-btn-small">
+                            <img src="../assets/img/addTaskBtn.svg" alt="+">
+                        </button>
+                    </div>
+                </div>
 
+            </div>
+            <div class="main-board-section">
+                <div class="board-content-container" id="board-toDo"></div>
+
+                <div class="board-content-container" id="board-inProgress"></div>
+
+                <div class="board-content-container" id="board-awaitFeedback"></div>
+
+                <div class="board-content-container" id="board-done"></div>
+            </div>
+        </div>
+
+
+
+    </div>
 
     </div>
 </body>
