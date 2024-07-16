@@ -71,7 +71,7 @@ function renderContactDetailCard(id, initials) {
 
 function closeContactDetailCard() {
     const content = document.getElementById('contact-detail-card');
-    content.style.display = 'none';
+    content.innerHTML = '';
 }
 
 function renderEditOverlay(id, initials) {
@@ -88,7 +88,7 @@ function renderAddOverlay(id) {
     content.innerHTML = createAddOverlay(id);
 }
 
-function closeEditOverlay() {
+function closeOverlay() {
     const content = document.getElementById('overlay-section');
     content.style.display = 'none';
 }
@@ -105,7 +105,6 @@ function deleteContact(id) {
 }
 
 function deleteContact(id) {
-    console.log(`Deleting contact with id: ${id}`);
     const index = contacts.findIndex(contact => contact.id === id);
     if (index !== -1) {
         contacts.splice(index, 1);
@@ -118,29 +117,15 @@ function deleteContact(id) {
 }
 
 function deleteContactOverlay(id) {
-    alert(`Deleting contact from overlay with id: ${id}`);
-    const index = contacts.findIndex(contact => contact.id === id);
-    alert(`Found index: ${index}`);
-
-    if (index !== -1) {
-        alert('Contacts before deletion: ' + JSON.stringify(contacts, null, 2));
-        try {
-            contacts.splice(index, 1);
-            alert('Contacts after deletion: ' + JSON.stringify(contacts, null, 2));
-            alert(`Deleted contact at index: ${index}`);
-        } catch (error) {
-            alert(`Error during deletion: ${error}`);
-            console.error(`Error during deletion: ${error}`);
-        }
-    } else {
-        alert(`Contact with id: ${id} not found`);
-    }
-
-    // Delay rendering contacts to see logs and ensure deletion works
+    closeOverlay();
+    closeContactDetailCard();
     setTimeout(() => {
-        alert('Rendering contacts');
+        const index = contacts.findIndex(contact => contact.id === id);
+        if (index !== -1) {
+            contacts.splice(index, 1);
+        }
         renderContacts();
-    }, 1000); // 1-second delay
+    }, 0);
 }
 
 function sortContactsByName() {
@@ -242,7 +227,7 @@ function createEditOverlay(id, initials) {
             <div class="edit-top-container">
                 <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
                 <p class="overlay-headline">Edit contact</p>
-                <button class="close-btn-overlay" onclick="closeEditOverlay()">
+                <button class="close-btn-overlay" onclick="closeOverlay()">
                     <img src="../assets/img/closeOverlay.svg" alt="X">
                 </button>
             </div>
@@ -263,10 +248,10 @@ function createEditOverlay(id, initials) {
                             <img src="../assets/img/phoneOverlay.svg" alt="phone">
                         </div>
                         <div class="overlay-btn">
-                            <button class="overlay-white-btn" onclick="deleteContactOverlay(${id})">
+                            <button class="overlay-white-btn" onclick="deleteContactOverlay(${id})" type="button">
                                 Delete
                             </button>
-                            <button class="overlay-blue-btn">
+                            <button class="overlay-blue-btn" type="submit">
                                 Save &emsp; <img src="../assets/img/checkOverlay.svg" alt="check">
                             </button>
                         </div>
@@ -286,7 +271,7 @@ function createAddOverlay(id) {
                 <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
                 <p class="overlay-headline">Add contact</p>
                 <p class="overlay-p">Tasks are better with a team!</p>
-                <button class="close-btn-overlay" onclick="closeEditOverlay()">
+                <button class="close-btn-overlay" onclick="closeOverlay()">
                     <img src="../assets/img/closeOverlay.svg" alt="X">
                 </button>
             </div>
@@ -310,10 +295,10 @@ function createAddOverlay(id) {
                             <img src="../assets/img/phoneOverlay.svg" alt="phone">
                         </div>
                         <div class="overlay-btn">
-                            <button class="overlay-white-btn" onclick="closeEditOverlay();">
+                            <button class="overlay-white-btn" onclick="closeOverlay();" type="button">
                                 Cancel <img src='../assets/img/closeAddContacts.svg' alt="x">
                             </button>
-                            <button class="overlay-blue-btn">
+                            <button class="overlay-blue-btn" type="submit">
                                 Create Contact &ensp; <img src="../assets/img/checkOverlay.svg" alt="check">
                             </button>
                         </div>
@@ -335,7 +320,7 @@ function addContact() {
     const color = colorArr[rand];
     currendId = currendId + 1;
     contacts.push({ id: currendId, name: name, surname: surname, email: email, phoneNumber: phoneNumber, color: color });
-    closeEditOverlay();
+    closeOverlay();
     renderContacts();
 }
 
@@ -347,7 +332,7 @@ function editContact(id, initials) {
     contact.surname = surname;
     contact.email = document.getElementById('edit-email-overlay').value;
     contact.phoneNumber = document.getElementById('edit-phoneNumber-overlay').value;
-    closeEditOverlay();
+    closeOverlay();
     renderContacts();
     renderContactDetailCard(id, initials);
 }
