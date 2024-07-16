@@ -2,10 +2,9 @@ let currendId = 5;
 
 function renderContacts() {
     const content = document.getElementById('contacts-content');
-    let names = sortContactsByName();
-    let groupedNames = groupByInitials(names);
     content.innerHTML = '';
     content.innerHTML = createButtonCard();
+    let groupedNames = giveGroupedContacts();
     for (const k in groupedNames) {
         if (Object.hasOwnProperty.call(groupedNames, k)) {
             const elements = groupedNames[k];
@@ -16,6 +15,11 @@ function renderContacts() {
             });
         }
     }
+}
+
+function giveGroupedContacts() {
+    let names = sortContactsByName();
+    return groupedNames = groupByInitials(names);
 }
 
 function renderContactDetailCard(id, initials) {
