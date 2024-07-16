@@ -12,7 +12,8 @@
     max-width: 1208px;
     height: 215px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
     flex-direction: column;
     background-color: aqua;
 }
@@ -30,7 +31,10 @@
 }
 
 .searchbar-container {
-    
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .add-task-btn {
@@ -43,6 +47,8 @@
     font-size: 23px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
+    cursor: pointer;
+    margin-left: 40px;
 }
 
 .board-headline-container {
@@ -51,10 +57,16 @@
     align-items: center;
     justify-content: space-between;
     width: 1080px;
+    height: 60px;
 }
 
 .board-top-container {
-    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 244px;
+    height: 100%;
 }
 
 .board-top-container {
@@ -62,17 +74,27 @@
 }
 
 .add-task-btn-small {
-    
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .add-task-btn-small img {
     
 }
 
-.main-board-section {
+.main-board-section {    
+    width: 1080px;
+    display: flex;
+    height: 900px;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
     background-color: blueviolet;
 }
 
 .board-content-container {
-
+    width: 252px;
+    height: 100%;
+    background-color: blue;
 }
