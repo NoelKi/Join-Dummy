@@ -1,94 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../assets/fonts/fonts.css">
-    <link rel="stylesheet" href="../css/addtask.css">
-    <link rel="icon" type="image/png" href="../assets/img/j.svg">
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/sidebar.css" />
+    <link rel="stylesheet" href="../assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="../css/addtask.css" />
+    <link rel="icon" type="image/png" href="../assets/img/j.svg" />
     <script src="../js/firebase.js"></script>
     <script src="../js/w3c.js"></script>
     <script src="../js/header.js"></script>
     <script src="../js/addTask.js" defer></script>
-</head>
+  </head>
 
-<body onload="includeHTML();">
-    <div w3-include-html="../assets/templates/header.html"> </div>
+  <body onload="includeHTML();">
+    <div w3-include-html="../assets/templates/header.html"></div>
     <div class="wrap">
-        <div w3-include-html="../assets/templates/sidebar.html"> </div>
-         <div class="add-task-container">
-           <form id="task-form">
-               
-               <div class="input-title">
-                   <input id="add-title" type="text" placeholder="Enter a title"><br>
-                   <span id="title-error" class="error">This field is required*</span>
-                </div>
+      <div w3-include-html="../assets/templates/sidebar.html"></div>
+      <div class="add-task-container">
+        <form id="task-form">
+          <div class="input-title">
+            <input
+              id="add-title"
+              type="text"
+              placeholder="Enter a title"
+            /><br />
+            <span id="title-error" class="error">This field is required*</span>
+          </div>
 
-                <div class="task-description">
-                    <label>Description (optional)</label><br>
-                    <textarea name="task-text" id="textarea-task"></textarea>
-                </div>
+          <div class="task-description">
+            <label>Description (optional)</label><br />
+            <textarea name="task-text" id="textarea-task"></textarea>
+          </div>
 
-                <div class="due-date">
-                    <label for="due-date">Due Date</label><br>
-                    <input id="due-date" type="date" ><br>
-                    <span id="date-error" class="error">This field is required*</span>
-                </div>
+          <div class="due-date">
+            <label for="due-date">Due Date</label><br />
+            <input id="due-date" type="date" /><br />
+            <span id="date-error" class="error">This field is required*</span>
+          </div>
 
-                <div class="priority">
-                    <label for="Priotity"></label>
-                    <button id="urgent">Urgent</button>
-                    <button id="medium">Medium</button>
-                    <button id="low">Low</button>
-                </div>
+          <div class="priority">
+            <label for="Priotity"></label>
+            <button
+              id="urgent"
+              type="button"
+              onclick="selectPriority('Urgent')"
+            >
+              Urgent
+            </button>
+            <button
+              id="medium"
+              type="button"
+              onclick="selectPriority('Medium')"
+            >
+              Medium
+            </button>
+            <button id="low" type="button" onclick="selectPriority('Low')">
+              Low
+            </button>
+          </div>
 
-                <div class="assigned-to">
-                    <label for="assigned-to">Assigned to<br>(optional)</label><br>
-                    <select id="assigned-to-select" name="assigned-to">
-                        <option value="" disabled selected>Select contacts to assign</option>
-                        <option value="John Doe">John Doe</option>
-                        <option value="Jane Smith">Jane Smith</option>
-                        <option value="Michael Johnson">Michael Johnson</option>
-                    </select>
-                </div>
-                
-                <div class="category-task">
-                    <label for="category-task">Category</label><br>
-                    <select id="category-task" name="category">
-                        <option value="" disabled selected>Select task category</option>
-                        <option value="Technical Taske">John Doe</option>
-                        <option value="User Story">User Story</option>
-                    </select>
-                </div>
-                
-                <div class="subtask-optional">
-                    <label for="subtask-optional">Subtasks (optional)</label><br>
-                    <div id="subtask-list" class="subtask-list"></div>
-                    <div class="subtask-input">
-                        <input id="subtask-input-field" type="text" placeholder="Add subtask">
-                        <button onclick="addSubtask()" id="add-subtask-btn" type="button">+</button><br>
-                        <ul id="added-subtask" class="added-subtask"></ul>
-                    </div>
-                </div>
-            
-                        
-                
-            
-              
-              <button type="submit">Add Task</button>
-           </form>
-         
-        
-        </div>
-        
+          <div class="assigned-to">
+            <label for="assigned-to">Assigned to<br />(optional)</label><br />
+            <select id="assigned-to-select" name="assigned-to">
+              <option value="" disabled selected>
+                Select contacts to assign
+              </option>
+              <option value="John Doe">John Doe</option>
+              <option value="Jane Smith">Jane Smith</option>
+              <option value="Michael Johnson">Michael Johnson</option>
+            </select>
+          </div>
 
+          <div class="category-task">
+            <label for="category-task">Category</label><br />
+            <select id="category-task" name="category">
+              <option value="" disabled selected>Select task category</option>
+              <option value="Technical Task">Technical Task</option>
+              <option value="User Story">User Story</option>
+            </select>
+          </div>
 
+          <div class="subtask-optional">
+            <label for="subtask-optional">Subtasks (optional)</label><br />
+            <div id="subtask-list" class="subtask-list"></div>
+            <div class="subtask-input">
+              <input
+                id="subtask-input-field"
+                type="text"
+                placeholder="Add subtask"
+              />
+              <button onclick="addSubtask()" id="add-subtask-btn" type="button">
+                +</button
+              ><br />
+              <ul id="added-subtask" class="added-subtask"></ul>
+            </div>
+          </div>
+
+          <button type="submit">Add Task</button>
+        </form>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

@@ -3,6 +3,8 @@ let titleError = document.getElementById("title-error");
 let dateInput = document.getElementById("due-date");
 let dateError = document.getElementById("date-error");
 
+const BASE_URLTASK = "https://test2-654cc-default-rtdb.europe-west1.firebasedatabase.app/";
+
 titleInput.addEventListener("focusout", function () {
   if (titleInput.value.trim() === "") {
     titleError.style.display = "inline";
@@ -32,6 +34,11 @@ document.getElementById("task-form").addEventListener("submit", function (event)
       dateError.style.display = "none";
     }
   });
+
+  function selectPriority(priority) {
+    document.querySelectorAll('.priority button').forEach(btn => btn.classList.remove('selected'));
+    document.getElementById(priority.toLowerCase()).classList.add('selected');
+  }
       
   // subtask
      
@@ -68,7 +75,54 @@ document.getElementById("task-form").addEventListener("submit", function (event)
     }
   }
   
+// Funktion zum Sammeln von Formulardaten und Senden an Firebase
+document.getElementById('task-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
 
+    let title = document.getElementById('add-title').value.trim();
+    let description = document.getElementById('textarea-task').value.trim();
+    let dueDate = document.getElementById('due-date').value.trim();
+    let priority = document.querySelector('.priority .selected')?.textContent.trim() || '';
+    let assignedTo = document.getElementById('assigned-to-select').value.trim();
+    let category = document.getElementById('category-task').value.trim();
+
+    let subtaskElements = document.querySelectorAll('#added-subtask li span');
+    let subtasks = [];
+    subtaskElements.forEach(subtaskElement => {
+      subtasks.push(subtaskElement.textContent.trim());
+    });
+
+    let taskData = {
+      title: title,
+      description: description,
+      dueDate: dueDate,
+      priority: priority,
+      assignedTo: assignedTo,
+      category: category,
+      subtasks: subtasks
+    };
+
+    let taskDataString = JSON.stringify(taskData);
+
+    try {
+      let response = await fetch(`${BASE_URLTASK}/tasks.json`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: taskDataString
+      });
+
+      if (response.ok) {
+        alert('Task added successfully!');
+      } else {
+        alert('Failed to add task');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error adding task');
+    }
+  });
       
       
 
