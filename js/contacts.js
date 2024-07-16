@@ -55,17 +55,6 @@ function closeOverlay() {
 }
 
 function deleteContact(id) {
-    console.log(id);
-    const index = contacts.findIndex(contact => contact.id === id);
-    if (index !== -1) {
-        contacts.splice(index, 1);
-    }
-    console.log(`index Korrekt ${index}`);
-    closeContactDetailCard();
-    renderContacts();
-}
-
-function deleteContact(id) {
     const index = contacts.findIndex(contact => contact.id === id);
     if (index !== -1) {
         contacts.splice(index, 1);
