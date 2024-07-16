@@ -1,5 +1,7 @@
 .board-section {
     max-width: 1440px;
+    padding-left: 10px;
+    padding-right: 19px;
     margin: 0 auto;
     height: 100%;
     display: flex;
@@ -82,24 +84,44 @@
     align-items: flex-start;
     justify-content: space-between;
     flex-direction: row;
-    background-color: blueviolet;
 }
 
 .board-content-container {
     width: 252px;
     height: 100%;
-    background-color: blue;
+    padding-left: 2px;
+    padding-top: 2px;
+    overflow-y: scroll;
+}
+
+.board-content-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.board-content-container::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 6px;
+}
+
+.board-content-container::-webkit-scrollbar-thumb {
+    background: #A8A8A8;
+    border-radius: 10px;
+}
+
+.board-content-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 .task-container {
-    background-color: aqua;
     height: 200px;
     border-radius: 24px;
     padding: 16px;
-    width: calc(100% - 32px);
+    width: calc(100% - 42px);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    cursor: grab;
 }
 
 .task-kind-container {
@@ -113,8 +135,82 @@
     padding: 4px 16px;
     font-size: 16px;
     font-weight: 100px;
+    margin-bottom: 16px;
 }
 
 .task-title {
-    
+    color: #4589FF;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.task-description {
+    color: #A8A8A8;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+.task-subtask {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 16px 0px;
+}
+
+.task-progress-bar {
+    width: 118px;
+    height: 8px;
+    background-color: #F4F4F4;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.task-bar {
+    background-color: #4589FF;
+    border-radius: 4px;
+    width: 50%;
+    height: 100%;
+}
+
+#subtask {
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: black;
+}
+
+.task-bottom-container {
+    height: 32px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-priority {
+    width: 20px;
+}
+
+.task-collaborators {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.initials {
+    color: white;
+    background-color: aquamarine;
+    height: 40px;
+    width: 40px;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px;
+    margin-right: -15px;
 }
