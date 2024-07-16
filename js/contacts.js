@@ -5,7 +5,7 @@ let contacts = [
         'surname': 'Blau',
         'email': 'paul.blau@icloud.com',
         'phoneNumber': '+05123249320448',
-        'color':'#FF7A00'
+        'color': '#FF7A00'
     },
     {
         'id': 1,
@@ -13,7 +13,7 @@ let contacts = [
         'surname': 'Gelb',
         'email': 'hans.gelb@icloud.com',
         'phoneNumber': '+05123249320448',
-        'color':'#00BEE8'
+        'color': '#00BEE8'
     },
     {
         'id': 2,
@@ -21,7 +21,7 @@ let contacts = [
         'surname': 'Rot',
         'email': 'achim.rot@icloud.com',
         'phoneNumber': '+05123249320448',
-        'color':'#1FD7C1'
+        'color': '#1FD7C1'
     },
     {
         'id': 3,
@@ -29,7 +29,7 @@ let contacts = [
         'surname': 'Rot',
         'email': 'anette.rot@icloud.com',
         'phoneNumber': '+05123249320448',
-        'color':'#FFBB2B'
+        'color': '#FFBB2B'
     },
     {
         'id': 4,
@@ -37,11 +37,11 @@ let contacts = [
         'surname': 'Grün',
         'email': 'johannes.gruen@icloud.com',
         'phoneNumber': '+05123249320448',
-        'color':'#FC71FF'
+        'color': '#FC71FF'
     },
 ]
 
-const currendId = 5;
+let currendId = 5;
 
 function renderContacts() {
     const content = document.getElementById('contacts-content');
@@ -55,17 +55,17 @@ function renderContacts() {
             content.innerHTML += createLetterCard(k);
             elements.forEach(element => {
                 const initials = `${getFirstLetterOfName(element.name)}${getFirstLetterOfName(element.surname)}`;
-                content.innerHTML += createContactCard(element,initials);
+                content.innerHTML += createContactCard(element, initials);
             });
         }
     }
 }
 
-function renderContactDetailCard(id,initials) {
+function renderContactDetailCard(id, initials) {
     const content = document.getElementById('contact-detail-card');
     content.style.display = 'block';
     content.innerHTML = '';
-    content.innerHTML = createDetailedContactCard(id,initials);
+    content.innerHTML = createDetailedContactCard(id, initials);
     content.classList.add('slide-in');
 }
 
@@ -74,11 +74,11 @@ function closeContactDetailCard() {
     content.style.display = 'none';
 }
 
-function renderEditOverlay(id,initials) {
+function renderEditOverlay(id, initials) {
     const content = document.getElementById('overlay-section');
     content.style.display = 'block';
     content.innerHTML = '';
-    content.innerHTML = createEditOverlay(id,initials);
+    content.innerHTML = createEditOverlay(id, initials);
 }
 
 function renderAddOverlay(id) {
@@ -94,11 +94,53 @@ function closeEditOverlay() {
 }
 
 function deleteContact(id) {
+    console.log(id);
     const index = contacts.findIndex(contact => contact.id === id);
     if (index !== -1) {
         contacts.splice(index, 1);
     }
-    // renderContacts();
+    console.log(`index Korrekt ${index}`);
+    closeContactDetailCard();
+    renderContacts();
+}
+
+function deleteContact(id) {
+    console.log(`Deleting contact with id: ${id}`);
+    const index = contacts.findIndex(contact => contact.id === id);
+    if (index !== -1) {
+        contacts.splice(index, 1);
+        console.log(`Deleted contact at index: ${index}`);
+    } else {
+        console.log(`Contact with id: ${id} not found`);
+    }
+    closeContactDetailCard();
+    renderContacts();
+}
+
+function deleteContactOverlay(id) {
+    alert(`Deleting contact from overlay with id: ${id}`);
+    const index = contacts.findIndex(contact => contact.id === id);
+    alert(`Found index: ${index}`);
+
+    if (index !== -1) {
+        alert('Contacts before deletion: ' + JSON.stringify(contacts, null, 2));
+        try {
+            contacts.splice(index, 1);
+            alert('Contacts after deletion: ' + JSON.stringify(contacts, null, 2));
+            alert(`Deleted contact at index: ${index}`);
+        } catch (error) {
+            alert(`Error during deletion: ${error}`);
+            console.error(`Error during deletion: ${error}`);
+        }
+    } else {
+        alert(`Contact with id: ${id} not found`);
+    }
+
+    // Delay rendering contacts to see logs and ensure deletion works
+    setTimeout(() => {
+        alert('Rendering contacts');
+        renderContacts();
+    }, 1000); // 1-second delay
 }
 
 function sortContactsByName() {
@@ -120,7 +162,7 @@ function groupByInitials(arr) {
         if (!acc[initial]) {
             acc[initial] = [];
         }
-        acc[initial].push({id: user.id, name: user.name, surname: user.surname, email: user.email, phoneNumber: user.phoneNumber, color: user.color});
+        acc[initial].push({ id: user.id, name: user.name, surname: user.surname, email: user.email, phoneNumber: user.phoneNumber, color: user.color });
         return acc;
     }, {});
 }
@@ -164,7 +206,7 @@ function getObjectById(array, id) {
 }
 
 function createDetailedContactCard(id, initials) {
-    const contact = getObjectById(contacts,id);
+    const contact = getObjectById(contacts, id);
     return `
     <div class="top-contact-container">
         <div class="initials-big" style="background-color: ${contact.color};" id="initials">${initials}</div>
@@ -191,8 +233,9 @@ function createDetailedContactCard(id, initials) {
     `;
 }
 
-function createEditOverlay(id,initials) {
-    const contact = getObjectById(contacts,id);
+function createEditOverlay(id, initials) {
+    const contact = getObjectById(contacts, id);
+    console.log(id);
     return `
     <div class="overlay-section">
         <div class="edit-overlay-container" id="edit-overlay-container">
@@ -205,8 +248,8 @@ function createEditOverlay(id,initials) {
             </div>
             <div class="edit-bottom-container">
                 <div class="edit-container">
-                    <div class="initials-overlay" style="background-color: blue;">${initials}</div>
-                    <form class="overlay-form" onsubmit="editContact(${id},'${initials}'); return false;" >
+                    <div class="initials-overlay" style="background-color: ${contact.color};">${initials}</div>
+                    <form class="overlay-form" onsubmit="editContact(${contact.id},'${initials}'); return false;" >
                         <div class="overlay-input-container">
                             <input class="overlay-input-field" id="edit-name-overlay" type="text" value="${contact.name} ${contact.surname}" required>
                             <img src="../assets/img/personOverlay.svg" alt="person">
@@ -220,7 +263,7 @@ function createEditOverlay(id,initials) {
                             <img src="../assets/img/phoneOverlay.svg" alt="phone">
                         </div>
                         <div class="overlay-btn">
-                            <button class="overlay-white-btn" onclick="deleteContact(${id});">
+                            <button class="overlay-white-btn" onclick="deleteContactOverlay(${id})">
                                 Delete
                             </button>
                             <button class="overlay-blue-btn">
@@ -287,17 +330,17 @@ function addContact() {
     const [name, surname] = fullnameArr;
     const email = document.getElementById('add-email-overlay').value;
     const phoneNumber = document.getElementById('add-phoneNumber-overlay').value;
-    const colorArr = ['#FF7A00','#FF5EB3','#6E52FF','#9327FF','#00BEE8','#1FD7C1','#FF745E','#FFA35E','#FC71FF','#FFC701','#0038FF','#C3FF2B','#FFE62B','#FF4646','#FFBB2B'];
+    const colorArr = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
     const rand = Math.floor(Math.random() * colorArr.length);
     const color = colorArr[rand];
     currendId = currendId + 1;
-    contacts.push({id:currendId,name:name,surname:surname,email:email,phoneNumber:phoneNumber,color:color});
+    contacts.push({ id: currendId, name: name, surname: surname, email: email, phoneNumber: phoneNumber, color: color });
     closeEditOverlay();
     renderContacts();
 }
 
-function editContact(id,initials) {
-    const contact = getObjectById(contacts,id);
+function editContact(id, initials) {
+    const contact = getObjectById(contacts, id);
     const fullnameArr = document.getElementById('edit-name-overlay').value.split(" ");
     const [name, surname] = fullnameArr;
     contact.name = name;
@@ -306,5 +349,5 @@ function editContact(id,initials) {
     contact.phoneNumber = document.getElementById('edit-phoneNumber-overlay').value;
     closeEditOverlay();
     renderContacts();
-    renderContactDetailCard(id,initials);
+    renderContactDetailCard(id, initials);
 }
