@@ -1,4 +1,4 @@
-const userId = '';
+BASE_URL = 'https://join-dummy-backend-default-rtdb.europe-west1.firebasedatabase.app/';
 
 function changeToSignUp() {
   window.location.href = '../pages/signUp.html';
