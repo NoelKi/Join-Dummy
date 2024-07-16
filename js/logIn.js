@@ -1,3 +1,5 @@
+const userId = '';
+
 function changeToSignUp() {
   window.location.href = '../pages/signUp.html';
 }
@@ -20,6 +22,7 @@ async function checkLogInData(email, password) {
   for (const key in users) {
     const user = users[key];
     if (user.email === email && user.password === password) {
+      saveUserIdLocalStorage(key);
       return true;
     }
   }
@@ -39,3 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+function saveUserIdLocalStorage(id) {
+  const idAsText = JSON.stringify(id);
+  localStorage.setItem('userId', idAsText);
+}
+
+function loadUserIdLocalStorage() {
+  const idAsText = localStorage.getItem('userId');
+  userId = idAsText ? JSON.parse(idAsText) : '';
+}
