@@ -7,6 +7,7 @@
     <title>Join</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/board.css">
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../assets/fonts/fonts.css">
     <link rel="icon" type="image/png" href="../assets/img/j.svg">
@@ -19,7 +20,80 @@
     <div w3-include-html="../assets/templates/header.html"> </div>
     <div class="wrap">
         <div w3-include-html="../assets/templates/sidebar.html"> </div>
+        <div class="board-section">
+            <div class="top-board-section">
+                <div class="searchbar-container">
+                    <input type="text" class="searchbar-board" placeholder="Find Task">
+                    <button class="add-task-btn">
+                        Add Task 
+                        <img src="../assets/img/plus.svg" alt="+">
+                    </button>
+                </div>
+                <div class="board-headline-container">
+                    <div class="board-top-container">
+                        <h4>To do</h4>
+                        <button class="add-task-btn-small">
+                            <img src="../assets/img/addTaskBtn.svg" alt="+">
+                        </button>
+                    </div>
+                    <div class="board-top-container">
+                        <h4>In progress</h4>
+                        <button class="add-task-btn-small">
+                            <img src="../assets/img/addTaskBtn.svg" alt="+">
+                        </button>
+                    </div>
+                    <div class="board-top-container">
+                        <h4>Await feedback</h4>
+                        <button class="add-task-btn-small">
+                            <img src="../assets/img/addTaskBtn.svg" alt="+">
+                        </button>
+                    </div>
+                    <div class="board-top-container">
+                        <h4>Done</h4>
+                        <button class="add-task-btn-small">
+                            <img src="../assets/img/addTaskBtn.svg" alt="+">
+                        </button>
+                    </div>
+                </div>
 
+            </div>
+            <div class="main-board-section">
+                <div class="board-content-container" id="board-toDo">
+                    <div class="task-container">
+                        <div class="task-kind-container" id="task-kind">Technical</div>
+                        <div class="task-content-container">
+                            <div class="task-title" id="task-title">Finish Join</div>
+                            <div class="task-description" id="task-description">Do a lot of work!</div>
+                            <div class="task-subtask" id="task-subtask">
+                                <div class="task-progress-bar">
+                                    <div class="task-bar"></div>    
+                                </div>
+                                <div id="subtask">1/2 Subtasks</div>
+                            </div>
+                            <div class="task-bottom-container">
+                                <div class="task-collaborators" id="task-collaborators">
+                                    <div class="initials">SM</div>
+                                    <div class="initials">SM</div>
+                                </div>
+                                <div class="task-priority" id="task-priority">
+                                    <img src="../assets/img/priorityLow.svg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="board-content-container" id="board-inProgress"></div>
+
+                <div class="board-content-container" id="board-awaitFeedback"></div>
+
+                <div class="board-content-container" id="board-done"></div>
+            </div>
+        </div>
+
+
+
+    </div>
 
     </div>
 </body>

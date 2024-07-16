@@ -46,6 +46,9 @@ let users = [
     },
 ]
 
+// Initialize the FirebaseUI Widget using Firebase.
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
 BASE_URL = 'https://join-dummy-backend-default-rtdb.europe-west1.firebasedatabase.app/';
 
 async function postData(path = "", data = {}) {
