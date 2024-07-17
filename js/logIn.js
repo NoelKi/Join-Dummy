@@ -1,9 +1,3 @@
-BASE_URL = 'https://join-dummy-backend-default-rtdb.europe-west1.firebasedatabase.app/';
-
-function changeToSignUp() {
-  window.location.href = '../pages/signUp.html';
-}
-
 async function fetchUsers() {
   try {
     const response = await fetch(`${BASE_URL}users.json`);
@@ -36,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     if (await checkLogInData(email, password)) {
-      window.location.href = 'login.html';
+      window.location.href = 'index.html';
     } else {
       alert('Login failed: Incorrect email or password');
     }
@@ -57,4 +51,8 @@ function loadUserIdLocalStorage() {
 function toggleCheckBox() {
   let image = document.getElementById('checkBoxRemember');
   image.src = image.src.includes('rememberDefault') ? '../assets/img/rememberChecked.svg' : '../assets/img/rememberDefault.svg';
+}
+
+function changeToSignUp() {
+  window.location.href = '../pages/signUp.html';
 }

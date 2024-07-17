@@ -1,7 +1,6 @@
-userData = [];
+currentUserData = []; // local user data
 
 BASE_URL = 'https://join-dummy-backend-default-rtdb.europe-west1.firebasedatabase.app/';
-
 
 async function postData(path = "", data = {}) {
     const response = await fetch(BASE_URL + path + ".json", {
@@ -24,7 +23,7 @@ async function getUserData() {
         }
         const data = await response.json();
         console.log(data);
-        userData = data;
+        currentUserData = data;
         return data;
     } catch (error) {
         console.error('Fehler:', error);
@@ -53,41 +52,25 @@ async function putData(path = "", data = {}) {
     return responseJson;
 }
 
-// Add a new user to Firestore
-function addUser(userId) {
-    putData(`/user/${userId}`, {
-        name: e.name,
-        surname: e.surname,
-        id: e.id,
-        email: e.email,
-        password: e.password,
-        phoneNumber:
-            e.phoneNumber,
-        color: e.color
-    });
-}
-
-function addUser(name, surname, email, password, contacts) {
-    putData(`/users`, {
-        name: `${name}`,
-        surname: `${surname}`,
-        email: `${email}`, 
-        password: `${password}`,
-        contacts: contacts,
-    });
-}
-
-
-function updateUser(userId, name, email, password) {
+function updateUserr(userId, name, email, password) {
     putData(`/users/${userId}`, {
         name: name,
         email: email,
         password: password,
-        contacts: contacts
+        contacts: contacts,
+        tasks: tasks
     });
 }
 
-
+function updateUser(name,email,password,contacts,tasks) {
+    putData(`/users/${USER_ID}`, {
+        name: name,
+        email: email,
+        password: password,
+        contacts: contacts,
+        tasks: tasks
+    });
+}
 
 // updateUser(USER_ID, 'dev', 'katze@hund.de', '123')
 // updateContacts(USER_ID, contacts);

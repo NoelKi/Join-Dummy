@@ -18,9 +18,8 @@ body {
 }
 
 .mainContent {
-    max-width: 1920px;
+    width: 100%;
     height: 100vh;
-    opacity: 1;
 }
 
 .secondContent {
@@ -60,7 +59,6 @@ body {
 
 .seperator {
     width: 150px;
-    opacity: 0px;
     border-radius: 8px;
     border: 2px solid #4589FF;
 }
@@ -83,10 +81,8 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 422px;
+    width: 65%;
     height: 324px;
-    gap: 20px;
-    opacity: 0px;
 }
 
 .signUpInput {
@@ -94,45 +90,46 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 422px;
     height: 152px;
     gap: 24px;
 }
 
 .inputWrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #D1D1D1;
+    padding: 12px 0;
     position: relative;
     width: 100%;
 }
 
+.inputWrapper img {
+    margin-right: 10px;
+    height: 24px;
+    width: 24px;
+}
+
 .inputWrapper input {
-    width: 100%;
-    height: 48px;
-    padding: 12px 50px 12px 21px;
+    flex: 1;
     border: none;
-    border-bottom: 1px solid #D1D1D1;
-    box-sizing: border-box;
     font-size: 19px;
     font-weight: 400;
     opacity: 0.4;
-}
-
-.inputWrapper img {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 24px;
-    width: 24px;
+    padding-left: 10px;
 }
 
 .inputWrapper input:focus::placeholder {
     color: transparent;
 }
 
+.inputWrapper input:focus {
+    outline: none;
+}
+
 .signUpButton {
     font-weight: 400;
     font-size: 19px;
-    width: 135px;
+    width: 180px;
     height: 48px;
     padding: 10px 35px;
     border-radius: 8px;
@@ -173,11 +170,12 @@ body {
     color: #4589FF;
     text-decoration: none;
     cursor: pointer;
+    margin-left: 5px;
 }
 
 .rememberMe a:hover {
     text-decoration: underline;
-    transform: scale(1.1);
+    transform: scale(1.02);
     color: #005DFF;
 }
 
@@ -185,6 +183,7 @@ body {
     position: absolute;
     bottom: 0;
     width: 100%;
+    gap: 35px;
     display: flex;
     justify-content: center;
 }
@@ -212,4 +211,37 @@ body {
     left: 30px;
     width: 100px;
     height: auto;
+}
+
+@media (max-width: 768px) {
+    .signUpContent {
+        width: 80%;
+        padding: 10px;
+    }
+
+    .signUpSection {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .signUpContent {
+        width: 90%;
+    }
+
+    .h1signUp {
+        font-size: 47px;
+    }
+
+    .inputWrapper input {
+        font-size: 19px;
+    }
+
+    .signUpSection {
+        width: 95%;
+    }
+
+    .seperator {
+        width: 88px;
+    }
 }

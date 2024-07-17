@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="../css/login.css">
-    <script src="../js/firebase.js" defer></script>
-    <script src="../js/logIn.js" defer></script>
+    <script src="../js/firebase.js" ></script>
+    <script src="../js/logIn.js" ></script>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
         </div>
         <div class="secondContent">
             <div class="loginContent">
-                <div>
+                <div class="h1Container">
                     <h1 class="h1Login">Log in</h1>
                     <div class="seperator"></div>
                 </div>
@@ -37,14 +37,14 @@
                             <input type="password" id="password" placeholder="Password" required>
                             <img src="../assets/img/lock.svg" alt="Password Icon">
                         </div>
-                        <div class="checkboxWrapper">
+                        <form class="checkboxWrapper">
                             <p for="rememberMe" class="rememberMe"><img id="checkBoxRemember" onclick="toggleCheckBox()"
                                     src="../assets/img/rememberDefault.svg" alt="">
                                 Remember me</p>
-                        </div>
+                        </form>
                     </div>
                 </div>
-                <div>
+                <div class="logSignButtons">
                     <button class="loginButton" id="loginButton">Log in</button>
                     <button class="guestLogin">Guest log in</button>
                 </div>
