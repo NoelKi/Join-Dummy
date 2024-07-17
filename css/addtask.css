@@ -1,5 +1,14 @@
 .error {
-    color: red;
-    display: none;
+  color: #ff8190;
+  display: none;
 }
 
+.input-title-task::placeholder {
+  color: #d1d1d1;
+}
+
+.input-title-task {
+  width: 440px;
+  height: 64px;
+  font-size: 32px;
+}
