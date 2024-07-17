@@ -62,13 +62,13 @@ function updateUserr(userId, name, email, password) {
     });
 }
 
-function updateUser(name,email,password,contacts) {
+function updateUser(name,email,password,contacts,tasks) {
     putData(`/users/${USER_ID}`, {
         name: name,
         email: email,
         password: password,
         contacts: contacts,
-        // tasks: currentUserData.tasks
+        tasks: tasks
     });
 }
 
