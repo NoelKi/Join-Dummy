@@ -13,11 +13,11 @@
     <link rel="icon" type="image/png" href="../assets/img/j.svg">
     <script src="../js/w3c.js"></script>
     <script src="../js/firebase.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="../js/board.js"></script>
     <script src="../js/header.js"></script>
 </head>
 
-<body onload="includeHTML();">
+<body onload="includeHTML(); renderTasks();">
     <div w3-include-html="../assets/templates/header.html"> </div>
     <div class="wrap">
         <div w3-include-html="../assets/templates/sidebar.html"> </div>
@@ -59,36 +59,17 @@
 
             </div>
             <div class="main-board-section">
-                <div class="board-content-container" id="board-toDo">
-                    <div class="task-container">
-                        <div class="task-kind-container" id="task-kind">Technical</div>
-                        <div class="task-content-container">
-                            <div class="task-title" id="task-title">Finish Join</div>
-                            <div class="task-description" id="task-description">Do a lot of work!</div>
-                            <div class="task-subtask" id="task-subtask">
-                                <div class="task-progress-bar">
-                                    <div class="task-bar"></div>    
-                                </div>
-                                <div id="subtask">1/2 Subtasks</div>
-                            </div>
-                            <div class="task-bottom-container">
-                                <div class="task-collaborators" id="task-collaborators">
-                                    <div class="initials">SM</div>
-                                    <div class="initials">SM</div>
-                                </div>
-                                <div class="task-priority" id="task-priority">
-                                    <img src="../assets/img/priorityLow.svg">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="board-content-container drag-area" id="board-toDo" ondrop="moveTo('toDo')" ondragleave="removeHighlight('board-toDo')"
+                ondragover="allowDrop(event); highlight('board-toDo')"></div>
 
-                <div class="board-content-container" id="board-inProgress"></div>
+                <div class="board-content-container drag-area" id="board-inProgress" ondrop="moveTo('inProgress')" ondragleave="removeHighlight('board-inProgress')"
+                ondragover="allowDrop(event); highlight('board-inProgress')"></div>
 
-                <div class="board-content-container" id="board-awaitFeedback"></div>
+                <div class="board-content-container drag-area" id="board-awaitFeedback" ondrop="moveTo('awaitFeedback')" ondragleave="removeHighlight('board-awaitFeedback')"
+                ondragover="allowDrop(event); highlight('board-awaitFeedback')"></div>
 
-                <div class="board-content-container" id="board-done"></div>
+                <div class="board-content-container drag-area" id="board-done" ondrop="moveTo('done')" ondragleave="removeHighlight('board-done')"
+                ondragover="allowDrop(event); highlight('board-done')"></div>
             </div>
         </div>
 
