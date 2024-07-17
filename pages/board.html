@@ -59,16 +59,16 @@
 
             </div>
             <div class="main-board-section">
-                <div class="board-content-container drag-area" id="board-toDo" ondrop="moveTo('toDo')" ondragleave="removeHighlight('board-toDo')"
+                <div class="board-content-container drag-area" id="board-toDo" ondrop="moveTo('toDo'); removeHighlight('board-toDo')" ondragleave="removeHighlight('board-toDo')"
                 ondragover="allowDrop(event); highlight('board-toDo')"></div>
 
-                <div class="board-content-container drag-area" id="board-inProgress" ondrop="moveTo('inProgress')" ondragleave="removeHighlight('board-inProgress')"
+                <div class="board-content-container drag-area" id="board-inProgress" ondrop="moveTo('inProgress'); removeHighlight('board-inProgress')" ondragleave="removeHighlight('board-inProgress')"
                 ondragover="allowDrop(event); highlight('board-inProgress')"></div>
 
-                <div class="board-content-container drag-area" id="board-awaitFeedback" ondrop="moveTo('awaitFeedback')" ondragleave="removeHighlight('board-awaitFeedback')"
+                <div class="board-content-container drag-area" id="board-awaitFeedback" ondrop="moveTo('awaitFeedback'); removeHighlight('board-awaitFeedback')" ondragleave="removeHighlight('board-awaitFeedback')"
                 ondragover="allowDrop(event); highlight('board-awaitFeedback')"></div>
 
-                <div class="board-content-container drag-area" id="board-done" ondrop="moveTo('done')" ondragleave="removeHighlight('board-done')"
+                <div class="board-content-container drag-area" id="board-done" ondrop="moveTo('done'); removeHighlight('board-done')" ondragleave="removeHighlight('board-done')"
                 ondragover="allowDrop(event); highlight('board-done')"></div>
             </div>
         </div>

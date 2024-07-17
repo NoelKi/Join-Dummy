@@ -6,7 +6,7 @@ let tasks = [{
     'kind': 'Technical Task',
     'taskColor': 'blue',
     'description': 'BlaBliBulb',
-    'category': 'toDo',
+    'category': 'done',
     'priority': 'medium'
 }, {
     'id': 1,
@@ -28,23 +28,28 @@ let tasks = [{
 
 function renderTasks() {
     // render to do 
+    renderToDo();
+    // render in progress
+    renderInProgress();
+    // render in await feedback
+    renderAwaitFeedback();
+    // render in done
+    renderDone();
+}
+
+function renderToDo() {
     let toDo = tasks.filter(t => t['category'] == 'toDo');
     document.getElementById('board-toDo').innerHTML = '';
-
     for (let index = 0; index < toDo.length; index++) {
         const element = toDo[index];
         document.getElementById('board-toDo').innerHTML += renderTaskHtml(element);
     }
-    // render in progress
-    let inProgress = tasks.filter(t => t['category'] == 'inProgress');
-
-    document.getElementById('board-inProgress').innerHTML = '';
-
-    for (let index = 0; index < inProgress.length; index++) {
-        const element = inProgress[index];
-        document.getElementById('board-inProgress').innerHTML += renderTaskHtml(element);
+    if (toDo.length === 0) {
+        document.getElementById('board-toDo').innerHTML = renderEmptyBox('to do');
     }
-    // render in await feedback
+}
+
+function renderAwaitFeedback() {
     let awaitFeedback = tasks.filter(t => t['category'] == 'awaitFeedback');
 
     document.getElementById('board-awaitFeedback').innerHTML = '';
@@ -53,7 +58,12 @@ function renderTasks() {
         const element = awaitFeedback[index];
         document.getElementById('board-awaitFeedback').innerHTML += renderTaskHtml(element);
     }
-    // render in done
+    if (awaitFeedback.length === 0) {
+        document.getElementById('board-awaitFeedback').innerHTML = renderEmptyBox('await feedback');
+    }
+}
+
+function renderDone() {
     let done = tasks.filter(t => t['category'] == 'done');
 
     document.getElementById('board-done').innerHTML = '';
@@ -61,6 +71,23 @@ function renderTasks() {
     for (let index = 0; index < done.length; index++) {
         const element = done[index];
         document.getElementById('board-done').innerHTML += renderTaskHtml(element);
+    }
+    if (done.length === 0) {
+        document.getElementById('board-done').innerHTML = renderEmptyBox('done');
+    }
+}
+
+function renderInProgress() {
+    let inProgress = tasks.filter(t => t['category'] == 'inProgress');
+
+    document.getElementById('board-inProgress').innerHTML = '';
+
+    for (let index = 0; index < inProgress.length; index++) {
+        const element = inProgress[index];
+        document.getElementById('board-inProgress').innerHTML += renderTaskHtml(element);
+    }
+    if (inProgress.length === 0) {
+        document.getElementById('board-inProgress').innerHTML = renderEmptyBox('in progress');
     }
 }
 
@@ -73,7 +100,7 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
- tasks[currentDraggedElement]['category'] = category;
+    tasks[currentDraggedElement]['category'] = category;
     renderTasks();
 }
 
@@ -109,4 +136,8 @@ function renderTaskHtml(element) {
             </div>
         </div>
     </div>`;
+}
+
+function renderEmptyBox(sign) {
+    return `<div class="empty-box">No tasks ${sign}</div>`;
 }

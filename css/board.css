@@ -92,6 +92,11 @@
     padding-left: 2px;
     padding-top: 2px;
     overflow-y: scroll;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 0px;
+    flex-direction: column;
 }
 
 .board-content-container::-webkit-scrollbar {
@@ -122,6 +127,7 @@
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
     cursor: grab;
     margin-bottom: 16px;
+    z-index: 1;
 }
 
 .task-kind-container {
@@ -216,7 +222,7 @@
 }
 
 .drag-area-highlight {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .todo {
@@ -225,4 +231,18 @@
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
+}
+
+.empty-box {
+    background-color: #E7E7E7;
+    width: 99%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #A8A8A8;
+    font-weight: 400;
+    border: 1px dashed #A8A8A8;
+    border-radius: 10px;
 }
