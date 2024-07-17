@@ -42,7 +42,7 @@ body {
 
 .arrowBack:hover {
     border-radius: 100%;
-    background-color: #D1D2D4;
+    background-color: #E3EEFF
 }
 
 .h1Container {
@@ -96,15 +96,12 @@ body {
     flex-direction: column;
     width: 422px;
     height: 152px;
-    gap: 32px;
+    gap: 24px;
 }
 
 .inputWrapper {
     position: relative;
     width: 100%;
-    color: #D1D1D1;
-    font-size: 19px;
-    font-weight: 400;
 }
 
 .inputWrapper input {
@@ -114,6 +111,9 @@ body {
     border: none;
     border-bottom: 1px solid #D1D1D1;
     box-sizing: border-box;
+    font-size: 19px;
+    font-weight: 400;
+    opacity: 0.4;
 }
 
 .inputWrapper img {
@@ -129,13 +129,6 @@ body {
     color: transparent;
 }
 
-.checkboxWrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
 .signUpButton {
     font-weight: 400;
     font-size: 19px;
@@ -149,38 +142,31 @@ body {
     cursor: pointer;
 }
 
-form {
-    width: 100%;
+.signUpButton:hover {
+    background: #005DFF
+}
+
+.checkboxWrapper {
     display: flex;
+    align-items: center;
     justify-content: center;
-}
-
-input[type="checkbox"] {
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #4589FF;
-    border-radius: 3px;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-}
-
-input[type="checkbox"]:checked::before {
-    content: '';
-    position: absolute;
-    width: 6px;
-    height: 12px;
-    border: solid #4589FF;
-    border-width: 0 2px 2px 0;
-    top: 50%;
-    left: 50%;
-    transform: translate(-30%, -75%) rotate(40deg);
+    width: 100%;
+    gap: 10px;
 }
 
 .rememberMe {
     font-size: 16px;
     font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+#checkBoxRemember {
+    cursor: pointer;
+}
+
+#checkBoxRemember:hover {
+    background: #EDF2FA;
 }
 
 .rememberMe a {
@@ -192,6 +178,7 @@ input[type="checkbox"]:checked::before {
 .rememberMe a:hover {
     text-decoration: underline;
     transform: scale(1.1);
+    color: #005DFF;
 }
 
 .divFooter {
@@ -213,6 +200,10 @@ input[type="checkbox"]:checked::before {
     color: white;
     text-decoration: none;
     cursor: pointer;
+}
+
+.divFooter a:hover {
+    color: #005DFF
 }
 
 .topLeftImage {

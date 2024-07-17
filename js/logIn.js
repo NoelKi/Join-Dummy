@@ -53,3 +53,8 @@ function loadUserIdLocalStorage() {
   if (!idAsText) return window.location.href = 'login.html';
   userId = JSON.parse(idAsText);
 }
+
+function toggleCheckBox() {
+  let image = document.getElementById('checkBoxRemember');
+  image.src = image.src.includes('rememberDefault') ? '../assets/img/rememberChecked.svg' : '../assets/img/rememberDefault.svg';
+}

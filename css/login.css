@@ -116,6 +116,10 @@ body {
     cursor: pointer;
 }
 
+.signUpButton button:hover {
+    background: #005DFF
+}
+
 .loginContent {
     display: flex;
     justify-content: space-evenly;
@@ -165,9 +169,6 @@ body {
 .inputWrapper {
     position: relative;
     width: 100%;
-    color: #D1D1D1;
-    font-size: 19px;
-    font-weight: 400;
 }
 
 .inputWrapper input {
@@ -177,6 +178,9 @@ body {
     border: none;
     border-bottom: 1px solid #D1D1D1;
     box-sizing: border-box;
+    font-size: 19px;
+    font-weight: 400;
+    opacity: 0.4;
 }
 
 .inputWrapper img {
@@ -190,13 +194,6 @@ body {
 
 .inputWrapper input:focus::placeholder {
     color: transparent;
-  }
-
-.checkboxWrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
 }
 
 .loginButton {
@@ -212,6 +209,10 @@ body {
     cursor: pointer;
 }
 
+.loginButton:hover {
+    background: #005DFF;
+}
+
 .guestLogin {
     font-weight: 400;
     font-size: 23px;
@@ -225,36 +226,28 @@ body {
     cursor: pointer;
 }
 
-form {
+.guestLogin:hover {
+    border: 1px solid #005DFF;
+    color: #005DFF;
+}
+
+.checkboxWrapper {
     width: 100%;
-}
-
-input[type="checkbox"] {
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #4589FF;
-    border-radius: 3px;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-}
-
-input[type="checkbox"]:checked::before {
-    content: '';
-    position: absolute;
-    width: 6px;
-    height: 12px;
-    border: solid #4589FF;
-    border-width: 0 2px 2px 0;
-    top: 50%;
-    left: 50%;
-    transform: translate(-30%, -75%) rotate(40deg);
 }
 
 .rememberMe {
     font-size: 16px;
     font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+#checkBoxRemember {
+    cursor: pointer;
+}
+
+#checkBoxRemember:hover {
+    background: #EDF2FA;
 }
 
 .divFooter {
@@ -279,5 +272,5 @@ input[type="checkbox"]:checked::before {
 }
 
 .divFooter a:hover {
-   color: #4589FF;
+    color: #4589FF;
 }
