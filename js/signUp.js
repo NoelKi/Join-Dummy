@@ -20,20 +20,11 @@ async function postSignUpData(data) {
     }
 }
 
-function toggleCheckBox() {
-    const checkBoxImage = document.getElementById('checkBoxRemember');
-    checkBoxImage.src = isPolicyAccepted
-        ? '../assets/img/rememberDefault.svg'
-        : '../assets/img/rememberChecked.svg';
-    isPolicyAccepted = !isPolicyAccepted;
-}
-
 async function signUp() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
-    const task = document.getElementById('task-form').value;
     if (!isPolicyAccepted) {
         return alert('You must accept the privacy policy to sign up.');
     }
@@ -44,8 +35,7 @@ async function signUp() {
         name,
         email,
         password,
-        id: Date.now().toString(),
-        task,
+        id: Date.now().toString()
     };
     const result = await postSignUpData(newUser);
     if (result) {
@@ -56,4 +46,12 @@ async function signUp() {
 
 function backToLogIn() {
     window.location.href = "login.html";
+}
+
+function toggleCheckBox() {
+    const checkBoxImage = document.getElementById('checkBoxRemember');
+    checkBoxImage.src = isPolicyAccepted
+        ? '../assets/img/rememberDefault.svg'
+        : '../assets/img/rememberChecked.svg';
+    isPolicyAccepted = !isPolicyAccepted;
 }
