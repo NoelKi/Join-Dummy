@@ -215,3 +215,36 @@ body {
     width: 100px;
     height: auto;
 }
+
+@media (max-width: 768px) {
+    .signUpContent {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .signUpSection,
+    .signUpInput {
+        width: 100%;
+    }
+
+    .h1signUp {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .h1signUp {
+        font-size: 28px;
+    }
+
+    .inputWrapper input {
+        font-size: 16px;
+    }
+
+    .signUpButton {
+        font-size: 16px;
+        width: 120px;
+        height: 40px;
+        padding: 10px 20px;
+    }
+}
