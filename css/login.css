@@ -142,9 +142,8 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 422px;
+    width: 65%;
     height: 195px;
-    gap: 20px;
 }
 
 .loginInput {
@@ -152,7 +151,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 422px;
     height: 152px;
     gap: 32px;
 }
@@ -247,6 +245,7 @@ body {
     position: absolute;
     bottom: 0;
     width: 100%;
+    gap: 35px;
     display: flex;
     justify-content: center;
 }
@@ -269,27 +268,27 @@ body {
 }
 
 @media (max-width: 768px) {
-    .signUpContent {
+    .loginContent {
         width: 80%;
         padding: 10px;
     }
 
-    .signUpSection {
+    .loginSection {
         width: 80%;
     }
 }
 
 @media (max-width: 480px) {
-    .signUpContent {
+    .loginContent {
         width: 90%;
     }
 
-    .h1signUp {
-        font-size: 47px;
+    .loginSection {
+        width: 95%;
     }
 
-    .inputWrapper input {
-        font-size: 19px;
+    .h1login {
+        font-size: 47px;
     }
 
     .signUpButton {
@@ -297,5 +296,18 @@ body {
         width: 120px;
         height: 40px;
         padding: 10px 20px;
+    }
+
+    .logSignButtons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .loginButton, .guestLogin {
+        width: 180px;
+        font-size: 19px;
     }
 }

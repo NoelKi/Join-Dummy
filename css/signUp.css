@@ -81,9 +81,8 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 70%;
+    width: 65%;
     height: 324px;
-    gap: 20px;
 }
 
 .signUpInput {
@@ -184,6 +183,7 @@ body {
     position: absolute;
     bottom: 0;
     width: 100%;
+    gap: 35px;
     display: flex;
     justify-content: center;
 }
@@ -242,5 +242,9 @@ body {
         width: 120px;
         height: 40px;
         padding: 10px 20px;
+    }
+
+    .signUpSection {
+        width: 95%;
     }
 }
