@@ -12,7 +12,7 @@ let contacts = [
         'name': 'Hans',
         'surname': 'Gelb',
         'email': 'hans.gelb@icloud.com',
-        'phoneNumber': '+05123249320448',
+        'phoneNumber': '+05123',
         'color': '#00BEE8'
     },
     {
@@ -40,7 +40,6 @@ let contacts = [
         'color': '#FC71FF'
     },
 ]
-
 
 function createDetailedContactCard(id, initials) {
     const contact = getObjectById(contacts, id);

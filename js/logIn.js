@@ -1,4 +1,4 @@
-const userId = '';
+BASE_URL = 'https://join-dummy-backend-default-rtdb.europe-west1.firebasedatabase.app/';
 
 function changeToSignUp() {
   window.location.href = '../pages/signUp.html';
@@ -50,7 +50,8 @@ function saveUserIdLocalStorage(id) {
 
 function loadUserIdLocalStorage() {
   const idAsText = localStorage.getItem('userId');
-  userId = idAsText ? JSON.parse(idAsText) : '';
+  if (!idAsText) return window.location.href = 'login.html';
+  userId = JSON.parse(idAsText);
 }
 
 function toggleCheckBox() {

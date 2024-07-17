@@ -1,5 +1,10 @@
 let currendId = 5;
 
+function loadUserIdLocalStorage() {
+    const idAsText = localStorage.getItem('userId');
+    userId = idAsText ? JSON.parse(idAsText) : '';
+}
+
 function renderContacts() {
     const content = document.getElementById('contacts-content');
     content.innerHTML = '';
