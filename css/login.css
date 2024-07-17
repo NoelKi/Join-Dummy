@@ -126,6 +126,13 @@ body {
     gap: 8px;
 }
 
+.h1Container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .h1Login {
     font-size: 48px;
     margin: 20px 0 20px 0;
@@ -306,8 +313,13 @@ body {
         gap: 10px;
     }
 
-    .loginButton, .guestLogin {
+    .loginButton,
+    .guestLogin {
         width: 180px;
         font-size: 19px;
+    }
+
+    .seperator {
+        width: 88px;
     }
 }

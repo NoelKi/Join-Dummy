@@ -240,4 +240,8 @@ body {
     .signUpSection {
         width: 95%;
     }
+
+    .seperator {
+        width: 88px;
+    }
 }
