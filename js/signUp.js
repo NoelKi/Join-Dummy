@@ -20,14 +20,6 @@ async function postSignUpData(data) {
     }
 }
 
-function toggleCheckBox() {
-    const checkBoxImage = document.getElementById('checkBoxRemember');
-    checkBoxImage.src = isPolicyAccepted
-        ? '../assets/img/rememberDefault.svg'
-        : '../assets/img/rememberChecked.svg';
-    isPolicyAccepted = !isPolicyAccepted;
-}
-
 async function signUp() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
@@ -54,4 +46,12 @@ async function signUp() {
 
 function backToLogIn() {
     window.location.href = "login.html";
+}
+
+function toggleCheckBox() {
+    const checkBoxImage = document.getElementById('checkBoxRemember');
+    checkBoxImage.src = isPolicyAccepted
+        ? '../assets/img/rememberDefault.svg'
+        : '../assets/img/rememberChecked.svg';
+    isPolicyAccepted = !isPolicyAccepted;
 }
