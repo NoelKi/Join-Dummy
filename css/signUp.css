@@ -81,7 +81,7 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 422px;
+    width: 70%;
     height: 324px;
     gap: 20px;
 }
@@ -91,35 +91,32 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 422px;
     height: 152px;
     gap: 24px;
 }
 
 .inputWrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #D1D1D1;
+    padding: 12px 0;
     position: relative;
     width: 100%;
 }
 
+.inputWrapper img {
+    margin-right: 10px;
+    height: 24px;
+    width: 24px;
+}
+
 .inputWrapper input {
-    width: 100%;
-    height: 48px;
-    padding: 12px 50px 12px 21px;
+    flex: 1;
     border: none;
-    border-bottom: 1px solid #D1D1D1;
-    box-sizing: border-box;
     font-size: 19px;
     font-weight: 400;
     opacity: 0.4;
-}
-
-.inputWrapper img {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 24px;
-    width: 24px;
+    padding-left: 10px;
 }
 
 .inputWrapper input:focus::placeholder {
@@ -218,27 +215,26 @@ body {
 
 @media (max-width: 768px) {
     .signUpContent {
-        width: 90%;
+        width: 80%;
         padding: 10px;
     }
 
-    .signUpSection,
-    .signUpInput {
-        width: 100%;
-    }
-
-    .h1signUp {
-        font-size: 36px;
+    .signUpSection {
+        width: 80%;
     }
 }
 
 @media (max-width: 480px) {
+    .signUpContent {
+        width: 90%;
+    }
+
     .h1signUp {
-        font-size: 28px;
+        font-size: 47px;
     }
 
     .inputWrapper input {
-        font-size: 16px;
+        font-size: 19px;
     }
 
     .signUpButton {
