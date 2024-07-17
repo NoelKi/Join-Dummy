@@ -1,14 +1,36 @@
 .error {
   color: #ff8190;
   display: none;
+  font-size: 13px;
+}
+
+.input-error {
+  border-bottom: 1px solid #ff8190;
 }
 
 .input-title-task::placeholder {
   color: #d1d1d1;
+  padding: 10px;
 }
 
 .input-title-task {
   width: 440px;
   height: 64px;
   font-size: 32px;
+  border: none;
+  border-bottom: 1px solid #d1d1d1;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  outline: none;
+}
+
+.input-title-task:focus {
+  border-bottom: 1px solid #005dff;
+}
+
+.task-css {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
