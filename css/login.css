@@ -116,6 +116,10 @@ body {
     cursor: pointer;
 }
 
+.signUpButton button:hover {
+    background: #005DFF
+}
+
 .loginContent {
     display: flex;
     justify-content: space-evenly;
@@ -165,9 +169,6 @@ body {
 .inputWrapper {
     position: relative;
     width: 100%;
-    color: #D1D1D1;
-    font-size: 19px;
-    font-weight: 400;
 }
 
 .inputWrapper input {
@@ -177,6 +178,8 @@ body {
     border: none;
     border-bottom: 1px solid #D1D1D1;
     box-sizing: border-box;
+    font-size: 19px;
+    font-weight: 400;
 }
 
 .inputWrapper img {
@@ -190,7 +193,7 @@ body {
 
 .inputWrapper input:focus::placeholder {
     color: transparent;
-  }
+}
 
 .loginButton {
     font-weight: 400;
@@ -207,7 +210,6 @@ body {
 
 .loginButton:hover {
     background: #005DFF;
-
 }
 
 .guestLogin {
@@ -243,6 +245,10 @@ form {
     cursor: pointer;
 }
 
+#checkBoxRemember:hover {
+    background: #EDF2FA;
+}
+
 .divFooter {
     position: absolute;
     bottom: 0;
@@ -265,5 +271,5 @@ form {
 }
 
 .divFooter a:hover {
-   color: #4589FF;
+    color: #4589FF;
 }
