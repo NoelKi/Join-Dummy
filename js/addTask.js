@@ -1,5 +1,6 @@
 let titleInput = document.getElementById("add-title");
 let titleError = document.getElementById("title-error");
+let textarea = document.getElementById('textarea-task');
 let dateInput = document.getElementById("due-date");
 let dateError = document.getElementById("date-error");
 let addTaskBtn = document.getElementById("add-task-btn");
@@ -24,9 +25,19 @@ titleInput.addEventListener("focusout", function () {
   }
 });
 
-document
-  .getElementById("task-form")
-  .addEventListener("submit", function (event) {
+dateInput.addEventListener('focusout', function() {
+  if (dateInput.value.trim() === '') {
+      dateError.style.display = 'inline';
+      dateInput.style.borderBottomColor = '#ff8190';
+      dateInput.style.color = 'black';
+  } else {
+      dateError.style.display = 'none';
+      dateInput.style.borderBottomColor = '';
+      dateInput.style.color = 'black';
+  }
+});
+
+document.getElementById("task-form").addEventListener("submit", function (event) {
     if (titleInput.value.trim() === "") {
       event.preventDefault();
       titleError.style.display = "inline";

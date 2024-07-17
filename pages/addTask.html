@@ -23,50 +23,33 @@
       <div w3-include-html="../assets/templates/sidebar.html"></div>
       <div class="task-container">
          <form id="task-form" class="task-css">
+          
+          
           <div class="task-section-div">
-            <input
-              id="add-title"
-              type="text"
-              class="input-title-task"
-              placeholder="Enter a title"
-            /><br />
+            <input id="add-title" type="text" class="input-title-task" placeholder="Enter a title"/><br />
             <span id="title-error" class="error">This field is required*</span>
           </div>
 
           <div class="task-section-div">
-            <label>Description (optional)</label><br />
-            <textarea name="task-text" id="textarea-task"></textarea>
+            <label>Description <span class="optional-text">(optional)</span></label><br/>
+            <textarea placeholder="Enter a Description" class="task-text" id="textarea-task"></textarea>
           </div>
 
           <div class="task-section-div">
-            <label for="due-date">Due Date</label><br />
-            <input id="due-date" type="date" /><br />
+            <label for="due-date">Due Date</label><br>
+            <input class="date-css" id="due-date" type="date" placeholder="dd/mm/yyyy"><br>
             <span id="date-error" class="error">This field is required*</span>
-          </div>
+        </div>
+            
 
           <div class="task-section-div">
             <label for="Priotity">Priority</label><br>
-            <button
-              id="urgent"
-              type="button"
-              onclick="selectPriority('Urgent')"
-            >
-              Urgent
-            </button>
-            <button
-              id="medium"
-              type="button"
-              onclick="selectPriority('Medium')"
-            >
-              Medium
-            </button>
-            <button id="low" type="button" onclick="selectPriority('Low')">
-              Low
-            </button>
-          </div>
+             <button id="urgent" type="button" onclick="selectPriority('Urgent')">Urgent</button>
+             <button id="medium" type="button" onclick="selectPriority('Medium')">Medium</button>
+             <button id="low" type="button" onclick="selectPriority('Low')">Low</button></div>
 
           <div class="task-section-div">
-            <label for="assigned-to">Assigned to<br />(optional)</label><br />
+            <label for="assigned-to">Assigned to <span class="optional-text">(optional)</span></label><br />
             <select id="assigned-to-select" name="assigned-to">
               <option value="" disabled selected>
                 Select contacts to assign
