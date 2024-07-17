@@ -1,46 +1,3 @@
-let contacts = [
-    {
-        'id': 0,
-        'name': 'Paul',
-        'surname': 'Blau',
-        'email': 'paul.blau@icloud.com',
-        'phoneNumber': '+05123249320448',
-        'color': '#FF7A00'
-    },
-    {
-        'id': 1,
-        'name': 'Hans',
-        'surname': 'Gelb',
-        'email': 'hans.gelb@icloud.com',
-        'phoneNumber': '+05123',
-        'color': '#00BEE8'
-    },
-    {
-        'id': 2,
-        'name': 'Achim',
-        'surname': 'Rot',
-        'email': 'achim.rot@icloud.com',
-        'phoneNumber': '+05123249320448',
-        'color': '#1FD7C1'
-    },
-    {
-        'id': 3,
-        'name': 'Anette',
-        'surname': 'Rot',
-        'email': 'anette.rot@icloud.com',
-        'phoneNumber': '+05123249320448',
-        'color': '#FFBB2B'
-    },
-    {
-        'id': 4,
-        'name': 'Johannes',
-        'surname': 'Grün',
-        'email': 'johannes.gruen@icloud.com',
-        'phoneNumber': '+05123249320448',
-        'color': '#FC71FF'
-    },
-]
-
 function createDetailedContactCard(id, initials) {
     const contact = getObjectById(contacts, id);
     return `
@@ -114,7 +71,7 @@ function createEditOverlay(id, initials) {
     `;
 }
 
-function createAddOverlay(id) {
+function createAddOverlay() {
     return `        
     <div class="overlay-section">
         <div class="add-overlay-container" id="edit-overlay-container">

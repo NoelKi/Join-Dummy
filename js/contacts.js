@@ -1,4 +1,34 @@
-let currendId = 5;
+let contacts = [];
+
+window.onload = function() {
+    includeHTML(); 
+    renderContacts();
+    getUserContactsAsync();
+};
+
+function getUserContacts() {
+    if (!currUserData.contacts) {
+        contacts = [];
+    } else {
+        contacts = currUserData.contacts;
+        console.log(contacts);
+    }
+}
+
+async function getUserContactsAsync() {
+    try {
+        currUserData = await getUserData(USER_ID);
+        if (!currUserData.contacts) {
+            contacts = [];
+        } else {
+            contacts = currUserData.contacts;
+        }
+        console.log(contacts);
+        renderContacts();
+    } catch (error) {
+        console.error('Fehler beim Abrufen der Benutzerdaten:', error);
+    }
+}
 
 function loadUserIdLocalStorage() {
     const idAsText = localStorage.getItem('userId');
@@ -66,6 +96,7 @@ function deleteContact(id) {
     }
     closeContactDetailCard();
     renderContacts();
+    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts);
 }
 
 function deleteContactOverlay(id) {
@@ -78,6 +109,7 @@ function deleteContactOverlay(id) {
         }
         renderContacts();
     }, 0);
+    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts);
 }
 
 function sortContactsByName() {
@@ -121,10 +153,11 @@ function addContact() {
     const colorArr = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
     const rand = Math.floor(Math.random() * colorArr.length);
     const color = colorArr[rand];
-    currendId = currendId + 1;
-    contacts.push({ id: currendId, name: name, surname: surname, email: email, phoneNumber: phoneNumber, color: color });
+    const id = Number(Date.now().toString());
+    contacts.push({ id: id, name: name, surname: surname, email: email, phoneNumber: phoneNumber, color: color });
     closeOverlay();
     renderContacts();
+    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts);
 }
 
 function editContact(id, initials) {
@@ -138,4 +171,5 @@ function editContact(id, initials) {
     closeOverlay();
     renderContacts();
     renderContactDetailCard(id, initials);
+    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts);
 }
