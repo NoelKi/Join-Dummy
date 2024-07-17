@@ -35,7 +35,7 @@ async function signUp() {
         name,
         email,
         password,
-        id: Date.now().toString()
+        id: Date.now().toString(),
     };
     const result = await postSignUpData(newUser);
     if (result) {

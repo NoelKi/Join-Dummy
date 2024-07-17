@@ -3,28 +3,26 @@ let contacts = [];
 window.onload = function() {
     includeHTML(); 
     renderContacts();
-    getUserContactsAsync();
+    getUserLists();
 };
 
-function getUserContacts() {
-    if (!currUserData.contacts) {
-        contacts = [];
-    } else {
-        contacts = currUserData.contacts;
-        console.log(contacts);
-    }
-}
-
-async function getUserContactsAsync() {
+async function getUserLists() {
     try {
         currUserData = await getUserData(USER_ID);
         if (!currUserData.contacts) {
             contacts = [];
         } else {
             contacts = currUserData.contacts;
+            renderContacts();
+        }
+        if (!currUserData.task) {
+            tasks = [];
+        } else {
+            tasks = currUserData.task;
+            //place renderTasks(); here
         }
         console.log(contacts);
-        renderContacts();
+        console.log(tasks);
     } catch (error) {
         console.error('Fehler beim Abrufen der Benutzerdaten:', error);
     }
@@ -157,7 +155,7 @@ function addContact() {
     contacts.push({ id: id, name: name, surname: surname, email: email, phoneNumber: phoneNumber, color: color });
     closeOverlay();
     renderContacts();
-    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts);
+    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts,tasks);
 }
 
 function editContact(id, initials) {
@@ -171,5 +169,5 @@ function editContact(id, initials) {
     closeOverlay();
     renderContacts();
     renderContactDetailCard(id, initials);
-    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts);
+    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts,tasks);
 }
