@@ -50,5 +50,6 @@ function saveUserIdLocalStorage(id) {
 
 function loadUserIdLocalStorage() {
   const idAsText = localStorage.getItem('userId');
-  userId = idAsText ? JSON.parse(idAsText) : '';
+  if (!idAsText) return window.location.href = 'login.html';
+  userId = JSON.parse(idAsText);
 }
