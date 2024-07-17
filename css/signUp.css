@@ -126,6 +126,10 @@ body {
     color: transparent;
 }
 
+.inputWrapper input:focus {
+    outline: none;
+}
+
 .signUpButton {
     font-weight: 400;
     font-size: 19px;

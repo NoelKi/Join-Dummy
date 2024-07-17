@@ -187,6 +187,10 @@ body {
     color: transparent;
 }
 
+.inputWrapper input:focus {
+    outline: none;
+}
+
 .loginButton {
     font-weight: 400;
     font-size: 23px;
