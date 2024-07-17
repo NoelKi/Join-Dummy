@@ -33,7 +33,6 @@ async function signUp() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
-    const task = document.getElementById('task-form').value;
     if (!isPolicyAccepted) {
         return alert('You must accept the privacy policy to sign up.');
     }
@@ -45,7 +44,6 @@ async function signUp() {
         email,
         password,
         id: Date.now().toString(),
-        task,
     };
     const result = await postSignUpData(newUser);
     if (result) {
