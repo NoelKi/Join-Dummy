@@ -17,7 +17,7 @@
     <script src="../js/addTask.js" defer></script>
   </head>
 
-  <body onload="includeHTML();">
+  <body onload="includeHTML(); loadContactList()">
     <div w3-include-html="../assets/templates/header.html"></div>
     <div class="wrap">
       <div w3-include-html="../assets/templates/sidebar.html"></div>
@@ -64,18 +64,8 @@
       <div class="search-assign">
         <input type="text" id="option-search" placeholder="An">
       </div>
-      <ul class="option">
-        <li>Opti56456ons1</li>
-        <li>Options2</li>
-        <li>Option6546s3</li>
-        <li>Opti789456ons4</li>
-        <li>Options5</li>
-        <li>Optio456ns5</li>
-        <li>Options5</li>
-        <li>Options5</li>
-        <li>Option123s5</li>
-        <li>Options5</li>
-        <li>Optio1237896ns5</li>
+      <ul id="generate-list" class="option">
+        
       </ul>
      </div>
 

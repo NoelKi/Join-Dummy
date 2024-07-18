@@ -142,6 +142,13 @@ document.getElementById("task-form").addEventListener("submit", function (event)
     selectedButton.querySelector(".button-img").classList.add("selected");
   }
   
+  function loadContactList() {
+    let listContainer = document.getElementById('generate-list');
+    listContainer.innerHTML = '';
+    for (let i = 0; i < testNames.length; i++) {
+        listContainer.innerHTML += `<li>${testNames[i].firstName} ${testNames[i].lastName}</li>`;
+    }
+}
  
     
    
