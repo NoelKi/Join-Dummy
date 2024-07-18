@@ -44,16 +44,13 @@ function createEditOverlay(id, initials) {
                     <div class="initials-overlay" style="background-color: ${contact.color};">${initials}</div>
                     <form class="overlay-form" onsubmit="editContact(${contact.id},'${initials}'); return false;" >
                         <div class="overlay-input-container">
-                            <input class="overlay-input-field" id="edit-name-overlay" type="text" value="${contact.name} ${contact.surname}" required>
-                            <img src="../assets/img/personOverlay.svg" alt="person">
+                            <input class="overlay-input-field input-person" id="edit-name-overlay" type="text" value="${contact.name} ${contact.surname}" required>
                         </div>
                         <div class="overlay-input-container">
-                            <input class="overlay-input-field" id="edit-email-overlay" type="email" value="${contact.email}" required>
-                            <img src="../assets/img/letterOverlay.svg" alt="letter">
+                            <input class="overlay-input-field input-letter" id="edit-email-overlay" type="email" value="${contact.email}" required>
                         </div>
                         <div class="overlay-input-container">
-                            <input class="overlay-input-field" id="edit-phoneNumber-overlay" value="${contact.phoneNumber}" required>
-                            <img src="../assets/img/phoneOverlay.svg" alt="phone">
+                            <input class="overlay-input-field input-tel" id="edit-phoneNumber-overlay" value="${contact.phoneNumber}" required>
                         </div>
                         <div class="overlay-btn">
                             <button class="overlay-white-btn" onclick="deleteContactOverlay(${id})" type="button">
@@ -90,17 +87,14 @@ function createAddOverlay() {
                     </div>
                     <form class="overlay-form"  onsubmit="addContact(); return false;">
                         <div class="overlay-input-container">
-                            <input class="overlay-input-field"  placeholder="Name" type="text" id="add-name-overlay" required>
+                            <input class="overlay-input-field input-person"  placeholder="Name" type="text" id="add-name-overlay" required>
                             <label for="add-name-overlay"></label>
-                            <img src="../assets/img/personOverlay.svg" alt="person">
                         </div>
                         <div class="overlay-input-container">
-                            <input class="overlay-input-field" placeholder="Email" type="email" id="add-email-overlay" required>
-                            <img src="../assets/img/letterOverlay.svg" alt="letter">
+                            <input class="overlay-input-field input-letter" placeholder="Email" type="email" id="add-email-overlay" required>
                         </div>
                         <div class="overlay-input-container">
-                            <input class="overlay-input-field" placeholder="Phone" type="tel" id="add-phoneNumber-overlay" required>
-                            <img src="../assets/img/phoneOverlay.svg" alt="phone">
+                            <input class="overlay-input-field input-tel" placeholder="Phone" type="tel" id="add-phoneNumber-overlay" required>
                         </div>
                         <div class="overlay-btn">
                             <button class="overlay-white-btn" onclick="closeOverlay();" type="button">
