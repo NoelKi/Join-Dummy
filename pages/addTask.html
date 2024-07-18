@@ -51,17 +51,37 @@
              <button class="button-low" id="low" type="button" onclick="selectPriority('Low')">Low <img class="button-img" src="../assets/img/low.svg"></button></div>
           </div>
             
-          <div class="task-section-div">
-            <label for="assigned-to">Assigned to <span class="optional-text">(optional)</span></label><br />
-            <select id="assigned-to-select" name="assigned-to">
-              <option value="" disabled selected>
-                Select contacts to assign
-              </option>
-              <option value="John Doe">John Doe</option>
-              <option value="Jane Smith">Jane Smith</option>
-              <option value="Michael Johnson">Michael Johnson</option>
-            </select>
-          </div>
+          
+<div class="task-section-div">
+  <label for="assigned-to">Assigned to <span class="optional-text">(optional)</span></label><br />
+  <div class="select-box">
+    <div class="select-option">
+      <input type="text" value="Select contacts to assign" id="select-value" readonly>
+      <img class="drop-down-arrow" src="../assets/img/arrow_drop_down.svg" alt="">
+    </div>
+   
+     <div class="select-content">
+      <div class="search-assign">
+        <input type="text" id="option-search" placeholder="An">
+      </div>
+      <ul class="option">
+        <li>Opti56456ons1</li>
+        <li>Options2</li>
+        <li>Option6546s3</li>
+        <li>Opti789456ons4</li>
+        <li>Options5</li>
+        <li>Optio456ns5</li>
+        <li>Options5</li>
+        <li>Options5</li>
+        <li>Option123s5</li>
+        <li>Options5</li>
+        <li>Optio1237896ns5</li>
+      </ul>
+     </div>
+
+  </div>  
+</div>
+  
 
           <div class="task-section-div">
             <label for="category-task">Category</label><br />

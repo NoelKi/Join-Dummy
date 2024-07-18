@@ -1,10 +1,91 @@
+
+
+    let testNames = [
+    {
+      "firstName": "John",
+      "lastName": "Doe"
+    },
+    {
+      "firstName": "Jane",
+      "lastName": "Smith"
+    },
+    {
+      "firstName": "Michael",
+      "lastName": "Johnson"
+    },
+    {
+      "firstName": "Emily",
+      "lastName": "Williams"
+    },
+    {
+      "firstName": "David",
+      "lastName": "Brown"
+    },
+    {
+      "firstName": "Sarah",
+      "lastName": "Jones"
+    },
+    {
+      "firstName": "Daniel",
+      "lastName": "Miller"
+    },
+    {
+      "firstName": "Jessica",
+      "lastName": "Davis"
+    },
+    {
+      "firstName": "Matthew",
+      "lastName": "Garcia"
+    },
+    {
+      "firstName": "Laura",
+      "lastName": "Martinez"
+    }
+  ];
+
+
+
+
 let titleInput = document.getElementById("add-title");
 let titleError = document.getElementById("title-error");
 let textarea = document.getElementById('textarea-task');
 let dateInput = document.getElementById("due-date");
 let dateError = document.getElementById("date-error");
 let addTaskBtn = document.getElementById("add-task-btn");
+let selectBox = document.querySelector('.select-box');
+let selectOption = document.querySelector('.select-option');
+let selectValue = document.getElementById('select-value');
+let optionSearch = document.getElementById('option-search');
+let option = document.querySelector('.option');
+let optionList = document.querySelectorAll('.option li');
+let dropDownArrow = document.querySelector('.drop-down-arrow');
 
+selectOption.addEventListener('click', function(){
+  selectBox.classList.toggle('active');
+});
+
+optionList.forEach(function(optionListSingle){
+  optionListSingle.addEventListener('click',function(){
+    text = this.textContent;
+    selectValue.value = text;
+    selectBox.classList.remove('active');
+  })
+});
+
+optionSearch.addEventListener('keyup',function(){
+  var filter, li, i, textValue;
+  filter = optionSearch.value.toUpperCase();
+  li = option.getElementsByTagName('li');
+  for(i = 0; i < li.length; i++){
+    liCount = li[i];
+    textValue = liCount.textContent || liCount.innerText;
+    if(textValue.toUpperCase().indexOf(filter) > -1){
+      li[i].style.display = '';
+    } else{
+      li[i].style.display = 'none';
+    }
+  }
+})
 
 
 titleInput.addEventListener("focusout", function () {
@@ -60,8 +141,8 @@ document.getElementById("task-form").addEventListener("submit", function (event)
     selectedButton.classList.add("selected");
     selectedButton.querySelector(".button-img").classList.add("selected");
   }
-      
   
+ 
     
    
 
@@ -125,4 +206,6 @@ document.addEventListener("DOMContentLoaded", function () {
   titleInput.addEventListener("input", updateAddTaskButtonState);
   dateInput.addEventListener("input", updateAddTaskButtonState);
 });
+
+
 
