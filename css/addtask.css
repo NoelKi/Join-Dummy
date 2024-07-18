@@ -93,5 +93,62 @@ input[type="date"]:focus {
     background-image: url('../assets/img/calender.svg'); 
     cursor: pointer;
 }
-    
 
+
+.button-urgent, .button-medium, .button-low {
+   width: 136px;
+   height: 51px;
+   border-radius: 10px;
+   box-shadow: 0px 0px 4px 0px #00000029;
+   font-size: 19px;
+   font-weight: 400;
+   background-color: white;
+   border: none;
+   outline: none;
+   cursor: pointer;
+ }
+   
+  
+.button-img {
+   width: 20px;
+   height: 14.51px;
+   margin-left: 10px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  
+}
+
+.button-urgent:hover {
+  border-bottom: 2px solid #FF3D00;
+}
+.button-medium:hover {
+  border-bottom: 2px solid #FFA800;
+}
+.button-low:hover {
+  border-bottom: 2px solid #7AE229;
+}
+
+.button-urgent.selected {
+  background-color:  #FF3D00;
+  color: white;
+}
+  
+.button-medium.selected {
+  background-color: #FFA800;
+  color: white;
+}
+
+.button-low.selected {
+  background-color: #7AE229;
+  color: white;
+}
+
+.buttons button.selected .button-img {
+  filter: brightness(0) invert(1);
+}
+
+
+  

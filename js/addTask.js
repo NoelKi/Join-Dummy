@@ -5,8 +5,7 @@ let dateInput = document.getElementById("due-date");
 let dateError = document.getElementById("date-error");
 let addTaskBtn = document.getElementById("add-task-btn");
 
-const BASE_URLTASK =
-  "https://test2-654cc-default-rtdb.europe-west1.firebasedatabase.app/";
+
 
 titleInput.addEventListener("focusout", function () {
   if (titleInput.value.trim() === "") {
@@ -51,12 +50,20 @@ document.getElementById("task-form").addEventListener("submit", function (event)
     }
   });
 
-function selectPriority(priority) {
-  document
-    .querySelectorAll(".priority button")
-    .forEach((btn) => btn.classList.remove("selected"));
-  document.getElementById(priority.toLowerCase()).classList.add("selected");
-}
+  function selectPriority(priority) {
+    
+    document.querySelectorAll(".buttons button").forEach((btn) => {
+      btn.classList.remove("selected");
+      btn.querySelector(".button-img").classList.remove("selected");
+    });
+    const selectedButton = document.getElementById(priority.toLowerCase());
+    selectedButton.classList.add("selected");
+    selectedButton.querySelector(".button-img").classList.add("selected");
+  }
+      
+  
+    
+   
 
 // subtask
 
@@ -119,58 +126,3 @@ document.addEventListener("DOMContentLoaded", function () {
   dateInput.addEventListener("input", updateAddTaskButtonState);
 });
 
-// Funktion zum Sammeln von Formulardaten und Senden an Firebase
-document
-  .getElementById("task-form")
-  .addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    let title = document.getElementById("add-title").value.trim();
-    let description = document.getElementById("textarea-task").value.trim();
-    let dueDate = document.getElementById("due-date").value.trim();
-    let priority =
-      document.querySelector(".priority .selected")?.textContent.trim() || "";
-    let assignedTo = document.getElementById("assigned-to-select").value.trim();
-    let category = document.getElementById("category-task").value.trim();
-
-    // Sammeln der Subtasks
-    let subtaskElements = document.querySelectorAll("#added-subtask div span");
-    let subtasks = [];
-    subtaskElements.forEach((subtaskElement) => {
-      subtasks.push(subtaskElement.textContent.trim());
-    });
-
-    // Erstellen des Datenobjekts
-    let taskData = {
-      title: title,
-      description: description,
-      dueDate: dueDate,
-      priority: priority,
-      assignedTo: assignedTo,
-      category: category,
-      subtasks: subtasks,
-    };
-
-    // Konvertieren des Datenobjekts in einen JSON-String
-    let taskDataString = JSON.stringify(taskData);
-
-    // Senden der Daten an Firebase
-    try {
-      let response = await fetch(`${BASE_URLTASK}/tasks.json`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: taskDataString,
-      });
-
-      if (response.ok) {
-        alert("Task added successfully!");
-      } else {
-        alert("Failed to add task");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Error adding task");
-    }
-  });
