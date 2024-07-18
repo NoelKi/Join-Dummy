@@ -1,7 +1,7 @@
 let contacts = [];
 
-window.onload = function() {
-    includeHTML(); 
+window.onload = function () {
+    includeHTML();
     renderContacts();
     getUserLists();
 };
@@ -21,8 +21,8 @@ async function getUserLists() {
             tasks = currUserData.task;
             //place renderTasks(); here
         }
-        console.log(contacts);
-        console.log(tasks);
+        // console.log(contacts);
+        // console.log(tasks);
     } catch (error) {
         console.error('Fehler beim Abrufen der Benutzerdaten:', error);
     }
@@ -65,7 +65,10 @@ function renderContactDetailCard(id, initials) {
 
 function closeContactDetailCard() {
     const content = document.getElementById('contact-detail-card');
-    content.innerHTML = '';
+    content.classList.add('slide-out');
+    setTimeout(() => {
+        content.innerHTML = '';
+    }, 400);
 }
 
 function renderEditOverlay(id, initials) {
@@ -76,15 +79,44 @@ function renderEditOverlay(id, initials) {
 }
 
 function renderAddOverlay(id) {
+    const body = document.getElementsByTagName('body')[0];
+    body.style.overflow = 'hidden';
     const content = document.getElementById('overlay-section');
     content.style.display = 'block';
     content.innerHTML = '';
     content.innerHTML = createAddOverlay(id);
+    setTimeout(() => {
+        body.style.overflow = null;
+    }, 400);
 }
 
 function closeOverlay() {
     const content = document.getElementById('overlay-section');
     content.style.display = 'none';
+}
+
+function closeOverlayEdit() {
+    const content = document.getElementById('overlay-section');
+    const card = document.getElementById('edit-overlay-container');
+    const body = document.getElementsByTagName('body')[0];
+    body.style.overflow = 'hidden';
+    card.classList.add('slide-out-overlay-left');
+    setTimeout(() => {
+        content.style.display = 'none';
+        body.style.overflow = null;
+    }, 400);
+}
+
+function closeOverlayAdd() {
+    const content = document.getElementById('overlay-section');
+    const card = document.getElementById('add-overlay-container');
+    const body = document.getElementsByTagName('body')[0];
+    body.style.overflow = 'hidden';
+    card.classList.add('slide-out-overlay');
+    setTimeout(() => {
+        content.style.display = 'none';
+        body.style.overflow = null;
+    }, 400);
 }
 
 function deleteContact(id) {
@@ -94,7 +126,7 @@ function deleteContact(id) {
     }
     closeContactDetailCard();
     renderContacts();
-    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts);
+    updateUser(currUserData.name, currUserData.email, currUserData.password, contacts);
 }
 
 function deleteContactOverlay(id) {
@@ -107,7 +139,7 @@ function deleteContactOverlay(id) {
         }
         renderContacts();
     }, 0);
-    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts);
+    updateUser(currUserData.name, currUserData.email, currUserData.password, contacts);
 }
 
 function sortContactsByName() {
@@ -135,6 +167,7 @@ function groupByInitials(arr) {
 }
 
 function getFirstLetterOfName(name) {
+    // alert(name)
     name = name.slice(0, 1);
     return name.toUpperCase()
 }
@@ -144,8 +177,7 @@ function getObjectById(array, id) {
 }
 
 function addContact() {
-    const fullnameArr = document.getElementById('add-name-overlay').value.split(" ");
-    const [name, surname] = fullnameArr;
+    const [name, surname = ''] = document.getElementById('add-name-overlay').value.split(" ");
     const email = document.getElementById('add-email-overlay').value;
     const phoneNumber = document.getElementById('add-phoneNumber-overlay').value;
     const colorArr = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
@@ -155,13 +187,12 @@ function addContact() {
     contacts.push({ id: id, name: name, surname: surname, email: email, phoneNumber: phoneNumber, color: color });
     closeOverlay();
     renderContacts();
-    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts,tasks);
+    updateUser(currUserData.name, currUserData.email, currUserData.password, contacts, tasks);
 }
 
 function editContact(id, initials) {
     const contact = getObjectById(contacts, id);
-    const fullnameArr = document.getElementById('edit-name-overlay').value.split(" ");
-    const [name, surname] = fullnameArr;
+    const [name, surname = ''] = document.getElementById('edit-name-overlay').value.split(" ");
     contact.name = name;
     contact.surname = surname;
     contact.email = document.getElementById('edit-email-overlay').value;
@@ -169,5 +200,12 @@ function editContact(id, initials) {
     closeOverlay();
     renderContacts();
     renderContactDetailCard(id, initials);
-    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts,tasks);
+    updateUser(currUserData.name, currUserData.email, currUserData.password, contacts, tasks);
+}
+
+function setContactActive(e) {
+    const activeE = document.getElementsByClassName('contact-card active');
+    [...activeE].forEach(element => element.classList.remove('active'));
+    const currTarget = e.currentTarget;
+    currTarget.classList.add('active');
 }

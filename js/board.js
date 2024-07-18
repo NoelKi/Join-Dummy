@@ -7,7 +7,8 @@ let tasks = [{
     'taskColor': 'blue',
     'description': 'BlaBliBulb',
     'category': 'done',
-    'priority': 'medium'
+    'priority': 'medium',
+    'collaborators': ['Anche Apfelgrün', 'Rosi Rot']
 }, {
     'id': 1,
     'title': 'Kochen',
@@ -15,7 +16,8 @@ let tasks = [{
     'taskColor': 'orange',
     'description': 'BlaBliBulb',
     'category': 'done',
-    'priority': 'low'
+    'priority': 'low',
+    'collaborators': ['Linda Lila']
 }, {
     'id': 2,
     'title': 'Einkaufen',
@@ -23,7 +25,9 @@ let tasks = [{
     'taskColor': 'orange',
     'description': 'BlaBliBulb',
     'category': 'awaitFeedback',
-    'priority': 'high'
+    'priority': 'high',
+    'collaborators': ['Rosi Rot','Bernhart Blau']
+
 }];
 
 function renderTasks() {

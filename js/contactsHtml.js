@@ -1,3 +1,14 @@
+function createContactCard(contact, initials) {
+    return `
+    <div class="contact-card" id="contact-card-${contact.id}" onclick="renderContactDetailCard(${contact.id},'${initials}'); setContactActive(event);">
+    <div class="initials" style="background-color: ${contact.color};" id="initials">${initials}</div>
+    <div class="contact-data">
+    <p id="contact-name">${contact.name} ${contact.surname}</p>
+    <p class="contact-email">${contact.email}</p>
+    </div>
+    </div>`;
+}
+
 function createDetailedContactCard(id, initials) {
     const contact = getObjectById(contacts, id);
     return `
@@ -31,11 +42,11 @@ function createEditOverlay(id, initials) {
     console.log(id);
     return `
     <div class="overlay-section">
-        <div class="edit-overlay-container" id="edit-overlay-container">
+        <div class="edit-overlay-container slide-in-overlay-left" id="edit-overlay-container">
             <div class="edit-top-container">
                 <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
                 <p class="overlay-headline">Edit contact</p>
-                <button class="close-btn-overlay" onclick="closeOverlay()">
+                <button class="close-btn-overlay" onclick="closeOverlayEdit()">
                     <img src="../assets/img/closeOverlay.svg" alt="X">
                 </button>
             </div>
@@ -44,16 +55,13 @@ function createEditOverlay(id, initials) {
                     <div class="initials-overlay" style="background-color: ${contact.color};">${initials}</div>
                     <form class="overlay-form" onsubmit="editContact(${contact.id},'${initials}'); return false;" >
                         <div class="overlay-input-container">
-                            <input class="overlay-input-field" id="edit-name-overlay" type="text" value="${contact.name} ${contact.surname}" required>
-                            <img src="../assets/img/personOverlay.svg" alt="person">
+                            <input class="overlay-input-field input-person" id="edit-name-overlay" type="text" value="${contact.name} ${contact.surname}" required>
                         </div>
                         <div class="overlay-input-container">
-                            <input class="overlay-input-field" id="edit-email-overlay" type="email" value="${contact.email}" required>
-                            <img src="../assets/img/letterOverlay.svg" alt="letter">
+                            <input class="overlay-input-field input-letter" id="edit-email-overlay" type="email" value="${contact.email}" required>
                         </div>
                         <div class="overlay-input-container">
-                            <input class="overlay-input-field" id="edit-phoneNumber-overlay" value="${contact.phoneNumber}" required>
-                            <img src="../assets/img/phoneOverlay.svg" alt="phone">
+                            <input class="overlay-input-field input-tel" id="edit-phoneNumber-overlay" value="${contact.phoneNumber}" required>
                         </div>
                         <div class="overlay-btn">
                             <button class="overlay-white-btn" onclick="deleteContactOverlay(${id})" type="button">
@@ -74,12 +82,12 @@ function createEditOverlay(id, initials) {
 function createAddOverlay() {
     return `        
     <div class="overlay-section">
-        <div class="add-overlay-container" id="edit-overlay-container">
+        <div class="add-overlay-container slide-in-overlay" id="add-overlay-container">
             <div class="add-top-container">
                 <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
                 <p class="overlay-headline">Add contact</p>
                 <p class="overlay-p">Tasks are better with a team!</p>
-                <button class="close-btn-overlay" onclick="closeOverlay()">
+                <button class="close-btn-overlay" onclick="closeOverlayAdd()">
                     <img src="../assets/img/closeOverlay.svg" alt="X">
                 </button>
             </div>
@@ -90,17 +98,15 @@ function createAddOverlay() {
                     </div>
                     <form class="overlay-form"  onsubmit="addContact(); return false;">
                         <div class="overlay-input-container">
-                            <input class="overlay-input-field"  placeholder="Name" type="text" id="add-name-overlay" required>
+                            <input class="overlay-input-field input-person"  placeholder="Name" type="text" id="add-name-overlay" required>
                             <label for="add-name-overlay"></label>
-                            <img src="../assets/img/personOverlay.svg" alt="person">
+                            <p id="error-message" style="color: red; display: none;">Bitte geben Sie sowohl einen Vor- als auch einen Nachnamen ein.</p>
                         </div>
                         <div class="overlay-input-container">
-                            <input class="overlay-input-field" placeholder="Email" type="email" id="add-email-overlay" required>
-                            <img src="../assets/img/letterOverlay.svg" alt="letter">
+                            <input class="overlay-input-field input-letter" placeholder="Email" type="email" id="add-email-overlay" required>
                         </div>
                         <div class="overlay-input-container">
-                            <input class="overlay-input-field" placeholder="Phone" type="tel" id="add-phoneNumber-overlay" required>
-                            <img src="../assets/img/phoneOverlay.svg" alt="phone">
+                            <input class="overlay-input-field input-tel" placeholder="Phone" type="tel" id="add-phoneNumber-overlay" required>
                         </div>
                         <div class="overlay-btn">
                             <button class="overlay-white-btn" onclick="closeOverlay();" type="button">
@@ -116,17 +122,6 @@ function createAddOverlay() {
         </div>
     </div>
 `;
-}
-
-function createContactCard(contact, initials) {
-    return `
-    <div class="contact-card" id="contact-card" onclick="renderContactDetailCard(${contact.id},'${initials}')">
-    <div class="initials" style="background-color: ${contact.color};" id="initials">${initials}</div>
-    <div class="contact-data">
-    <p id="contact-name">${contact.name} ${contact.surname}</p>
-    <p class="contact-email">${contact.email}</p>
-    </div>
-    </div>`;
 }
 
 function createLetterCard(letter) {
