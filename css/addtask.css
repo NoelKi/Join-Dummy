@@ -1,5 +1,154 @@
 .error {
-    color: red;
-    display: none;
+  color: #ff8190;
+  display: none;
+  font-size: 13px;
 }
 
+.input-error {
+  border-bottom: 1px solid #ff8190;
+}
+
+.input-title-task::placeholder {
+  color: #d1d1d1;
+}
+
+.input-title-task {
+  width: 440px;
+  height: 64px;
+  font-size: 32px;
+  border: none;
+  border-bottom: 1px solid #d1d1d1;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+.input-title-task:focus {
+  border-bottom: 1px solid #005dff;
+}
+
+.task-css {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+}
+
+.optional-text {
+  font-weight: 400;
+}
+
+.task-text {
+  width: 440px;
+  height: 103px;
+  font-size: 19px;
+  border-radius: 0px 10px 10px 10px;
+  border-color: #d1d1d1;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 16px;
+}
+
+.task-text:focus {
+  outline: none !important;
+  border-color: #005dff;
+}
+
+.task-text::placeholder {
+  color: #d1d1d1;
+}
+
+.task-section-div label {
+  font-size: 19px;
+  font-weight: 700;
+  color: #42526e;
+}
+
+.display-flex {
+  display: flex;
+  align-items: center;
+}
+
+input[type="date"]{
+    width: 440px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #d1d1d1;
+    padding: 10px;
+    color: #d1d1d1;
+    font-family: "Open Sans", sans-serif;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+input[type="date"]:focus {
+    border-bottom: 1px solid #005dff;
+    color: black;
+    
+  }
+
+::-webkit-calendar-picker-indicator {
+    background-image: url('../assets/img/calender.svg'); 
+    cursor: pointer;
+}
+
+
+.button-urgent, .button-medium, .button-low {
+   width: 136px;
+   height: 51px;
+   border-radius: 10px;
+   box-shadow: 0px 0px 4px 0px #00000029;
+   font-size: 19px;
+   font-weight: 400;
+   background-color: white;
+   border: none;
+   outline: none;
+   cursor: pointer;
+ }
+   
+  
+.button-img {
+   width: 20px;
+   height: 14.51px;
+   margin-left: 10px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  
+}
+
+.button-urgent:hover {
+  border-bottom: 2px solid #FF3D00;
+}
+.button-medium:hover {
+  border-bottom: 2px solid #FFA800;
+}
+.button-low:hover {
+  border-bottom: 2px solid #7AE229;
+}
+
+.button-urgent.selected {
+  background-color:  #FF3D00;
+  color: white;
+}
+  
+.button-medium.selected {
+  background-color: #FFA800;
+  color: white;
+}
+
+.button-low.selected {
+  background-color: #7AE229;
+  color: white;
+}
+
+.buttons button.selected .button-img {
+  filter: brightness(0) invert(1);
+}
+
+
+  

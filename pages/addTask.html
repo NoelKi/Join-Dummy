@@ -21,51 +21,38 @@
     <div w3-include-html="../assets/templates/header.html"></div>
     <div class="wrap">
       <div w3-include-html="../assets/templates/sidebar.html"></div>
-      <div class="add-task-container">
-        <form id="task-form">
-          <div class="input-title">
-            <input
-              id="add-title"
-              type="text"
-              placeholder="Enter a title"
-            /><br />
+      <div class="task-container">
+         <form id="task-form" class="task-css">
+          
+          
+          <div class="task-section-div">
+            <input id="add-title" type="text" class="input-title-task" placeholder="Enter a title"/><br />
             <span id="title-error" class="error">This field is required*</span>
           </div>
 
-          <div class="task-description">
-            <label>Description (optional)</label><br />
-            <textarea name="task-text" id="textarea-task"></textarea>
+          <div class="task-section-div">
+            <label>Description <span class="optional-text">(optional)</span></label><br/>
+            <textarea placeholder="Enter a Description" class="task-text" id="textarea-task"></textarea>
           </div>
 
-          <div class="due-date">
-            <label for="due-date">Due Date</label><br />
-            <input id="due-date" type="date" /><br />
+          <div class="task-section-div">
+            <label for="due-date">Due Date</label><br>
+            <input class="date-css" id="due-date" type="date" placeholder="dd/mm/yyyy"><br>
             <span id="date-error" class="error">This field is required*</span>
-          </div>
+        </div>
+            
 
-          <div class="priority">
+          <div class="task-section-div">
             <label for="Priotity">Priority</label><br>
-            <button
-              id="urgent"
-              type="button"
-              onclick="selectPriority('Urgent')"
-            >
-              Urgent
-            </button>
-            <button
-              id="medium"
-              type="button"
-              onclick="selectPriority('Medium')"
-            >
-              Medium
-            </button>
-            <button id="low" type="button" onclick="selectPriority('Low')">
-              Low
-            </button>
+            
+         <div class="buttons">  
+             <button class="button-urgent" id="urgent" type="button" onclick="selectPriority('Urgent')">Urgent <img class="button-img" src="../assets/img/urgent.svg"> </button>
+             <button class="button-medium" id="medium" type="button" onclick="selectPriority('Medium')">Medium <img class="button-img" src="../assets/img/medium.svg"></button>
+             <button class="button-low" id="low" type="button" onclick="selectPriority('Low')">Low <img class="button-img" src="../assets/img/low.svg"></button></div>
           </div>
-
-          <div class="assigned-to">
-            <label for="assigned-to">Assigned to<br />(optional)</label><br />
+            
+          <div class="task-section-div">
+            <label for="assigned-to">Assigned to <span class="optional-text">(optional)</span></label><br />
             <select id="assigned-to-select" name="assigned-to">
               <option value="" disabled selected>
                 Select contacts to assign
@@ -76,7 +63,7 @@
             </select>
           </div>
 
-          <div class="category-task">
+          <div class="task-section-div">
             <label for="category-task">Category</label><br />
             <select id="category-task" name="category">
               <option value="" disabled selected>Select task category</option>
@@ -85,7 +72,7 @@
             </select>
           </div>
 
-          <div class="subtask-optional">
+          <div class="task-section-div">
             <label for="subtask-optional">Subtasks (optional)</label><br />
             <div id="subtask-list" class="subtask-list"></div>
             <div class="subtask-input">
@@ -105,5 +92,11 @@
         </form>
       </div>
     </div>
+            
+             
+             
+             
+
+
   </body>
 </html>
