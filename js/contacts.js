@@ -135,6 +135,7 @@ function groupByInitials(arr) {
 }
 
 function getFirstLetterOfName(name) {
+    // alert(name)
     name = name.slice(0, 1);
     return name.toUpperCase()
 }
@@ -144,8 +145,7 @@ function getObjectById(array, id) {
 }
 
 function addContact() {
-    const fullnameArr = document.getElementById('add-name-overlay').value.split(" ");
-    const [name, surname] = fullnameArr;
+    const [name, surname = ''] = document.getElementById('add-name-overlay').value.split(" ");
     const email = document.getElementById('add-email-overlay').value;
     const phoneNumber = document.getElementById('add-phoneNumber-overlay').value;
     const colorArr = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
@@ -160,8 +160,7 @@ function addContact() {
 
 function editContact(id, initials) {
     const contact = getObjectById(contacts, id);
-    const fullnameArr = document.getElementById('edit-name-overlay').value.split(" ");
-    const [name, surname] = fullnameArr;
+    const [name, surname = ''] = document.getElementById('edit-name-overlay').value.split(" ");
     contact.name = name;
     contact.surname = surname;
     contact.email = document.getElementById('edit-email-overlay').value;

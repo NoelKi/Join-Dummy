@@ -100,6 +100,7 @@ function createAddOverlay() {
                         <div class="overlay-input-container">
                             <input class="overlay-input-field input-person"  placeholder="Name" type="text" id="add-name-overlay" required>
                             <label for="add-name-overlay"></label>
+                            <p id="error-message" style="color: red; display: none;">Bitte geben Sie sowohl einen Vor- als auch einen Nachnamen ein.</p>
                         </div>
                         <div class="overlay-input-container">
                             <input class="overlay-input-field input-letter" placeholder="Email" type="email" id="add-email-overlay" required>
