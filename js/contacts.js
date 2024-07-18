@@ -1,7 +1,7 @@
 let contacts = [];
 
-window.onload = function() {
-    includeHTML(); 
+window.onload = function () {
+    includeHTML();
     renderContacts();
     getUserLists();
 };
@@ -21,8 +21,8 @@ async function getUserLists() {
             tasks = currUserData.task;
             //place renderTasks(); here
         }
-        console.log(contacts);
-        console.log(tasks);
+        // console.log(contacts);
+        // console.log(tasks);
     } catch (error) {
         console.error('Fehler beim Abrufen der Benutzerdaten:', error);
     }
@@ -94,7 +94,7 @@ function deleteContact(id) {
     }
     closeContactDetailCard();
     renderContacts();
-    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts);
+    updateUser(currUserData.name, currUserData.email, currUserData.password, contacts);
 }
 
 function deleteContactOverlay(id) {
@@ -107,7 +107,7 @@ function deleteContactOverlay(id) {
         }
         renderContacts();
     }, 0);
-    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts);
+    updateUser(currUserData.name, currUserData.email, currUserData.password, contacts);
 }
 
 function sortContactsByName() {
@@ -155,7 +155,7 @@ function addContact() {
     contacts.push({ id: id, name: name, surname: surname, email: email, phoneNumber: phoneNumber, color: color });
     closeOverlay();
     renderContacts();
-    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts,tasks);
+    updateUser(currUserData.name, currUserData.email, currUserData.password, contacts, tasks);
 }
 
 function editContact(id, initials) {
@@ -169,5 +169,12 @@ function editContact(id, initials) {
     closeOverlay();
     renderContacts();
     renderContactDetailCard(id, initials);
-    updateUser(currUserData.name,currUserData.email,currUserData.password,contacts,tasks);
+    updateUser(currUserData.name, currUserData.email, currUserData.password, contacts, tasks);
+}
+
+function setContactActive(e) {
+    const activeE = document.getElementsByClassName('contact-card active');
+    [...activeE].forEach(element => element.classList.remove('active'));
+    const currTarget = e.currentTarget;
+    currTarget.classList.add('active');
 }

@@ -1,3 +1,14 @@
+function createContactCard(contact, initials) {
+    return `
+    <div class="contact-card" id="contact-card-${contact.id}" onclick="renderContactDetailCard(${contact.id},'${initials}'); setContactActive(event);">
+    <div class="initials" style="background-color: ${contact.color};" id="initials">${initials}</div>
+    <div class="contact-data">
+    <p id="contact-name">${contact.name} ${contact.surname}</p>
+    <p class="contact-email">${contact.email}</p>
+    </div>
+    </div>`;
+}
+
 function createDetailedContactCard(id, initials) {
     const contact = getObjectById(contacts, id);
     return `
@@ -110,17 +121,6 @@ function createAddOverlay() {
         </div>
     </div>
 `;
-}
-
-function createContactCard(contact, initials) {
-    return `
-    <div class="contact-card" id="contact-card" onclick="renderContactDetailCard(${contact.id},'${initials}')">
-    <div class="initials" style="background-color: ${contact.color};" id="initials">${initials}</div>
-    <div class="contact-data">
-    <p id="contact-name">${contact.name} ${contact.surname}</p>
-    <p class="contact-email">${contact.email}</p>
-    </div>
-    </div>`;
 }
 
 function createLetterCard(letter) {
