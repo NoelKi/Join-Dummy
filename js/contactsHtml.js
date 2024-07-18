@@ -42,11 +42,11 @@ function createEditOverlay(id, initials) {
     console.log(id);
     return `
     <div class="overlay-section">
-        <div class="edit-overlay-container" id="edit-overlay-container">
+        <div class="edit-overlay-container slide-in-overlay-left" id="edit-overlay-container">
             <div class="edit-top-container">
                 <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
                 <p class="overlay-headline">Edit contact</p>
-                <button class="close-btn-overlay" onclick="closeOverlay()">
+                <button class="close-btn-overlay" onclick="closeOverlayEdit()">
                     <img src="../assets/img/closeOverlay.svg" alt="X">
                 </button>
             </div>
@@ -82,12 +82,12 @@ function createEditOverlay(id, initials) {
 function createAddOverlay() {
     return `        
     <div class="overlay-section">
-        <div class="add-overlay-container" id="edit-overlay-container">
+        <div class="add-overlay-container slide-in-overlay" id="add-overlay-container">
             <div class="add-top-container">
                 <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
                 <p class="overlay-headline">Add contact</p>
                 <p class="overlay-p">Tasks are better with a team!</p>
-                <button class="close-btn-overlay" onclick="closeOverlay()">
+                <button class="close-btn-overlay" onclick="closeOverlayAdd()">
                     <img src="../assets/img/closeOverlay.svg" alt="X">
                 </button>
             </div>

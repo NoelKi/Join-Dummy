@@ -1,3 +1,4 @@
+
 .contacts-section {
     height: calc(100vh - 96px);
     width: 456px;
@@ -253,17 +254,73 @@
     animation: slideIn 0.5s ease-out;
 }
 
+.slide-out {
+    animation: slideOut 0.5s ease-out forwards;
+}
+
+.slide-in-overlay {
+    animation: slideIn 0.4s ease-out;   
+}
+
+.slide-out-overlay { 
+    animation: slideOut 0.5s ease-out forwards;
+}
+.slide-out-overlay body { 
+    animation: slideOut 0.5s ease-out forwards;
+}
+
+.slide-in-overlay-left {
+    animation: slideInFromLeft 0.4s ease-out;
+}
+
+.slide-out-overlay-left { 
+    animation: slideOutToLeft 0.4s ease-out forwards;
+}
+
 @keyframes slideIn {
     from {
         transform: translateX(100%);
         opacity: 0;
     }
-
     to {
         transform: translateX(0);
         opacity: 1;
     }
 }
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0); 
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(150%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutToLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
 
 .overlay-section {
     position: absolute;

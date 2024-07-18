@@ -65,7 +65,10 @@ function renderContactDetailCard(id, initials) {
 
 function closeContactDetailCard() {
     const content = document.getElementById('contact-detail-card');
-    content.innerHTML = '';
+    content.classList.add('slide-out');
+    setTimeout(() => {
+        content.innerHTML = '';
+    }, 400);
 }
 
 function renderEditOverlay(id, initials) {
@@ -76,15 +79,44 @@ function renderEditOverlay(id, initials) {
 }
 
 function renderAddOverlay(id) {
+    const body = document.getElementsByTagName('body')[0];
+    body.style.overflow = 'hidden';
     const content = document.getElementById('overlay-section');
     content.style.display = 'block';
     content.innerHTML = '';
     content.innerHTML = createAddOverlay(id);
+    setTimeout(() => {
+        body.style.overflow = null;
+    }, 400);
 }
 
 function closeOverlay() {
     const content = document.getElementById('overlay-section');
     content.style.display = 'none';
+}
+
+function closeOverlayEdit() {
+    const content = document.getElementById('overlay-section');
+    const card = document.getElementById('edit-overlay-container');
+    const body = document.getElementsByTagName('body')[0];
+    body.style.overflow = 'hidden';
+    card.classList.add('slide-out-overlay-left');
+    setTimeout(() => {
+        content.style.display = 'none';
+        body.style.overflow = null;
+    }, 400);
+}
+
+function closeOverlayAdd() {
+    const content = document.getElementById('overlay-section');
+    const card = document.getElementById('add-overlay-container');
+    const body = document.getElementsByTagName('body')[0];
+    body.style.overflow = 'hidden';
+    card.classList.add('slide-out-overlay');
+    setTimeout(() => {
+        content.style.display = 'none';
+        body.style.overflow = null;
+    }, 400);
 }
 
 function deleteContact(id) {
