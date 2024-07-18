@@ -167,7 +167,6 @@ function groupByInitials(arr) {
 }
 
 function getFirstLetterOfName(name) {
-    // alert(name)
     name = name.slice(0, 1);
     return name.toUpperCase()
 }
