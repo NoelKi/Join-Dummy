@@ -146,9 +146,17 @@ document.getElementById("task-form").addEventListener("submit", function (event)
     let listContainer = document.getElementById('generate-list');
     listContainer.innerHTML = '';
     for (let i = 0; i < testNames.length; i++) {
-        listContainer.innerHTML += `<li>${testNames[i].firstName} ${testNames[i].lastName}</li>`;
+        let li = document.createElement('li');
+        li.textContent = `${testNames[i].firstName} ${testNames[i].lastName}`;
+        li.addEventListener('click', function() {
+            selectValue.value = li.textContent;
+            selectBox.classList.remove('active');
+        });
+        listContainer.appendChild(li);
     }
 }
+
+loadContactList();
  
     
    

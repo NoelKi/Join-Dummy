@@ -3,6 +3,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-style: normal;
   color: #2a3647;
+  overflow: hidden;
 }
 
 h2 {
