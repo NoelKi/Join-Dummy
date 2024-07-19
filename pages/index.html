@@ -1,25 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join</title>
-    <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/header.css" />
-    <link rel="stylesheet" href="../css/sidebar.css" />
-    <link rel="stylesheet" href="../assets/fonts/fonts.css" />
-    <link rel="stylesheet" href="../css/summary.css" />
-    <link rel="icon" type="image/png" href="../assets/img/j.svg" />
-    <script src="../js/w3c.js"></script>
-    <script src="../js/header.js"></script>
-    <script src="../js/summary.js" defer></script>
-  </head>
-  <body onload="includeHTML(); updateGreeting();">
-    <div w3-include-html="../assets/templates/header.html"></div>
-    <div class="wrap">
-      <div w3-include-html="../assets/templates/sidebar.html"></div>
 
-      <p class="welcome-text" id="welcome-time"></p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/sidebar.css" />
+  <link rel="stylesheet" href="../assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="../css/summary.css" />
+  <link rel="icon" type="image/png" href="../assets/img/j.svg" />
+  <script src="../js/w3c.js"></script>
+  <script src="../js/header.js"></script>
+  <script src="../js/summary.js" defer></script>
+</head>
+
+<body onload="includeHTML(); updateGreeting();">
+  <div w3-include-html="../assets/templates/header.html"></div>
+  <div class="wrap">
+    <div w3-include-html="../assets/templates/sidebar.html"></div>
+
+    <div class="summaryOverview">
+      <div class="greetingContainer">
+        <p id="greetingUser" class="greetingUser"></p>
+        <h1 class="greeting" id="greeting">Good morning</h1>
+      </div>
+      <div class="buttonContainer">
+        <button class="urgentButton" onclick="">
+          <div class="btnUrgentFront">
+            <div class="flexRow">
+              <img src="../assets/img/clock.svg" alt="clock icon">
+              <h2 id="urgentNumber" class="taskNumber">2</h2>
+            </div>
+            <p btnText>Tasks urgent</p>
+          </div>
+          <div class="withLine"></div>
+          <div class="btnUrgentBack upcomingDeadline">
+            <h2 id="dueDate"></h2>
+            <p id="deadline">Upcoming Deadline</p>
+          </div>
+        </button>
+        <button class="toDoBtn" onclick="">
+          <div class="toDoBtnRow">
+            <img src="../assets/img/Urgent.svg" alt="toDo Icon">
+            <h2 id="ToDoNumber" class="classNumber">2</h2>
+          </div>
+          <p class="btnText">Tasks To-do</p>
+        </button>
+
+        <button class="lightTaskBtn board" onclick="">
+          <div class="toDoBtnRow">
+              <img src="../assets/img/Board.svg" alt="">
+            <h2 id="bordTasksNumber" class="TaskNumber">6</h2>
+          </div>
+          <p class="btnText">
+            Task in
+            <br>
+            Board
+          </p>
+        </button>
+
+        <button class="lightTaskBtn progress" onclick="">
+          <div class="flexRow gapBtnLight">
+            <div class="summaryBoarderIcon">
+              <img src="../assets/img/In Progress.svg" alt="">
+            </div>
+            <h2 id="progressTaskNumber" class="TaskNumber">6</h2>
+          </div>
+          <p class="btnText">
+            Task in
+            <br>
+            Progress
+          </p>
+        </button>
+
+        <button class="lightTaskBtn feedback" onclick="">
+          <div class="flexRow gapBtnLight">
+            <div class="summaryBoarderIcon">
+              <img src="../assets/img/Awaiting feedback.svg" alt="">
+            </div>
+            <h2 id="feedbackNumber" class="TaskNumber">6</h2>
+          </div>
+          <p class="btnText">
+            Awaiting
+            <br>
+            Feedback
+          </p>
+        </button>
+        <button class="lightTaskBtn done" onclick="">
+          <div class="flexRow gapBtnLight">
+            <div class="summaryBoarderIcon">
+              <img src="../assets/img/Done.svg" alt="">
+            </div>
+            <h2 id="doneNumber" class="TaskNumber">6</h2>
+          </div>
+          <p class="btnText">
+            Tasks
+            <br>
+            Done
+          </p>
+        </button>
+      </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
