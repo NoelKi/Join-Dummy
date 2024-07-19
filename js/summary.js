@@ -1,3 +1,11 @@
+function upcomingDate() {
+  document.getElementById('dueDate').textContent = new Date().toLocaleDateString('en-EN',
+    { year: 'numeric', month: 'long', day: 'numeric' });
+}
+upcomingDate();
+
+
+
 function updateGreeting() {
   let greetingElement = document.getElementById("welcome-time");
   let now = new Date();
@@ -17,3 +25,4 @@ function updateGreeting() {
 updateGreeting();
 
 setInterval(updateGreeting, 60000);
+
