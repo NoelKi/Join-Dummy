@@ -54,7 +54,7 @@
     display: none;
 }
 
-.buttonContainer {
+/*.buttonContainer {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -69,7 +69,7 @@
         "fifth sixed";
     padding: 16px;
     max-width: 400px;
-}
+}*/
 
 .board {
     grid-area: thrid;
@@ -322,10 +322,9 @@
 }
 
 @media (max-height: 850px) {
-    .summaryOverview {
+    /*.summaryOverview {
         padding: 5px;
-        align-items: flex-start;
-    }
+    }*/
 
     .buttonContainer {
         padding: 0;
@@ -374,7 +373,7 @@
     min-width: 500px;
     max-width: calc(100vw - 200px);
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    /*grid-template-columns: 1fr 1fr 1fr;*/
     grid-template-rows: 190px 220px 220px;
     justify-content: center;
     align-items: center;
@@ -408,7 +407,7 @@
         width: 100%;
         max-width: 870px;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        /*grid-template-columns: 1fr 1fr 1fr 1fr;*/
         grid-template-rows: 190px 220px;
         justify-content: center;
         align-items: center;
