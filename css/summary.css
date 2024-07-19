@@ -234,16 +234,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 188px;
     flex-direction: column;
+    max-width: 188px;
     max-height: 219px;
     height: 209px;
-    gap: 16px;
+    /*gap: 7px;*/
     padding: 40px;
     border-radius: 30px;
     border: 0px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
     transition: all 0.2s ease-in-out;
+    width: 50vw;
 }
 
 .lightTaskBtn:hover {
@@ -284,9 +285,9 @@
 
 .flexRow {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
     gap: 15px;
 }
 
@@ -355,21 +356,6 @@
         font-size: 64px;
     }
 
-    .toDoBtn {
-        background-color: #D2E3FF;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-        padding: 40px;
-        max-width: 188px;
-        flex-direction: column;
-        max-height: 219px;
-        height: 209px;
-    }
-
-
-
     .toDoBtnRow {
         display: flex;
         align-items: center;
@@ -379,16 +365,7 @@
     }
 
     .lightTaskBtn {
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-        padding: 40px;
-        max-width: 188px;
-        flex-direction: column;
-        max-height: 219px;
-        height: 209px;
+        max-height: none;
     }
 }
 
