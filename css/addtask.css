@@ -31,9 +31,9 @@
 .task-css {
   display: flex;
   flex-direction: column;
-  gap: 8px;
   padding: 16px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  height: calc(100vh - 120px);
 }
 
 .task-css::-webkit-scrollbar {
@@ -46,14 +46,9 @@
 }
 
 .task-css::-webkit-scrollbar-thumb {
-  background: #A8A8A8;
+  background: #a8a8a8;
   border-radius: 10px;
 }
-
-.task-css::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
 
 .optional-text {
   font-weight: 400;
@@ -197,32 +192,38 @@ input[type="date"]:focus {
 }
 
 .select-content {
-  position: absolute;
- background-color: white;
+  background-color: white;
   border-radius: 7px;
   display: none;
   z-index: 999;
   width: 100%;
 }
 
-
-
 .drop-down-arrow {
-  border-bottom: 1px solid #d1d1d1;
- 
-  
   cursor: pointer;
   transition: transform 0.3s;
+ 
+}
+
+.drop-down-arrow:hover {
+  border-radius: 72px;
+  background-color: #d2e3ff;
+}
+
+.drop-down-arrow-cat {
+  cursor: pointer;
+  transition: transform 0.3s;
+  
 }
 
 .search-assign input {
-   width: 100%;
-   font-size: 19px;
-   font-weight: 400;
-   outline: 0;
-   border: 0;
-   padding: 10px;
-   border-bottom: 1px solid #d1d1d1;
+  width: 100%;
+  font-size: 19px;
+  font-weight: 400;
+  outline: 0;
+  border: 0;
+  padding: 10px;
+  border-bottom: 1px solid #d1d1d1;
 }
 
 .option {
@@ -230,6 +231,44 @@ input[type="date"]:focus {
   max-height: 288px;
   overflow-y: auto;
   padding: 0;
+  position: relative;
+}
+
+.option::-webkit-scrollbar {
+  width: 8px;
+}
+
+.option::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 6px;
+}
+
+.option::-webkit-scrollbar-thumb {
+  background: #a8a8a8;
+  border-radius: 10px;
+  max-height: 50px;
+}
+
+.option::-webkit-scrollbar-button {
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.option::-webkit-scrollbar-button:start {
+  background-image: url("../assets/img/scrollUp.svg");
+}
+
+.option::-webkit-scrollbar-button:end {
+  background-image: url("../assets/img/scrollDown.svg");
+}
+
+.option::-webkit-scrollbar-button:decrement {
+  display: flex;
+}
+
+.option::-webkit-scrollbar-button:increment {
+  display: flex;
 }
 
 .option li {
@@ -241,18 +280,51 @@ input[type="date"]:focus {
 }
 
 .option li:hover {
-  background: #D2E3FF;
-
+  background: #d2e3ff;
 }
 
 .select-box.active .select-content {
   display: block;
 }
 
-
-
-
-
 .select-box.active .drop-down-arrow {
   transform: rotate(180deg);
+}
+.select-box:hover {
+  border-bottom: 1px solid #005dff;
+}
+
+.option-category {
+  margin-top: 0;
+  max-height: 288px;
+  overflow-y: auto;
+  padding: 0;
+  position: relative;
+}
+
+.option-category li {
+  padding: 7px 16px 7px 16px;
+  color: black;
+  font-size: 19px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.option-category li:hover {
+  background: #d2e3ff;
+}
+
+#category-value:hover,
+.subtask-css-input:hover {
+  border-bottom: 1px solid #005dff;
+}
+
+.subtask-css-input {
+  width: 460px;
+}
+
+.add-img {
+  cursor: pointer;
+  transition: transform 0.3s;
+  
 }

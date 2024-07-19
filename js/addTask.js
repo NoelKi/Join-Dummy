@@ -46,23 +46,32 @@
 
 
 
-let titleInput = document.getElementById("add-title");
-let titleError = document.getElementById("title-error");
-let textarea = document.getElementById('textarea-task');
-let dateInput = document.getElementById("due-date");
-let dateError = document.getElementById("date-error");
-let addTaskBtn = document.getElementById("add-task-btn");
-let selectBox = document.querySelector('.select-box');
-let selectOption = document.querySelector('.select-option');
-let selectValue = document.getElementById('select-value');
-let optionSearch = document.getElementById('option-search');
-let option = document.querySelector('.option');
-let optionList = document.querySelectorAll('.option li');
-let dropDownArrow = document.querySelector('.drop-down-arrow');
+  let titleInput = document.getElementById("add-title");
+  let titleError = document.getElementById("title-error");
+  let textarea = document.getElementById('textarea-task');
+  let dateInput = document.getElementById("due-date");
+  let dateError = document.getElementById("date-error");
+  let addTaskBtn = document.getElementById("add-task-btn");
+  let selectBox = document.querySelector('.select-box');
+  let selectOption = document.querySelector('.select-option');
+  let selectValue = document.getElementById('select-value');
+  let optionSearch = document.getElementById('option-search');
+  let option = document.querySelector('.option');
+  let optionList = document.querySelectorAll('.option li');
+  let dropDownArrow = document.querySelector('.drop-down-arrow');
+  let dropDownArrowCat = document.querySelector('.drop-down-arrow-cat');
+  let selectBoxCategory = document.querySelector(".select-box-category");
+  let selectCategoryOption = document.getElementById("select-category");
+  let categoryList = document.getElementById("category-list");
+
+  
+
 
 selectOption.addEventListener('click', function(){
   selectBox.classList.toggle('active');
 });
+    
+ 
 
 optionList.forEach(function(optionListSingle){
   optionListSingle.addEventListener('click',function(){
@@ -157,9 +166,38 @@ document.getElementById("task-form").addEventListener("submit", function (event)
 }
 
 loadContactList();
- 
-    
-   
+
+
+function toggleCategoryList() {
+  if (categoryList.style.display === 'block') {
+    categoryList.style.display = 'none';
+    dropDownArrowCat.style.transform = 'rotate(0deg)'; 
+  } else {
+    categoryList.style.display = 'block';
+    dropDownArrowCat.style.transform = 'rotate(180deg)'; 
+  }
+}
+
+selectCategoryOption.addEventListener('click', function(event) {
+  toggleCategoryList();
+  event.stopPropagation(); 
+});
+
+document.addEventListener('click', function(event) {
+  if (!selectBoxCategory.contains(event.target)) {
+    categoryList.style.display = 'none';
+    dropDownArrowCat.style.transform = 'rotate(0deg)'; 
+  }
+});
+
+categoryList.addEventListener('click', function(e) {
+  if (e.target.tagName === 'LI') {
+    selectCategoryOption.querySelector('input').value = e.target.textContent;
+    categoryList.style.display = 'none';
+    dropDownArrowCat.style.transform = 'rotate(0deg)'; 
+  }
+});
+
 
 // subtask
 

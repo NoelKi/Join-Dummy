@@ -73,27 +73,28 @@
 </div>
   
 
-          <div class="task-section-div">
-            <label for="category-task">Category</label><br />
-            <select id="category-task" name="category">
-              <option value="" disabled selected>Select task category</option>
-              <option value="Technical Task">Technical Task</option>
-              <option value="User Story">User Story</option>
-            </select>
-          </div>
+<div class="task-section-div">
+  <label for="category-task">Category</label><br />
+  <div class="select-box-category">
+    <div class="select-option" id="select-category">
+      <input type="text" value="Select category" id="category-value" readonly>
+      <img class="drop-down-arrow-cat" src="../assets/img/arrow_drop_down.svg" alt="">
+    </div>
+    <div class="category-list-div">
+      <ul id="category-list" class="option-category">
+        <li>Technical task</li>
+        <li>User story</li>
+      </ul>
+    </div>
+  </div>  
+</div>
 
           <div class="task-section-div">
             <label for="subtask-optional">Subtasks <span class="optional-text">(optional)</span></label><br />
             <div id="subtask-list" class="subtask-list"></div>
-            <div class="subtask-input">
-              <input
-                id="subtask-input-field"
-                type="text"
-                placeholder="Add subtask"
-              />
-              <button onclick="addSubtask()" id="add-subtask-btn" type="button">
-                +</button
-              ><br />
+            <div class="select-option">
+              <input class="subtask-css-input" id="subtask-input-field"  type="text" placeholder="Add subtask"/>
+              <img onclick="addSubtask()" class="add-img" src="../assets/img/add.svg" alt=""><br>
               <ul id="added-subtask" class="added-subtask"></ul>
             </div>
           </div>
