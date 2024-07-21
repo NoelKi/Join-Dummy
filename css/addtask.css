@@ -213,17 +213,15 @@ input[type="date"]:focus {
   width: 100%;
 }
 
-.drop-down-arrow {
-  cursor: pointer;
-  transition: transform 0.3s;
-  margin-right: 12px;
+.center-flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 
 .drop-down-arrow-cat {
   cursor: pointer;
   transition: transform 0.3s;
-  margin-right: 12px;
 }
 
 .search-assign input {
@@ -334,12 +332,6 @@ input[type="date"]:focus {
   width: 100%;
 }
 
-.add-img {
-  cursor: pointer;
-  transition: transform 0.3s;
-  margin-right: 12px;
-}
-
 .input-positioning {
   display: flex;
   width: 100%;
@@ -354,4 +346,33 @@ input[type="date"]:focus {
   display: none;
 }
 
+.drop-down-arrow {
+  margin-right: 12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+  margin-top: 16px;
+  transition: transform 0.3s;
+}
 
+.drop-down-arrow:hover,
+.drop-down-arrow-cat:hover,
+.add-symbol-css:hover {
+  background-color: #d2e3ff;
+}
+
+.drop-down-arrow-cat {
+  margin-right: 12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+  margin-top: 16px;
+}
+
+.add-symbol-css {
+  margin-right: 12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+  margin-top: 16px;
+}
