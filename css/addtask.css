@@ -4,6 +4,14 @@
   font-size: 13px;
 }
 
+.task-container {
+  width: 460px;
+}
+
+.task-section-div {
+  margin-bottom: 12px;
+}
+
 .input-error {
   border-bottom: 1px solid #ff8190;
 }
@@ -13,13 +21,12 @@
 }
 
 .input-title-task {
-  width: 440px;
+  width: 100%;
   height: 64px;
   font-size: 32px;
   border: none;
   border-bottom: 1px solid #d1d1d1;
   padding-left: 10px;
-  padding-right: 10px;
   cursor: pointer;
   outline: none;
 }
@@ -55,14 +62,12 @@
 }
 
 .task-text {
-  width: 440px;
+  width: 100%;
   height: 103px;
   font-size: 19px;
   border-radius: 0px 10px 10px 10px;
   border-color: #d1d1d1;
   cursor: pointer;
-  padding-left: 10px;
-  padding-right: 10px;
   padding-top: 16px;
 }
 
@@ -87,11 +92,12 @@
 }
 
 input[type="date"] {
-  width: 440px;
+  width: 100%;
   border: none;
   outline: none;
   border-bottom: 1px solid #d1d1d1;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   color: #d1d1d1;
   font-family: "Open Sans", sans-serif;
   font-size: 19px;
@@ -132,6 +138,7 @@ input[type="date"]:focus {
 .buttons {
   display: flex;
   gap: 16px;
+  width: 100%;
 }
 
 .button-urgent:hover {
@@ -164,23 +171,25 @@ input[type="date"]:focus {
 }
 
 .select-box {
-  width: 460px;
+  width: 100%;
   position: relative;
 }
 
 .select-option {
   position: relative;
   display: flex;
+  border-bottom: 1px solid #d1d1d1;
+  width: 100%;
 }
 
 .select-option input {
-  width: 440px;
+  width: 100%;
   height: 48px;
   background-color: white;
   border: 0px 0px 1px 0px;
   outline: none;
   border: none;
-  border-bottom: 1px solid #d1d1d1;
+
   font-size: 19px;
   font-weight: 400;
   cursor: pointer;
@@ -199,21 +208,21 @@ input[type="date"]:focus {
   width: 100%;
 }
 
+.select-box-category {
+  width: 100%;
+}
+
 .drop-down-arrow {
   cursor: pointer;
   transition: transform 0.3s;
- 
+  margin-right: 12px;
 }
 
-.drop-down-arrow:hover {
-  border-radius: 72px;
-  background-color: #d2e3ff;
-}
 
 .drop-down-arrow-cat {
   cursor: pointer;
   transition: transform 0.3s;
-  
+  margin-right: 12px;
 }
 
 .search-assign input {
@@ -222,7 +231,8 @@ input[type="date"]:focus {
   font-weight: 400;
   outline: 0;
   border: 0;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #d1d1d1;
 }
 
@@ -283,15 +293,16 @@ input[type="date"]:focus {
   background: #d2e3ff;
 }
 
-.select-box.active .select-content {
+.select-box.active-task .select-content {
   display: block;
 }
 
-.select-box.active .drop-down-arrow {
+.select-box.active-task .drop-down-arrow {
   transform: rotate(180deg);
 }
-.select-box:hover {
-  border-bottom: 1px solid #005dff;
+
+.active-task {
+  background-color: white;
 }
 
 .option-category {
@@ -314,17 +325,26 @@ input[type="date"]:focus {
   background: #d2e3ff;
 }
 
-#category-value:hover,
-.subtask-css-input:hover {
+.input-positioning:hover {
   border-bottom: 1px solid #005dff;
 }
 
 .subtask-css-input {
-  width: 460px;
+  width: 100%;
 }
 
 .add-img {
   cursor: pointer;
   transition: transform 0.3s;
-  
+  margin-right: 12px;
+}
+
+.input-positioning {
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+}
+
+.subtask-list {
+  width: 100%;
 }
