@@ -180,6 +180,7 @@ input[type="date"]:focus {
   display: flex;
   border-bottom: 1px solid #d1d1d1;
   width: 100%;
+  cursor: pointer;
 }
 
 .select-option input {
@@ -348,3 +349,9 @@ input[type="date"]:focus {
 .subtask-list {
   width: 100%;
 }
+
+#category-list {
+  display: none;
+}
+
+
