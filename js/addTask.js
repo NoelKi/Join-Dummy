@@ -68,7 +68,7 @@
 
 
 selectOption.addEventListener('click', function(){
-  selectBox.classList.toggle('active');
+  selectBox.classList.toggle('active-task');
 });
     
  
@@ -77,7 +77,7 @@ optionList.forEach(function(optionListSingle){
   optionListSingle.addEventListener('click',function(){
     text = this.textContent;
     selectValue.value = text;
-    selectBox.classList.remove('active');
+    selectBox.classList.remove('active-task');
   })
 });
 
@@ -153,7 +153,7 @@ document.getElementById("task-form").addEventListener("submit", function (event)
         li.textContent = `${testNames[i].firstName} ${testNames[i].lastName}`;
         li.addEventListener('click', function() {
             selectValue.value = li.textContent;
-            selectBox.classList.remove('active');
+            selectBox.classList.remove('active-task');
         });
         listContainer.appendChild(li);
     }

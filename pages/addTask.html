@@ -24,96 +24,96 @@
       <div class="task-container">
          <form id="task-form" class="task-css">
           
+           <div class="task-section-div">
+              <input id="add-title" type="text" class="input-title-task" placeholder="Enter a title"/><br />
+              <span id="title-error" class="error">This field is required*</span>
+           </div>
           
-          <div class="task-section-div">
-            <input id="add-title" type="text" class="input-title-task" placeholder="Enter a title"/><br />
-            <span id="title-error" class="error">This field is required*</span>
-          </div>
+           <div class="task-section-div">
+              <label>Description <span class="optional-text">(optional)</span></label><br/>
+              <textarea placeholder="Enter a Description" class="task-text" id="textarea-task"></textarea>
+           </div>
 
-          <div class="task-section-div">
-            <label>Description <span class="optional-text">(optional)</span></label><br/>
-            <textarea placeholder="Enter a Description" class="task-text" id="textarea-task"></textarea>
-          </div>
+           <div class="task-section-div">
+              <label for="due-date">Due Date</label><br>
+              <input class="date-css" id="due-date" type="date" placeholder="dd/mm/yyyy"><br>
+              <span id="date-error" class="error">This field is required*</span>
+           </div>
 
-          <div class="task-section-div">
-            <label for="due-date">Due Date</label><br>
-            <input class="date-css" id="due-date" type="date" placeholder="dd/mm/yyyy"><br>
-            <span id="date-error" class="error">This field is required*</span>
-        </div>
+           <div class="task-section-div">
+             <label for="Priotity">Priority</label><br>
+             <div class="buttons">  
+                <button class="button-urgent" id="urgent" type="button" onclick="selectPriority('Urgent')">Urgent <img class="button-img" src="../assets/img/urgentIcon.svg"> </button>
+                <button class="button-medium" id="medium" type="button" onclick="selectPriority('Medium')">Medium <img class="button-img" src="../assets/img/medium.svg"></button>
+                <button class="button-low" id="low" type="button" onclick="selectPriority('Low')">Low <img class="button-img" src="../assets/img/low.svg"></button>
+             </div>
+           </div>
+             
             
+               <div class="task-section-div">
+                <label for="assigned-to">Assigned to <span class="optional-text">(optional)</span></label><br />
+                <div class="select-box">
+                  <div class="select-option">
+                    <div class="input-positioning">
+                      <input type="input-positioning" value="Select contacts to assign" id="select-value" readonly>
+                      <img class="drop-down-arrow" src="../assets/img/arrow_drop_down.svg" alt="">
+                    </div> 
+                  </div>
+                  
+                   <div class="select-content">
+                       <div class="search-assign">
+                         <input type="text" id="option-search" placeholder="An">
+                        </div>
+                     <ul id="generate-list" class="option"></ul>
+                   </div>
+                  </div>  
+                </div>
+             
+                <div class="task-section-div">
+                   <label for="category-task">Category</label><br />
+                  <div class="select-box-category">
+                      <div class="select-option" id="select-category">
+                        <div class="input-positioning">
+                          <input type="text" value="Select category" id="category-value" readonly>
+                          <img class="drop-down-arrow-cat" src="../assets/img/arrow_drop_down.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="category-list-div">
+                      <ul id="category-list" class="option-category">
+                        <li>Technical task</li>
+                        <li>User story</li>
+                      </ul>
+                    </div>
+                  </div>  
+                </div>
 
-          <div class="task-section-div">
-            <label for="Priotity">Priority</label><br>
-            
-         <div class="buttons">  
-             <button class="button-urgent" id="urgent" type="button" onclick="selectPriority('Urgent')">Urgent <img class="button-img" src="../assets/img/urgentIcon.svg"> </button>
-             <button class="button-medium" id="medium" type="button" onclick="selectPriority('Medium')">Medium <img class="button-img" src="../assets/img/medium.svg"></button>
-             <button class="button-low" id="low" type="button" onclick="selectPriority('Low')">Low <img class="button-img" src="../assets/img/low.svg"></button></div>
+                <div class="task-section-div">
+                   <label for="subtask-optional">Subtasks <span class="optional-text">(optional)</span></label><br />
+                   <div id="subtask-list" class="subtask-list"></div>
+                    <div class="select-option">
+                      <div class="input-positioning">
+                      <input class="subtask-css-input" id="subtask-input-field"  type="text" placeholder="Add subtask"/>
+                      <img onclick="addSubtask()" class="add-img" src="../assets/img/add.svg" alt=""><br>
+                      </div>
+                   </div>
+                </div>
+                   
+                <button id="add-task-btn" type="submit">Add Task</button>
+              </form>
+              </div>
           </div>
-            
+                  
+                   
           
-<div class="task-section-div">
-  <label for="assigned-to">Assigned to <span class="optional-text">(optional)</span></label><br />
-  <div class="select-box">
-    <div class="select-option">
-       <div class="input-positioning">
-         <input type="input-positioning" value="Select contacts to assign" id="select-value" readonly>
-         <img class="drop-down-arrow" src="../assets/img/arrow_drop_down.svg" alt="">
-       </div> 
-    </div>
-   
-     <div class="select-content">
-      <div class="search-assign">
-        <input type="text" id="option-search" placeholder="An">
-      </div>
-      <ul id="generate-list" class="option">
-        
-      </ul>
-     </div>
-
-  </div>  
-</div>
+          
+            </body>
+          </html>
+          
+                  
+          
+                
   
 
-<div class="task-section-div">
-  <label for="category-task">Category</label><br />
-  <div class="select-box-category">
-    <div class="select-option" id="select-category">
-      <div class="input-positioning">
-        <input type="text" value="Select category" id="category-value" readonly>
-        <img class="drop-down-arrow-cat" src="../assets/img/arrow_drop_down.svg" alt="">
-      </div>
-    </div>
-    <div class="category-list-div">
-      <ul id="category-list" class="option-category">
-        <li>Technical task</li>
-        <li>User story</li>
-      </ul>
-    </div>
-  </div>  
-</div>
 
-          <div class="task-section-div">
-            <label for="subtask-optional">Subtasks <span class="optional-text">(optional)</span></label><br />
-            <div id="subtask-list" class="subtask-list"></div>
-            <div class="select-option">
-              <div class="input-positioning">
-                <input class="subtask-css-input" id="subtask-input-field"  type="text" placeholder="Add subtask"/>
-                <img onclick="addSubtask()" class="add-img" src="../assets/img/add.svg" alt=""><br>
-              </div>
-             
-            </div>
-          </div>
-
-          <button id="add-task-btn" type="submit">Add Task</button>
-        </form>
-        </div>
-    </div>
-            
              
              
-             
-
-
-  </body>
-</html>

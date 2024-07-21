@@ -293,12 +293,16 @@ input[type="date"]:focus {
   background: #d2e3ff;
 }
 
-.select-box.active .select-content {
+.select-box.active-task .select-content {
   display: block;
 }
 
-.select-box.active .drop-down-arrow {
+.select-box.active-task .drop-down-arrow {
   transform: rotate(180deg);
+}
+
+.active-task {
+  background-color: white;
 }
 
 .option-category {
