@@ -1,11 +1,6 @@
-async function fetchUsers() {
-  try {
-    const response = await fetch(`${BASE_URL}users.json`);
-    return response.ok ? await response.json() : null;
-  } catch (error) {
-    console.error('Error fetching users:', error);
-    return null;
-  }
+function fetchUsers(options = {}) {
+  return fetch(`${BASE_URL}users.json`, options)
+    .then(response => response.json());
 }
 
 async function checkLogInData(email, password) {
@@ -23,19 +18,15 @@ async function checkLogInData(email, password) {
   return false;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const loginButton = document.getElementById('loginButton');
-  loginButton.addEventListener('click', async event => {
-    event.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    if (await checkLogInData(email, password)) {
-      window.location.href = 'index.html';
-    } else {
-      alert('Login failed: Incorrect email or password');
-    }
-  });
-});
+async function login() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  if (await checkLogInData(email, password)) {
+    window.location.href = 'index.html';
+  } else {
+    alert('Login failed: Incorrect email or password');
+  }
+}
 
 function saveUserIdLocalStorage(id) {
   const idAsText = JSON.stringify(id);

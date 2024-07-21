@@ -11,12 +11,15 @@
   <link rel="stylesheet" href="../assets/fonts/fonts.css" />
   <link rel="stylesheet" href="../css/summary.css" />
   <link rel="icon" type="image/png" href="../assets/img/j.svg" />
+  <script src="../js/firebase.js"></script>
   <script src="../js/w3c.js"></script>
   <script src="../js/header.js"></script>
+  <script src="../js/board.js"></script>
+  <script src="../js/logIn.js"></script>
   <script src="../js/summary.js" defer></script>
 </head>
 
-<body onload="includeHTML(); updateGreeting();">
+<body onload="includeHTML(); updateGreeting(); updateTaskSummary()">
   <div w3-include-html="../assets/templates/header.html"></div>
   <div class="wrap">
     <div w3-include-html="../assets/templates/sidebar.html"></div>
@@ -31,7 +34,7 @@
           <div class="btnUrgentFront">
             <div class="flexRow">
               <img src="../assets/img/clock.svg" alt="clock icon">
-              <h2 id="urgentNumber" class="taskNumber">2</h2>
+              <h2 id="urgentNumber" class="taskNumber"></h2>
             </div>
             <p btnText>Tasks urgent</p>
           </div>
@@ -44,14 +47,14 @@
         <button class="toDoBtn" onclick="">
           <div class="toDoBtnRow">
             <img src="../assets/img/Urgent.svg" alt="toDo Icon">
-            <h2 id="ToDoNumber" class="taskNumber">2</h2>
+            <h2 id="ToDoNumber" class="taskNumber"></h2>
           </div>
           <p class="btnText">Tasks To-do</p>
         </button>
         <button class="lightTaskBtn board" onclick="">
           <div class="toDoBtnRow">
             <img src="../assets/img/Board.svg" alt="">
-            <h2 id="bordTasksNumber" class="taskNumber">6</h2>
+            <h2 id="bordTasksNumber" class="taskNumber"></h2>
           </div>
           <p class="btnText">
             Task in
@@ -64,7 +67,7 @@
             <div class="summaryBoarderIcon">
               <img src="../assets/img/In Progress.svg" alt="">
             </div>
-            <h2 id="progressTaskNumber" class="taskNumber">6</h2>
+            <h2 id="progressTaskNumber" class="taskNumber"></h2>
           </div>
           <p class="btnText">
             Task in
@@ -77,7 +80,7 @@
             <div class="summaryBoarderIcon">
               <img src="../assets/img/Awaiting feedback.svg" alt="">
             </div>
-            <h2 id="feedbackNumber" class="taskNumber">6</h2>
+            <h2 id="feedbackNumber" class="taskNumber"></h2>
           </div>
           <p class="btnText">
             Awaiting
@@ -90,7 +93,7 @@
             <div class="summaryBoarderIcon">
               <img src="../assets/img/Done.svg" alt="">
             </div>
-            <h2 id="doneNumber" class="taskNumber">6</h2>
+            <h2 id="doneNumber" class="taskNumber"></h2>
           </div>
           <p class="btnText">
             Tasks
