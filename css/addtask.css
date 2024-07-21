@@ -6,10 +6,11 @@
 
 .task-container {
   width: 460px;
+  margin-left: 10px
 }
 
 .task-section-div {
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 }
 
 .input-error {
@@ -102,6 +103,10 @@ input[type="date"] {
   font-family: "Open Sans", sans-serif;
   font-size: 19px;
   cursor: pointer;
+}
+
+.date-css {
+  color:#D1D1D1;
 }
 
 input[type="date"]:focus {
@@ -375,4 +380,11 @@ input[type="date"]:focus {
   height: 24px;
   border-radius: 50px;
   margin-top: 16px;
+}
+
+.margin-bottom-5 {
+  margin-bottom: 5px;
+}
+.margin-bottom-8 {
+  margin-bottom: 8px;
 }
