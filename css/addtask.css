@@ -401,20 +401,37 @@ input[type="date"]:focus {
   background-color: white;
   border-width: 1px;
   text-align: center;
+  box-shadow: none;
+  font-weight: 400;
 }
+
+.clear-task-btn:hover {
+  color: #005DFF;
+  border: 1px solid  #4589FF;
+}
+ 
+
   
 .create-task-btn {
   
   border-radius: 10px;
   outline: 0;
-  border-color: #647188;;
+  border-color: #647188;
   padding:12px 8px 12px 8px;
   font-size: 23px;
   cursor: pointer;
   color: white;
-  background-color: #4589FF;
+  background-color: #005DFF;
   border-width: 1px;
   text-align: center;
+  box-shadow: none;
+  font-weight: 400;
+}
+
+.create-task-btn:disabled {
+  background-color:  #4589FF;
+  color: white;
+  cursor: not-allowed;
 }
 
 .clear-create-buttons {
@@ -424,6 +441,9 @@ input[type="date"]:focus {
   right: 0;
   bottom: 0;
   padding-bottom: 46px;
-  padding-right:32px
+  padding-right:32px;
 }
-  
+
+.margin-left-12 {
+  margin-left: 12px;
+}

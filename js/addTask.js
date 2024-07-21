@@ -209,9 +209,3 @@ categoryList.addEventListener('click', function(e) {
 
 
 
-
-
-// subtask
-
-
-
