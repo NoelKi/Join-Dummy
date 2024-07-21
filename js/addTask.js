@@ -81,20 +81,14 @@ optionList.forEach(function(optionListSingle){
   })
 });
 
-optionSearch.addEventListener('keyup',function(){
-  var filter, li, i, textValue;
-  filter = optionSearch.value.toUpperCase();
-  li = option.getElementsByTagName('li');
-  for(i = 0; i < li.length; i++){
-    liCount = li[i];
-    textValue = liCount.textContent || liCount.innerText;
-    if(textValue.toUpperCase().indexOf(filter) > -1){
-      li[i].style.display = '';
-    } else{
-      li[i].style.display = 'none';
-    }
+optionSearch.addEventListener('keyup', function() {
+  let filter = optionSearch.value.toUpperCase();
+  let li = option.getElementsByTagName('li');
+  for (let i = 0; i < li.length; i++) {
+    let textValue = li[i].textContent || li[i].innerText;
+    li[i].style.display = textValue.toUpperCase().indexOf(filter) > -1 ? '' : 'none';
   }
-})
+});
 
 
 titleInput.addEventListener("focusout", function () {
@@ -178,23 +172,26 @@ function toggleCategoryList() {
   }
 }
 
+
 selectCategoryOption.addEventListener('click', function(event) {
   toggleCategoryList();
   event.stopPropagation(); 
 });
 
+
 document.addEventListener('click', function(event) {
   if (!selectBoxCategory.contains(event.target)) {
     categoryList.style.display = 'none';
-    dropDownArrowCat.style.transform = 'rotate(0deg)'; 
+    dropDownArrowCat.style.transform = 'rotate(0deg)'; // Reset rotation
   }
 });
+
 
 categoryList.addEventListener('click', function(e) {
   if (e.target.tagName === 'LI') {
     selectCategoryOption.querySelector('input').value = e.target.textContent;
     categoryList.style.display = 'none';
-    dropDownArrowCat.style.transform = 'rotate(0deg)'; 
+    
   }
 });
 
