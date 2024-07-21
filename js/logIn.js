@@ -3,6 +3,7 @@ function fetchUsers(options = {}) {
     .then(response => response.json());
 }
 
+
 async function checkLogInData(email, password) {
   const users = await fetchUsers();
   if (!users) {
