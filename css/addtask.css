@@ -388,3 +388,42 @@ input[type="date"]:focus {
 .margin-bottom-8 {
   margin-bottom: 8px;
 }
+
+.clear-task-btn {
+  
+  border-radius: 10px;
+  outline: 0;
+  border-color: #647188;;
+  padding:16px 10px 16px 10px;
+  font-size: 23px;
+  cursor: pointer;
+  color: #647188;
+  background-color: white;
+  border-width: 1px;
+  text-align: center;
+}
+  
+.create-task-btn {
+  
+  border-radius: 10px;
+  outline: 0;
+  border-color: #647188;;
+  padding:12px 8px 12px 8px;
+  font-size: 23px;
+  cursor: pointer;
+  color: white;
+  background-color: #4589FF;
+  border-width: 1px;
+  text-align: center;
+}
+
+.clear-create-buttons {
+  display: flex;
+  gap: 24px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 46px;
+  padding-right:32px
+}
+  

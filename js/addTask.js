@@ -196,66 +196,22 @@ categoryList.addEventListener('click', function(e) {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // subtask
-
-function addSubtask() {
-  let subTaskInput = document.getElementById("subtask-input-field");
-  let subTaskValue = subTaskInput.value.trim();
-
-  if (subTaskValue !== "") {
-    let addedSubtaskDiv = document.getElementById("added-subtask");
-    let subTaskElement = document.createElement("div");
-    subTaskElement.innerHTML = `<span>${subTaskValue}</span>
-                                      <button class="edit-btn">Edit</button>
-                                      <button class="delete-btn">Delete</button>`;
-    addedSubtaskDiv.appendChild(subTaskElement);
-    subTaskInput.value = "";
-    subTaskElement
-      .querySelector(".edit-btn")
-      .addEventListener("click", () => editSubtask(subTaskElement));
-    subTaskElement
-      .querySelector(".delete-btn")
-      .addEventListener("click", () => deleteSubtask(subTaskElement));
-  }
-}
-
-function editSubtask(subTaskElement) {
-  let subTaskText = subTaskElement.querySelector("span");
-  let newText = prompt("Edit Subtask", subTaskText.textContent);
-
-  if (newText !== null && newText.trim() !== "") {
-    subTaskText.textContent = newText;
-  }
-}
-
-function deleteSubtask(subTaskElement) {
-  if (confirm("Are you sure you want to delete this subtask?")) {
-    subTaskElement.remove();
-  }
-}
-
-function updateAddTaskButtonState() {
-  let titleInput = document.getElementById("add-title");
-  let dateInput = document.getElementById("due-date");
-  let addTaskBtn = document.getElementById("add-task-btn");
-
-  if (titleInput.value.trim() === "" || dateInput.value.trim() === "") {
-    addTaskBtn.disabled = true;
-  } else {
-    addTaskBtn.disabled = false;
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  let titleInput = document.getElementById("add-title");
-  let dateInput = document.getElementById("due-date");
-  let addTaskBtn = document.getElementById("add-task-btn");
-
-  updateAddTaskButtonState();
-
-  titleInput.addEventListener("input", updateAddTaskButtonState);
-  dateInput.addEventListener("input", updateAddTaskButtonState);
-});
 
 
 
