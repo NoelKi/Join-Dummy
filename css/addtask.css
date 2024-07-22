@@ -6,7 +6,7 @@
 
 .task-container {
   width: 460px;
-  margin-left: 10px
+  margin-left: 10px;
 }
 
 .task-section-div {
@@ -107,7 +107,7 @@ input[type="date"] {
 }
 
 .date-css {
-  color:#D1D1D1;
+  color: #d1d1d1;
 }
 
 input[type="date"]:focus {
@@ -124,15 +124,21 @@ input[type="date"]:focus {
 .button-medium,
 .button-low {
   width: 136px;
-  height: 51px;
+  height: 49px;
+  border-bottom: 2px solid white;
   border-radius: 10px;
   box-shadow: 0px 0px 4px 0px #00000029;
   font-size: 19px;
   font-weight: 400;
   background-color: white;
-  border: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   outline: none;
   cursor: pointer;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: border-bottom 0.3s ease;
 }
 
 .button-img {
@@ -160,16 +166,19 @@ input[type="date"]:focus {
 .button-urgent.selected {
   background-color: #ff3d00;
   color: white;
+  border-bottom: 2px solid #ff3d00;
 }
 
 .button-medium.selected {
   background-color: #ffa800;
   color: white;
+  border-bottom: 2px solid #ffa800;
 }
 
 .button-low.selected {
   background-color: #7ae229;
   color: white;
+  border-bottom: 2px solid #7ae229;
 }
 
 .buttons button.selected .button-img {
@@ -391,11 +400,10 @@ input[type="date"]:focus {
 }
 
 .clear-task-btn {
-  
   border-radius: 10px;
   outline: 0;
-  border-color: #647188;;
-  padding:16px 10px 16px 10px;
+  border-color: #647188;
+  padding: 16px 10px 16px 10px;
   font-size: 23px;
   cursor: pointer;
   color: #647188;
@@ -405,48 +413,58 @@ input[type="date"]:focus {
   box-shadow: none;
   font-weight: 400;
   box-shadow: 0px 4px 8px 0px #00000033;
-
   transition: background-color 100ms ease-out, color 100ms ease-out; /* Transition for background and text color */
 }
 
 .clear-task-btn:hover {
-  border: 1px solid #005DFF;
+  border: 1px solid #005dff;
   background-color: white;
-  color: #005DFF; 
-  border: 1px solid  #005DFF;
+  color: #005dff;
   box-shadow: 0px 4px 8px 0px #00000033;
 }
- 
 
-  
+.clear-task-btn:hover .icon-clear path {
+  stroke: #005dff;
+}
+
 .create-task-btn {
-  
   border-radius: 10px;
   outline: 0;
   border-color: #647188;
-  padding:12px 8px 12px 8px;
+  box-shadow: 0px 4px 8px 0px #00000033;
+  padding: 12px 8px;
   font-size: 23px;
   cursor: pointer;
   color: white;
-  background-color: #005DFF;
+  background-color: #005dff;
   border-width: 1px;
   text-align: center;
   box-shadow: none;
   font-weight: 400;
-  transition: background-color 100ms ease-out, color 100ms ease-out; 
+  transition: background-color 100ms ease-out, color 100ms ease-out;
 }
 
 .create-task-btn:disabled {
-  background-color:  #4589FF;
+  background-color: #4589ff;
   color: white;
   cursor: not-allowed;
 }
 
 .create-task-btn:not(:disabled):hover {
-  background-color: white; 
-  color: #4589FF;
+  background-color: white;
+  color: #4589ff;
   border: none;
   box-shadow: 0px 4px 8px 0px #00000033;
+}
+
+.create-task-btn:disabled:hover .icon-create path {
+  stroke: #ffffff;
+  fill: #ffffff;
+}
+
+.create-task-btn:hover .icon-create path {
+  stroke: #4589ff;
+  fill: #4589ff;
 }
 
 .clear-create-buttons {
@@ -456,12 +474,9 @@ input[type="date"]:focus {
   right: 0;
   bottom: 0;
   padding-bottom: 46px;
-  padding-right:32px;
+  padding-right: 32px;
 }
 
 .margin-left-12 {
   margin-left: 12px;
 }
-
-
-
