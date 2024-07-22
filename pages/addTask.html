@@ -18,7 +18,7 @@
     <script src="../js/addTask.js" defer></script>
   </head>
 
-  <body onload="includeHTML(); loadContactList()">
+  <body onload="includeHTML(); loadContactList();">
     <div w3-include-html="../assets/templates/header.html"></div>
     <div class="wrap">
       <div w3-include-html="../assets/templates/sidebar.html"></div>
@@ -99,7 +99,7 @@
                    </div>
                 </div>
                 <div class="clear-create-buttons">   
-                   <button class="clear-task-btn center-flexbox" id="add-task-btn" type="submit">Clear <img class="margin-left-12" src="../assets/img/xSymbol.svg" alt="clear-task"></button>
+                   <button class="clear-task-btn center-flexbox" id="clear-task-btn" type="submit">Clear <img class="margin-left-12" src="../assets/img/xSymbol.svg" alt="clear-task"></button>
                    <button class="create-task-btn center-flexbox" id="add-task-btn" type="submit" disabled>Create Task <img class="margin-left-12" src="../assets/img/checkSymbol.svg" alt="create-task"></button>
                 </div>
               </form>

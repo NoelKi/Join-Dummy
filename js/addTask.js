@@ -51,7 +51,8 @@
   let textarea = document.getElementById('textarea-task');
   let dateInput = document.getElementById("due-date");
   let dateError = document.getElementById("date-error");
-  let addTaskBtn = document.getElementById("add-task-btn");
+  let createTaskBtn = document.getElementById("add-task-btn");
+  let clearTaskBtn = document.getElementById("clear-task-btn");
   let selectBox = document.querySelector('.select-box');
   let selectOption = document.querySelector('.select-option');
   let selectValue = document.getElementById('select-value');
@@ -64,76 +65,109 @@
   let selectCategoryOption = document.getElementById("select-category");
   let categoryList = document.getElementById("category-list");
 
-  
-
-
-selectOption.addEventListener('click', function(){
-  selectBox.classList.toggle('active-task');
-});
-    
- 
-
-optionList.forEach(function(optionListSingle){
-  optionListSingle.addEventListener('click',function(){
-    text = this.textContent;
-    selectValue.value = text;
+  function clearAllInputs() {
+    titleInput.value = "";
+    textarea.value = "";
+    dateInput.value = "";
+    selectValue.value = "Select contacts to assign";
     selectBox.classList.remove('active-task');
-  })
-});
-
-optionSearch.addEventListener('keyup', function() {
-  let filter = optionSearch.value.toUpperCase();
-  let li = option.getElementsByTagName('li');
-  for (let i = 0; i < li.length; i++) {
-    let textValue = li[i].textContent || li[i].innerText;
-    li[i].style.display = textValue.toUpperCase().indexOf(filter) > -1 ? '' : 'none';
-  }
-});
-
-
-titleInput.addEventListener("focusout", function () {
-  if (titleInput.value.trim() === "") {
-    titleError.style.display = "inline";
-  } else {
+    categoryList.style.display = 'none';
+    dropDownArrowCat.style.transform = 'rotate(0deg)';
+    optionSearch.value = "";
+    optionList.forEach(li => li.style.display = '');
+    selectCategoryOption.querySelector('input').value = 'Select Category';
     titleError.style.display = "none";
-  }
-});
-
-titleInput.addEventListener("focusout", function () {
-  if (titleInput.value.trim() === "") {
-    titleError.style.display = "inline";
-    titleInput.style.borderBottomColor = "#ff8190";
-  } else {
+    dateError.style.display = "none";
     titleInput.style.borderBottomColor = "";
+    dateInput.style.borderBottomColor = "";
+    resetPriorityButtons();
   }
-});
-
-dateInput.addEventListener('focusout', function() {
-  if (dateInput.value.trim() === '') {
-      dateError.style.display = 'inline';
-      dateInput.style.borderBottomColor = '#ff8190';
-      dateInput.style.color = 'black';
-  } else {
-      dateError.style.display = 'none';
-      dateInput.style.borderBottomColor = '';
-      dateInput.style.color = 'black';
+    
+  clearTaskBtn.addEventListener('click', function() {
+    clearAllInputs();
+    checkInputs();
+  });
+  
+  
+  
+  function resetPriorityButtons() {
+    document.querySelectorAll(".buttons button").forEach((btn) => {
+      btn.classList.remove("selected");
+      btn.querySelector(".button-img").classList.remove("selected");
+    });
   }
-});
-
-document.getElementById("task-form").addEventListener("submit", function (event) {
-    if (titleInput.value.trim() === "") {
-      event.preventDefault();
-      titleError.style.display = "inline";
-    } else {
-      titleError.style.display = "none";
-    }
-    if (dateInput.value.trim() === "") {
-      dateError.style.display = "inline";
-    } else {
-      dateError.style.display = "none";
+  
+  
+  function checkInputs() {
+    let isTitleValid = titleInput.value.trim() !== "";
+    let isDateValid = dateInput.value.trim() !== "";
+    createTaskBtn.disabled = !(isTitleValid && isDateValid);
+  }
+  
+  selectOption.addEventListener('click', function(){
+    selectBox.classList.toggle('active-task');
+  });
+      
+  optionList.forEach(function(optionListSingle){
+    optionListSingle.addEventListener('click',function(){
+      text = this.textContent;
+      selectValue.value = text;
+      selectBox.classList.remove('active-task');
+      checkInputs();
+    })
+  });
+  
+  optionSearch.addEventListener('keyup', function() {
+    let filter = optionSearch.value.toUpperCase();
+    let li = option.getElementsByTagName('li');
+    for (let i = 0; i < li.length; i++) {
+      let textValue = li[i].textContent || li[i].innerText;
+      li[i].style.display = textValue.toUpperCase().indexOf(filter) > -1 ? '' : 'none';
     }
   });
-
+   
+  titleInput.addEventListener("focusout", function () {
+    if (titleInput.value.trim() === "") {
+      titleError.style.display = "inline";
+      titleInput.style.borderBottomColor = "#ff8190";
+      
+    } else {
+      titleError.style.display = "none";
+      titleInput.style.borderBottomColor = "";
+      
+    }
+    checkInputs();
+    
+  });
+ 
+  dateInput.addEventListener('focusout', function() {
+    if (dateInput.value.trim() === '') {
+        dateError.style.display = 'inline';
+        dateInput.style.borderBottomColor = '#ff8190';
+        dateInput.style.color = 'black';
+        
+    } else {
+        dateError.style.display = 'none';
+        dateInput.style.borderBottomColor = '';
+        dateInput.style.color = 'black';
+        
+    }
+    checkInputs();
+    
+  });
+  
+  document.getElementById("task-form").addEventListener("submit", function(event) {
+    if (titleInput.value.trim() === "" || dateInput.value.trim() === "") {
+      event.preventDefault();
+      if (titleInput.value.trim() === "") {
+        titleError.style.display = "inline";
+      }
+      if (dateInput.value.trim() === "") {
+        dateError.style.display = "inline";
+      }
+    }
+  });
+ 
   function selectPriority(priority) {
     
     document.querySelectorAll(".buttons button").forEach((btn) => {
@@ -154,14 +188,14 @@ document.getElementById("task-form").addEventListener("submit", function (event)
         li.addEventListener('click', function() {
             selectValue.value = li.textContent;
             selectBox.classList.remove('active-task');
+            checkInputs();
         });
         listContainer.appendChild(li);
     }
 }
 
 loadContactList();
-
-
+ 
 function toggleCategoryList() {
   if (categoryList.style.display === 'block') {
     categoryList.style.display = 'none';
@@ -182,7 +216,7 @@ selectCategoryOption.addEventListener('click', function(event) {
 document.addEventListener('click', function(event) {
   if (!selectBoxCategory.contains(event.target)) {
     categoryList.style.display = 'none';
-    dropDownArrowCat.style.transform = 'rotate(0deg)'; // Reset rotation
+    dropDownArrowCat.style.transform = 'rotate(0deg)'; 
   }
 });
 
@@ -191,9 +225,28 @@ categoryList.addEventListener('click', function(e) {
   if (e.target.tagName === 'LI') {
     selectCategoryOption.querySelector('input').value = e.target.textContent;
     categoryList.style.display = 'none';
+    checkInputs();
     
   }
 });
+
+checkInputs();
+
+
+
+
+
+
+
+
+  
+ 
+ 
+ 
+ 
+
+
+
 
 
 
