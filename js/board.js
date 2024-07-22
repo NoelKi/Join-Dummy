@@ -26,7 +26,7 @@ let tasks = [{
     'description': 'BlaBliBulb',
     'category': 'awaitFeedback',
     'priority': 'high',
-    'collaborators': ['Rosi Rot','Bernhart Blau']
+    'collaborators': ['Rosi Rot', 'Bernhart Blau']
 
 }];
 
@@ -39,6 +39,8 @@ function renderTasks() {
     renderAwaitFeedback();
     // render in done
     renderDone();
+    // render initials 
+
 }
 
 function renderToDo() {
@@ -61,6 +63,7 @@ function renderAwaitFeedback() {
     for (let index = 0; index < awaitFeedback.length; index++) {
         const element = awaitFeedback[index];
         document.getElementById('board-awaitFeedback').innerHTML += renderTaskHtml(element);
+
     }
     if (awaitFeedback.length === 0) {
         document.getElementById('board-awaitFeedback').innerHTML = renderEmptyBox('await feedback');
@@ -117,8 +120,7 @@ function removeHighlight(id) {
 }
 
 function renderTaskHtml(element) {
-    return `
-    <div class="task-container" draggable="true" ondragstart="startDragging(${element['id']})">
+    let a = `<div class="task-container" draggable="true" ondragstart="startDragging(${element['id']})">
         <div class="task-kind-container" style="background-color: ${element.taskColor}">${element.kind}</div>
         <div class="task-content-container">
             <div class="task-title">${element.title}</div>
@@ -130,18 +132,37 @@ function renderTaskHtml(element) {
                 <div id="subtask">1/2 Subtasks</div>
             </div>
             <div class="task-bottom-container">
-                <div class="task-collaborators" id="task-collaborators">
-                    <div class="initials">SM</div>
-                    <div class="initials">SM</div>
-                </div>
+            <div class="task-collaborators" id="task-collaborators-${element.id}">`;
+    for (const collab of element.collaborators) {
+        [name, surname] = collab;
+
+        initials = getFirstLetterOfName(name) + getFirstLetterOfName(surname);
+        a += `<div class="initials" style="background-color: ${collab.color}">${initials}</div>`
+    }
+    a += `</div>
                 <div class="task-priority" id="task-priority">
                     <img src="../assets/img/priority${element.priority.toUpperCase()}.svg">
                 </div>
             </div>
         </div>
     </div>`;
+    return a;
 }
 
 function renderEmptyBox(sign) {
     return `<div class="empty-box">No tasks ${sign}</div>`;
+}
+
+function renderCollabInitials(id) {
+    const content = document.getElementById(`task-collaborators-${id}`);
+
+}
+
+function createCollabInitialsHtml(initials) {
+    return `<div class="initials">${initials}</div>`;
+}
+
+function getFirstLetterOfName(name) {
+    name = name.slice(0, 1);
+    return name.toUpperCase()
 }
