@@ -339,7 +339,7 @@ input[type="date"]:focus {
   background: #d2e3ff;
 }
 
-.input-positioning:hover {
+.select-option:hover {
   border-bottom: 1px solid #005dff;
 }
 
@@ -410,7 +410,7 @@ input[type="date"]:focus {
   background-color: white;
   border-width: 1px;
   text-align: center;
-  box-shadow: none;
+  
   font-weight: 400;
   box-shadow: 0px 4px 8px 0px #00000033;
   transition: background-color 100ms ease-out, color 100ms ease-out; /* Transition for background and text color */
@@ -430,16 +430,16 @@ input[type="date"]:focus {
 .create-task-btn {
   border-radius: 10px;
   outline: 0;
-  border-color: #647188;
+  border: 1px solid #647188;
   box-shadow: 0px 4px 8px 0px #00000033;
   padding: 12px 8px;
   font-size: 23px;
   cursor: pointer;
   color: white;
   background-color: #005dff;
-  border-width: 1px;
+  
   text-align: center;
-  box-shadow: none;
+  box-sizing: border-box;
   font-weight: 400;
   transition: background-color 100ms ease-out, color 100ms ease-out;
 }
@@ -455,6 +455,7 @@ input[type="date"]:focus {
   color: #4589ff;
   border: none;
   box-shadow: 0px 4px 8px 0px #00000033;
+  border: 1px solid transparent;
 }
 
 .create-task-btn:disabled:hover .icon-create path {
