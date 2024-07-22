@@ -6,18 +6,22 @@ let tasks = [{
     'kind': 'Technical Task',
     'taskColor': 'blue',
     'description': 'BlaBliBulb',
-    'category': 'done',
+    'category': 'inProgress',
     'priority': 'medium',
-    'collaborators': ['Anche Apfelgrün', 'Rosi Rot']
+    'collaborators': [{'name':'Anche Apfelgrün',
+                        'color':'#C3FF2B'},
+                         {'name':'Rosi Rot',
+                         'color':'#FF4646'}]
 }, {
     'id': 1,
     'title': 'Kochen',
     'kind': 'User Story',
     'taskColor': 'orange',
     'description': 'BlaBliBulb',
-    'category': 'done',
+    'category': 'toDo',
     'priority': 'low',
-    'collaborators': ['Linda Lila']
+    'collaborators': [{'name':'Anche Apfelgrün',
+                        'color':'#FF7A00'}]
 }, {
     'id': 2,
     'title': 'Einkaufen',
@@ -26,7 +30,10 @@ let tasks = [{
     'description': 'BlaBliBulb',
     'category': 'awaitFeedback',
     'priority': 'high',
-    'collaborators': ['Rosi Rot', 'Bernhart Blau']
+    'collaborators': [{'name':'Anche Apfelgrün',
+                        'color':'#1FD7C1'},
+                        {'name':'Rosi Rot',
+                        'color':'#00BEE8'}]
 
 }];
 
@@ -134,7 +141,8 @@ function renderTaskHtml(element) {
             <div class="task-bottom-container">
             <div class="task-collaborators" id="task-collaborators-${element.id}">`;
     for (const collab of element.collaborators) {
-        [name, surname] = collab;
+        console.log(collab);
+        [name, surname] = collab.name;
 
         initials = getFirstLetterOfName(name) + getFirstLetterOfName(surname);
         a += `<div class="initials" style="background-color: ${collab.color}">${initials}</div>`
@@ -166,3 +174,30 @@ function getFirstLetterOfName(name) {
     name = name.slice(0, 1);
     return name.toUpperCase()
 }
+
+function closeOverlay() {
+    const content = document.getElementById('board-overlay-section');
+    content.style.display = 'none';
+}
+
+function openAddTaskOverlay() {
+    const content = document.getElementById('board-overlay-section');
+    content.style.display = 'block';
+    content.innerHTML = renderAddTaskOverlay();
+}
+
+function renderAddTaskOverlay() {   
+    return `    
+    <div class="board-overlay-section">
+        <div class="board-overlay-container" id="board-overlay-container">
+            <div class="board-overlay-top-container">
+                Add Task
+                <button class="close-btn-overlay" onclick="closeOverlay()">
+                    <img src="../assets/img/closeTask.svg">
+                </button>
+            </div>
+            <div class="board-overlay-main-container"></div>
+        </div>
+    </div>`;
+}
+

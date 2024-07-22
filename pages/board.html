@@ -25,33 +25,33 @@
             <div class="top-board-section">
                 <div class="searchbar-container">
                     <input type="text" class="searchbar-board" placeholder="Find Task">
-                    <button class="add-task-btn">
-                        Add Task 
+                    <button class="add-task-btn" onclick="openAddTaskOverlay()">
+                        Add Task
                         <img src="../assets/img/plus.svg" alt="+">
                     </button>
                 </div>
                 <div class="board-headline-container">
                     <div class="board-top-container">
                         <h4>To do</h4>
-                        <button class="add-task-btn-small">
+                        <button class="add-task-btn-small" onclick="openAddTaskOverlay()">
                             <img src="../assets/img/addTaskBtn.svg" alt="+">
                         </button>
                     </div>
                     <div class="board-top-container">
                         <h4>In progress</h4>
-                        <button class="add-task-btn-small">
+                        <button class="add-task-btn-small" onclick="openAddTaskOverlay()">
                             <img src="../assets/img/addTaskBtn.svg" alt="+">
                         </button>
                     </div>
                     <div class="board-top-container">
                         <h4>Await feedback</h4>
-                        <button class="add-task-btn-small">
+                        <button class="add-task-btn-small" onclick="openAddTaskOverlay()">
                             <img src="../assets/img/addTaskBtn.svg" alt="+">
                         </button>
                     </div>
                     <div class="board-top-container">
                         <h4>Done</h4>
-                        <button class="add-task-btn-small">
+                        <button class="add-task-btn-small" onclick="openAddTaskOverlay()">
                             <img src="../assets/img/addTaskBtn.svg" alt="+">
                         </button>
                     </div>
@@ -59,24 +59,57 @@
 
             </div>
             <div class="main-board-section">
-                <div class="board-content-container drag-area" id="board-toDo" ondrop="moveTo('toDo'); removeHighlight('board-toDo')" ondragleave="removeHighlight('board-toDo')"
-                ondragover="allowDrop(event); highlight('board-toDo')"></div>
+                <div class="board-content-container drag-area" id="board-toDo"
+                    ondrop="moveTo('toDo'); removeHighlight('board-toDo')" ondragleave="removeHighlight('board-toDo')"
+                    ondragover="allowDrop(event); highlight('board-toDo')"></div>
 
-                <div class="board-content-container drag-area" id="board-inProgress" ondrop="moveTo('inProgress'); removeHighlight('board-inProgress')" ondragleave="removeHighlight('board-inProgress')"
-                ondragover="allowDrop(event); highlight('board-inProgress')"></div>
+                <div class="board-content-container drag-area" id="board-inProgress"
+                    ondrop="moveTo('inProgress'); removeHighlight('board-inProgress')"
+                    ondragleave="removeHighlight('board-inProgress')"
+                    ondragover="allowDrop(event); highlight('board-inProgress')"></div>
 
-                <div class="board-content-container drag-area" id="board-awaitFeedback" ondrop="moveTo('awaitFeedback'); removeHighlight('board-awaitFeedback')" ondragleave="removeHighlight('board-awaitFeedback')"
-                ondragover="allowDrop(event); highlight('board-awaitFeedback')"></div>
+                <div class="board-content-container drag-area" id="board-awaitFeedback"
+                    ondrop="moveTo('awaitFeedback'); removeHighlight('board-awaitFeedback')"
+                    ondragleave="removeHighlight('board-awaitFeedback')"
+                    ondragover="allowDrop(event); highlight('board-awaitFeedback')"></div>
 
-                <div class="board-content-container drag-area" id="board-done" ondrop="moveTo('done'); removeHighlight('board-done')" ondragleave="removeHighlight('board-done')"
-                ondragover="allowDrop(event); highlight('board-done')"></div>
+                <div class="board-content-container drag-area" id="board-done"
+                    ondrop="moveTo('done'); removeHighlight('board-done')" ondragleave="removeHighlight('board-done')"
+                    ondragover="allowDrop(event); highlight('board-done')"></div>
             </div>
         </div>
 
-
-
     </div>
-
+    <div id="board-overlay-section">
+        <div class="show-task-overlay">
+            <div class="show-task-container">
+                <div class="top-task-container">
+                    <div class="task-kind-container no-margin">
+                        User Story
+                    </div>
+                    <button class="close-btn-overlay no-margin" onclick="closeOverlay()">
+                        <img src="../assets/img/closeTask.svg">
+                    </button>
+                </div>
+                <div class="task-title-container">
+                    Kochwelt Page & Recipe Recommender
+                </div>
+                <div class="task-description-container">
+                    Build start page with recipe recommendation.
+                </div>
+                <div class="task-detail-container">
+                    <b>Due date:</b> 12/28/2030 <br>
+                    <b>Priority:</b> Medium <img src="../assets/img/medium.svg">
+                </div>
+                <div class="task-collaborators-container">
+                    <b>Assignet to:</b><br>
+                </div>
+                <div class="task-subtask-container">
+                    <b>Subtasks</b>
+                </div>
+                <div class="task-edit-container"></div>
+            </div>
+        </div>
     </div>
 </body>
 

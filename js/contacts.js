@@ -91,7 +91,7 @@ function renderAddOverlay(id) {
 }
 
 function closeOverlay() {
-    const content = document.getElementById('overlay-section');
+    const content = document.getElementById('board-overlay-section');
     content.style.display = 'none';
 }
 
