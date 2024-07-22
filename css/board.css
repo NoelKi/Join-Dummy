@@ -171,7 +171,7 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    padding: 16px 0px;
+    padding-top: 16px;
 }
 
 .task-progress-bar {
@@ -185,7 +185,6 @@
 .task-bar {
     background-color: #4589FF;
     border-radius: 4px;
-    width: 50%;
     height: 100%;
 }
 
@@ -197,8 +196,9 @@
 }
 
 .task-bottom-container {
+    padding-top: 16px;
     height: 32px;
-    width: 100%;
+    width: 195px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

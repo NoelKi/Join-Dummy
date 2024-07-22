@@ -5,7 +5,7 @@ let tasks = [{
     'date':'10/21/2024',
     'title': 'Putzen',
     'kind': 'Technical Task',
-    'taskColor': 'blue',
+    'taskColor': '#0038FF',
     'description': 'BlaBliBulb',
     'category': 'inProgress',
     'priority': 'Medium',
@@ -24,7 +24,7 @@ let tasks = [{
     'date':'10/21/2024',
     'title': 'Kochen',
     'kind': 'User Story',
-    'taskColor': 'orange',
+    'taskColor': '#FF7A00',
     'description': 'BlaBliBulb',
     'category': 'toDo',
     'priority': 'Low',
@@ -41,7 +41,7 @@ let tasks = [{
     'date':'10/21/2024',
     'title': 'Einkaufen',
     'kind': 'User Story',
-    'taskColor': 'orange',
+    'taskColor': '#FF7A00',
     'description': 'BlaBliBulb',
     'category': 'awaitFeedback',
     'priority': 'High',
@@ -49,6 +49,17 @@ let tasks = [{
                         'color':'#1FD7C1'},
                         {'name':'Rosi Rot',
                         'color':'#00BEE8'}],
+    'subtask': []
+}, {
+    'id': 3,
+    'date':'10/24/2024',
+    'title': 'Dachrinne Reinigen',
+    'kind': 'Technical Task',
+    'taskColor': '#0038FF',
+    'description': 'BlaBliBulb',
+    'category': 'awaitFeedback',
+    'priority': 'High',
+    'collaborators': [],
     'subtask': []
 }];
 
@@ -146,14 +157,23 @@ function renderTaskHtml(element) {
         <div class="task-kind-container" style="background-color: ${element.taskColor}">${element.kind}</div>
         <div class="task-content-container">
             <div class="task-title">${element.title}</div>
-            <div class="task-description">${element.description}</div>
-            <div class="task-subtask" id="task-subtask">
-                <div class="task-progress-bar">
-                    <div class="task-bar"></div>    
-                </div>
-                <div id="subtask">1/2 Subtasks</div>
-            </div>
-            <div class="task-bottom-container">
+            <div class="task-description">${element.description}</div>`;
+    if (element.subtask.length > 1) {
+        let count = 0;
+        for (const subtask of element.subtask) {
+            if (subtask.state === 'done') {
+                count += 1;
+            }
+        }
+        const width = count / element.subtask.length * 100;
+        a += `<div class="task-subtask" id="task-subtask">
+        <div class="task-progress-bar">
+            <div class="task-bar" style="width: ${width}%"></div>    
+        </div>
+        <div id="subtask">${count}/${element.subtask.length} Subtasks</div>
+        </div>`;
+    }
+    a += `<div class="task-bottom-container">
             <div class="task-collaborators" id="task-collaborators-${element.id}">`;
     for (const collab of element.collaborators) {
         [name, surname] = collab.name;
@@ -162,7 +182,7 @@ function renderTaskHtml(element) {
     }
     a += `</div>
                 <div class="task-priority" id="task-priority">
-                    <img src="../assets/img/priority${element.priority.toUpperCase()}.svg">
+                    <img src="../assets/img/priority${element.priority}.svg">
                 </div>
             </div>
         </div>
@@ -270,8 +290,7 @@ function createTaskOverlay(element) {
         }
         a += `</div>`;
     } 
-    a += `</div>
-            <div class="task-edit-container">
+    a += `  <div class="task-edit-container">
                 <div class="delete-task-overlay-btn">
                     <img src="../assets/img/bin.svg"> Delete 
                 </div>
