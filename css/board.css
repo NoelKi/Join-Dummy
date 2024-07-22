@@ -294,6 +294,7 @@
     border: none;
     background-color: transparent;
     margin-top: -90px;
+    cursor: pointer;
 }
 
 .show-task-overlay {
@@ -311,10 +312,11 @@
 
 .show-task-container {
     width: 528px;
-    height: 400px;
     background-color: white;
     border-radius: 30px;
     padding: 48px 40px;
+    font-size: 19px;
+    font-family: 400;
 }
 
 .top-task-container {
@@ -331,4 +333,96 @@
 .task-title-container {
     font-size: 61px;
     font-weight: 700;
+    margin-bottom: 28px;
+    margin-top: 20px;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.m-b-5 {
+    margin-bottom: 5px;
+}
+
+.m-t-20 {
+    margin-top: 20px;
+}
+
+.m-t-12 {
+    margin-top: 12px;
+}
+
+.m-r-10 {
+    margin-right: 10px;
+}
+
+.m-l-20 {
+    margin-left: 20px;
+}
+
+.m-l-12 {
+    margin-left: 12px;
+}
+
+.font-size-19 {
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.horizontal-separator {
+    width: 1px;
+    height: 30px;
+    background-color: #5555554a;
+}
+
+.task-edit-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.delete-task-overlay-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.edit-task-overlay-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    width: 60px;
+    cursor: pointer;
+}
+
+.task-overlay-priority {
+    display: flex;
+    align-items: center;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.subtask-inner-container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.subtask-inner-inner-container {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    padding-left: 12px;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
