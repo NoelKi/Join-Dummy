@@ -44,7 +44,7 @@ let tasks = [{
     'taskColor': '#FF7A00',
     'description': 'BlaBliBulb',
     'category': 'awaitFeedback',
-    'priority': 'High',
+    'priority': 'Urgent',
     'collaborators': [{'name':'Anche Apfelgrün',
                         'color':'#1FD7C1'},
                         {'name':'Rosi Rot',
@@ -58,7 +58,7 @@ let tasks = [{
     'taskColor': '#0038FF',
     'description': 'BlaBliBulb',
     'category': 'awaitFeedback',
-    'priority': 'High',
+    'priority': 'Urgent',
     'collaborators': [],
     'subtask': []
 }];
