@@ -52,16 +52,6 @@ async function putData(path = "", data = {}) {
     return responseJson;
 }
 
-function updateUserr(userId, name, email, password) {
-    putData(`/users/${userId}`, {
-        name: name,
-        email: email,
-        password: password,
-        contacts: contacts,
-        tasks: tasks
-    });
-}
-
 function updateUser(name,email,password,contacts,tasks) {
     putData(`/users/${USER_ID}`, {
         name: name,
@@ -71,7 +61,3 @@ function updateUser(name,email,password,contacts,tasks) {
         tasks: tasks
     });
 }
-
-// updateUser(USER_ID, 'dev', 'katze@hund.de', '123')
-// updateContacts(USER_ID, contacts);
-// getData('users/-O1rfKs0H78_QgdT-162');
