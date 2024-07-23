@@ -64,16 +64,10 @@ let tasks = [{
 }];
 
 function renderTasks() {
-    // render to do 
     renderToDo();
-    // render in progress
     renderInProgress();
-    // render in await feedback
     renderAwaitFeedback();
-    // render in done
     renderDone();
-    // render initials 
-
 }
 
 function renderToDo() {
@@ -285,7 +279,8 @@ function createTaskOverlay(element) {
             const state = subtask.state; 
             const id = subtask.id;
             a += `<div class="subtask-inner-inner-container">
-            <img src="../assets/img/${subtask.state}CheckButton.svg" onclick="switchSubtaskState(${element.id},${subtask.id})"> &ensp;${subtask.name}
+            <img src="../assets/img/${subtask.state}CheckButton.svg" onclick="switchSubtaskState(${element.id},${subtask.id})"> 
+            &ensp;${subtask.name}
             </div>`
         }
         a += `</div>`;
