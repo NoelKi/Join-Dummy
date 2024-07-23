@@ -1,58 +1,77 @@
 let currentDraggedElement;
+let tasks = [];
 
-let tasks = [{
+let tasksExample = [{
     'id': 0,
-    'date':'10/21/2024',
+    'date': '10/21/2024',
     'title': 'Putzen',
     'kind': 'Technical Task',
     'taskColor': '#0038FF',
     'description': 'BlaBliBulb',
     'category': 'inProgress',
     'priority': 'Medium',
-    'collaborators': [{'name':'Anche Apfelgrün',
-                        'color':'#C3FF2B'},
-                         {'name':'Rosi Rot',
-                         'color':'#FF4646'}],
-    'subtask': [{'name':'Küche putzen',
-                'state':'done',
-                'id': 2023},
-                {'name':'Flur putzen',
-                'state':'done',
-                'id': 206},]
+    'collaborators': [{
+        'name': 'Anche Apfelgrün',
+        'color': '#C3FF2B'
+    },
+    {
+        'name': 'Rosi Rot',
+        'color': '#FF4646'
+    }],
+    'subtask': [{
+        'name': 'Küche putzen',
+        'state': 'done',
+        'id': 2023
+    },
+    {
+        'name': 'Flur putzen',
+        'state': 'done',
+        'id': 206
+    },]
 }, {
     'id': 1,
-    'date':'10/21/2024',
+    'date': '10/21/2024',
     'title': 'Kochen',
     'kind': 'User Story',
     'taskColor': '#FF7A00',
     'description': 'BlaBliBulb',
     'category': 'toDo',
     'priority': 'Low',
-    'collaborators': [{'name':'Anche Apfelgrün',
-                        'color':'#FF7A00'}],
-    'subtask': [{'name':'Abendbrot kochen',
-                'state':'done',
-                'id': 2029},
-                {'name':'Frühstück kochen',
-                'state':'open',
-                'id': 2028},]
+    'collaborators': [{
+        'name': 'Anche Apfelgrün',
+        'color': '#FF7A00'
+    }],
+    'subtask': [{
+        'name': 'Abendbrot kochen',
+        'state': 'done',
+        'id': 2029
+    },
+    {
+        'name': 'Frühstück kochen',
+        'state': 'open',
+        'id': 2028
+    },]
 }, {
     'id': 2,
-    'date':'10/21/2024',
+    'date': '10/21/2024',
     'title': 'Einkaufen',
     'kind': 'User Story',
     'taskColor': '#FF7A00',
     'description': 'BlaBliBulb',
     'category': 'awaitFeedback',
     'priority': 'Urgent',
-    'collaborators': [{'name':'Anche Apfelgrün',
-                        'color':'#1FD7C1'},
-                        {'name':'Rosi Rot',
-                        'color':'#00BEE8'}],
+    'collaborators': [{
+        'name': 'Anche Apfelgrün',
+        'color': '#1FD7C1'
+    },
+    {
+        'name': 'Rosi Rot',
+        'color': '#00BEE8'
+    }],
     'subtask': []
 }, {
     'id': 3,
-    'date':'10/24/2024',
+    'date': '10/24/2024',
     'title': 'Dachrinne Reinigen',
     'kind': 'Technical Task',
     'taskColor': '#0038FF',
@@ -63,17 +82,38 @@ let tasks = [{
     'subtask': []
 }];
 
-function renderTasks() {
-    // render to do 
-    renderToDo();
-    // render in progress
-    renderInProgress();
-    // render in await feedback
-    renderAwaitFeedback();
-    // render in done
-    renderDone();
-    // render initials 
+window.onload = function () {
+    includeHTML();
+    getUserLists();
+}
 
+async function getUserLists() {
+    try {
+        currUserData = await getUserData(USER_ID);
+        console.log(currUserData);
+        if (!currUserData.contacts) {
+            contacts = [];
+        } else {
+            contacts = currUserData.contacts;
+        }
+        if (!currUserData.tasks) {
+            tasks = [];
+        } else {
+            tasks = currUserData.tasks;
+            renderTasks();
+        }
+        console.log(contacts);
+        console.log(tasks);
+    } catch (error) {
+        console.error('Fehler beim Abrufen der Benutzerdaten:', error);
+    }
+}
+
+function renderTasks() {
+    renderToDo();
+    renderInProgress();
+    renderAwaitFeedback();
+    renderDone();
 }
 
 function renderToDo() {
@@ -132,7 +172,7 @@ function renderInProgress() {
 }
 
 function startDragging(id) {
-    currentDraggedElement = id;
+    currentDraggedElement = getIndexById(tasks,`${id}`);
 }
 
 function allowDrop(ev) {
@@ -158,7 +198,7 @@ function renderTaskHtml(element) {
         <div class="task-content-container">
             <div class="task-title">${element.title}</div>
             <div class="task-description">${element.description}</div>`;
-    if (element.subtask.length > 1) {
+    if (element.subtask) {
         let count = 0;
         for (const subtask of element.subtask) {
             if (subtask.state === 'done') {
@@ -175,10 +215,12 @@ function renderTaskHtml(element) {
     }
     a += `<div class="task-bottom-container">
             <div class="task-collaborators" id="task-collaborators-${element.id}">`;
-    for (const collab of element.collaborators) {
-        [name, surname] = collab.name;
-        initials = getFirstLetterOfName(name) + getFirstLetterOfName(surname);
-        a += `<div class="initials" style="background-color: ${collab.color}">${initials}</div>`
+    if (element.collaborators) {
+        for (const collab of element.collaborators) {
+            [name, surname] = collab.name;
+            initials = getFirstLetterOfName(name) + getFirstLetterOfName(surname);
+            a += `<div class="initials" style="background-color: ${collab.color}">${initials}</div>`
+        }
     }
     a += `</div>
                 <div class="task-priority" id="task-priority">
@@ -219,7 +261,7 @@ function renderAddTaskOverlay() {
     content.innerHTML = createAddTaskOverlay();
 }
 
-function createAddTaskOverlay() {   
+function createAddTaskOverlay() {
     return `    
     <div class="board-overlay-section">
         <div class="board-overlay-container" id="board-overlay-container">
@@ -235,7 +277,8 @@ function createAddTaskOverlay() {
 }
 
 function renderTaskOverlay(id) {
-    const element = getObjectById(tasks,id);
+    const element = getObjectById(tasks,`${id}`);
+    console.log(element,`${id}`,tasks);
     const content = document.getElementById('board-overlay-section');
     content.style.display = 'block';
     content.innerHTML = createTaskOverlay(element);
@@ -264,8 +307,8 @@ function createTaskOverlay(element) {
             <div class="task-overlay-priority">
                 <b>Priority:</b>&ensp;&ensp;&ensp; ${element.priority} <img src="../assets/img/priority${element.priority}.svg">
             </div>`;
-    if (element.collaborators.length > 0) {
-            a += `<div>
+    if (element.collaborators) {
+        a += `<div>
                 <b>Assigned to:</b> <br>`;
         for (const collab of element.collaborators) {
             [name, surname] = collab.name;
@@ -276,20 +319,21 @@ function createTaskOverlay(element) {
         }
         a += `</div>`;
     }
-    if (element.subtask.length > 0) {
+    if (element.subtask) {
         a += `<div class="task-subtask-container m-t-12" id="subtasks-overlay">
                 <b>Subtasks</b>
             <div class="subtask-inner-container m-t-20">`;
         for (const subtask of element.subtask) {
             const name = subtask.name;
-            const state = subtask.state; 
+            const state = subtask.state;
             const id = subtask.id;
             a += `<div class="subtask-inner-inner-container">
-            <img src="../assets/img/${subtask.state}CheckButton.svg" onclick="switchSubtaskState(${element.id},${subtask.id})"> &ensp;${subtask.name}
+            <img src="../assets/img/${subtask.state}CheckButton.svg" onclick="switchSubtaskState(${element.id},${subtask.id})"> 
+            &ensp;${subtask.name}
             </div>`
         }
         a += `</div>`;
-    } 
+    }
     a += `  <div class="task-edit-container">
                 <div class="delete-task-overlay-btn">
                     <img src="../assets/img/bin.svg"> Delete 
@@ -308,13 +352,25 @@ function getObjectById(array, id) {
     return array.find(obj => obj.id === id);
 }
 
-function switchSubtaskState(taskId,subtaskId) {
-    const element = getObjectById(tasks,taskId);
-    const subtask = getObjectById(element.subtask,subtaskId)
+function switchSubtaskState(taskId, subtaskId) {
+    const element = getObjectById(tasks,`${taskId}`);
+    const subtask = getObjectById(element.subtask, `${subtaskId}`)
     if (subtask.state === 'done') {
         subtask.state = 'open';
-    } else {subtask.state = 'done'}
+    } else { subtask.state = 'done' }
     renderTaskOverlay(taskId);
     console.log('hallo');
     renderTasks(element);
+}
+
+function getIndexById(arr, id) {
+    if (!arr || arr.length === 0) {
+        return -1;
+    }
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].id === id) {
+            return i; 
+        }
+    }
+    return -1; 
 }
