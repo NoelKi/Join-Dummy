@@ -1,35 +1,11 @@
-
-// let contacts = [
-//   {
-//     "name": "John",
-//     "surname": "Doe",
-//     "color": "#1FD7C1"
-//   },
-//   {
-//     "name": "Tim",
-//     "surname": "Hoe",
-//     "color": "#1FD7C1"
-//   },
-//   {
-//     "name": "John",
-//     "surname": "Doe",
-//     "color": "#1FD7C1"
-//   },
-//   {
-//     "name": "John",
-//     "surname": "Doe",
-//     "color": "#FFFFFF"
-//   },
-
-// ];
-
 window.onload = function () {
   getUserLists();
-  includeHTML(); 
+  includeHTML();
   loadContactList();
 };
 
 let contacts = [];
+let tasks = [];
 
 async function getUserLists() {
   try {
@@ -51,7 +27,11 @@ async function getUserLists() {
   }
 }
 
-
+let priorityValue = '';
+let categoryValue = '';
+let categoryColor = '';
+let subtasArr = [];
+let categoryArr = [];
 let titleInput = document.getElementById("add-title");
 let titleError = document.getElementById("title-error");
 let textarea = document.getElementById('textarea-task');
@@ -175,7 +155,7 @@ document.getElementById("task-form").addEventListener("submit", function (event)
 });
 
 function selectPriority(priority) {
-
+  priorityValue = priority;
   document.querySelectorAll(".buttons button").forEach((btn) => {
     btn.classList.remove("selected");
     btn.querySelector(".button-img").classList.remove("selected");
@@ -186,7 +166,6 @@ function selectPriority(priority) {
 }
 
 function loadContactList() {
-  console.log('hallo');
   let listContainer = document.getElementById('generate-list');
   listContainer.innerHTML = '';
   let htmlContent = '';
@@ -262,4 +241,36 @@ function getFirstLetterOfName(name) {
   return name.toUpperCase()
 }
 
+function pushTaskToTasks() { // auf benennung in board.js achten 
+  tasks.push({
+    id: Date.now().toString(),
+    date: dateInput.value,
+    title: titleInput.value,
+    kind: 'Technical Task',
+    taskColor: '#0038FF', //Technical Task #0038FF;  User Story #FF7A00
+    description: textarea.value,
+    category: 'inProgress',
+    priority: priorityValue,
+    collaborators: collaborators,
+    subtask: subtaskArr
+  });
+}
 
+function setTechnicalTask() {
+  categoryColor = '#0038FF';
+  categoryValue = 'Technical task'
+}
+
+function createTask() { // function for create Task button
+  pushTaskToTasks();
+  updateUser('name', 'email', 'password', contacts, tasks);
+  deleteValues();
+}
+
+function addSubtask() {
+  subtaskArr.push({
+    name: document.getElementById('subtasks').value,
+    id: Date.now().toString(),
+    state: 'open'
+  });
+}
