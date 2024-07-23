@@ -315,4 +315,6 @@ function switchSubtaskState(taskId,subtaskId) {
         subtask.state = 'open';
     } else {subtask.state = 'done'}
     renderTaskOverlay(taskId);
+    console.log('hallo');
+    renderTasks(element);
 }
