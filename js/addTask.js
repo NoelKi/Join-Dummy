@@ -181,18 +181,35 @@
   
   function loadContactList() {
     let listContainer = document.getElementById('generate-list');
-    listContainer.innerHTML = '';
+    listContainer.innerHTML = ''; 
+    let htmlContent = ''; 
+  
     for (let i = 0; i < testNames.length; i++) {
-        let li = document.createElement('li');
-        li.textContent = `${testNames[i].firstName} ${testNames[i].lastName}`;
-        li.addEventListener('click', function() {
-            selectValue.value = li.textContent;
-            selectBox.classList.remove('active-task');
-            checkInputs();
-        });
-        listContainer.appendChild(li);
+      htmlContent += `
+        
+          <div class="contact-task-assign">
+            <div class="icon-name-contact">
+              <div class="initials">AB</div>
+              <div class="contact-text-task">${testNames[i].firstName} ${testNames[i].lastName}</div>
+            </div>
+            <div id="check-box-task"><img src="../assets/img/checkBoxTaskHtml.svg"></div>
+          </div>
+          
+      `;
     }
-}
+  
+    listContainer.innerHTML = htmlContent; // Set the entire HTML content at once
+  
+    // Adding event listeners dynamically to each 'div' element
+    document.querySelectorAll('.contact-item').forEach(function(item) {
+      item.addEventListener('click', function() {
+        let textDiv = item.querySelector('.contact-text');
+        selectValue.value = textDiv.textContent;
+        selectBox.classList.remove('active-task');
+        checkInputs();
+      });
+    });
+  }
 
 loadContactList();
  

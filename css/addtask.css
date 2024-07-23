@@ -482,3 +482,44 @@ input[type="date"]:focus {
 .margin-left-12 {
   margin-left: 12px;
 }
+
+.contact-task-assign {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  padding: 7px 16px 7px 16px;
+  
+}
+  
+  
+
+.contact-text-task {
+  font-size: 19px;
+  font-weight: 400;
+ 
+}
+
+.contact-line {
+  display: flex;
+}
+
+.initials {
+  color: white;
+  background-color: aquamarine;
+  height: 32px;
+  width: 32px;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+ 
+}
+
+.icon-name-contact {
+  display: flex;
+}
+
+  
