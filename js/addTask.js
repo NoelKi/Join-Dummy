@@ -1,35 +1,11 @@
-
-// let contacts = [
-//   {
-//     "name": "John",
-//     "surname": "Doe",
-//     "color": "#1FD7C1"
-//   },
-//   {
-//     "name": "Tim",
-//     "surname": "Hoe",
-//     "color": "#1FD7C1"
-//   },
-//   {
-//     "name": "John",
-//     "surname": "Doe",
-//     "color": "#1FD7C1"
-//   },
-//   {
-//     "name": "John",
-//     "surname": "Doe",
-//     "color": "#FFFFFF"
-//   },
-
-// ];
-
 window.onload = function () {
   getUserLists();
-  includeHTML(); 
+  includeHTML();
   loadContactList();
 };
 
 let contacts = [];
+
 
 async function getUserLists() {
   try {
@@ -40,10 +16,10 @@ async function getUserLists() {
       contacts = currUserData.contacts;
       loadContactList();
     }
-    if (!currUserData.task) {
+    if (!currUserData.tasks) {
       tasks = [];
     } else {
-      tasks = currUserData.task;
+      tasks = currUserData.tasks;
       //place renderTasks(); here
     }
   } catch (error) {
@@ -51,7 +27,12 @@ async function getUserLists() {
   }
 }
 
-
+let priorityValue = '';
+let kindValue = '';
+let kindColor = '';
+let subtaskArr = [];
+let categoryArr = [];
+let collaborators = [];
 let titleInput = document.getElementById("add-title");
 let titleError = document.getElementById("title-error");
 let textarea = document.getElementById('textarea-task');
@@ -175,7 +156,7 @@ document.getElementById("task-form").addEventListener("submit", function (event)
 });
 
 function selectPriority(priority) {
-
+  priorityValue = priority;
   document.querySelectorAll(".buttons button").forEach((btn) => {
     btn.classList.remove("selected");
     btn.querySelector(".button-img").classList.remove("selected");
@@ -186,7 +167,6 @@ function selectPriority(priority) {
 }
 
 function loadContactList() {
-  console.log('hallo');
   let listContainer = document.getElementById('generate-list');
   listContainer.innerHTML = '';
   let htmlContent = '';
@@ -219,7 +199,6 @@ function loadContactList() {
   });
 }
 
-loadContactList();
 
 function toggleCategoryList() {
   if (categoryList.style.display === 'block') {
@@ -262,4 +241,50 @@ function getFirstLetterOfName(name) {
   return name.toUpperCase()
 }
 
+function pushTaskToTasks() { // auf benennung in board.js achten 
+  tasks.push({
+    id: Date.now().toString(),
+    date: dateInput.value,
+    title: titleInput.value,
+    kind: kindValue,
+    taskColor: kindColor, //Technical Task #0038FF;  User Story #FF7A00
+    description: textarea.value,
+    category: 'toDo',
+    priority: priorityValue,
+    collaborators: collaborators,
+    subtask: subtaskArr
+  });
+}
 
+function setTaskKind(kind) {
+  if (kind === 'TT') {
+    kindColor = '#0038FF';
+    kindValue = 'Technical task';
+  } 
+  if (kind === 'US') {
+    kindColor = '#FF7A00';
+    kindValue = 'User Story';
+  }
+}
+
+function clearTaskKind() {
+    kindColor = '';
+    kindValue = '';
+}
+
+function createTask(event) { // function for create Task button
+  event.preventDefault();  
+  pushTaskToTasks();
+  updateUser(currUserData.name, currUserData.email, currUserData.password, currUserData.contacts, tasks);
+  // deleteValues();
+}
+
+function addSubtask() {
+  const name = document.getElementById('subtask-input-field');
+  subtaskArr.push({
+    name: name.value,
+    id: Date.now().toString(),
+    state: 'open'
+  });
+  name.value = '';
+}

@@ -15,7 +15,7 @@ async function getUserLists() {
             contacts = currUserData.contacts;
             renderContacts();
         }
-        if (!currUserData.task) {
+        if (!currUserData.tasks) {
             tasks = [];
         } else {
             tasks = currUserData.task;
