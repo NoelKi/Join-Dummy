@@ -176,9 +176,9 @@ function loadContactList() {
     htmlContent += `
         
           <div class="contact-task-assign">
-            <div class="icon-name-contact">
-            <div class="initials" style="background-color: ${contacts[i].color};">${initials}</div>
-              <div class="contact-text-task">${contacts[i].name} ${contacts[i].surname}</div>
+            <div class="icon-name-contact center-flexbox">
+            <div class="initials-task" style="background-color: ${contacts[i].color};">${initials}</div>
+              <div class="contact-text-task ">${contacts[i].name} ${contacts[i].surname}</div>
             </div>
             <div id="check-box-task"><img src="../assets/img/checkBoxTaskHtml.svg"></div>
           </div>
