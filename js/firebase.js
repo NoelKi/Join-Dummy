@@ -38,7 +38,6 @@ async function deleteData(path = "", data = {}) {
 }
 
 async function putData(path = "", data = {}) {
-
     const response = await fetch(BASE_URL + path + ".json", {
         method: "PUT",
         headers: {

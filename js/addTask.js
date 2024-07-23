@@ -5,7 +5,7 @@ window.onload = function () {
 };
 
 let contacts = [];
-let tasks = [];
+
 
 async function getUserLists() {
   try {
@@ -16,10 +16,10 @@ async function getUserLists() {
       contacts = currUserData.contacts;
       loadContactList();
     }
-    if (!currUserData.task) {
+    if (!currUserData.tasks) {
       tasks = [];
     } else {
-      tasks = currUserData.task;
+      tasks = currUserData.tasks;
       //place renderTasks(); here
     }
   } catch (error) {
@@ -28,10 +28,11 @@ async function getUserLists() {
 }
 
 let priorityValue = '';
-let categoryValue = '';
-let categoryColor = '';
-let subtasArr = [];
+let kindValue = '';
+let kindColor = '';
+let subtaskArr = [];
 let categoryArr = [];
+let collaborators = [];
 let titleInput = document.getElementById("add-title");
 let titleError = document.getElementById("title-error");
 let textarea = document.getElementById('textarea-task');
@@ -198,7 +199,6 @@ function loadContactList() {
   });
 }
 
-loadContactList();
 
 function toggleCategoryList() {
   if (categoryList.style.display === 'block') {
@@ -246,31 +246,45 @@ function pushTaskToTasks() { // auf benennung in board.js achten
     id: Date.now().toString(),
     date: dateInput.value,
     title: titleInput.value,
-    kind: 'Technical Task',
-    taskColor: '#0038FF', //Technical Task #0038FF;  User Story #FF7A00
+    kind: kindValue,
+    taskColor: kindColor, //Technical Task #0038FF;  User Story #FF7A00
     description: textarea.value,
-    category: 'inProgress',
+    category: 'toDo',
     priority: priorityValue,
     collaborators: collaborators,
     subtask: subtaskArr
   });
 }
 
-function setTechnicalTask() {
-  categoryColor = '#0038FF';
-  categoryValue = 'Technical task'
+function setTaskKind(kind) {
+  if (kind === 'TT') {
+    kindColor = '#0038FF';
+    kindValue = 'Technical task';
+  } 
+  if (kind === 'US') {
+    kindColor = '#FF7A00';
+    kindValue = 'User Story';
+  }
 }
 
-function createTask() { // function for create Task button
+function clearTaskKind() {
+    kindColor = '';
+    kindValue = '';
+}
+
+function createTask(event) { // function for create Task button
+  event.preventDefault();  
   pushTaskToTasks();
-  updateUser('name', 'email', 'password', contacts, tasks);
-  deleteValues();
+  updateUser(currUserData.name, currUserData.email, currUserData.password, currUserData.contacts, tasks);
+  // deleteValues();
 }
 
 function addSubtask() {
+  const name = document.getElementById('subtask-input-field');
   subtaskArr.push({
-    name: document.getElementById('subtasks').value,
+    name: name.value,
     id: Date.now().toString(),
     state: 'open'
   });
+  name.value = '';
 }
