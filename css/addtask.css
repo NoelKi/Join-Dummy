@@ -485,11 +485,22 @@ input[type="date"]:focus {
 
 .contact-task-assign {
   display: flex;
+  border-radius: 10px;
   align-items: center;
   justify-content: space-between;
-  width: 80%;
+  margin-top: 8px;
   padding: 7px 16px 7px 16px;
+  cursor: pointer;
 }
+
+.contact-task-assign:hover {
+  background-color: #D2E3FF;
+}
+
+.background-color-contacts {
+  background-color: #D2E3FF;
+}
+
 
 .contact-text-task {
   font-size: 19px;

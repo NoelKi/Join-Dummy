@@ -51,6 +51,7 @@ let dropDownArrowCat = document.querySelector('.drop-down-arrow-cat');
 let selectBoxCategory = document.querySelector(".select-box-category");
 let selectCategoryOption = document.getElementById("select-category");
 let categoryList = document.getElementById("category-list");
+let selectedContacts = new Set();
 
 function clearAllInputs() {
   titleInput.value = "";
@@ -176,7 +177,7 @@ function loadContactList() {
     htmlContent += `
         
           <div class="contact-task-assign">
-            <div class="icon-name-contact center-flexbox">
+            <div id="selected-contact" class="icon-name-contact center-flexbox">
             <div class="initials-task" style="background-color: ${contacts[i].color};">${initials}</div>
               <div class="contact-text-task ">${contacts[i].name} ${contacts[i].surname}</div>
             </div>
