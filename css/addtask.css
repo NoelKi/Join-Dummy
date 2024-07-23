@@ -138,7 +138,7 @@ input[type="date"]:focus {
   cursor: pointer;
   padding: 10px;
   box-sizing: border-box;
-  transition: border-bottom 0.3s ease;
+  transition: 100ms ease-out, color 100ms ease-out;
 }
 
 .button-img {
@@ -196,6 +196,7 @@ input[type="date"]:focus {
   border-bottom: 1px solid #d1d1d1;
   width: 100%;
   cursor: pointer;
+  transition: 100ms ease-out, color 100ms ease-out;
 }
 
 .select-option input {
@@ -236,7 +237,7 @@ input[type="date"]:focus {
 
 .drop-down-arrow-cat {
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: 100ms ease-out, color 100ms ease-out;
 }
 
 .search-assign input {
@@ -367,7 +368,7 @@ input[type="date"]:focus {
   height: 24px;
   border-radius: 50px;
   margin-top: 16px;
-  transition: transform 0.3s;
+  transition: 100ms ease-out, color 100ms ease-out;
 }
 
 .drop-down-arrow:hover,
@@ -413,7 +414,7 @@ input[type="date"]:focus {
   
   font-weight: 400;
   box-shadow: 0px 4px 8px 0px #00000033;
-  transition: background-color 100ms ease-out, color 100ms ease-out; /* Transition for background and text color */
+  transition: 100ms ease-out, color 100ms ease-out;
 }
 
 .clear-task-btn:hover {
@@ -441,7 +442,7 @@ input[type="date"]:focus {
   text-align: center;
   box-sizing: border-box;
   font-weight: 400;
-  transition: background-color 100ms ease-out, color 100ms ease-out;
+  transition: 100ms ease-out, color 100ms ease-out;
 }
 
 .create-task-btn:disabled {
@@ -481,3 +482,44 @@ input[type="date"]:focus {
 .margin-left-12 {
   margin-left: 12px;
 }
+
+.contact-task-assign {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  padding: 7px 16px 7px 16px;
+  
+}
+  
+  
+
+.contact-text-task {
+  font-size: 19px;
+  font-weight: 400;
+ 
+}
+
+.contact-line {
+  display: flex;
+}
+
+.initials {
+  color: white;
+  background-color: aquamarine;
+  height: 32px;
+  width: 32px;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+ 
+}
+
+.icon-name-contact {
+  display: flex;
+}
+
+  
