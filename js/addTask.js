@@ -214,13 +214,26 @@ function handleContactAssignClick(element, filteredContacts) {
       color: contact.color
     });
   }
+  renderCollaborators();
+  console.log(collaborators); 
+}
     
+function renderCollaborators() {
+  let assignContactsCircle = document.getElementById("assign-contacts-circle");
+  assignContactsCircle.innerHTML = "";
+  collaborators.forEach(collaborator => {
+    const initials =
+      getFirstLetterOfName(collaborator.name.split(" ")[0]) +
+      getFirstLetterOfName(collaborator.name.split(" ")[1]);
+    assignContactsCircle.innerHTML += `
+      <div class="initials-task-circle" style="background-color: ${collaborator.color};">${initials}</div>
+    `;
+  });
+}
 
-
-    
-
-
-  console.log(collaborators); // For debugging, log the updated collaborators array
+function clearCollaborators() {
+  collaborators = [];
+  renderCollaborators();
 }
 
 
@@ -243,6 +256,13 @@ document.getElementById('option-search').addEventListener('input', function(even
   loadContactList(filteredContacts);
 });
   
+    
+
+
+
+
+
+
 
   
   getUserLists();

@@ -197,6 +197,7 @@ input[type="date"]:focus {
   width: 100%;
   cursor: pointer;
   transition: 100ms ease-out, color 100ms ease-out;
+  margin-bottom: 6px;
 }
 
 .select-option input {
@@ -326,6 +327,7 @@ input[type="date"]:focus {
   overflow-y: auto;
   padding: 0;
   position: relative;
+  transition: 100ms ease-out, color 100ms ease-out
 }
 
 .option-category li {
@@ -333,11 +335,12 @@ input[type="date"]:focus {
   color: black;
   font-size: 19px;
   font-weight: 400;
-  cursor: pointer;
+  cursor: pointer;transition: 100ms ease-out, color 100ms ease-out
 }
 
 .option-category li:hover {
-  background: #d2e3ff;
+  background:  #D2E3FF;
+  border-radius: 10px;
 }
 
 .select-option:hover {
@@ -360,6 +363,8 @@ input[type="date"]:focus {
 
 #category-list {
   display: none;
+  color: #000000;
+  transition: 100ms ease-out, color 100ms ease-out;
 }
 
 .drop-down-arrow {
@@ -512,6 +517,8 @@ input[type="date"]:focus {
 .selected:hover {
   color: #000000;
 }
+
+
  
   
   
@@ -544,3 +551,23 @@ input[type="date"]:focus {
 .icon-name-contact {
   display: flex;
 }
+
+.circle-positioning  {
+  display: flex;
+}
+
+.initials-task-circle {
+  color: white;
+  background-color: aquamarine;
+  height: 32px;
+  width: 32px;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+  margin-right: 5px;
+}
+  
+  
