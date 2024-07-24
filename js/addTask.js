@@ -38,8 +38,9 @@ let subtaskArr = [];
 
 
 async function getUserLists() {
+  console.log('hallo');
   try {
-    const currUserData = await getUserData(USER_ID);
+    currUserData = await getUserData(USER_ID);
     if (!currUserData.contacts) {
       contacts = [];
     } else {
