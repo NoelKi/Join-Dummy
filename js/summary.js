@@ -1,40 +1,25 @@
-function init(){
-  upcomingDate();
+function init() {
   onloadFunc();
-  countTasks(tasksExample);
+  upcomingDate();
   includeHTML();
+  countTasks(tasksExample);
+  updateGreeting();
 }
 
 async function onloadFunc() {
-  const userResponse = await fetchUsers();
-  let userKeysArray = Object.keys(userResponse);
-  console.log(userKeysArray);
-  //countTasks(userResponse);
+  const users = await fetchUsers();
+  const username = Object.values(users)[0].name;
+  updateGreeting(username);
 }
 
-//document.addEventListener("DOMContentLoaded", function() {
-//  includeHTML();
-//  updateGreeting();
-//  onloadFunc(); // Call onloadFunc when the DOM is ready
-//});
-
-function updateGreeting() {
-  let greetingElement = document.getElementById("greetingUser");
-  let now = new Date();
-  let hours = now.getHours();
-
-  if (hours >= 7 && hours < 11) {
-    greetingElement.textContent = "Good Morning";
-  } else if (hours >= 11 && hours < 18) {
-    greetingElement.textContent = "Hello";
-  } else if (hours >= 18 && hours < 23) {
-    greetingElement.textContent = "Good Evening";
-  } else {
-    greetingElement.textContent = "Good Night";
-  }
+function updateGreeting(username) {
+  document.getElementById("greeting").textContent = `Good morning, ${username}`;
 }
 
-setInterval(updateGreeting, 60000);
+function updateGreeting(username) {
+  let greetingElement = document.getElementById("greeting");
+  greetingElement.innerHTML = `Good morning, &nbsp; <span>${username}</span>`;
+}
 
 function countTasks(tasks) {
   let totalCount = tasks.length;
@@ -51,6 +36,6 @@ function countTasks(tasks) {
 }
 
 function upcomingDate() {
-  document.getElementById('dueDate').textContent = new Date().toLocaleDateString('en-EN', 
+  document.getElementById('dueDate').textContent = new Date().toLocaleDateString('en-EN',
     { year: 'numeric', month: 'long', day: 'numeric' });
 }

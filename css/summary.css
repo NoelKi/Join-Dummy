@@ -341,18 +341,19 @@
         gap: 22px;
     }
 
-    .greetingUser {
+    .greeting span {
         display: flex;
-        color: #2A3647;
-        font-weight: 400;
-        font-size: 48px;
+        color: #4589FF;
+        font-weight: 700;
+        font-size: 64px;
     }
 
     .greeting {
         display: flex;
+        align-items: center;
         color: #2A3647;
-        font-weight: 700;
-        font-size: 64px;
+        font-weight: 400;
+        font-size: 48px;
     }
 
     .toDoBtnRow {
@@ -408,7 +409,7 @@
         width: 100%;
         max-width: 870px;
         display: grid;
-       /* grid-template-columns: 1fr 1fr 1fr 1fr;*/
+        /* grid-template-columns: 1fr 1fr 1fr 1fr;*/
         grid-template-rows: 190px 220px;
         justify-content: center;
         align-items: center;
