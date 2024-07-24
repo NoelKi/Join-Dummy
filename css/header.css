@@ -22,6 +22,8 @@ header {
   width: 45.93px;
   height: 56px;
   cursor: pointer;
+  pointer-events: none;
+  user-select: none;
 }
 
 .right-header-section {

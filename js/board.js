@@ -1,5 +1,6 @@
-let currentDraggedElement;
+let currentTaskElement;
 let tasks = [];
+let currentDraggedElement;
 
 let tasksExample = [{
     'id': 0,
@@ -118,61 +119,62 @@ function renderTasks() {
 
 function renderToDo() {
     let toDo = tasks.filter(t => t['category'] == 'toDo');
-    document.getElementById('board-toDo').innerHTML = '';
+    document.getElementById('toDo').innerHTML = '';
     for (let index = 0; index < toDo.length; index++) {
         const element = toDo[index];
-        document.getElementById('board-toDo').innerHTML += renderTaskHtml(element);
+        document.getElementById('toDo').innerHTML += renderTaskHtml(element);
     }
     if (toDo.length === 0) {
-        document.getElementById('board-toDo').innerHTML = renderEmptyBox('to do');
+        document.getElementById('toDo').innerHTML = renderEmptyBox('to do');
     }
 }
 
 function renderAwaitFeedback() {
     let awaitFeedback = tasks.filter(t => t['category'] == 'awaitFeedback');
 
-    document.getElementById('board-awaitFeedback').innerHTML = '';
+    document.getElementById('awaitFeedback').innerHTML = '';
 
     for (let index = 0; index < awaitFeedback.length; index++) {
         const element = awaitFeedback[index];
-        document.getElementById('board-awaitFeedback').innerHTML += renderTaskHtml(element);
+        document.getElementById('awaitFeedback').innerHTML += renderTaskHtml(element);
 
     }
     if (awaitFeedback.length === 0) {
-        document.getElementById('board-awaitFeedback').innerHTML = renderEmptyBox('await feedback');
+        document.getElementById('awaitFeedback').innerHTML = renderEmptyBox('await feedback');
     }
 }
 
 function renderDone() {
     let done = tasks.filter(t => t['category'] == 'done');
 
-    document.getElementById('board-done').innerHTML = '';
+    document.getElementById('done').innerHTML = '';
 
     for (let index = 0; index < done.length; index++) {
         const element = done[index];
-        document.getElementById('board-done').innerHTML += renderTaskHtml(element);
+        document.getElementById('done').innerHTML += renderTaskHtml(element);
     }
     if (done.length === 0) {
-        document.getElementById('board-done').innerHTML = renderEmptyBox('done');
+        document.getElementById('done').innerHTML = renderEmptyBox('done');
     }
 }
 
 function renderInProgress() {
     let inProgress = tasks.filter(t => t['category'] == 'inProgress');
 
-    document.getElementById('board-inProgress').innerHTML = '';
+    document.getElementById('inProgress').innerHTML = '';
 
     for (let index = 0; index < inProgress.length; index++) {
         const element = inProgress[index];
-        document.getElementById('board-inProgress').innerHTML += renderTaskHtml(element);
+        document.getElementById('inProgress').innerHTML += renderTaskHtml(element);
     }
     if (inProgress.length === 0) {
-        document.getElementById('board-inProgress').innerHTML = renderEmptyBox('in progress');
+        document.getElementById('inProgress').innerHTML = renderEmptyBox('in progress');
     }
 }
 
-function startDragging(id) {
-    currentDraggedElement = getIndexById(tasks,`${id}`);
+function startDragging(id, event) {
+    currentTaskElement = getIndexById(tasks, `${id}`);
+    currentDraggedElement = event.target;
 }
 
 function allowDrop(ev) {
@@ -180,20 +182,46 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-    tasks[currentDraggedElement]['category'] = category;
+    tasks[currentTaskElement]['category'] = category;
     renderTasks();
 }
 
-function highlight(id) {
-    document.getElementById(id).classList.add('drag-area-highlight');
+function isBefore(el1, el2) {
+    if (el2.parentNode === el1.parentNode)
+        for (var cur = el1.previousSibling; cur && cur.nodeType !== 9; cur = cur.previousSibling)
+            if (cur === el2)
+                return true;
+    return false;
+}
+// element.querySelector('li')
+function dragOver(e) {
+    console.log(isBefore(currentDraggedElement, e.currentTarget));
+    if (isBefore(currentDraggedElement, e.currentTarget)) {
+        e.currentTarget.parentNode.insertBefore(currentDraggedElement, e.currentTarget);
+        console.log(e.currentTarget.parentNode);
+    }
+    else
+        e.currentTarget.parentNode.insertBefore(currentDraggedElement, e.currentTarget.nextSibling);
 }
 
-function removeHighlight(id) {
-    document.getElementById(id).classList.remove('drag-area-highlight');
+function drop(event) {
+    const category = event.currentTarget.id;
+    console.log(category);
+    tasks[currentTaskElement]['category'] = category;
+    removeHighlight(event);
+    renderTasks();
+}
+
+function highlight(event) {
+    event.currentTarget.classList.add('drag-area-highlight');
+}
+
+function removeHighlight(event) {
+    event.currentTarget.classList.remove('drag-area-highlight');
 }
 
 function renderTaskHtml(element) {
-    let a = `<div class="task-container" draggable="true" ondragstart="startDragging(${element['id']})" onclick="renderTaskOverlay(${element['id']});">
+    let a = `<li class="task-container" draggable="true" ondragstart="startDragging(${element['id']},event)" ondragover="dragOver(event)" onclick="renderTaskOverlay(${element['id']});">
         <div class="task-kind-container" style="background-color: ${element.taskColor}">${element.kind}</div>
         <div class="task-content-container">
             <div class="task-title">${element.title}</div>
@@ -228,7 +256,7 @@ function renderTaskHtml(element) {
                 </div>
             </div>
         </div>
-    </div>`;
+    </li>`;
     return a;
 }
 
@@ -277,8 +305,8 @@ function createAddTaskOverlay() {
 }
 
 function renderTaskOverlay(id) {
-    const element = getObjectById(tasks,`${id}`);
-    console.log(element,`${id}`,tasks);
+    const element = getObjectById(tasks, `${id}`);
+    console.log(element, `${id}`, tasks);
     const content = document.getElementById('board-overlay-section');
     content.style.display = 'block';
     content.innerHTML = createTaskOverlay(element);
@@ -353,7 +381,7 @@ function getObjectById(array, id) {
 }
 
 function switchSubtaskState(taskId, subtaskId) {
-    const element = getObjectById(tasks,`${taskId}`);
+    const element = getObjectById(tasks, `${taskId}`);
     const subtask = getObjectById(element.subtask, `${subtaskId}`)
     if (subtask.state === 'done') {
         subtask.state = 'open';
@@ -369,8 +397,8 @@ function getIndexById(arr, id) {
     }
     for (let i = 0; i < arr.length; i++) {
         if (arr[i].id === id) {
-            return i; 
+            return i;
         }
     }
-    return -1; 
+    return -1;
 }
