@@ -1,5 +1,3 @@
-// CURRENT_USER_DATA = []; // local user data
-
 BASE_URL = 'https://join-dummy-backend-default-rtdb.europe-west1.firebasedatabase.app/';
 
 async function postData(path = "", data = {}) {
