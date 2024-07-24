@@ -31,7 +31,9 @@
                         <img src="../assets/img/plus.svg" alt="+">
                     </button>
                 </div>
-                <div class="board-headline-container">
+            </div>
+            <div class="board-headline-container">
+                <div class="outer-board-container">
                     <div class="board-top-container">
                         <h4>To do</h4>
                         <button class="add-task-btn-small" onclick="openAddTaskOverlay()">
@@ -39,6 +41,11 @@
                             <img class="add-task-btn-hover" src="../assets/img/addTaskBtnHover.svg" alt="+">
                         </button>
                     </div>
+                    <ul class="board-content-container drag-area" id="toDo" ondrop="drop(event)"
+                        ondragleave="removeHighlight(event)" ondragover="allowDrop(event); highlight(event)">
+                    </ul>
+                </div>
+                <div class="outer-board-container">
                     <div class="board-top-container">
                         <h4>In progress</h4>
                         <button class="add-task-btn-small" onclick="openAddTaskOverlay()">
@@ -46,6 +53,11 @@
                             <img class="add-task-btn-hover" src="../assets/img/addTaskBtnHover.svg" alt="+">
                         </button>
                     </div>
+                    <ul class="board-content-container drag-area" id="inProgress" ondrop="drop(event)"
+                        ondragleave="removeHighlight(event)" ondragover="allowDrop(event); highlight(event)">
+                    </ul>
+                </div>
+                <div class="outer-board-container">
                     <div class="board-top-container">
                         <h4>Await feedback</h4>
                         <button class="add-task-btn-small" onclick="openAddTaskOverlay()">
@@ -53,6 +65,11 @@
                             <img class="add-task-btn-hover" src="../assets/img/addTaskBtnHover.svg" alt="+">
                         </button>
                     </div>
+                    <ul class="board-content-container drag-area" id="awaitFeedback" ondrop="drop(event)"
+                        ondragleave="removeHighlight(event)" ondragover="allowDrop(event); highlight(event)">
+                    </ul>
+                </div>
+                <div class="outer-board-container">
                     <div class="board-top-container">
                         <h4>Done</h4>
                         <button class="add-task-btn-small" onclick="openAddTaskOverlay()">
@@ -60,22 +77,10 @@
                             <img class="add-task-btn-hover" src="../assets/img/addTaskBtnHover.svg" alt="+">
                         </button>
                     </div>
+                    <ul class="board-content-container drag-area" id="done" ondrop="drop(event)"
+                        ondragleave="removeHighlight(event)" ondragover="allowDrop(event); highlight(event)">
+                    </ul>
                 </div>
-
-            </div>
-            <div class="main-board-section">
-                <ul class="board-content-container drag-area" id="toDo" ondrop="drop(event)"
-                    ondragleave="removeHighlight(event)" ondragover="allowDrop(event); highlight(event)">
-                </ul>
-                <ul class="board-content-container drag-area" id="inProgress" ondrop="drop(event)"
-                    ondragleave="removeHighlight(event)" ondragover="allowDrop(event); highlight(event)">
-                </ul>
-                <ul class="board-content-container drag-area" id="awaitFeedback" ondrop="drop(event)"
-                    ondragleave="removeHighlight(event)" ondragover="allowDrop(event); highlight(event)">
-                </ul>
-                <ul class="board-content-container drag-area" id="done" ondrop="drop(event)"
-                    ondragleave="removeHighlight(event)" ondragover="allowDrop(event); highlight(event)">
-                </ul>
             </div>
         </div>
 
