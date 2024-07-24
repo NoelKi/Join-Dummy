@@ -4,16 +4,13 @@ function init() {
   includeHTML();
   countTasks(tasksExample);
   updateGreeting();
+  userFirstLetter()
 }
 
 async function onloadFunc() {
   const users = await fetchUsers();
   const username = Object.values(users)[0].name;
   updateGreeting(username);
-}
-
-function updateGreeting(username) {
-  document.getElementById("greeting").textContent = `Good morning, ${username}`;
 }
 
 function updateGreeting(username) {
