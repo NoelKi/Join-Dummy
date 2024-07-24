@@ -15,18 +15,17 @@
   <script src="../js/w3c.js"></script>
   <script src="../js/header.js"></script>
   <script src="../js/board.js"></script>
+  <script src="../js/summary.js"></script>
   <script src="../js/logIn.js"></script>
-  <script src="../js/summary.js" defer></script>
 </head>
 
-<body onload="includeHTML(); updateGreeting(); updateTaskSummary()">
+<body onload="init()">
   <div w3-include-html="../assets/templates/header.html"></div>
   <div class="wrap">
     <div w3-include-html="../assets/templates/sidebar.html"></div>
 
     <div class="summaryOverview">
       <div class="greetingContainer">
-        <p id="greetingUser" class="greetingUser"></p>
         <h1 class="greeting" id="greeting">Good morning</h1>
       </div>
       <div class="buttonContainer">
@@ -53,7 +52,9 @@
         </button>
         <button class="lightTaskBtn board" onclick="">
           <div class="toDoBtnRow">
-            <img src="../assets/img/Board.svg" alt="">
+            <div class="summaryBoarderIcon">
+              <img src="../assets/img/Board.svg" alt="">
+            </div>
             <h2 id="bordTasksNumber" class="taskNumber"></h2>
           </div>
           <p class="btnText">
