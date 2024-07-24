@@ -77,6 +77,21 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-task-btn-small:hover .add-task-btn-hover {
+    display: block;
+}
+
+.add-task-btn-small:hover .add-task-btn-unhover {
+    display: none;
+}
+
+.add-task-btn-hover {
+    display: none;
 }
 
 .main-board-section {    

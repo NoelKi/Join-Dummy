@@ -371,7 +371,7 @@ document.getElementById('option-search').addEventListener('input', function(even
       CURRENT_USER_DATA.contacts,
       tasks
     );
-    // deleteValues();
+    clearAllInputs();
   }
   
   function addSubtask() {
