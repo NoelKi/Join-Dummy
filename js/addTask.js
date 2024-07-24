@@ -7,7 +7,7 @@ window.onload = function () {
 let priorityValue = "";
 let kindValue = "";
 let kindColor = "";
-let subtaskArr = [];
+
 let categoryArr = [];
 
 let titleInput = document.getElementById("add-title");
@@ -34,6 +34,7 @@ let categoryList = document.getElementById("category-list");
 let contacts = [];
 let selectedContacts = [];
 let collaborators = [];
+let subtaskArr = [];
 
 
 async function getUserLists() {
@@ -148,12 +149,12 @@ document.getElementById("task-form").addEventListener("submit", function (event)
   function selectPriority(priority) {
     priorityValue = priority;
     document.querySelectorAll(".buttons button").forEach((btn) => {
-      btn.classList.remove("selected");
-      btn.querySelector(".button-img").classList.remove("selected");
+      btn.classList.remove("selected-btn");
+      btn.querySelector(".button-img").classList.remove("selected-btn");
     });
     const selectedButton = document.getElementById(priority.toLowerCase());
-    selectedButton.classList.add("selected");
-    selectedButton.querySelector(".button-img").classList.add("selected");
+    selectedButton.classList.add("selected-btn");
+    selectedButton.querySelector(".button-img").classList.add("selected-btn");
   }
 
 

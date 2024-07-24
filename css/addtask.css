@@ -163,25 +163,25 @@ input[type="date"]:focus {
   border-bottom: 2px solid #7ae229;
 }
 
-.button-urgent.selected {
+.button-urgent.selected-btn {
   background-color: #ff3d00;
   color: white;
   border-bottom: 2px solid #ff3d00;
 }
 
-.button-medium.selected {
+.button-medium.selected-btn {
   background-color: #ffa800;
   color: white;
   border-bottom: 2px solid #ffa800;
 }
 
-.button-low.selected {
+.button-low.selected-btn {
   background-color: #7ae229;
   color: white;
   border-bottom: 2px solid #7ae229;
 }
 
-.buttons button.selected .button-img {
+.buttons button.selected-btn .button-img {
   filter: brightness(0) invert(1);
 }
 
@@ -507,11 +507,9 @@ input[type="date"]:focus {
 .background-color-contacts {
   background-color: #D2E3FF;
 }
-.selected, .selected svg {
+.selected {
   background-color: #4589FF;
-  color: white;
-  fill: white;
-  stroke: white;
+  
 }
 
 .selected:hover {
