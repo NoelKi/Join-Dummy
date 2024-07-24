@@ -253,7 +253,9 @@
     transform: scale(1.04);
     background-color: #005DFF;
     color: white;
-
+    animation: Smart animate;
+    animation-timing-function: ease-in-out;
+    animation-duration: 100ms;
 }
 
 .lightTaskBtn:hover img {
@@ -271,6 +273,9 @@
     width: 67px;
     border: 3px solid white;
     border-radius: 100%;
+    animation: Smart animate;
+    animation-timing-function: ease-in-out;
+    animation-duration: 100ms;
 }
 
 .lightTaskBtn:hover .btnText {
