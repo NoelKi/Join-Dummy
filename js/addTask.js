@@ -200,10 +200,7 @@ function loadContactList() {
 }
 
 function handleContactAssignClick(element) {
-  let index = element.getAttribute('data-index');
-  let selectedContact = contacts[index];
-  
-  
+ 
   if (element.classList.contains('selected')) {
     element.classList.remove('selected');
     element.querySelector('#check-box-task img').src = "../assets/img/checkBoxTaskHtml.svg";
@@ -213,6 +210,9 @@ function handleContactAssignClick(element) {
   }
 }
     
+  
+  
+  
     
     
     

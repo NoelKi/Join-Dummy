@@ -491,6 +491,7 @@ input[type="date"]:focus {
   margin-top: 8px;
   padding: 7px 16px 7px 16px;
   cursor: pointer;
+  transition: 100ms ease-out, color 100ms ease-out;
 }
 
 .contact-task-assign:hover {
