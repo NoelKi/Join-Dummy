@@ -40,17 +40,17 @@ let subtaskArr = [];
 async function getUserLists() {
   console.log('hallo');
   try {
-    currUserData = await getUserData(USER_ID);
-    if (!currUserData.contacts) {
+    CURRENT_USER_DATA = await getUserData(USER_ID);
+    if (!CURRENT_USER_DATA.contacts) {
       contacts = [];
     } else {
-      contacts = currUserData.contacts;
+      contacts = CURRENT_USER_DATA.contacts;
       loadContactList();
     }
-    if (!currUserData.tasks) {
+    if (!CURRENT_USER_DATA.tasks) {
       tasks = [];
     } else {
-      tasks = currUserData.tasks;
+      tasks = CURRENT_USER_DATA.tasks;
     }
   } catch (error) {
     console.error("Fehler beim Abrufen der Benutzerdaten:", error);
@@ -365,10 +365,10 @@ document.getElementById('option-search').addEventListener('input', function(even
     event.preventDefault();
     pushTaskToTasks(); 
     updateUser(
-      currUserData.name,
-      currUserData.email,
-      currUserData.password,
-      currUserData.contacts,
+      CURRENT_USER_DATA.name,
+      CURRENT_USER_DATA.email,
+      CURRENT_USER_DATA.password,
+      CURRENT_USER_DATA.contacts,
       tasks
     );
     // deleteValues();

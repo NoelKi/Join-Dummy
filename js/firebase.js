@@ -1,4 +1,4 @@
-currentUserData = []; // local user data
+// CURRENT_USER_DATA = []; // local user data
 
 BASE_URL = 'https://join-dummy-backend-default-rtdb.europe-west1.firebasedatabase.app/';
 
@@ -23,7 +23,6 @@ async function getUserData() {
         }
         const data = await response.json();
         console.log(data);
-        currentUserData = data;
         return data;
     } catch (error) {
         console.error('Fehler:', error);
