@@ -74,6 +74,17 @@ function clearAllInputs() {
   titleInput.style.borderBottomColor = "";
   dateInput.style.borderBottomColor = "";
   resetPriorityButtons();
+  clearCollaborators();
+  clearSelectedContacts();
+  
+}
+
+function clearSelectedContacts() {
+  contacts.forEach(contact => contact.selected = false);
+  document.querySelectorAll(".contact-task-assign").forEach(element => {
+    element.classList.remove("selected");
+    element.querySelector(".check-box-task img").src = "../assets/img/checkBoxTaskHtml.svg";
+  });
 }
 
 clearTaskBtn.addEventListener("click", function () {
