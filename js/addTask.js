@@ -171,7 +171,7 @@ document.getElementById("task-form").addEventListener("submit", function (event)
         const selectedClass = filteredContacts[i].selected ? 'selected' : '';
         
       htmlContent += `
-        <div  lass="contact-task-assign ${selectedClass}" data-index="${i}">
+        <div class="contact-task-assign ${selectedClass}" data-index="${i}">
           <div class="icon-name-contact center-flexbox">
             <div class="initials-task" style="background-color: ${filteredContacts[i].color};">${initials}</div>
             <div class="contact-text-task">${filteredContacts[i].name} ${filteredContacts[i].surname}</div>
@@ -206,7 +206,8 @@ function handleContactAssignClick(element, filteredContacts) {
     }
   } else {
     element.classList.add("selected");
-    element.querySelector(".check-box-task img").src = "../assets/img/checkedTaskHtml.svg";
+    element.querySelector(".check-box-task img").src =
+"../assets/img/checkedTaskHtml.svg";
     contact.selected = true;
     collaborators.push({
       name: `${contact.name} ${contact.surname}`,
