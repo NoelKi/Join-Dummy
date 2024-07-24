@@ -8,9 +8,14 @@ function init() {
 }
 
 async function onloadFunc() {
-  const users = await fetchUsers();
-  const username = Object.values(users)[0].name;
-  updateGreeting(username);
+  const userId = await loadUserIdLocalStorage();
+  const userName = JSON.parse(localStorage.getItem('userName'));
+
+  if (userId && userName) {
+    updateGreeting(`${userName}`);
+  } else {
+    updateGreeting('Guest!');
+  }
 }
 
 function updateGreeting(username) {

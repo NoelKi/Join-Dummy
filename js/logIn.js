@@ -11,7 +11,7 @@ async function checkLogInData(email, password) {
   for (const key in users) {
     const user = users[key];
     if (user.email === email && user.password === password) {
-      saveUserIdLocalStorage(key);
+      saveUserIdLocalStorage(key, user.name);
       return true;
     }
   }
@@ -28,15 +28,17 @@ async function login() {
   }
 }
 
-function saveUserIdLocalStorage(id) {
+function saveUserIdLocalStorage(id, name) {
   const idAsText = JSON.stringify(id);
+  const nameAsText = JSON.stringify(name);
   localStorage.setItem('userId', idAsText);
+  localStorage.setItem('userName', nameAsText);
 }
 
 function loadUserIdLocalStorage() {
   const idAsText = localStorage.getItem('userId');
   if (!idAsText) return window.location.href = 'login.html';
-  userId = JSON.parse(idAsText);
+  return JSON.parse(idAsText);
 }
 
 function toggleCheckBox() {
