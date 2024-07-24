@@ -188,11 +188,12 @@ function moveTo(category) {
 
 function isBefore(el1, el2) {
     if (el2.parentNode === el1.parentNode)
-        for (var cur = el1.previousSibling; cur && cur.nodeType !== 9; cur = cur.previousSibling)
+        for (let cur = el1.previousSibling; cur && cur.nodeType !== 9; cur = cur.previousSibling)
             if (cur === el2)
                 return true;
     return false;
 }
+
 // element.querySelector('li')
 function dragOver(e) {
     console.log(isBefore(currentDraggedElement, e.currentTarget));
@@ -206,10 +207,28 @@ function dragOver(e) {
 
 function drop(event) {
     const category = event.currentTarget.id;
-    console.log(category);
-    tasks[currentTaskElement]['category'] = category;
-    removeHighlight(event);
-    renderTasks();
+    if (category !== tasks[currentTaskElement]['category']) {
+        tasks[currentTaskElement]['category'] = category;
+        removeHighlight(event);
+        renderTasks();
+        currentDraggedElement = null;
+    } else {
+        const array = event.currentTarget.children;
+        const idList = [];
+        const newTasks = [];
+        for (let i = 0; i < array.length; i++) {
+            const elId = array[i].id;
+            const currIndex = getIndexById(tasks, elId);
+            // console.log(tasks[currIndex].title,i,'Element');
+            const taskObj = tasks[currIndex];
+            newTasks.push(taskObj);
+        }
+        tasks = newTasks;
+        console.log('Halllo', tasks);
+        removeHighlight(event);
+        renderTasks();
+        currentDraggedElement = null;
+    }
 }
 
 function highlight(event) {
@@ -221,7 +240,7 @@ function removeHighlight(event) {
 }
 
 function renderTaskHtml(element) {
-    let a = `<li class="task-container" draggable="true" ondragstart="startDragging(${element['id']},event)" ondragover="dragOver(event)" onclick="renderTaskOverlay(${element['id']});">
+    let a = `<li id="${element.id}" class="task-container" draggable="true" ondragstart="startDragging(${element['id']},event)" ondragover="dragOver(event)" onclick="renderTaskOverlay(${element['id']});">
         <div class="task-kind-container" style="background-color: ${element.taskColor}">${element.kind}</div>
         <div class="task-content-container">
             <div class="task-title">${element.title}</div>
