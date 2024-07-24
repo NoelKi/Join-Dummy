@@ -68,6 +68,7 @@ function closeContactDetailCard() {
     content.classList.add('slide-out');
     setTimeout(() => {
         content.innerHTML = '';
+        content.classList.remove('slide-out')
     }, 400);
 }
 
