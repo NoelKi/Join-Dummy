@@ -7,9 +7,9 @@ window.onload = function () {
 let priorityValue = "";
 let kindValue = "";
 let kindColor = "";
-let subtaskArr = [];
+
 let categoryArr = [];
-let collaborators = [];
+
 let titleInput = document.getElementById("add-title");
 let titleError = document.getElementById("title-error");
 let textarea = document.getElementById("textarea-task");
@@ -33,6 +33,8 @@ let categoryList = document.getElementById("category-list");
 
 let contacts = [];
 let selectedContacts = [];
+let collaborators = [];
+let subtaskArr = [];
 
 
 async function getUserLists() {
@@ -72,6 +74,17 @@ function clearAllInputs() {
   titleInput.style.borderBottomColor = "";
   dateInput.style.borderBottomColor = "";
   resetPriorityButtons();
+  clearCollaborators();
+  clearSelectedContacts();
+  
+}
+
+function clearSelectedContacts() {
+  contacts.forEach(contact => contact.selected = false);
+  document.querySelectorAll(".contact-task-assign").forEach(element => {
+    element.classList.remove("selected");
+    element.querySelector(".check-box-task img").src = "../assets/img/checkBoxTaskHtml.svg";
+  });
 }
 
 clearTaskBtn.addEventListener("click", function () {
@@ -147,12 +160,12 @@ document.getElementById("task-form").addEventListener("submit", function (event)
   function selectPriority(priority) {
     priorityValue = priority;
     document.querySelectorAll(".buttons button").forEach((btn) => {
-      btn.classList.remove("selected");
-      btn.querySelector(".button-img").classList.remove("selected");
+      btn.classList.remove("selected-btn");
+      btn.querySelector(".button-img").classList.remove("selected-btn");
     });
     const selectedButton = document.getElementById(priority.toLowerCase());
-    selectedButton.classList.add("selected");
-    selectedButton.querySelector(".button-img").classList.add("selected");
+    selectedButton.classList.add("selected-btn");
+    selectedButton.querySelector(".button-img").classList.add("selected-btn");
   }
 
 
@@ -197,16 +210,44 @@ function handleContactAssignClick(element, filteredContacts) {
 
   if (element.classList.contains("selected")) {
     element.classList.remove("selected");
-    element.querySelector(".check-box-task img").src =
-      "../assets/img/checkBoxTaskHtml.svg";
-    contact.selected = false; // Update the selected state
+    element.querySelector(".check-box-task img").src = "../assets/img/checkBoxTaskHtml.svg";
+    contact.selected = false; 
+    const collaboratorIndex = collaborators.findIndex(collaborator => collaborator.name === `${contact.name} ${contact.surname}`);
+    if (collaboratorIndex > -1) {
+      collaborators.splice(collaboratorIndex, 1);
+    }
   } else {
     element.classList.add("selected");
     element.querySelector(".check-box-task img").src =
-      "../assets/img/checkedTaskHtml.svg";
-    contact.selected = true; // Update the selected state
+"../assets/img/checkedTaskHtml.svg";
+    contact.selected = true;
+    collaborators.push({
+      name: `${contact.name} ${contact.surname}`,
+      color: contact.color
+    });
   }
+  renderCollaborators();
+  console.log(collaborators); 
 }
+    
+function renderCollaborators() {
+  let assignContactsCircle = document.getElementById("assign-contacts-circle");
+  assignContactsCircle.innerHTML = "";
+  collaborators.forEach(collaborator => {
+    const initials =
+      getFirstLetterOfName(collaborator.name.split(" ")[0]) +
+      getFirstLetterOfName(collaborator.name.split(" ")[1]);
+    assignContactsCircle.innerHTML += `
+      <div class="initials-task-circle" style="background-color: ${collaborator.color};">${initials}</div>
+    `;
+  });
+}
+
+function clearCollaborators() {
+  collaborators = [];
+  renderCollaborators();
+}
+
 
 function filterContacts(searchName) {
   searchName = searchName.toLowerCase();
@@ -227,6 +268,13 @@ document.getElementById('option-search').addEventListener('input', function(even
   loadContactList(filteredContacts);
 });
   
+    
+
+
+
+
+
+
 
   
   getUserLists();
@@ -279,7 +327,7 @@ document.getElementById('option-search').addEventListener('input', function(even
     return name.toUpperCase();
   }
   
-  function pushTaskToTasks() {
+  function pushTaskToTasks() {  // Don't touch !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // auf benennung in board.js achten
     tasks.push({
       id: Date.now().toString(),
@@ -311,10 +359,10 @@ document.getElementById('option-search').addEventListener('input', function(even
     kindValue = "";
   }
   
-  function createTask(event) {
+  function createTask(event) {  // Don't touch !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // function for create Task button
     event.preventDefault();
-    pushTaskToTasks();
+    pushTaskToTasks(); 
     updateUser(
       currUserData.name,
       currUserData.email,
