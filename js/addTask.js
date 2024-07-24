@@ -51,7 +51,8 @@ let dropDownArrowCat = document.querySelector('.drop-down-arrow-cat');
 let selectBoxCategory = document.querySelector(".select-box-category");
 let selectCategoryOption = document.getElementById("select-category");
 let categoryList = document.getElementById("category-list");
-let selectedContacts = new Set();
+
+
 
 function clearAllInputs() {
   titleInput.value = "";
@@ -176,7 +177,7 @@ function loadContactList() {
     initials = getFirstLetterOfName(contacts[i].name) + getFirstLetterOfName(contacts[i].surname);
     htmlContent += `
         
-          <div class="contact-task-assign">
+          <div class="contact-task-assign  data-index="${i}">
             <div id="selected-contact" class="icon-name-contact center-flexbox">
             <div class="initials-task" style="background-color: ${contacts[i].color};">${initials}</div>
               <div class="contact-text-task ">${contacts[i].name} ${contacts[i].surname}</div>
@@ -189,6 +190,35 @@ function loadContactList() {
 
   listContainer.innerHTML = htmlContent; // Set the entire HTML content at once
 
+
+  let contactAssignElements = document.querySelectorAll('.contact-task-assign');
+  contactAssignElements.forEach((element) => {
+    element.addEventListener('click', function() {
+      handleContactAssignClick(element);
+    });
+  });
+}
+
+function handleContactAssignClick(element) {
+  let index = element.getAttribute('data-index');
+  let selectedContact = contacts[index];
+  
+  
+  if (element.classList.contains('selected')) {
+    element.classList.remove('selected');
+    element.querySelector('#check-box-task img').src = "../assets/img/checkBoxTaskHtml.svg";
+  } else {
+    element.classList.add('selected');
+    element.querySelector('#check-box-task img').src = "../assets/img/checkedTaskHtml.svg";
+  }
+}
+    
+    
+    
+    
+
+loadContactList();
+
   // Adding event listeners dynamically to each 'div' element
   document.querySelectorAll('.contact-item').forEach(function (item) {
     item.addEventListener('click', function () {
@@ -198,7 +228,9 @@ function loadContactList() {
       checkInputs();
     });
   });
-}
+
+
+
 
 
 function toggleCategoryList() {

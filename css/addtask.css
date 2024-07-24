@@ -500,7 +500,9 @@ input[type="date"]:focus {
 .background-color-contacts {
   background-color: #D2E3FF;
 }
-
+.selected {
+  background-color: #D2E3FF;
+}
 
 .contact-text-task {
   font-size: 19px;
