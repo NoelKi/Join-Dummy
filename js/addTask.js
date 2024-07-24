@@ -54,17 +54,7 @@ async function getUserLists() {
   }
 }
 
-function filterContacts(searchName) {
-  searchName = searchName.toLowerCase();
 
-  return contacts.filter((contact) => {
-    return (
-      contact.name.toLowerCase() +
-      " " +
-      contact.surname.toLowerCase()
-    ).includes(searchName);
-  });
-}
 
 function clearAllInputs() {
   titleInput.value = "";
@@ -166,6 +156,8 @@ document.getElementById("task-form").addEventListener("submit", function (event)
   }
 
 
+  contacts.forEach(contact => contact.selected = false);
+
   function loadContactList(filteredContacts = contacts) {
     let listContainer = document.getElementById("generate-list");
     listContainer.innerHTML = ""; // Clear existing content
@@ -175,14 +167,15 @@ document.getElementById("task-form").addEventListener("submit", function (event)
       const initials =
         getFirstLetterOfName(filteredContacts[i].name) +
         getFirstLetterOfName(filteredContacts[i].surname);
+        const selectedClass = filteredContacts[i].selected ? 'selected' : '';
         
       htmlContent += `
-        <div class="contact-task-assign" data-index="${i}">
+        <div class="contact-task-assign ${selectedClass}" data-index="${i}">
           <div class="icon-name-contact center-flexbox">
             <div class="initials-task" style="background-color: ${filteredContacts[i].color};">${initials}</div>
             <div class="contact-text-task">${filteredContacts[i].name} ${filteredContacts[i].surname}</div>
           </div>
-          <div class="check-box-task"><img src="../assets/img/checkBoxTaskHtml.svg"></div>
+            <div class="check-box-task"><img src="../assets/img/${filteredContacts[i].selected ? 'checkedTaskHtml.svg' : 'checkBoxTaskHtml.svg'}"></div>
         </div>
       `;
     }
@@ -190,31 +183,51 @@ document.getElementById("task-form").addEventListener("submit", function (event)
     listContainer.innerHTML = htmlContent; // Set the entire HTML content at once
   
     let contactAssignElements = document.querySelectorAll(".contact-task-assign");
-    contactAssignElements.forEach((element) => {
-      element.addEventListener("click", function () {
-        handleContactAssignClick(element);
-      });
+  contactAssignElements.forEach((element) => {
+    element.addEventListener("click", function () {
+      handleContactAssignClick(element, filteredContacts);
     });
-  }
-
-
-  function handleContactAssignClick(element) {
-    if (element.classList.contains("selected")) {
-      element.classList.remove("selected");
-      element.querySelector(".check-box-task img").src =
-        "../assets/img/checkBoxTaskHtml.svg";
-    } else {
-      element.classList.add("selected");
-      element.querySelector(".check-box-task img").src =
-        "../assets/img/checkedTaskHtml.svg";
-    }
-  }
-  
-  document.getElementById("option-search").addEventListener("input", (event) => {
-    const searchName = event.target.value;
-    const filteredContacts = filterContacts(searchName);
-    loadContactList(filteredContacts);
   });
+}
+
+
+function handleContactAssignClick(element, filteredContacts) {
+  const index = element.dataset.index;
+  const contact = filteredContacts[index];
+
+  if (element.classList.contains("selected")) {
+    element.classList.remove("selected");
+    element.querySelector(".check-box-task img").src =
+      "../assets/img/checkBoxTaskHtml.svg";
+    contact.selected = false; // Update the selected state
+  } else {
+    element.classList.add("selected");
+    element.querySelector(".check-box-task img").src =
+      "../assets/img/checkedTaskHtml.svg";
+    contact.selected = true; // Update the selected state
+  }
+}
+
+function filterContacts(searchName) {
+  searchName = searchName.toLowerCase();
+
+  return contacts.filter((contact) => {
+    return (
+      contact.name.toLowerCase() +
+      " " +
+      contact.surname.toLowerCase()
+    ).includes(searchName);
+  });
+}
+
+
+document.getElementById('option-search').addEventListener('input', function(event) {
+  const searchName = event.target.value;
+  const filteredContacts = filterContacts(searchName);
+  loadContactList(filteredContacts);
+});
+  
+
   
   getUserLists();
   loadContactList();
