@@ -488,6 +488,7 @@ input[type="date"]:focus {
   border-radius: 10px;
   align-items: center;
   justify-content: space-between;
+  color: #000000;
   margin-top: 8px;
   padding: 7px 16px 7px 16px;
   cursor: pointer;
@@ -501,14 +502,26 @@ input[type="date"]:focus {
 .background-color-contacts {
   background-color: #D2E3FF;
 }
-.selected {
-  background-color: #D2E3FF;
+.selected, .selected svg {
+  background-color: #4589FF;
+  color: white;
+  fill: white;
+  stroke: white;
 }
+
+.selected:hover {
+  color: #000000;
+}
+ 
+  
+  
 
 .contact-text-task {
   font-size: 19px;
   font-weight: 400;
 }
+
+
 
 .contact-line {
   display: flex;

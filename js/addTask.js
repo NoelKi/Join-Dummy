@@ -9,7 +9,7 @@ let kindValue = "";
 let kindColor = "";
 let subtaskArr = [];
 let categoryArr = [];
-let collaborators = [];
+
 let titleInput = document.getElementById("add-title");
 let titleError = document.getElementById("title-error");
 let textarea = document.getElementById("textarea-task");
@@ -33,6 +33,7 @@ let categoryList = document.getElementById("category-list");
 
 let contacts = [];
 let selectedContacts = [];
+let collaborators = [];
 
 
 async function getUserLists() {
@@ -170,7 +171,7 @@ document.getElementById("task-form").addEventListener("submit", function (event)
         const selectedClass = filteredContacts[i].selected ? 'selected' : '';
         
       htmlContent += `
-        <div class="contact-task-assign ${selectedClass}" data-index="${i}">
+        <div  lass="contact-task-assign ${selectedClass}" data-index="${i}">
           <div class="icon-name-contact center-flexbox">
             <div class="initials-task" style="background-color: ${filteredContacts[i].color};">${initials}</div>
             <div class="contact-text-task">${filteredContacts[i].name} ${filteredContacts[i].surname}</div>
@@ -197,16 +198,30 @@ function handleContactAssignClick(element, filteredContacts) {
 
   if (element.classList.contains("selected")) {
     element.classList.remove("selected");
-    element.querySelector(".check-box-task img").src =
-      "../assets/img/checkBoxTaskHtml.svg";
-    contact.selected = false; // Update the selected state
+    element.querySelector(".check-box-task img").src = "../assets/img/checkBoxTaskHtml.svg";
+    contact.selected = false; 
+    const collaboratorIndex = collaborators.findIndex(collaborator => collaborator.name === `${contact.name} ${contact.surname}`);
+    if (collaboratorIndex > -1) {
+      collaborators.splice(collaboratorIndex, 1);
+    }
   } else {
     element.classList.add("selected");
-    element.querySelector(".check-box-task img").src =
-      "../assets/img/checkedTaskHtml.svg";
-    contact.selected = true; // Update the selected state
+    element.querySelector(".check-box-task img").src = "../assets/img/checkedTaskHtml.svg";
+    contact.selected = true;
+    collaborators.push({
+      name: `${contact.name} ${contact.surname}`,
+      color: contact.color
+    });
   }
+    
+
+
+    
+
+
+  console.log(collaborators); // For debugging, log the updated collaborators array
 }
+
 
 function filterContacts(searchName) {
   searchName = searchName.toLowerCase();
@@ -279,7 +294,7 @@ document.getElementById('option-search').addEventListener('input', function(even
     return name.toUpperCase();
   }
   
-  function pushTaskToTasks() {
+  function pushTaskToTasks() {  // Don't touch !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // auf benennung in board.js achten
     tasks.push({
       id: Date.now().toString(),
@@ -311,10 +326,10 @@ document.getElementById('option-search').addEventListener('input', function(even
     kindValue = "";
   }
   
-  function createTask(event) {
+  function createTask(event) {  // Don't touch !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // function for create Task button
     event.preventDefault();
-    pushTaskToTasks();
+    pushTaskToTasks(); 
     updateUser(
       currUserData.name,
       currUserData.email,
