@@ -491,6 +491,7 @@ input[type="date"]:focus {
   margin-top: 8px;
   padding: 7px 16px 7px 16px;
   cursor: pointer;
+  transition: 100ms ease-out, color 100ms ease-out;
 }
 
 .contact-task-assign:hover {
@@ -500,7 +501,9 @@ input[type="date"]:focus {
 .background-color-contacts {
   background-color: #D2E3FF;
 }
-
+.selected {
+  background-color: #D2E3FF;
+}
 
 .contact-text-task {
   font-size: 19px;
