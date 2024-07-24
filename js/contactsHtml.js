@@ -140,6 +140,7 @@ function createButtonCard() {
         <button class="add-contacts-btn" onclick="renderAddOverlay()">
             Add new contact 
             <img class="contact-icon" src="../assets/img/contact.svg" alt="contact-img">
+            <img class="contact-icon-hover" src="../assets/img/contactHover.svg" alt="contact-img">
         </button>
     </div>`;
 }
