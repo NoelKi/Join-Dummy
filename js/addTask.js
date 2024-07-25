@@ -28,6 +28,10 @@ let dropDownArrowCat = document.querySelector(".drop-down-arrow-cat");
 let selectBoxCategory = document.querySelector(".select-box-category");
 let selectCategoryOption = document.getElementById("select-category");
 let categoryList = document.getElementById("category-list");
+let inputField = document.getElementById("subtask-input-field");
+let changedInput = document.getElementById("change-to-focus")
+
+
 
 
 
@@ -269,10 +273,87 @@ document.getElementById('option-search').addEventListener('input', function(even
   loadContactList(filteredContacts);
 });
   
+   
+
+
+
+
+function changeToFocus() {
+  let changedInput = document.getElementById('input-subtask-add');
+  changedInput.innerHTML = `
+    <div class="input-positioning">
+      <input class="subtask-css-input" id="subtask-input-field" type="text" placeholder="Add subtask" />
+      <div class="center-flexbox">
+        <div class="subtask-add-icons">
+          <div class="icons-subtask center-flexbox"><img onclick="clearInputSubtask()" src="../assets/img/clear_subtask.svg" alt=""></div>
+          <div class="separator-subtask"></div>
+          <div class="icons-subtask center-flexbox"><img onclick="addSubtaskList()" src="../assets/img/subtask_save.svg" alt=""></div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('subtask-input-field').focus();
+}
+
+function addSubtaskList() {
+  let subtaskInput = document.getElementById('subtask-input-field').value;
+  if (subtaskInput.trim() !== "") {
+    let uniqueId = new Date().getTime();
+    let newSubtask = {
+      name: subtaskInput,
+      state: 'done', 
+      id: uniqueId
+    };
+    subtaskArr.push(newSubtask);
+  }
+
+  document.getElementById('subtask-input-field').value = "";
+
+  renderSubtasks();
+}
+    
+    
+function renderSubtasks() {
+  let addedSubtask = document.getElementById('added-subtask');
+  addedSubtask.innerHTML = "";
+
+  for (let i = 0; i < subtaskArr.length; i++) {
+    let task = subtaskArr[i];
+    
+    addedSubtask.innerHTML += `
+      <div class="input-positioning">
+        <input class="subtask-css-input" id="subtask-input-field-sub-${i}" type="text" value="${task.name}" readonly />
+        <div class="center-flexbox">
+          <div class="subtask-add-icons">
+            <div class="icons-subtask center-flexbox"><img src="../assets/img/bin_task.svg" onclick="removeSubtask(${task.id})"></div>
+            <div class="separator-subtask"></div>
+            <div class="icons-subtask center-flexbox"><img src="../assets/img/subtask_save.svg"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function removeSubtask(id) {
+  // Filter out the subtask with the given ID
+  subtaskArr = subtaskArr.filter(task => task.id !== id);
+  
+  renderSubtasks(); // Re-render the subtasks after removal
+}
+
+  
+  function clearInputSubtask() {
+    document.getElementById('subtask-input-field').value= '';
+  }
+  
+   
+    
     
 
 
-
+  
 
 
 
@@ -374,20 +455,7 @@ document.getElementById('option-search').addEventListener('input', function(even
     clearAllInputs();
   }
   
-  function addSubtask() {
-    const name = document.getElementById("subtask-input-field");
-    subtaskArr.push({
-      name: name.value,
-      id: Date.now().toString(),
-      state: "open",
-    });
-    name.value = "";
-  }
-
-
-
-
-
+  
 
 
 

@@ -327,7 +327,7 @@ input[type="date"]:focus {
   overflow-y: auto;
   padding: 0;
   position: relative;
-  transition: 100ms ease-out, color 100ms ease-out
+  transition: 100ms ease-out, color 100ms ease-out;
 }
 
 .option-category li {
@@ -335,11 +335,12 @@ input[type="date"]:focus {
   color: black;
   font-size: 19px;
   font-weight: 400;
-  cursor: pointer;transition: 100ms ease-out, color 100ms ease-out
+  cursor: pointer;
+  transition: 100ms ease-out, color 100ms ease-out;
 }
 
 .option-category li:hover {
-  background:  #D2E3FF;
+  background: #d2e3ff;
   border-radius: 10px;
 }
 
@@ -378,7 +379,8 @@ input[type="date"]:focus {
 
 .drop-down-arrow:hover,
 .drop-down-arrow-cat:hover,
-.add-symbol-css:hover {
+.add-symbol-css:hover,
+.icons-subtask:hover {
   background-color: #d2e3ff;
 }
 
@@ -501,32 +503,29 @@ input[type="date"]:focus {
 }
 
 .contact-task-assign:hover {
-  background-color: #D2E3FF;
+  background-color: #d2e3ff;
 }
 
 .background-color-contacts {
-  background-color: #D2E3FF;
+  background-color: #d2e3ff;
 }
 .selected {
-  background-color: #4589FF;
-  
+  background-color: #4589ff;
+  color: white;
+}
+
+.selected img {
+  filter: brightness(0) invert(1);
 }
 
 .selected:hover {
   color: #000000;
 }
 
-
- 
-  
-  
-
 .contact-text-task {
   font-size: 19px;
   font-weight: 400;
 }
-
-
 
 .contact-line {
   display: flex;
@@ -550,7 +549,7 @@ input[type="date"]:focus {
   display: flex;
 }
 
-.circle-positioning  {
+.circle-positioning {
   display: flex;
 }
 
@@ -567,5 +566,55 @@ input[type="date"]:focus {
   font-size: 12px;
   margin-right: 5px;
 }
+
+.subtask-add-icons {
+  display: flex;
+  margin-right: 12px;
+  gap: 5px;
+}
+
+.icons-subtask {
   
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+  margin-top: 16px;
+  transition: 100ms ease-out, color 100ms ease-out;
   
+}
+
+.separator-subtask {
+  background-color: #D1D1D1;
+  height: 26px;
+  margin-top: 16px;
+  width: 1px;
+}
+
+.added-subtask-input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  
+  width: 100%;
+  cursor: pointer;
+  transition: 100ms ease-out, color 100ms ease-out;
+  margin-bottom: 6px;
+}
+
+.added-subtask-input input {
+  width: 100%;
+  height: 48px;
+  background-color: white;
+  border: 0px 0px 1px 0px;
+  outline: none;
+  border: none;
+
+  font-size: 19px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 10px 10px 0px 10px;
+}
+
+
+
+
