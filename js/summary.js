@@ -13,7 +13,7 @@ async function onloadFunc() {
   const userName = JSON.parse(localStorage.getItem('userName'));
 
   if (userId && userName) {
-    updateGreeting(`${userName}`);
+    updateGreeting(userName);
   } else {
     updateGreeting('Guest!');
   }

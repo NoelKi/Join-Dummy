@@ -18,10 +18,12 @@ function createDetailedContactCard(id, initials) {
             <p class="contact-detail-name">${contact.name} ${contact.surname}</p>
             <div class="contact-edit-container">
                 <div class="contact-edit-inner-container" onclick="renderEditOverlay(${contact.id},'${initials}');">
-                    <img src="../assets/img/pencil.svg" alt="pencil">Edit
+                    <img class="unhover-btn" src="../assets/img/editUnhover.svg" alt="pencil">
+                    <img class="hover-btn" src="../assets/img/editHover.svg" alt="pencil">
                 </div>
                 <div class="contact-edit-inner-container" onclick="deleteContact(${id});">
-                    <img src="../assets/img/bin.svg" alt="bin">Delete
+                    <img class="unhover-btn" src="../assets/img/deleteUnhover.svg" alt="bin">
+                    <img class="hover-btn" src="../assets/img/deleteHover.svg" alt="pencil">
                 </div>
             </div>
 
@@ -68,7 +70,7 @@ function createEditOverlay(id, initials) {
                                 Delete
                             </button>
                             <button class="overlay-blue-btn" type="submit">
-                                Save &emsp; <img src="../assets/img/checkOverlay.svg" alt="check">
+                                Save &emsp; <img src="../assets/img/checkOverlay.svg" class="white-check-overlay" alt="check"><img src="../assets/img/checkOverlayBlue.svg" class="blue-check-overlay" alt="check">
                             </button>
                         </div>
                     </form>
@@ -110,10 +112,10 @@ function createAddOverlay() {
                         </div>
                         <div class="overlay-btn">
                             <button class="overlay-white-btn" onclick="closeOverlay();" type="button">
-                                Cancel <img src='../assets/img/closeAddContacts.svg' alt="x">
+                                Cancel <img src='../assets/img/closeAddContacts.svg' class="hover-btn-grey" alt="x"> <img src='../assets/img/closeAddContactHover.svg' class="hover-btn-blue" alt="x">
                             </button>
                             <button class="overlay-blue-btn" type="submit">
-                                Create Contact &ensp; <img src="../assets/img/checkOverlay.svg" alt="check">
+                                Create Contact &ensp; <img src="../assets/img/checkOverlay.svg" class="white-check-overlay" alt="check"><img src="../assets/img/checkOverlayBlue.svg" class="blue-check-overlay" alt="check">
                             </button>
                         </div>
                     </form>
@@ -138,6 +140,7 @@ function createButtonCard() {
         <button class="add-contacts-btn" onclick="renderAddOverlay()">
             Add new contact 
             <img class="contact-icon" src="../assets/img/contact.svg" alt="contact-img">
+            <img class="contact-icon-hover" src="../assets/img/contactHover.svg" alt="contact-img">
         </button>
     </div>`;
 }

@@ -7,9 +7,9 @@ window.onload = function () {
 let priorityValue = "";
 let kindValue = "";
 let kindColor = "";
-let subtaskArr = [];
+
 let categoryArr = [];
-let collaborators = [];
+
 let titleInput = document.getElementById("add-title");
 let titleError = document.getElementById("title-error");
 let textarea = document.getElementById("textarea-task");
@@ -28,26 +28,33 @@ let dropDownArrowCat = document.querySelector(".drop-down-arrow-cat");
 let selectBoxCategory = document.querySelector(".select-box-category");
 let selectCategoryOption = document.getElementById("select-category");
 let categoryList = document.getElementById("category-list");
+let inputField = document.getElementById("subtask-input-field");
+let changedInput = document.getElementById("change-to-focus")
+
+
 
 
 
 let contacts = [];
 let selectedContacts = [];
+let collaborators = [];
+let subtaskArr = [];
 
 
 async function getUserLists() {
+  console.log('hallo');
   try {
-    const currUserData = await getUserData(USER_ID);
-    if (!currUserData.contacts) {
+    CURRENT_USER_DATA = await getUserData(USER_ID);
+    if (!CURRENT_USER_DATA.contacts) {
       contacts = [];
     } else {
-      contacts = currUserData.contacts;
+      contacts = CURRENT_USER_DATA.contacts;
       loadContactList();
     }
-    if (!currUserData.tasks) {
+    if (!CURRENT_USER_DATA.tasks) {
       tasks = [];
     } else {
-      tasks = currUserData.tasks;
+      tasks = CURRENT_USER_DATA.tasks;
     }
   } catch (error) {
     console.error("Fehler beim Abrufen der Benutzerdaten:", error);
@@ -72,6 +79,17 @@ function clearAllInputs() {
   titleInput.style.borderBottomColor = "";
   dateInput.style.borderBottomColor = "";
   resetPriorityButtons();
+  clearCollaborators();
+  clearSelectedContacts();
+  
+}
+
+function clearSelectedContacts() {
+  contacts.forEach(contact => contact.selected = false);
+  document.querySelectorAll(".contact-task-assign").forEach(element => {
+    element.classList.remove("selected");
+    element.querySelector(".check-box-task img").src = "../assets/img/checkBoxTaskHtml.svg";
+  });
 }
 
 clearTaskBtn.addEventListener("click", function () {
@@ -147,12 +165,12 @@ document.getElementById("task-form").addEventListener("submit", function (event)
   function selectPriority(priority) {
     priorityValue = priority;
     document.querySelectorAll(".buttons button").forEach((btn) => {
-      btn.classList.remove("selected");
-      btn.querySelector(".button-img").classList.remove("selected");
+      btn.classList.remove("selected-btn");
+      btn.querySelector(".button-img").classList.remove("selected-btn");
     });
     const selectedButton = document.getElementById(priority.toLowerCase());
-    selectedButton.classList.add("selected");
-    selectedButton.querySelector(".button-img").classList.add("selected");
+    selectedButton.classList.add("selected-btn");
+    selectedButton.querySelector(".button-img").classList.add("selected-btn");
   }
 
 
@@ -197,16 +215,44 @@ function handleContactAssignClick(element, filteredContacts) {
 
   if (element.classList.contains("selected")) {
     element.classList.remove("selected");
-    element.querySelector(".check-box-task img").src =
-      "../assets/img/checkBoxTaskHtml.svg";
-    contact.selected = false; // Update the selected state
+    element.querySelector(".check-box-task img").src = "../assets/img/checkBoxTaskHtml.svg";
+    contact.selected = false; 
+    const collaboratorIndex = collaborators.findIndex(collaborator => collaborator.name === `${contact.name} ${contact.surname}`);
+    if (collaboratorIndex > -1) {
+      collaborators.splice(collaboratorIndex, 1);
+    }
   } else {
     element.classList.add("selected");
     element.querySelector(".check-box-task img").src =
-      "../assets/img/checkedTaskHtml.svg";
-    contact.selected = true; // Update the selected state
+"../assets/img/checkedTaskHtml.svg";
+    contact.selected = true;
+    collaborators.push({
+      name: `${contact.name} ${contact.surname}`,
+      color: contact.color
+    });
   }
+  renderCollaborators();
+  console.log(collaborators); 
 }
+    
+function renderCollaborators() {
+  let assignContactsCircle = document.getElementById("assign-contacts-circle");
+  assignContactsCircle.innerHTML = "";
+  collaborators.forEach(collaborator => {
+    const initials =
+      getFirstLetterOfName(collaborator.name.split(" ")[0]) +
+      getFirstLetterOfName(collaborator.name.split(" ")[1]);
+    assignContactsCircle.innerHTML += `
+      <div class="initials-task-circle" style="background-color: ${collaborator.color};">${initials}</div>
+    `;
+  });
+}
+
+function clearCollaborators() {
+  collaborators = [];
+  renderCollaborators();
+}
+
 
 function filterContacts(searchName) {
   searchName = searchName.toLowerCase();
@@ -227,6 +273,90 @@ document.getElementById('option-search').addEventListener('input', function(even
   loadContactList(filteredContacts);
 });
   
+   
+
+
+
+
+function changeToFocus() {
+  let changedInput = document.getElementById('input-subtask-add');
+  changedInput.innerHTML = `
+    <div class="input-positioning">
+      <input class="subtask-css-input" id="subtask-input-field" type="text" placeholder="Add subtask" />
+      <div class="center-flexbox">
+        <div class="subtask-add-icons">
+          <div class="icons-subtask center-flexbox"><img onclick="clearInputSubtask()" src="../assets/img/clear_subtask.svg" alt=""></div>
+          <div class="separator-subtask"></div>
+          <div class="icons-subtask center-flexbox"><img onclick="addSubtaskList()" src="../assets/img/subtask_save.svg" alt=""></div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('subtask-input-field').focus();
+}
+
+function addSubtaskList() {
+  let subtaskInput = document.getElementById('subtask-input-field').value;
+  if (subtaskInput.trim() !== "") {
+    let uniqueId = new Date().getTime();
+    let newSubtask = {
+      name: subtaskInput,
+      state: 'done', 
+      id: uniqueId
+    };
+    subtaskArr.push(newSubtask);
+  }
+
+  document.getElementById('subtask-input-field').value = "";
+
+  renderSubtasks();
+}
+    
+    
+function renderSubtasks() {
+  let addedSubtask = document.getElementById('added-subtask');
+  addedSubtask.innerHTML = "";
+
+  for (let i = 0; i < subtaskArr.length; i++) {
+    let task = subtaskArr[i];
+    
+    addedSubtask.innerHTML += `
+      <div class="input-positioning">
+        <input class="subtask-css-input" id="subtask-input-field-sub-${i}" type="text" value="${task.name}" readonly />
+        <div class="center-flexbox">
+          <div class="subtask-add-icons">
+            <div class="icons-subtask center-flexbox"><img src="../assets/img/bin_task.svg" onclick="removeSubtask(${task.id})"></div>
+            <div class="separator-subtask"></div>
+            <div class="icons-subtask center-flexbox"><img src="../assets/img/subtask_save.svg"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function removeSubtask(id) {
+  
+  subtaskArr = subtaskArr.filter(task => task.id !== id);
+  
+  renderSubtasks();
+}
+
+  
+  function clearInputSubtask() {
+    document.getElementById('subtask-input-field').value= '';
+  }
+  
+   
+    
+    
+
+
+  
+
+
+
 
   
   getUserLists();
@@ -279,7 +409,7 @@ document.getElementById('option-search').addEventListener('input', function(even
     return name.toUpperCase();
   }
   
-  function pushTaskToTasks() {
+  function pushTaskToTasks() {  // Don't touch !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // auf benennung in board.js achten
     tasks.push({
       id: Date.now().toString(),
@@ -311,34 +441,21 @@ document.getElementById('option-search').addEventListener('input', function(even
     kindValue = "";
   }
   
-  function createTask(event) {
+  function createTask(event) {  // Don't touch !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // function for create Task button
     event.preventDefault();
-    pushTaskToTasks();
+    pushTaskToTasks(); 
     updateUser(
-      currUserData.name,
-      currUserData.email,
-      currUserData.password,
-      currUserData.contacts,
+      CURRENT_USER_DATA.name,
+      CURRENT_USER_DATA.email,
+      CURRENT_USER_DATA.password,
+      CURRENT_USER_DATA.contacts,
       tasks
     );
-    // deleteValues();
+    clearAllInputs();
   }
   
-  function addSubtask() {
-    const name = document.getElementById("subtask-input-field");
-    subtaskArr.push({
-      name: name.value,
-      id: Date.now().toString(),
-      state: "open",
-    });
-    name.value = "";
-  }
-
-
-
-
-
+  
 
 
 
