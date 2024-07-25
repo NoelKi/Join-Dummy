@@ -20,11 +20,12 @@ async function postSignUpData(data) {
     }
 }
 
+
 async function signUp() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
     if (!isPolicyAccepted) {
         return alert('You must accept the privacy policy to sign up.');
     }
@@ -44,12 +45,14 @@ async function signUp() {
     }
 }
 
+
 function backToLogIn() {
     window.location.href = "login.html";
 }
 
+
 function toggleCheckBox() {
-    const checkBoxImage = document.getElementById('checkBoxRemember');
+    const checkBoxImage = document.getElementById('checkbox-remember');
     checkBoxImage.src = isPolicyAccepted
         ? '../assets/img/rememberDefault.svg'
         : '../assets/img/rememberChecked.svg';

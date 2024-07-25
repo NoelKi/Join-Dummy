@@ -24,83 +24,93 @@
   <div class="wrap">
     <div w3-include-html="../assets/templates/sidebar.html"></div>
 
-    <div class="summaryOverview">
-      <div class="greetingContainer">
+    <div class="summary-overview">
+      <div class="greeting-container">
         <h1 class="greeting" id="greeting">Good morning</h1>
       </div>
-      <div class="buttonContainer">
-        <button class="urgentButton" onclick="">
-          <div class="btnUrgentFront">
-            <div class="flexRow">
-              <img src="../assets/img/clock.svg" alt="clock icon">
-              <h2 id="urgentNumber" class="taskNumber"></h2>
+      <div class="button-container">
+        <button class="urgent-button" onclick="">
+          <div class="btn-urgent-front">
+            <div class="todo-btn-row">
+              <img src="../assets/img/urgent_task.svg" alt="clock icon">
+              <h2 id="urgent-number" class="task-number">0</h2>
             </div>
             <p btnText>Tasks urgent</p>
           </div>
-          <div class="withLine"></div>
-          <div class="btnUrgentBack upcomingDeadline">
-            <h2 id="dueDate"></h2>
+          <div class="with-line"></div>
+          <div class="btn-urgent-back upcoming-deadline">
+            <h2 id="due-date"></h2>
             <p id="deadline">Upcoming Deadline</p>
           </div>
         </button>
-        <button class="toDoBtn" onclick="">
-          <div class="toDoBtnRow">
-            <img src="../assets/img/Urgent.svg" alt="toDo Icon">
-            <h2 id="ToDoNumber" class="taskNumber"></h2>
+        <button class="todo-btn" onclick="">
+          <div class="button-center">
+          <div class="todo-btn-row">
+            <img src="../assets/img/todo_task.svg" alt="toDo Icon">
+            <h2 id="todo-number" class="task-number"></h2>
           </div>
-          <p class="btnText">Tasks To-do</p>
+          <p class="btn-text">Tasks To-do</p>
+          </div>
         </button>
-        <button class="lightTaskBtn board" onclick="">
-          <div class="toDoBtnRow">
-            <div class="summaryBoarderIcon">
-              <img src="../assets/img/Board.svg" alt="">
+        <button class="light-task-btn board" onclick="">
+          <div class="button-center">
+            <div class="todo-btn-row">
+              <div class="summary-boarder-icon">
+                <img src="../assets/img/board.svg" alt="">
+              </div>
+              <h2 id="bord-tasks-number" class="task-number"></h2>
             </div>
-            <h2 id="bordTasksNumber" class="taskNumber"></h2>
+            <p class="btn-text">
+              Task in
+              <br>
+              Board
+            </p>
           </div>
-          <p class="btnText">
-            Task in
-            <br>
-            Board
-          </p>
         </button>
-        <button class="lightTaskBtn progress" onclick="">
-          <div class="flexRow gapBtnLight">
-            <div class="summaryBoarderIcon">
-              <img src="../assets/img/In Progress.svg" alt="">
+        <button class="light-task-btn progress" onclick="">
+          <div class="button-center">
+          <div class="todo-btn-row">
+            <div class="summary-boarder-icon">
+              <img src="../assets/img/in_progress.svg" alt="">
             </div>
-            <h2 id="progressTaskNumber" class="taskNumber"></h2>
+            <h2 id="progress-task-number" class="task-number"></h2>
           </div>
-          <p class="btnText">
+          <p class="btn-text">
             Task in
             <br>
             Progress
           </p>
-        </button>
-        <button class="lightTaskBtn feedback" onclick="">
-          <div class="flexRow gapBtnLight">
-            <div class="summaryBoarderIcon">
-              <img src="../assets/img/Awaiting feedback.svg" alt="">
-            </div>
-            <h2 id="feedbackNumber" class="taskNumber"></h2>
           </div>
-          <p class="btnText">
+        </button>
+        <button class="light-task-btn feedback" onclick="">
+          <div class="button-center">
+          <div class="todo-btn-row">
+            <div class="summary-boarder-icon">
+              <img src="../assets/img/awaiting_feedback.svg" alt="">
+            </div>
+            <h2 id="feedback-number" class="task-number"></h2>
+          </div>
+          <p class="btn-text">
             Awaiting
             <br>
             Feedback
           </p>
-        </button>
-        <button class="lightTaskBtn done" onclick="">
-          <div class="flexRow gapBtnLight">
-            <div class="summaryBoarderIcon">
-              <img src="../assets/img/Done.svg" alt="">
-            </div>
-            <h2 id="doneNumber" class="taskNumber"></h2>
           </div>
-          <p class="btnText">
+        </button>
+        <button class="light-task-btn done" onclick="">
+          <div class="button-center">
+          <div class="todo-btn-row">
+            <div class="summary-boarder-icon">
+              <img src="../assets/img/done.svg" alt="">
+            </div>
+            <h2 id="done-number" class="task-number"></h2>
+          </div>
+          <p class="btn-text">
             Tasks
             <br>
             Done
           </p>
+          </div>
         </button>
       </div>
     </div>
