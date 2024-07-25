@@ -2,6 +2,7 @@ window.onload = function () {
   getUserLists();
   includeHTML();
   loadContactList();
+  clearAllInputs()
 };
 
 let priorityValue = "";
@@ -281,7 +282,7 @@ document.getElementById('option-search').addEventListener('input', function(even
 function changeToFocus() {
   let changedInput = document.getElementById('input-subtask-add');
   changedInput.innerHTML = `
-    <div class="input-positioning">
+    <div class="input-positioning" id="subtask-input-wrapper">
       <input class="subtask-css-input" id="subtask-input-field" type="text" placeholder="Add subtask" />
       <div class="center-flexbox">
         <div class="subtask-add-icons">
@@ -294,6 +295,17 @@ function changeToFocus() {
   `;
 
   document.getElementById('subtask-input-field').focus();
+  document.addEventListener('click', handleClickOutside, true);
+}
+
+function handleClickOutside(event) {
+  const inputWrapper = document.getElementById('subtask-input-wrapper');
+  if (inputWrapper && !inputWrapper.contains(event.target)) {
+    // Clicked outside of the input area
+    clearInputSubtask();
+    // Remove the event listener after hiding the input
+    document.removeEventListener('click', handleClickOutside, true);
+  }
 }
 
 function addSubtaskList() {
@@ -302,11 +314,16 @@ function addSubtaskList() {
     let uniqueId = new Date().getTime();
     let newSubtask = {
       name: subtaskInput,
-      state: 'done', 
+      state: 'open', 
       id: uniqueId
     };
     subtaskArr.push(newSubtask);
+    console.log("New subtask added:", newSubtask);
+   console.log("Updated subtaskArr:", subtaskArr);
   }
+
+   
+  
 
   document.getElementById('subtask-input-field').value = "";
 
@@ -326,10 +343,10 @@ function renderSubtasks() {
         <input class="subtask-css-input" id="subtask-input-field-sub-${i}" type="text" value="${task.name}" readonly />
         <div class="center-flexbox">
           <div class="subtask-add-icons">
-            <div class="icons-subtask center-flexbox"><img src="../assets/img/bin_task.svg" onclick="removeSubtask(${task.id})"></div>
+            <div class="icons-subtask center-flexbox"><img src="../assets/img/bin.svg" onclick="removeSubtask(${task.id})"></div>
             <div class="separator-subtask"></div>
             <div class="icons-subtask center-flexbox"><img src="../assets/img/subtask_save.svg"></div>
-          </div>
+          
         </div>
       </div>
     `;
