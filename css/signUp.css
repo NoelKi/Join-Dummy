@@ -17,12 +17,12 @@ body {
     font-family: 'open sans', sans-serif;
 }
 
-.mainContent {
+.main-content {
     width: 100%;
     height: 100vh;
 }
 
-.secondContent {
+.second-content {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -30,7 +30,7 @@ body {
     background-color: #4589FF;
 }
 
-.arrowBack {
+.arrow-back {
     height: 32px;
     width: 32px;
     position: absolute;
@@ -39,19 +39,19 @@ body {
     cursor: pointer;
 }
 
-.arrowBack:hover {
+.arrow-back:hover {
     border-radius: 100%;
     background-color: #E3EEFF
 }
 
-.h1Container {
+.h1-container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.h1signUp {
+.h1-signup {
     font-size: 48px;
     margin: 20px 0;
     text-align: center;
@@ -63,7 +63,7 @@ body {
     border: 2px solid #4589FF;
 }
 
-.signUpContent {
+.signup-content {
     position: relative;
     display: flex;
     justify-content: space-evenly;
@@ -77,7 +77,7 @@ body {
     background-color: white;
 }
 
-.signUpSection {
+.signup-section {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -85,7 +85,7 @@ body {
     height: 324px;
 }
 
-.signUpInput {
+.signup-input {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,7 +94,7 @@ body {
     gap: 24px;
 }
 
-.inputWrapper {
+.input-wrapper {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #D1D1D1;
@@ -103,13 +103,13 @@ body {
     width: 100%;
 }
 
-.inputWrapper img {
+.input-wrapper img {
     margin-right: 10px;
     height: 24px;
     width: 24px;
 }
 
-.inputWrapper input {
+.input-wrapper input {
     flex: 1;
     border: none;
     font-size: 19px;
@@ -118,15 +118,15 @@ body {
     padding-left: 10px;
 }
 
-.inputWrapper input:focus::placeholder {
+.input-wrapper input:focus::placeholder {
     color: transparent;
 }
 
-.inputWrapper input:focus {
+.input-wrapper input:focus {
     outline: none;
 }
 
-.signUpButton {
+.signup-button {
     font-weight: 400;
     font-size: 19px;
     width: 180px;
@@ -139,11 +139,11 @@ body {
     cursor: pointer;
 }
 
-.signUpButton:hover {
+.signup-button:hover {
     background: #005DFF
 }
 
-.checkboxWrapper {
+.checkbox-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -151,7 +151,7 @@ body {
     gap: 10px;
 }
 
-.rememberMe {
+.remember-me {
     font-size: 16px;
     font-weight: 400;
     display: flex;
@@ -166,20 +166,20 @@ body {
     background: #EDF2FA;
 }
 
-.rememberMe a {
+.remember-me a {
     color: #4589FF;
     text-decoration: none;
     cursor: pointer;
     margin-left: 5px;
 }
 
-.rememberMe a:hover {
+.remember-me a:hover {
     text-decoration: underline;
     transform: scale(1.02);
     color: #005DFF;
 }
 
-.divFooter {
+.div-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -188,7 +188,7 @@ body {
     justify-content: center;
 }
 
-.divFooter a {
+.div-footer a {
     width: 108px;
     height: 35px;
     padding: 8px 0px 0px 0px;
@@ -201,11 +201,11 @@ body {
     cursor: pointer;
 }
 
-.divFooter a:hover {
+.div-footer a:hover {
     color: #005DFF
 }
 
-.topLeftImage {
+.top-left-image {
     position: absolute;
     top: 30px;
     left: 30px;
@@ -214,30 +214,30 @@ body {
 }
 
 @media (max-width: 768px) {
-    .signUpContent {
+    .signup-content {
         width: 80%;
         padding: 10px;
     }
 
-    .signUpSection {
+    .signup-section {
         width: 80%;
     }
 }
 
 @media (max-width: 480px) {
-    .signUpContent {
+    .signup-content {
         width: 90%;
     }
 
-    .h1signUp {
+    .h1-signup {
         font-size: 47px;
     }
 
-    .inputWrapper input {
+    .input-wrapper input {
         font-size: 19px;
     }
 
-    .signUpSection {
+    .signup-section {
         width: 95%;
     }
 

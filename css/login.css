@@ -18,7 +18,7 @@ body {
     background-color: #ffffff;
 }
 
-.loadingScreen {
+.loading-screen {
     position: fixed;
     top: 0;
     left: 0;
@@ -32,7 +32,7 @@ body {
     animation: fadeOut 0.3s forwards 0.2s;
 }
 
-.loadingLogo {
+.loading-logo {
     width: 150px;
     height: 150px;
     animation: moveLogo 0.5s ease-in-out forwards;
@@ -59,12 +59,12 @@ body {
     }
 }
 
-.mainContent {
+.main-content {
     width: 100%;
     height: 100vh;
 }
 
-.jLogo {
+.j-logo {
     position: absolute;
     top: 30px;
     left: 30px;
@@ -72,14 +72,14 @@ body {
     height: auto;
 }
 
-.secondContent {
+.second-content {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.signUpButton {
+.sign-up-button {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -90,14 +90,14 @@ body {
     top: 0px;
 }
 
-.signUpButton label {
+.sign-up-button label {
     width: 168px;
     height: 28px;
     font-weight: 400;
     font-size: 23px;
 }
 
-.signUpButton button {
+.sign-up-button button {
     font-weight: 400;
     font-size: 23px;
     width: 112px;
@@ -110,11 +110,11 @@ body {
     cursor: pointer;
 }
 
-.signUpButton button:hover {
+.sign-up-button button:hover {
     background: #005DFF
 }
 
-.loginContent {
+.login-content {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -126,14 +126,14 @@ body {
     gap: 8px;
 }
 
-.h1Container {
+.h1-container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.h1Login {
+.h1-login {
     font-size: 48px;
     margin: 20px 0 20px 0;
     text-align: center;
@@ -145,7 +145,7 @@ body {
     border: 2px solid #4589FF;
 }
 
-.loginSection {
+.login-section {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -153,7 +153,7 @@ body {
     height: 195px;
 }
 
-.loginInput {
+.login-input {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -162,7 +162,7 @@ body {
     gap: 32px;
 }
 
-.inputWrapper {
+.input-wrapper {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #D1D1D1;
@@ -171,13 +171,13 @@ body {
     width: 100%;
 }
 
-.inputWrapper img {
+.input-wrapper img {
     margin-right: 10px;
     height: 24px;
     width: 24px;
 }
 
-.inputWrapper input {
+.input-wrapper input {
     flex: 1;
     border: none;
     font-size: 19px;
@@ -186,15 +186,15 @@ body {
     padding-left: 10px;
 }
 
-.inputWrapper input:focus::placeholder {
+.input-wrapper input:focus::placeholder {
     color: transparent;
 }
 
-.inputWrapper input:focus {
+.input-wrapper input:focus {
     outline: none;
 }
 
-.loginButton {
+.login-button {
     font-weight: 400;
     font-size: 23px;
     width: 135px;
@@ -207,11 +207,11 @@ body {
     cursor: pointer;
 }
 
-.loginButton:hover {
+.login-button:hover {
     background: #005DFF;
 }
 
-.guestLogin {
+.guest-login {
     font-weight: 400;
     font-size: 23px;
     width: 197px;
@@ -224,16 +224,16 @@ body {
     cursor: pointer;
 }
 
-.guestLogin:hover {
+.guest-login:hover {
     border: 1px solid #005DFF;
     color: #005DFF;
 }
 
-.checkboxWrapper {
+.checkbox-wrapper {
     width: 100%;
 }
 
-.rememberMe {
+.remember-me {
     font-size: 16px;
     font-weight: 400;
     display: flex;
@@ -248,7 +248,7 @@ body {
     background: #EDF2FA;
 }
 
-.divFooter {
+.div-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -257,7 +257,7 @@ body {
     justify-content: center;
 }
 
-.divFooter a {
+.div-footer a {
     width: 108px;
     height: 35px;
     padding: 8px 0px 0px 0px;
@@ -270,42 +270,42 @@ body {
     cursor: pointer;
 }
 
-.divFooter a:hover {
+.div-footer a:hover {
     color: #4589FF;
 }
 
 @media (max-width: 768px) {
-    .loginContent {
+    .login-content {
         width: 80%;
         padding: 10px;
     }
 
-    .loginSection {
+    .login-section {
         width: 80%;
     }
 }
 
 @media (max-width: 480px) {
-    .loginContent {
+    .login-content {
         width: 90%;
     }
 
-    .loginSection {
+    .login-section {
         width: 95%;
     }
 
-    .h1login {
+    .h1-login {
         font-size: 47px;
     }
 
-    .signUpButton {
+    .sign-up-button {
         font-size: 16px;
         width: 120px;
         height: 40px;
         padding: 10px 20px;
     }
 
-    .logSignButtons {
+    .log-sign-buttons {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -313,8 +313,8 @@ body {
         gap: 10px;
     }
 
-    .loginButton,
-    .guestLogin {
+    .login-button,
+    .guest-login {
         width: 180px;
         font-size: 19px;
     }
