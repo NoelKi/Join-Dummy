@@ -574,19 +574,17 @@ input[type="date"]:focus {
 }
 
 .icons-subtask {
-  
   width: 24px;
   height: 24px;
   border-radius: 50px;
-  margin-top: 16px;
-  transition: 100ms ease-out, color 100ms ease-out;
   
+  transition: 100ms ease-out, color 100ms ease-out;
 }
 
 .separator-subtask {
-  background-color: #D1D1D1;
+  background-color: #d1d1d1;
   height: 26px;
-  margin-top: 16px;
+ 
   width: 1px;
 }
 
@@ -594,7 +592,7 @@ input[type="date"]:focus {
   position: relative;
   display: flex;
   flex-direction: column;
-  
+
   width: 100%;
   cursor: pointer;
   transition: 100ms ease-out, color 100ms ease-out;
@@ -603,18 +601,38 @@ input[type="date"]:focus {
 
 .added-subtask-input input {
   width: 100%;
-  height: 48px;
+  height: 32px;
   background-color: white;
-  border: 0px 0px 1px 0px;
   outline: none;
   border: none;
-
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 400;
   cursor: pointer;
-  padding: 10px 10px 0px 10px;
+  padding: 4px 16px 4px 16px;
+  transition: 100ms ease-out, color 100ms ease-out;
 }
 
 
+
+
+.editable {
+  border-bottom: 1px solid #4589ff;;
+}
+
+.d-none {
+  display: none;
+}
+
+.input-positioning-subtask:hover input {
+  background-color: #d2e3ff;
+  border-radius: 10px;
+}
+
+.input-positioning-subtask {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 100ms ease-out, color 100ms ease-out;
+}
 
 

@@ -331,6 +331,26 @@ function addSubtaskList() {
 }
     
     
+function addHoverEventListeners() {
+  let taskDivs = document.querySelectorAll(".input-positioning-subtask");
+
+  taskDivs.forEach(function(taskDiv) {
+    taskDiv.addEventListener("mouseenter", function() {
+      let icons = taskDiv.querySelector(".subtask-add-icons");
+      if (icons) {
+        icons.classList.remove("d-none");
+      }
+    });
+
+    taskDiv.addEventListener("mouseleave", function() {
+      let icons = taskDiv.querySelector(".subtask-add-icons");
+      if (icons) {
+        icons.classList.add("d-none");
+      }
+    });
+  });
+}
+
 function renderSubtasks() {
   let addedSubtask = document.getElementById('added-subtask');
   addedSubtask.innerHTML = "";
@@ -339,10 +359,10 @@ function renderSubtasks() {
     let task = subtaskArr[i];
     
     addedSubtask.innerHTML += `
-      <div class="input-positioning">
+      <div class="input-positioning-subtask" id="input-positioning-${task.id}">
         <input class="subtask-css-input" id="subtask-input-field-sub-${task.id}" type="text" value="${task.name}" readonly />
         <div class="center-flexbox">
-          <div class="subtask-add-icons">
+          <div class="subtask-add-icons d-none" id="d-none-${task.id}">
             <div class="icons-subtask center-flexbox"><img src="../assets/img/bin.svg" onclick="removeSubtask(${task.id})"></div>
             <div class="separator-subtask"></div>
             <div class="icons-subtask center-flexbox"><img src="../assets/img/subtask_save.svg"></div>
@@ -355,10 +375,17 @@ function renderSubtasks() {
       editSubtask(task.id);
     });
   }
+
+  
+  addHoverEventListeners();
 }
 
 function editSubtask(id) {
+  let subTaskDiv = document.getElementById('input-positioning-' + id);
   let inputField = document.getElementById(`subtask-input-field-sub-${id}`);
+  let showIcons = document.getElementById('d-none-' + id);
+  subTaskDiv.classList.add('editable');
+  showIcons.classList.remove('d-none');
   inputField.removeAttribute('readonly');
   inputField.focus();
   inputField.addEventListener('blur', function () {
@@ -382,11 +409,16 @@ function updateSubtask(id, newValue) {
 }
 
 function removeSubtask(id) {
-  
   subtaskArr = subtaskArr.filter(task => task.id !== id);
-  
   renderSubtasks();
 }
+
+function clearInputSubtask() {
+  document.getElementById('subtask-input-field').value = '';
+}
+
+
+renderSubtasks();
 
   
   function clearInputSubtask() {
