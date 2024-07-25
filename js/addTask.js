@@ -337,10 +337,10 @@ function renderSubtasks() {
 }
 
 function removeSubtask(id) {
-  // Filter out the subtask with the given ID
+  
   subtaskArr = subtaskArr.filter(task => task.id !== id);
   
-  renderSubtasks(); // Re-render the subtasks after removal
+  renderSubtasks();
 }
 
   
