@@ -476,6 +476,16 @@
     }
 }
 
+@media(max-width: 600px) {
+    .board-content-container {
+        width: calc(100vw);
+    }
+
+    .board-section {
+        padding: 0;
+    }
+}
+
 @media(min-width: 1361px) {
     .board-content-container {
         height: 100%;
