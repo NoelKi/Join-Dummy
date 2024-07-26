@@ -4,9 +4,27 @@ function init() {
   includeHTML();
   countTasks(tasksExample);
   updateGreeting();
-  userFirstLetter()
+  userFirstLetter();
+  getUserLists();
 }
 
+async function getUserLists() {
+  try {
+    CURRENT_USER_DATA = await getUserData(USER_ID);
+    if (!CURRENT_USER_DATA.contacts) {
+      contacts = [];
+    } else {
+      contacts = CURRENT_USER_DATA.contacts;
+    }
+    if (!CURRENT_USER_DATA.tasks) {
+      tasks = [];
+    } else {
+      tasks = CURRENT_USER_DATA.tasks;
+    }
+  } catch (error) {
+    console.error("Fehler beim Abrufen der Benutzerdaten:", error);
+  }
+}
 
 async function onloadFunc() {
   const userId = await loadUserIdLocalStorage();
@@ -19,12 +37,10 @@ async function onloadFunc() {
   }
 }
 
-
 function updateGreeting(username) {
   let greetingElement = document.getElementById("greeting");
   greetingElement.innerHTML = `Good morning, &nbsp; <span>${username}</span>`;
 }
-
 
 function countTasks(tasks) {
   let totalCount = tasks.length;
@@ -40,8 +56,8 @@ function countTasks(tasks) {
   document.getElementById('done-number').textContent = doneCount;
 }
 
-
 function upcomingDate() {
   document.getElementById('due-date').textContent = new Date().toLocaleDateString('en-EN',
     { year: 'numeric', month: 'long', day: 'numeric' });
 }
+
