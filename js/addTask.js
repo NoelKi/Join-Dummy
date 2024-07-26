@@ -34,17 +34,10 @@ let inputField = document.getElementById("subtask-input-field");
 let changedInput = document.getElementById("change-to-focus");
 let generatedContatcs = document.getElementById('hide-box');
 
-
-
-
-
-
-
 let contacts = [];
 let selectedContacts = [];
 let collaborators = [];
 let subtaskArr = [];
-
 
 async function getUserLists() {
   console.log('hallo');
@@ -452,18 +445,7 @@ renderSubtasks();
   function clearInputSubtask() {
     document.getElementById('subtask-input-field').value= '';
   }
-  
-   
-    
-    
 
-
-  
-
-
-
-
-  
   getUserLists();
   loadContactList();
   
