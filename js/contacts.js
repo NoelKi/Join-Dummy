@@ -19,10 +19,7 @@ async function getUserLists() {
             tasks = [];
         } else {
             tasks = currUserData.tasks;
-            //place renderTasks(); here
         }
-        // console.log(contacts);
-        // console.log(tasks);
     } catch (error) {
         console.error('Fehler beim Abrufen der Benutzerdaten:', error);
     }
