@@ -108,7 +108,7 @@ function checkInputs() {
 }
 
 function disableButton() {
-  createTaskBtn.disabled;
+  createTaskBtn.disabled = true;
 }
 
 selectOption.addEventListener("click", function () {
@@ -509,9 +509,10 @@ function createTask(event) {  // Don't touch !!!!!
     CURRENT_USER_DATA.contacts,
     tasks
   );
-  console.log('hallo');
-  // clearAllInputs();
   disableButton();
+  setTimeout(() => {
+    clearAllInputs();
+  }, 0);
 }
 
 
