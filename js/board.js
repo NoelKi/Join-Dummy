@@ -90,25 +90,23 @@ window.onload = function () {
 
 async function getUserLists() {
     try {
-        currUserData = await getUserData(USER_ID);
-        console.log(currUserData);
-        if (!currUserData.contacts) {
-            contacts = [];
-        } else {
-            contacts = currUserData.contacts;
-        }
-        if (!currUserData.tasks) {
-            tasks = [];
-        } else {
-            tasks = currUserData.tasks;
-            renderTasks();
-        }
-        console.log(contacts);
-        console.log(tasks);
+      CURRENT_USER_DATA = await getUserData(USER_ID);
+      setUserInitals();
+      if (!CURRENT_USER_DATA.contacts) {
+        contacts = [];
+      } else {
+        contacts = CURRENT_USER_DATA.contacts;
+      }
+      if (!CURRENT_USER_DATA.tasks) {
+        tasks = [];
+      } else {
+        tasks = CURRENT_USER_DATA.tasks;
+        renderTasks();
+      }
     } catch (error) {
-        console.error('Fehler beim Abrufen der Benutzerdaten:', error);
+      console.error("Fehler beim Abrufen der Benutzerdaten:", error);
     }
-}
+  }
 
 function renderTasks() {
     renderToDo();

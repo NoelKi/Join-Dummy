@@ -1,6 +1,6 @@
 window.onload = function () {
-  getUserLists();
   includeHTML();
+  getUserLists();
   loadContactList();
   clearAllInputs()
 };
@@ -40,9 +40,9 @@ let collaborators = [];
 let subtaskArr = [];
 
 async function getUserLists() {
-  console.log('hallo');
   try {
     CURRENT_USER_DATA = await getUserData(USER_ID);
+    setUserInitals();
     if (!CURRENT_USER_DATA.contacts) {
       contacts = [];
     } else {
@@ -437,14 +437,11 @@ function clearInputSubtask() {
 }
 
 
-renderSubtasks();
-
 
 function clearInputSubtask() {
   document.getElementById('subtask-input-field').value = '';
 }
 
-getUserLists();
 loadContactList();
 
 // Adding event listeners dynamically to each 'div' element

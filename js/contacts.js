@@ -8,22 +8,23 @@ window.onload = function () {
 
 async function getUserLists() {
     try {
-        currUserData = await getUserData(USER_ID);
-        if (!currUserData.contacts) {
-            contacts = [];
-        } else {
-            contacts = currUserData.contacts;
-            renderContacts();
-        }
-        if (!currUserData.tasks) {
-            tasks = [];
-        } else {
-            tasks = currUserData.tasks;
-        }
+      CURRENT_USER_DATA = await getUserData(USER_ID);
+      setUserInitals();
+      if (!CURRENT_USER_DATA.contacts) {
+        contacts = [];
+      } else {
+        contacts = CURRENT_USER_DATA.contacts;
+        renderContacts();
+      }
+      if (!CURRENT_USER_DATA.tasks) {
+        tasks = [];
+      } else {
+        tasks = CURRENT_USER_DATA.tasks;
+      }
     } catch (error) {
-        console.error('Fehler beim Abrufen der Benutzerdaten:', error);
+      console.error("Fehler beim Abrufen der Benutzerdaten:", error);
     }
-}
+  }
 
 function loadUserIdLocalStorage() {
     const idAsText = localStorage.getItem('userId');
