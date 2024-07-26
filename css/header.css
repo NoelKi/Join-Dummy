@@ -118,3 +118,14 @@ header {
 .d-none {
   display: none;
 }
+
+@media(max-width: 700px) {
+  .right-header-section {
+    width: 130px;
+  }
+  
+  .tool-name {
+    display: none;
+  }
+
+}

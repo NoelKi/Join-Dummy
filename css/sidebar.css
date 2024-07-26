@@ -128,13 +128,21 @@ aside {
     width: 74px;
 }
 
-.nav-container-bottom:hover {
-    color: #4589FF;
+.hov {
+    display: none;
+}
+
+.nav-container-bottom:hover .unactive-bottom{
+    display: none;
+}
+
+.nav-container-bottom:hover .active-bottom{
+    display: block;
 }
 
 .active-bottom {
-    color: #4589FF;
-}   
+    display: none;
+}
 
 @media(min-width: 600px) {
     .bottom-nav {

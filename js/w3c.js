@@ -12,6 +12,7 @@ async function includeHTML() {
   }
 
   setActive();
+  setActiveSmall()
 }
 
 function setActive() {
@@ -45,5 +46,38 @@ function setActive() {
       document.getElementById("legal-notice-active").className +=
         "bottom-links-active";
       break;
+  }
+}
+
+
+function setActiveSmall() {
+  const pathName = window.location.pathname;
+  let activeId = '';
+
+  switch (true) {
+    case pathName.includes("index.html"):
+      activeId = "index-active-bottom";
+      break;
+    case pathName.includes("contacts.html"):
+      activeId = "contacts-active-bottom";
+      break;
+    case pathName.includes("addTask.html"):
+      activeId = "addTask-active-bottom";
+      break;
+    case pathName.includes("board.html"):
+      activeId = "board-active-bottom";
+      break;
+  }
+
+  if (activeId) {
+    const activeElement = document.getElementById(activeId);
+    const images = activeElement.getElementsByTagName('img');
+    for (let img of images) {
+      if (img.classList.contains('unactive-bottom')) {
+        img.style.display = 'none';
+      } else if (img.classList.contains('active-bottom')) {
+        img.style.display = 'block';
+      }
+    }
   }
 }
