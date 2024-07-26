@@ -59,8 +59,6 @@ async function getUserLists() {
   }
 }
 
-
-
 function clearAllInputs() {
   titleInput.value = "";
   textarea.value = "";
