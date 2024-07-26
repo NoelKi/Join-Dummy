@@ -8,6 +8,7 @@ window.onload = function () {
 let priorityValue = "";
 let kindValue = "";
 let kindColor = "";
+let filteredContacts = [];
 
 let categoryArr = [];
 
@@ -31,6 +32,7 @@ let selectCategoryOption = document.getElementById("select-category");
 let categoryList = document.getElementById("category-list");
 let inputField = document.getElementById("subtask-input-field");
 let changedInput = document.getElementById("change-to-focus")
+
 
 
 
@@ -101,8 +103,8 @@ clearTaskBtn.addEventListener("click", function () {
 
 function resetPriorityButtons() {
   document.querySelectorAll(".buttons button").forEach((btn) => {
-    btn.classList.remove("selected");
-    btn.querySelector(".button-img").classList.remove("selected");
+    btn.classList.remove("selected-btn");
+    btn.querySelector(".button-img").classList.remove("selected-btn");
   });
 }
 
@@ -163,23 +165,35 @@ document.getElementById("task-form").addEventListener("submit", function (event)
   });
 
 
-  function selectPriority(priority) {
-    priorityValue = priority;
-    document.querySelectorAll(".buttons button").forEach((btn) => {
-      btn.classList.remove("selected-btn");
-      btn.querySelector(".button-img").classList.remove("selected-btn");
-    });
-    const selectedButton = document.getElementById(priority.toLowerCase());
-    selectedButton.classList.add("selected-btn");
-    selectedButton.querySelector(".button-img").classList.add("selected-btn");
-  }
+  
 
+  function selectPriority(priority) {
+      let selectedButton = document.getElementById(priority.toLowerCase());
+      let isSelected = selectedButton.classList.contains("selected-btn");
+  
+      document.querySelectorAll(".buttons button").forEach((btn) => {
+          btn.classList.remove("selected-btn");
+          btn.querySelector(".button-img").classList.remove("selected-btn");
+      });
+      
+      if (!isSelected) {
+        selectedButton.classList.add("selected-btn");
+        selectedButton.querySelector(".button-img").classList.add("selected-btn");
+        priorityValue = priority;
+    } else {
+        priorityValue = null;
+    }
+    console.log("Current priority value:", priorityValue);
+}
+  
+
+          
 
   contacts.forEach(contact => contact.selected = false);
 
   function loadContactList(filteredContacts = contacts) {
     let listContainer = document.getElementById("generate-list");
-    listContainer.innerHTML = ""; // Clear existing content
+    listContainer.innerHTML = "";
     let htmlContent = "";
   
     for (let i = 0; i < filteredContacts.length; i++) {
@@ -226,15 +240,15 @@ function handleContactAssignClick(element, filteredContacts) {
     element.classList.add("selected");
     element.querySelector(".check-box-task img").src =
 "../assets/img/checkedTaskHtml.svg";
-    contact.selected = true;
-    collaborators.push({
-      name: `${contact.name} ${contact.surname}`,
-      color: contact.color
-    });
-  }
-  renderCollaborators();
-  console.log(collaborators); 
+collaborators.push({
+  name: `${contact.name} ${contact.surname}`,
+  color: contact.color
+});
 }
+renderCollaborators();
+console.log(collaborators); 
+}
+
     
 function renderCollaborators() {
   let assignContactsCircle = document.getElementById("assign-contacts-circle");
@@ -493,7 +507,7 @@ renderSubtasks();
       date: dateInput.value,
       title: titleInput.value,
       kind: kindValue,
-      taskColor: kindColor, //Technical Task #0038FF;  User Story #FF7A00
+      taskColor: kindColor, 
       description: textarea.value,
       category: "toDo",
       priority: priorityValue,
