@@ -1,11 +1,10 @@
 function init() {
+  getUserLists();
   onloadFunc();
   upcomingDate();
   includeHTML();
-  countTasks(tasksExample);
   updateGreeting();
   userFirstLetter();
-  getUserLists();
 }
 
 async function getUserLists() {
@@ -20,6 +19,7 @@ async function getUserLists() {
       tasks = [];
     } else {
       tasks = CURRENT_USER_DATA.tasks;
+      countTasks(CURRENT_USER_DATA.tasks);
     }
   } catch (error) {
     console.error("Fehler beim Abrufen der Benutzerdaten:", error);
