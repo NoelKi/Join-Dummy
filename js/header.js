@@ -21,10 +21,10 @@ function keyPress(e) {
   }
 }
 
-async function userFirstLetter() {
-  const { name: fullName } = Object.values(await fetchUsers())[0];
-  const [name, surname] = fullName.split(' ');
-  const initials = surname ? `${name[0].toUpperCase()}${surname[0].toUpperCase()}` : fullName[0].toUpperCase();
+function setUserInitals() {
+  const fullName = CURRENT_USER_DATA.name;
+  const [name,  surname = ''] = fullName.split(' ');
+  const initials = getFirstLetterOfName(name) + getFirstLetterOfName(surname);
   document.getElementById("profil-btn").innerHTML = initials;
-  console.log(fullName);
-}
+  console.log(initials);
+} 

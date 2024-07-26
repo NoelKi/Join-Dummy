@@ -4,12 +4,12 @@ function init() {
   upcomingDate();
   includeHTML();
   updateGreeting();
-  userFirstLetter();
 }
 
 async function getUserLists() {
   try {
     CURRENT_USER_DATA = await getUserData(USER_ID);
+    setUserInitals();
     if (!CURRENT_USER_DATA.contacts) {
       contacts = [];
     } else {
