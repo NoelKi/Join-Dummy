@@ -31,7 +31,9 @@ let selectBoxCategory = document.querySelector(".select-box-category");
 let selectCategoryOption = document.getElementById("select-category");
 let categoryList = document.getElementById("category-list");
 let inputField = document.getElementById("subtask-input-field");
-let changedInput = document.getElementById("change-to-focus")
+let changedInput = document.getElementById("change-to-focus");
+let generatedContatcs = document.getElementById('hide-box');
+
 
 
 
@@ -248,6 +250,18 @@ collaborators.push({
 renderCollaborators();
 console.log(collaborators); 
 }
+
+document.addEventListener('click', e => {
+  if(!selectValue.contains(e.target)) {
+     generatedContatcs.classList.remove('active-task');
+
+  }
+})
+
+let generateList = document.getElementById('generate-list');
+generateList.addEventListener('click', e => {
+  e.stopPropagation(); 
+});
 
     
 function renderCollaborators() {
