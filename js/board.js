@@ -206,6 +206,7 @@ function dragOver(e) {
 function drop(event) {
     const category = event.currentTarget.id;
     if (category !== tasks[currentTaskElement]['category']) {
+        console.log('newCat');
         tasks[currentTaskElement]['category'] = category;
         removeHighlight(event);
         renderTasks();
@@ -227,6 +228,13 @@ function drop(event) {
         renderTasks();
         currentDraggedElement = null;
     }
+    updateUser(
+        CURRENT_USER_DATA.name,
+        CURRENT_USER_DATA.email,
+        CURRENT_USER_DATA.password,
+        CURRENT_USER_DATA.contacts,
+        tasks
+      );
 }
 
 function highlight(event) {
