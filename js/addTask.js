@@ -2,7 +2,8 @@ window.onload = function () {
   includeHTML();
   getUserLists();
   loadContactList();
-  clearAllInputs()
+  clearAllInputs();
+  checkInputs();
 };
 
 let priorityValue = "";
@@ -77,7 +78,6 @@ function clearAllInputs() {
   resetPriorityButtons();
   clearCollaborators();
   clearSelectedContacts();
-
 }
 
 function clearSelectedContacts() {
@@ -105,6 +105,10 @@ function checkInputs() {
   let isTitleValid = titleInput.value.trim() !== "";
   let isDateValid = dateInput.value.trim() !== "";
   createTaskBtn.disabled = !(isTitleValid && isDateValid);
+}
+
+function disableButton() {
+  createTaskBtn.disabled;
 }
 
 selectOption.addEventListener("click", function () {
@@ -157,9 +161,6 @@ document.getElementById("task-form").addEventListener("submit", function (event)
   }
 });
 
-
-
-
 function selectPriority(priority) {
   let selectedButton = document.getElementById(priority.toLowerCase());
   let isSelected = selectedButton.classList.contains("selected-btn");
@@ -178,11 +179,6 @@ function selectPriority(priority) {
   }
   console.log("Current priority value:", priorityValue);
 }
-
-
-
-
-contacts.forEach(contact => contact.selected = false);
 
 function loadContactList(filteredContacts = contacts) {
   let listContainer = document.getElementById("generate-list");
@@ -215,7 +211,6 @@ function loadContactList(filteredContacts = contacts) {
     });
   });
 }
-
 
 function handleContactAssignClick(element, filteredContacts) {
   const index = element.dataset.index;
@@ -286,17 +281,11 @@ function filterContacts(searchName) {
   });
 }
 
-
 document.getElementById('option-search').addEventListener('input', function (event) {
   const searchName = event.target.value;
   const filteredContacts = filterContacts(searchName);
   loadContactList(filteredContacts);
 });
-
-
-
-
-
 
 function changeToFocus() {
   let changedInput = document.getElementById('input-subtask-add');
@@ -340,15 +329,9 @@ function addSubtaskList() {
     console.log("New subtask added:", newSubtask);
     console.log("Updated subtaskArr:", subtaskArr);
   }
-
-
-
-
   document.getElementById('subtask-input-field').value = "";
-
   renderSubtasks();
 }
-
 
 function addHoverEventListeners() {
   let taskDivs = document.querySelectorAll(".input-positioning-subtask");
@@ -394,8 +377,6 @@ function renderSubtasks() {
       editSubtask(task.id);
     });
   }
-
-
   addHoverEventListeners();
 }
 
@@ -436,13 +417,9 @@ function clearInputSubtask() {
   document.getElementById('subtask-input-field').value = '';
 }
 
-
-
 function clearInputSubtask() {
   document.getElementById('subtask-input-field').value = '';
 }
-
-loadContactList();
 
 // Adding event listeners dynamically to each 'div' element
 document.querySelectorAll(".contact-item").forEach(function (item) {
@@ -483,8 +460,6 @@ categoryList.addEventListener("click", function (e) {
     checkInputs();
   }
 });
-
-checkInputs();
 
 function getFirstLetterOfName(name) {
   name = name.slice(0, 1);
@@ -534,7 +509,9 @@ function createTask(event) {  // Don't touch !!!!!
     CURRENT_USER_DATA.contacts,
     tasks
   );
-  clearAllInputs();
+  console.log('hallo');
+  // clearAllInputs();
+  disableButton();
 }
 
 
