@@ -445,12 +445,12 @@ input[type="date"]:focus {
   cursor: pointer;
   color: white;
   background-color: #005dff;
-
   text-align: center;
   box-sizing: border-box;
   font-weight: 400;
   transition: 100ms ease-out, color 100ms ease-out;
 }
+
 
 .create-task-btn:disabled {
   background-color: #4589ff;

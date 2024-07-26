@@ -224,7 +224,7 @@ function handleContactAssignClick(element, filteredContacts) {
   if (element.classList.contains("selected")) {
     element.classList.remove("selected");
     element.querySelector(".check-box-task img").src = "../assets/img/checkBoxTaskHtml.svg";
-    contact.selected = false;
+    
     const collaboratorIndex = collaborators.findIndex(collaborator => collaborator.name === `${contact.name} ${contact.surname}`);
     if (collaboratorIndex > -1) {
       collaborators.splice(collaboratorIndex, 1);
@@ -233,6 +233,7 @@ function handleContactAssignClick(element, filteredContacts) {
     element.classList.add("selected");
     element.querySelector(".check-box-task img").src =
       "../assets/img/checkedTaskHtml.svg";
+      
     collaborators.push({
       name: `${contact.name} ${contact.surname}`,
       color: contact.color
