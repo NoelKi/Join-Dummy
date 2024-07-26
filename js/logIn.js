@@ -3,7 +3,6 @@ function fetchUsers(options = {}) {
     .then(response => response.json());
 }
 
-
 async function checkLogInData(email, password) {
   const users = await fetchUsers();
   if (!users) {
@@ -19,7 +18,6 @@ async function checkLogInData(email, password) {
   return false;
 }
 
-
 async function login() {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
@@ -28,8 +26,8 @@ async function login() {
   } else {
     alert('Login failed: Incorrect email or password');
   }
+  getUserLists();
 }
-
 
 function saveUserIdLocalStorage(id, name) {
   const idAsText = JSON.stringify(id);
@@ -38,19 +36,16 @@ function saveUserIdLocalStorage(id, name) {
   localStorage.setItem('userName', nameAsText);
 }
 
-
 function loadUserIdLocalStorage() {
   const idAsText = localStorage.getItem('userId');
   if (!idAsText) return window.location.href = 'login.html';
   return JSON.parse(idAsText);
 }
 
-
 function toggleCheckBox() {
   let image = document.getElementById('checkbox-remember');
   image.src = image.src.includes('rememberDefault') ? '../assets/img/rememberChecked.svg' : '../assets/img/rememberDefault.svg';
 }
-
 
 function changeToSignUp() {
   window.location.href = '../pages/signUp.html';
