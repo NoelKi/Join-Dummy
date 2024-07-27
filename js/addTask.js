@@ -375,10 +375,11 @@ function renderSubtasks() {
 
   for (let i = 0; i < subtaskArr.length; i++) {
     let task = subtaskArr[i];
+    let taskWithBullet = "&#x2022; " + task.name;
 
     addedSubtask.innerHTML += `
       <div class="input-positioning-subtask" id="input-positioning-${task.id}">
-        <input class="subtask-css-input" id="subtask-input-field-sub-${task.id}" type="text" value="${task.name}" readonly />
+        <input class="subtask-css-input" id="subtask-input-field-sub-${task.id}" type="text" value="${taskWithBullet}" readonly />
         <div class="center-flexbox">
           <div class="subtask-add-icons d-none" id="d-none-${task.id}">
             <div class="icons-subtask center-flexbox"><img src="../assets/img/bin.svg" onclick="removeSubtask(${task.id})"></div>
@@ -489,6 +490,11 @@ function toggleCategoryList() {
 }
 
 selectCategoryOption.addEventListener("click", function (event) {
+  toggleCategoryList();
+  event.stopPropagation();
+});
+
+optionSearch.addEventListener("click", function (event) {
   toggleCategoryList();
   event.stopPropagation();
 });
