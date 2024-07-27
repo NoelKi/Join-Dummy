@@ -303,18 +303,20 @@ function changeToFocus() {
     </div>
   `;
 
-  document.getElementById('subtask-input-field').focus();
+  let inputField = document.getElementById('subtask-input-field');
+  inputField.focus();
+
+  // Attach event listeners to the dynamically created input field
+  inputField.addEventListener('blur', function () {
+    addSubtaskList();
+  });
+  inputField.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+      addSubtaskList();
+    }
+  });
+
   document.addEventListener('click', handleClickOutside, true);
-}
-
-function handleClickOutside(event) {
-  const inputWrapper = document.getElementById('subtask-input-wrapper');
-  if (inputWrapper && !inputWrapper.contains(event.target)) {
-
-    clearInputSubtask();
-
-    document.removeEventListener('click', handleClickOutside, true);
-  }
 }
 
 function addSubtaskList() {
@@ -329,10 +331,23 @@ function addSubtaskList() {
     subtaskArr.push(newSubtask);
     console.log("New subtask added:", newSubtask);
     console.log("Updated subtaskArr:", subtaskArr);
+    document.getElementById('subtask-input-field').value = "";
+    renderSubtasks();
+  } else {
+    clearInputSubtask();
   }
-  document.getElementById('subtask-input-field').value = "";
-  renderSubtasks();
 }
+function handleClickOutside(event) {
+  const inputWrapper = document.getElementById('subtask-input-wrapper');
+  if (inputWrapper && !inputWrapper.contains(event.target)) {
+
+    clearInputSubtask();
+
+    document.removeEventListener('click', handleClickOutside, true);
+  }
+}
+
+
 
 function addHoverEventListeners() {
   let taskDivs = document.querySelectorAll(".input-positioning-subtask");
@@ -385,25 +400,58 @@ function editSubtask(id) {
   let subTaskDiv = document.getElementById('input-positioning-' + id);
   let inputField = document.getElementById(`subtask-input-field-sub-${id}`);
   let showIcons = document.getElementById('d-none-' + id);
+  
+  makeEditable(subTaskDiv, showIcons, inputField);
+  setupInputEvents(id, inputField);
+}
+
+function makeEditable(subTaskDiv, showIcons, inputField) {
   subTaskDiv.classList.add('editable');
   showIcons.classList.remove('d-none');
   inputField.removeAttribute('readonly');
   inputField.focus();
+}
+
+function setupInputEvents(id, inputField) {
   inputField.addEventListener('blur', function () {
-    updateSubtask(id, inputField.value);
+    handleBlurEvent(id, inputField);
   });
   inputField.addEventListener('keypress', function (event) {
-    if (event.key === 'Enter') {
-      inputField.blur();
-    }
+    handleKeyPressEvent(event, inputField);
   });
 }
 
+function handleBlurEvent(id, inputField) {
+  try {
+    updateSubtask(id, inputField.value);
+  } catch (error) {
+    alert(error.message);
+    inputField.focus();
+  }
+}
+
+function handleKeyPressEvent(event, inputField) {
+  if (event.key === 'Enter') {
+    inputField.blur();
+  }
+}
+
 function updateSubtask(id, newValue) {
-  for (let i = 0; i < subtaskArr.length; i++) {
-    if (subtaskArr[i].id === id) {
-      subtaskArr[i].name = newValue;
-      break;
+  if (newValue === "") {
+    // Remove the subtask from the array if the new value is an empty string
+    for (let i = 0; i < subtaskArr.length; i++) {
+      if (subtaskArr[i].id === id) {
+        subtaskArr.splice(i, 1);
+        break;
+      }
+    }
+  } else {
+    // Update the subtask if the new value is not empty
+    for (let i = 0; i < subtaskArr.length; i++) {
+      if (subtaskArr[i].id === id) {
+        subtaskArr[i].name = newValue;
+        break;
+      }
     }
   }
   renderSubtasks();
@@ -418,9 +466,7 @@ function clearInputSubtask() {
   document.getElementById('subtask-input-field').value = '';
 }
 
-function clearInputSubtask() {
-  document.getElementById('subtask-input-field').value = '';
-}
+
 
 // Adding event listeners dynamically to each 'div' element
 document.querySelectorAll(".contact-item").forEach(function (item) {
