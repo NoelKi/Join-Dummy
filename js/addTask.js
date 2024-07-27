@@ -438,8 +438,12 @@ function handleKeyPressEvent(event, inputField) {
 }
 
 function updateSubtask(id, newValue) {
+  newValue = newValue.trim();
+  let bulletPattern = /^•\s*/;
+  if (bulletPattern.test(newValue)) {
+    newValue = newValue.replace(bulletPattern, '');
+  }
   if (newValue === "") {
-   
     for (let i = 0; i < subtaskArr.length; i++) {
       if (subtaskArr[i].id === id) {
         subtaskArr.splice(i, 1);
@@ -457,6 +461,7 @@ function updateSubtask(id, newValue) {
   }
   renderSubtasks();
 }
+    
 
 function removeSubtask(id) {
   subtaskArr = subtaskArr.filter(task => task.id !== id);
@@ -488,6 +493,7 @@ function toggleCategoryList() {
     dropDownArrowCat.style.transform = "rotate(180deg)";
   }
 }
+
 
 selectCategoryOption.addEventListener("click", function (event) {
   toggleCategoryList();
@@ -566,10 +572,37 @@ function createTask(event) {  // Don't touch !!!!!
   setTimeout(() => {
     clearAllInputs();
   }, 0);
+  showAnimation();
 }
 
+function showAnimation() {
+  var animationDiv = document.getElementById('added-animation');
+  animationDiv.style.display = 'flex';
+
+  setTimeout(function() {
+    animationDiv.classList.add('show');
+  }, 10);
+  
+  setTimeout(function() {
+    animationDiv.classList.remove('show');
+    
+    setTimeout(function() {
+      animationDiv.style.display = 'none';
+      
+      window.location.href = 'board.html';
+    }, 500); 
+  }, 1000);
+}
+
+  
+
+  
 
 
+
+
+
+  
 
 
 

@@ -624,3 +624,35 @@ input[type="date"]:focus {
   justify-content: center;
   transition: 100ms ease-out, color 100ms ease-out;
 }
+
+
+.white-color-board {
+  filter: brightness(0) invert(1);
+}
+
+#added-animation {
+  display: flex;
+  position: fixed; 
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: bottom 0.5s ease, opacity 0.5s ease;
+  z-index: 9999;
+  width: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #4589ff;
+  padding: 8px 8px;
+  gap: 8px;
+  border-radius: 10px;
+}
+
+
+#added-animation.show {
+  bottom: 50%; 
+  transform: translate(-50%, 50%); 
+  opacity: 1; 
+}
