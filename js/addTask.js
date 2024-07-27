@@ -438,7 +438,7 @@ function handleKeyPressEvent(event, inputField) {
 
 function updateSubtask(id, newValue) {
   if (newValue === "") {
-    // Remove the subtask from the array if the new value is an empty string
+   
     for (let i = 0; i < subtaskArr.length; i++) {
       if (subtaskArr[i].id === id) {
         subtaskArr.splice(i, 1);
@@ -446,7 +446,7 @@ function updateSubtask(id, newValue) {
       }
     }
   } else {
-    // Update the subtask if the new value is not empty
+    
     for (let i = 0; i < subtaskArr.length; i++) {
       if (subtaskArr[i].id === id) {
         subtaskArr[i].name = newValue;
