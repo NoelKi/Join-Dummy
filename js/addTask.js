@@ -13,9 +13,6 @@ let selectionState = {};
 let contacts = [];
 let collaborators = [];
 let subtaskArr = [];
-
-
-
 let titleInput = document.getElementById("add-title");
 let titleError = document.getElementById("title-error");
 let textarea = document.getElementById("textarea-task");
@@ -37,26 +34,15 @@ let generatedContatcs = document.getElementById('hide-box');
 let generateList = document.getElementById('generate-list');
 let inputField = document.getElementById('subtask-input-field');
 
-
-
-
 async function getUserLists() {
   try {
     CURRENT_USER_DATA = await getUserData(USER_ID);
     setUserInitals();
-    if (!CURRENT_USER_DATA.contacts) {
-      contacts = [];
-    } else {
-      contacts = CURRENT_USER_DATA.contacts;
-      loadContactList();
-    }
-    if (!CURRENT_USER_DATA.tasks) {
-      tasks = [];
-    } else {
-      tasks = CURRENT_USER_DATA.tasks;
-    }
+    contacts = CURRENT_USER_DATA.contacts || [];
+    tasks = CURRENT_USER_DATA.tasks || [];
+    loadContactList();
   } catch (error) {
-    console.error("Fehler beim Abrufen der Benutzerdaten:", error);
+    console.error("Error fetching user data:", error);
   }
 }
 
@@ -103,11 +89,6 @@ function clearSelectedContacts() {
   });
 }
 
-clearTaskBtn.addEventListener("click", function () {
-  clearAllInputs();
-  checkInputs();
-});
-
 function resetPriorityButtons() {
   document.querySelectorAll(".buttons button").forEach((btn) => {
     btn.classList.remove("selected-btn");
@@ -125,55 +106,6 @@ function disableButton() {
   createTaskBtn.disabled = true;
 }
 
-selectOption.addEventListener("click", function () {
-  selectBox.classList.toggle("active-task");
-});
-
-optionList.forEach(function (optionListSingle) {
-  optionListSingle.addEventListener("click", function () {
-    text = this.textContent;
-    selectValue.value = text;
-    selectBox.classList.remove("active-task");
-    checkInputs();
-  });
-});
-
-titleInput.addEventListener("focusout", function () {
-  if (titleInput.value.trim() === "") {
-    titleError.style.display = "inline";
-    titleInput.style.borderBottomColor = "#ff8190";
-  } else {
-    titleError.style.display = "none";
-    titleInput.style.borderBottomColor = "";
-  }
-  checkInputs();
-});
-
-dateInput.addEventListener("focusout", function () {
-  if (dateInput.value.trim() === "") {
-    dateError.style.display = "inline";
-    dateInput.style.borderBottomColor = "#ff8190";
-    dateInput.style.color = "black";
-  } else {
-    dateError.style.display = "none";
-    dateInput.style.borderBottomColor = "";
-    dateInput.style.color = "black";
-  }
-  checkInputs();
-});
-
-document.getElementById("task-form").addEventListener("submit", function (event) {
-  if (titleInput.value.trim() === "" || dateInput.value.trim() === "") {
-    event.preventDefault();
-    if (titleInput.value.trim() === "") {
-      titleError.style.display = "inline";
-    }
-    if (dateInput.value.trim() === "") {
-      dateError.style.display = "inline";
-    }
-  }
-});
-
 function selectPriority(priority) {
   let selectedButton = document.getElementById(priority.toLowerCase());
   let isSelected = selectedButton.classList.contains("selected-btn");
@@ -190,94 +122,6 @@ function selectPriority(priority) {
   } else {
     priorityValue = null;
   }
-  console.log("Current priority value:", priorityValue);
-}
-
-function loadContactList(filteredContacts = contacts) {
-  let listContainer = document.getElementById("generate-list");
-  listContainer.innerHTML = "";
-  let htmlContent = "";
-
-  for (let i = 0; i < filteredContacts.length; i++) {
-    const contact = filteredContacts[i];
-    const initials = getFirstLetterOfName(contact.name) + getFirstLetterOfName(contact.surname);
-    const selectedClass = selectionState[contact.id] ? 'selected' : '';
-    htmlContent += generateContactHTML(contact, i, selectedClass, initials);
-  }
-    listContainer.innerHTML = htmlContent;
-    assignContactEventListeners(filteredContacts);
-}
-
-function assignContactEventListeners(filteredContacts) {
-    let contactAssignElements = document.querySelectorAll(".contact-task-assign");
-    contactAssignElements.forEach((element) => {
-      element.addEventListener("click", function () {
-        handleContactAssignClick(element, filteredContacts);
-      });
-    });
-  }
-
-  function handleContactAssignClick(element, filteredContacts) {
-    const index = element.dataset.index;
-    const contact = filteredContacts[index];
-  
-    if (element.classList.contains("selected")) {
-      deselectContact(element, contact);
-    } else {
-      selectContact(element, contact);
-    }
-    renderCollaborators();
-  }
-  
-  function deselectContact(element, contact) {
-    element.classList.remove("selected");
-    element.querySelector(".check-box-task img").src = "../assets/img/checkBoxTaskHtml.svg";
-    delete selectionState[contact.id];
-    removeCollaborator(contact.id);
-  }
-  
-  function selectContact(element, contact) {
-    element.classList.add("selected");
-    element.querySelector(".check-box-task img").src = "../assets/img/checkedTaskHtml.svg";
-    selectionState[contact.id] = true;
-    addCollaborator(contact);
-  }
-  
-  function removeCollaborator(contactId) {
-    const collaboratorIndex = collaborators.findIndex(collab => collab.id === contactId);
-    if (collaboratorIndex > -1) {
-      collaborators.splice(collaboratorIndex, 1);
-    }
-  }
-  
-  function addCollaborator(contact) {
-    collaborators.push({
-      id: contact.id,
-      name: `${contact.name} ${contact.surname}`,
-      color: contact.color
-    });
-  }
-
-document.addEventListener('click', e => {
-  if (!selectValue.contains(e.target)) {
-    generatedContatcs.classList.remove('active-task');
-  }
-})
-
-
-generateList.addEventListener('click', e => {
-  e.stopPropagation();
-});
-
-function renderCollaborators() {
-  let assignContactsCircle = document.getElementById("assign-contacts-circle");
-  assignContactsCircle.innerHTML = "";
-  collaborators.forEach(collaborator => {
-    const initials = getFirstLetterOfName(collaborator.name.split(" ")[0]) + getFirstLetterOfName(collaborator.name.split(" ")[1]);
-    assignContactsCircle.innerHTML += `
-      <div class="initials-task-circle" style="background-color: ${collaborator.color};">${initials}</div>
-    `;
-  });
 }
 
 function clearCollaborators() {
@@ -285,24 +129,6 @@ function clearCollaborators() {
   selectionState = {};
   renderCollaborators();
 }
-
-function filterContacts(searchName) {
-  searchName = searchName.toLowerCase();
-  return contacts.filter((contact) => {
-    return (
-      contact.name.toLowerCase() +
-      " " +
-      contact.surname.toLowerCase()
-    ).includes(searchName);
-  });
-}
-
-document.getElementById('option-search').addEventListener('input', function (event) {
-  const searchName = event.target.value;
-  const filteredContacts = filterContacts(searchName);
-  loadContactList(filteredContacts);
-});
-
 
 
 function handleInputFocusAndEvents() {
@@ -344,14 +170,12 @@ function addSubtaskList() {
 }
 
 function handleClickOutside(event) {
-  const inputWrapper = document.getElementById('subtask-input-wrapper');
+  let inputWrapper = document.getElementById('subtask-input-wrapper');
   if (inputWrapper && !inputWrapper.contains(event.target)) {
     clearInputSubtask();
     document.removeEventListener('click', handleClickOutside, true);
   }
 }
-
-
 
 function addHoverEventListeners() {
   let taskDivs = document.querySelectorAll(".input-positioning-subtask");
@@ -362,7 +186,7 @@ function addHoverEventListeners() {
         icons.classList.remove("d-none");
       }
     });
-     taskDiv.addEventListener("mouseleave", function () {
+    taskDiv.addEventListener("mouseleave", function () {
       let icons = taskDiv.querySelector(".subtask-add-icons");
       if (icons) {
         icons.classList.add("d-none");
@@ -370,7 +194,6 @@ function addHoverEventListeners() {
     });
   });
 }
-
 
 function addSubtaskEventListeners(task) {
   document.getElementById(`subtask-input-field-sub-${task.id}`).addEventListener('dblclick', function () {
@@ -389,16 +212,14 @@ function renderSubtasks() {
   addHoverEventListeners();
 }
 
-
 function editSubtask(id) {
   let subTaskDiv = document.getElementById('input-positioning-' + id);
   let inputField = document.getElementById(`subtask-input-field-sub-${id}`);
   let showIcons = document.getElementById('d-none-' + id);
-  
+
   makeEditable(subTaskDiv, showIcons, inputField);
   setupInputEvents(id, inputField);
 }
-  
 
 function makeEditable(subTaskDiv, showIcons, inputField) {
   subTaskDiv.classList.add('editable');
@@ -467,16 +288,6 @@ function removeSubtask(id) {
 function clearInputSubtask() {
   document.getElementById('subtask-input-field').value = '';
 }
-    
-
-document.querySelectorAll(".contact-item").forEach(function (item) {
-  item.addEventListener("click", function () {
-    let textDiv = item.querySelector(".contact-text");
-    selectValue.value = textDiv.textContent;
-    selectBox.classList.remove("active-task");
-    checkInputs();
-  });
-});
 
 function toggleCategoryList() {
   if (categoryList.style.display === "block") {
@@ -488,41 +299,12 @@ function toggleCategoryList() {
   }
 }
 
-
-selectCategoryOption.addEventListener("click", function (event) {
-  toggleCategoryList();
-  event.stopPropagation();
-});
-
-optionSearch.addEventListener("click", function (event) {
-  toggleCategoryList();
-  event.stopPropagation();
-});
-
-
-document.addEventListener("click", function (event) {
-  if (!selectBoxCategory.contains(event.target)) {
-    categoryList.style.display = "none";
-    dropDownArrowCat.style.transform = "rotate(0deg)";
-  }
-});
-
-
-categoryList.addEventListener("click", function (e) {
-  if (e.target.tagName === "LI") {
-    selectCategoryOption.querySelector("input").value = e.target.textContent;
-    categoryList.style.display = "none";
-    checkInputs();
-  }
-});
-
 function getFirstLetterOfName(name) {
   name = name.slice(0, 1);
   return name.toUpperCase();
 }
 
-function pushTaskToTasks() {  // Don't touch !!!!!
-  // auf benennung in board.js achten
+function pushTaskToTasks() {
   tasks.push({
     id: Date.now().toString(),
     date: dateInput.value,
@@ -553,8 +335,7 @@ function clearTaskKind() {
   kindValue = "";
 }
 
-function createTask(event) {  // Don't touch !!!!!
-  // function for create Task button
+function createTask(event) {
   event.preventDefault();
   pushTaskToTasks();
   updateUser(
@@ -569,7 +350,6 @@ function createTask(event) {  // Don't touch !!!!!
     clearAllInputs();
   }, 0);
   showAnimation();
-  
 }
 
 function showAnimation() {
@@ -579,19 +359,17 @@ function showAnimation() {
   setTimeout(function() {
     animationDiv.classList.add('show');
   }, 10);
-  
+
   setTimeout(function() {
     animationDiv.classList.remove('show');
-    
+
     setTimeout(function() {
       animationDiv.style.display = 'none';
-      
+
       window.location.href = 'board.html';
-    }, 500); 
+    }, 500);
   }, 1000);
 }
-
-  
 
   
 
