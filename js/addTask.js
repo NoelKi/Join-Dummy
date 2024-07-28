@@ -1,16 +1,15 @@
 window.onload = function () {
   includeHTML();
+  clearAllInputs();
   getUserLists();
   loadContactList();
-  clearAllInputs();
   checkInputs();
 };
-  
 
 let priorityValue = "";
 let kindValue = "";
 let kindColor = "";
-let filteredContacts = [];
+let selectionState = {};
 
 let categoryArr = [];
 
@@ -25,7 +24,6 @@ let selectBox = document.querySelector(".select-box");
 let selectOption = document.querySelector(".select-option");
 let selectValue = document.getElementById("select-value");
 let optionSearch = document.getElementById("option-search");
-let option = document.querySelector(".option");
 let optionList = document.querySelectorAll(".option li");
 let dropDownArrow = document.querySelector(".drop-down-arrow");
 let dropDownArrowCat = document.querySelector(".drop-down-arrow-cat");
@@ -37,7 +35,6 @@ let changedInput = document.getElementById("change-to-focus");
 let generatedContatcs = document.getElementById('hide-box');
 
 let contacts = [];
-let selectedContacts = [];
 let collaborators = [];
 let subtaskArr = [];
 
@@ -81,10 +78,11 @@ function clearAllInputs() {
   clearSelectedContacts();
   subtaskArr = [];
   renderSubtasks();
+  loadContactList();
 }
 
 function clearSelectedContacts() {
-  contacts.forEach(contact => contact.selected = false);
+  selectionState = {};
   document.querySelectorAll(".contact-task-assign").forEach(element => {
     element.classList.remove("selected");
     element.querySelector(".check-box-task img").src = "../assets/img/checkBoxTaskHtml.svg";
@@ -95,7 +93,6 @@ clearTaskBtn.addEventListener("click", function () {
   clearAllInputs();
   checkInputs();
 });
-
 
 function resetPriorityButtons() {
   document.querySelectorAll(".buttons button").forEach((btn) => {
@@ -151,7 +148,6 @@ dateInput.addEventListener("focusout", function () {
   checkInputs();
 });
 
-
 document.getElementById("task-form").addEventListener("submit", function (event) {
   if (titleInput.value.trim() === "" || dateInput.value.trim() === "") {
     event.preventDefault();
@@ -189,23 +185,24 @@ function loadContactList(filteredContacts = contacts) {
   let htmlContent = "";
 
   for (let i = 0; i < filteredContacts.length; i++) {
-    const initials =
-      getFirstLetterOfName(filteredContacts[i].name) +
-      getFirstLetterOfName(filteredContacts[i].surname);
-    const selectedClass = filteredContacts[i].selected ? 'selected' : '';
+    const contact = filteredContacts[i];
+    const initials = getFirstLetterOfName(contact.name) + getFirstLetterOfName(contact.surname);
+    const selectedClass = selectionState[contact.id] ? 'selected' : '';
 
     htmlContent += `
-        <div class="contact-task-assign ${selectedClass}" data-index="${i}">
-          <div class="icon-name-contact center-flexbox">
-            <div class="initials-task" style="background-color: ${filteredContacts[i].color};">${initials}</div>
-            <div class="contact-text-task">${filteredContacts[i].name} ${filteredContacts[i].surname}</div>
-          </div>
-            <div class="check-box-task"><img src="../assets/img/${filteredContacts[i].selected ? 'checkedTaskHtml.svg' : 'checkBoxTaskHtml.svg'}"></div>
+      <div class="contact-task-assign ${selectedClass}" data-index="${i}" data-id="${contact.id}">
+        <div class="icon-name-contact center-flexbox">
+          <div class="initials-task" style="background-color: ${contact.color};">${initials}</div>
+          <div class="contact-text-task">${contact.name} ${contact.surname}</div>
         </div>
-      `;
+        <div class="check-box-task">
+          <img src="../assets/img/${selectedClass ? 'checkedTaskHtml.svg' : 'checkBoxTaskHtml.svg'}">
+        </div>
+      </div>
+    `;
   }
 
-  listContainer.innerHTML = htmlContent; // Set the entire HTML content at once
+  listContainer.innerHTML = htmlContent;
 
   let contactAssignElements = document.querySelectorAll(".contact-task-assign");
   contactAssignElements.forEach((element) => {
@@ -222,29 +219,29 @@ function handleContactAssignClick(element, filteredContacts) {
   if (element.classList.contains("selected")) {
     element.classList.remove("selected");
     element.querySelector(".check-box-task img").src = "../assets/img/checkBoxTaskHtml.svg";
-    
-    const collaboratorIndex = collaborators.findIndex(collaborator => collaborator.name === `${contact.name} ${contact.surname}`);
+    delete selectionState[contact.id];
+
+    const collaboratorIndex = collaborators.findIndex(collab => collab.id === contact.id);
     if (collaboratorIndex > -1) {
       collaborators.splice(collaboratorIndex, 1);
     }
   } else {
     element.classList.add("selected");
-    element.querySelector(".check-box-task img").src =
-      "../assets/img/checkedTaskHtml.svg";
-      
+    element.querySelector(".check-box-task img").src = "../assets/img/checkedTaskHtml.svg";
+    selectionState[contact.id] = true;
+
     collaborators.push({
+      id: contact.id,
       name: `${contact.name} ${contact.surname}`,
       color: contact.color
-    });
+    }); 
   }
   renderCollaborators();
-  console.log(collaborators);
 }
 
 document.addEventListener('click', e => {
   if (!selectValue.contains(e.target)) {
     generatedContatcs.classList.remove('active-task');
-
   }
 })
 
@@ -253,14 +250,11 @@ generateList.addEventListener('click', e => {
   e.stopPropagation();
 });
 
-
 function renderCollaborators() {
   let assignContactsCircle = document.getElementById("assign-contacts-circle");
   assignContactsCircle.innerHTML = "";
   collaborators.forEach(collaborator => {
-    const initials =
-      getFirstLetterOfName(collaborator.name.split(" ")[0]) +
-      getFirstLetterOfName(collaborator.name.split(" ")[1]);
+    const initials = getFirstLetterOfName(collaborator.name.split(" ")[0]) + getFirstLetterOfName(collaborator.name.split(" ")[1]);
     assignContactsCircle.innerHTML += `
       <div class="initials-task-circle" style="background-color: ${collaborator.color};">${initials}</div>
     `;
@@ -269,13 +263,12 @@ function renderCollaborators() {
 
 function clearCollaborators() {
   collaborators = [];
+  selectionState = {};
   renderCollaborators();
 }
 
-
 function filterContacts(searchName) {
   searchName = searchName.toLowerCase();
-
   return contacts.filter((contact) => {
     return (
       contact.name.toLowerCase() +
@@ -349,7 +342,6 @@ function handleClickOutside(event) {
     document.removeEventListener('click', handleClickOutside, true);
   }
 }
-
 
 
 function addHoverEventListeners() {
@@ -476,8 +468,6 @@ function clearInputSubtask() {
 }
 
 
-
-// Adding event listeners dynamically to each 'div' element
 document.querySelectorAll(".contact-item").forEach(function (item) {
   item.addEventListener("click", function () {
     let textDiv = item.querySelector(".contact-text");
@@ -576,6 +566,7 @@ function createTask(event) {  // Don't touch !!!!!
     clearAllInputs();
   }, 0);
   showAnimation();
+  
 }
 
 function showAnimation() {
