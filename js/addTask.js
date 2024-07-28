@@ -10,8 +10,11 @@ let priorityValue = "";
 let kindValue = "";
 let kindColor = "";
 let selectionState = {};
+let contacts = [];
+let collaborators = [];
+let subtaskArr = [];
 
-let categoryArr = [];
+
 
 let titleInput = document.getElementById("add-title");
 let titleError = document.getElementById("title-error");
@@ -25,7 +28,6 @@ let selectOption = document.querySelector(".select-option");
 let selectValue = document.getElementById("select-value");
 let optionSearch = document.getElementById("option-search");
 let optionList = document.querySelectorAll(".option li");
-let dropDownArrow = document.querySelector(".drop-down-arrow");
 let dropDownArrowCat = document.querySelector(".drop-down-arrow-cat");
 let selectBoxCategory = document.querySelector(".select-box-category");
 let selectCategoryOption = document.getElementById("select-category");
@@ -34,9 +36,7 @@ let inputField = document.getElementById("subtask-input-field");
 let changedInput = document.getElementById("change-to-focus");
 let generatedContatcs = document.getElementById('hide-box');
 
-let contacts = [];
-let collaborators = [];
-let subtaskArr = [];
+
 
 async function getUserLists() {
   try {
@@ -188,29 +188,20 @@ function loadContactList(filteredContacts = contacts) {
     const contact = filteredContacts[i];
     const initials = getFirstLetterOfName(contact.name) + getFirstLetterOfName(contact.surname);
     const selectedClass = selectionState[contact.id] ? 'selected' : '';
-
-    htmlContent += `
-      <div class="contact-task-assign ${selectedClass}" data-index="${i}" data-id="${contact.id}">
-        <div class="icon-name-contact center-flexbox">
-          <div class="initials-task" style="background-color: ${contact.color};">${initials}</div>
-          <div class="contact-text-task">${contact.name} ${contact.surname}</div>
-        </div>
-        <div class="check-box-task">
-          <img src="../assets/img/${selectedClass ? 'checkedTaskHtml.svg' : 'checkBoxTaskHtml.svg'}">
-        </div>
-      </div>
-    `;
+    htmlContent += generateContactHTML(contact, i, selectedClass, initials);
   }
-
-  listContainer.innerHTML = htmlContent;
-
-  let contactAssignElements = document.querySelectorAll(".contact-task-assign");
-  contactAssignElements.forEach((element) => {
-    element.addEventListener("click", function () {
-      handleContactAssignClick(element, filteredContacts);
-    });
-  });
+    listContainer.innerHTML = htmlContent;
+    assignContactEventListeners(filteredContacts);
 }
+
+function assignContactEventListeners(filteredContacts) {
+    let contactAssignElements = document.querySelectorAll(".contact-task-assign");
+    contactAssignElements.forEach((element) => {
+      element.addEventListener("click", function () {
+        handleContactAssignClick(element, filteredContacts);
+      });
+    });
+  }
 
 function handleContactAssignClick(element, filteredContacts) {
   const index = element.dataset.index;
