@@ -32,9 +32,11 @@ let dropDownArrowCat = document.querySelector(".drop-down-arrow-cat");
 let selectBoxCategory = document.querySelector(".select-box-category");
 let selectCategoryOption = document.getElementById("select-category");
 let categoryList = document.getElementById("category-list");
-let inputField = document.getElementById("subtask-input-field");
 let changedInput = document.getElementById("change-to-focus");
 let generatedContatcs = document.getElementById('hide-box');
+let generateList = document.getElementById('generate-list');
+let inputField = document.getElementById('subtask-input-field');
+
 
 
 
@@ -59,24 +61,36 @@ async function getUserLists() {
 }
 
 function clearAllInputs() {
+  resetInputFields();
+  resetUIElements();
+  clearAllStates();
+}
+
+function resetInputFields() {
   titleInput.value = "";
   textarea.value = "";
   dateInput.value = "";
   selectValue.value = "Select contacts to assign";
+  optionSearch.value = "";
+  selectCategoryOption.querySelector("input").value = "Select Category";
+}
+
+function resetUIElements() {
   selectBox.classList.remove("active-task");
   categoryList.style.display = "none";
   dropDownArrowCat.style.transform = "rotate(0deg)";
-  optionSearch.value = "";
   optionList.forEach((li) => (li.style.display = ""));
-  selectCategoryOption.querySelector("input").value = "Select Category";
   titleError.style.display = "none";
   dateError.style.display = "none";
   titleInput.style.borderBottomColor = "";
   dateInput.style.borderBottomColor = "";
+}
+
+function clearAllStates() {
+  subtaskArr = [];
   resetPriorityButtons();
   clearCollaborators();
   clearSelectedContacts();
-  subtaskArr = [];
   renderSubtasks();
   loadContactList();
 }
@@ -203,32 +217,46 @@ function assignContactEventListeners(filteredContacts) {
     });
   }
 
-function handleContactAssignClick(element, filteredContacts) {
-  const index = element.dataset.index;
-  const contact = filteredContacts[index];
-
-  if (element.classList.contains("selected")) {
+  function handleContactAssignClick(element, filteredContacts) {
+    const index = element.dataset.index;
+    const contact = filteredContacts[index];
+  
+    if (element.classList.contains("selected")) {
+      deselectContact(element, contact);
+    } else {
+      selectContact(element, contact);
+    }
+    renderCollaborators();
+  }
+  
+  function deselectContact(element, contact) {
     element.classList.remove("selected");
     element.querySelector(".check-box-task img").src = "../assets/img/checkBoxTaskHtml.svg";
     delete selectionState[contact.id];
-
-    const collaboratorIndex = collaborators.findIndex(collab => collab.id === contact.id);
-    if (collaboratorIndex > -1) {
-      collaborators.splice(collaboratorIndex, 1);
-    }
-  } else {
+    removeCollaborator(contact.id);
+  }
+  
+  function selectContact(element, contact) {
     element.classList.add("selected");
     element.querySelector(".check-box-task img").src = "../assets/img/checkedTaskHtml.svg";
     selectionState[contact.id] = true;
-
+    addCollaborator(contact);
+  }
+  
+  function removeCollaborator(contactId) {
+    const collaboratorIndex = collaborators.findIndex(collab => collab.id === contactId);
+    if (collaboratorIndex > -1) {
+      collaborators.splice(collaboratorIndex, 1);
+    }
+  }
+  
+  function addCollaborator(contact) {
     collaborators.push({
       id: contact.id,
       name: `${contact.name} ${contact.surname}`,
       color: contact.color
-    }); 
+    });
   }
-  renderCollaborators();
-}
 
 document.addEventListener('click', e => {
   if (!selectValue.contains(e.target)) {
@@ -236,7 +264,7 @@ document.addEventListener('click', e => {
   }
 })
 
-let generateList = document.getElementById('generate-list');
+
 generateList.addEventListener('click', e => {
   e.stopPropagation();
 });
@@ -275,24 +303,11 @@ document.getElementById('option-search').addEventListener('input', function (eve
   loadContactList(filteredContacts);
 });
 
-function changeToFocus() {
-  let changedInput = document.getElementById('input-subtask-add');
-  changedInput.innerHTML = `
-    <div class="input-positioning" id="subtask-input-wrapper">
-      <input class="subtask-css-input" id="subtask-input-field" type="text" placeholder="Add subtask" />
-      <div class="center-flexbox">
-        <div class="subtask-add-icons">
-          <div class="icons-subtask center-flexbox"><img onclick="clearInputSubtask()" src="../assets/img/clear_subtask.svg" alt=""></div>
-          <div class="separator-subtask"></div>
-          <div class="icons-subtask center-flexbox"><img onclick="addSubtaskList()" src="../assets/img/subtask_save.svg" alt=""></div>
-        </div>
-      </div>
-    </div>
-  `;
 
+
+function handleInputFocusAndEvents() {
   let inputField = document.getElementById('subtask-input-field');
   inputField.focus();
-
   inputField.addEventListener('blur', function () {
     addSubtaskList();
   });
@@ -302,8 +317,13 @@ function changeToFocus() {
       addSubtaskList();
     }
   });
-
   document.addEventListener('click', handleClickOutside, true);
+}
+
+function changeToFocus() {
+  let changedInput = document.getElementById('input-subtask-add');
+  changedInput.innerHTML = getSubtaskInputHTML();
+  handleInputFocusAndEvents();
 }
 
 function addSubtaskList() {
@@ -316,28 +336,25 @@ function addSubtaskList() {
       id: uniqueId
     };
     subtaskArr.push(newSubtask);
-    console.log("New subtask added:", newSubtask);
-    console.log("Updated subtaskArr:", subtaskArr);
     document.getElementById('subtask-input-field').value = "";
     renderSubtasks();
   } else {
     clearInputSubtask();
   }
 }
+
 function handleClickOutside(event) {
   const inputWrapper = document.getElementById('subtask-input-wrapper');
   if (inputWrapper && !inputWrapper.contains(event.target)) {
-
     clearInputSubtask();
-
     document.removeEventListener('click', handleClickOutside, true);
   }
 }
 
 
+
 function addHoverEventListeners() {
   let taskDivs = document.querySelectorAll(".input-positioning-subtask");
-
   taskDivs.forEach(function (taskDiv) {
     taskDiv.addEventListener("mouseenter", function () {
       let icons = taskDiv.querySelector(".subtask-add-icons");
@@ -345,8 +362,7 @@ function addHoverEventListeners() {
         icons.classList.remove("d-none");
       }
     });
-
-    taskDiv.addEventListener("mouseleave", function () {
+     taskDiv.addEventListener("mouseleave", function () {
       let icons = taskDiv.querySelector(".subtask-add-icons");
       if (icons) {
         icons.classList.add("d-none");
@@ -355,33 +371,24 @@ function addHoverEventListeners() {
   });
 }
 
+
+function addSubtaskEventListeners(task) {
+  document.getElementById(`subtask-input-field-sub-${task.id}`).addEventListener('dblclick', function () {
+    editSubtask(task.id);
+  });
+}
+
 function renderSubtasks() {
   let addedSubtask = document.getElementById('added-subtask');
   addedSubtask.innerHTML = "";
-
   for (let i = 0; i < subtaskArr.length; i++) {
     let task = subtaskArr[i];
-    let taskWithBullet = "&#x2022; " + task.name;
-
-    addedSubtask.innerHTML += `
-      <div class="input-positioning-subtask" id="input-positioning-${task.id}">
-        <input class="subtask-css-input" id="subtask-input-field-sub-${task.id}" type="text" value="${taskWithBullet}" readonly />
-        <div class="center-flexbox">
-          <div class="subtask-add-icons d-none" id="d-none-${task.id}">
-            <div class="icons-subtask center-flexbox"><img src="../assets/img/bin.svg" onclick="removeSubtask(${task.id})"></div>
-            <div class="separator-subtask"></div>
-            <div class="icons-subtask center-flexbox"><img src="../assets/img/subtask_save.svg"></div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    document.getElementById(`subtask-input-field-sub-${task.id}`).addEventListener('dblclick', function () {
-      editSubtask(task.id);
-    });
+    addedSubtask.innerHTML += generateSubtaskHTML(task);
+    addSubtaskEventListeners(task);
   }
   addHoverEventListeners();
 }
+
 
 function editSubtask(id) {
   let subTaskDiv = document.getElementById('input-positioning-' + id);
@@ -391,6 +398,7 @@ function editSubtask(id) {
   makeEditable(subTaskDiv, showIcons, inputField);
   setupInputEvents(id, inputField);
 }
+  
 
 function makeEditable(subTaskDiv, showIcons, inputField) {
   subTaskDiv.classList.add('editable');
@@ -429,6 +437,11 @@ function updateSubtask(id, newValue) {
   if (bulletPattern.test(newValue)) {
     newValue = newValue.replace(bulletPattern, '');
   }
+  findAndUpdateOrRemoveSubtask(id, newValue);
+  renderSubtasks();
+}
+
+function findAndUpdateOrRemoveSubtask(id, newValue) {
   if (newValue === "") {
     for (let i = 0; i < subtaskArr.length; i++) {
       if (subtaskArr[i].id === id) {
@@ -437,7 +450,6 @@ function updateSubtask(id, newValue) {
       }
     }
   } else {
-    
     for (let i = 0; i < subtaskArr.length; i++) {
       if (subtaskArr[i].id === id) {
         subtaskArr[i].name = newValue;
@@ -445,9 +457,7 @@ function updateSubtask(id, newValue) {
       }
     }
   }
-  renderSubtasks();
 }
-    
 
 function removeSubtask(id) {
   subtaskArr = subtaskArr.filter(task => task.id !== id);
@@ -457,7 +467,7 @@ function removeSubtask(id) {
 function clearInputSubtask() {
   document.getElementById('subtask-input-field').value = '';
 }
-
+    
 
 document.querySelectorAll(".contact-item").forEach(function (item) {
   item.addEventListener("click", function () {
@@ -489,12 +499,14 @@ optionSearch.addEventListener("click", function (event) {
   event.stopPropagation();
 });
 
+
 document.addEventListener("click", function (event) {
   if (!selectBoxCategory.contains(event.target)) {
     categoryList.style.display = "none";
     dropDownArrowCat.style.transform = "rotate(0deg)";
   }
 });
+
 
 categoryList.addEventListener("click", function (e) {
   if (e.target.tagName === "LI") {
@@ -561,7 +573,7 @@ function createTask(event) {  // Don't touch !!!!!
 }
 
 function showAnimation() {
-  var animationDiv = document.getElementById('added-animation');
+  let animationDiv = document.getElementById('added-animation');
   animationDiv.style.display = 'flex';
 
   setTimeout(function() {
