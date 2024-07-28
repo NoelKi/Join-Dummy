@@ -42,6 +42,10 @@ function loadContactList(filteredContacts = contacts) {
     removeCollaborator(contact.id);
   }
 
+  function removeCollaborator(contactId) {
+    collaborators = collaborators.filter(collaborator => collaborator.id !== contactId);
+  }
+
   function selectContact(element, contact) {
     element.classList.add("selected");
     element.querySelector(".check-box-task img").src = "../assets/img/checkedTaskHtml.svg";
