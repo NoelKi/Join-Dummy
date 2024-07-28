@@ -5,6 +5,7 @@ window.onload = function () {
   clearAllInputs();
   checkInputs();
 };
+  
 
 let priorityValue = "";
 let kindValue = "";
@@ -78,6 +79,8 @@ function clearAllInputs() {
   resetPriorityButtons();
   clearCollaborators();
   clearSelectedContacts();
+  subtaskArr = [];
+  renderSubtasks();
 }
 
 function clearSelectedContacts() {
@@ -306,12 +309,12 @@ function changeToFocus() {
   let inputField = document.getElementById('subtask-input-field');
   inputField.focus();
 
-  // Attach event listeners to the dynamically created input field
   inputField.addEventListener('blur', function () {
     addSubtaskList();
   });
   inputField.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
+      event.preventDefault();
       addSubtaskList();
     }
   });
