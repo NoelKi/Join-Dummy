@@ -270,7 +270,7 @@ function createAddTaskOverlay() {
             </div>
             <div class="board-overlay-main-container">
             
-            <div class="task-container">
+            <div class="add-task-container">
       <form id="task-form" class="task-css" onsubmit="createTask(event);">
 
         <div class="task-section-div">
