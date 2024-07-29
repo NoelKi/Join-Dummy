@@ -34,7 +34,7 @@
   checkInputs();
 };
 
-let priorityValue = "";
+let priorityValue = null;
 let kindValue = "";
 let kindColor = "";
 let selectionState = {};
@@ -61,6 +61,7 @@ let changedInput = document.getElementById("change-to-focus");
 let generatedContatcs = document.getElementById('hide-box');
 let generateList = document.getElementById('generate-list');
 let inputField = document.getElementById('subtask-input-field');
+let priorityError = document.getElementById('priority-error');
 
 
 
@@ -178,20 +179,12 @@ function resetPriorityButtons() {
 function checkInputs() {
   let isTitleValid = titleInput.value.trim() !== "";
   let isDateValid = dateInput.value.trim() !== "";
-  createTaskBtn.disabled = !(isTitleValid &amp;&amp; isDateValid);
+  let isPrioritySelected = priorityValue !== null;
+
+  createTaskBtn.disabled = !(isTitleValid &amp;&amp; isDateValid &amp;&amp; isPrioritySelected);
+  updateErrorDisplay();
 }
   
-/**
- * Disables the task creation button by setting its `disabled` property to `true`.
- * This function is used to prevent user interaction with the button, typically when certain conditions are not met.
- *
- * @function
- * @returns {void}
- */
-function disableButton() {
-  createTaskBtn.disabled = true;
-}
-
 /**
  * Selects a priority button and updates its visual state. Only one priority can be selected at a time.
  * This function manages the selection state of priority buttons, ensuring only the chosen button is marked as selected.
@@ -201,21 +194,44 @@ function disableButton() {
  * @param {string} priority - The priority level to select, represented as a string. The string should match the ID of the button element.
  * @returns {void}
  */
+/**
+ * Selects a priority button and updates the UI based on the selection.
+ * 
+ * @param {string} priority - The priority level to select (e.g., "High", "Medium", "Low").
+ * 
+ * This function first identifies the button corresponding to the given priority and 
+ * toggles its selected state. If the button is already selected, it will be deselected. 
+ * It also updates the error display based on whether a priority has been selected.
+ */
+
 function selectPriority(priority) {
-  
   let selectedButton = document.getElementById(priority.toLowerCase());
   let isSelected = selectedButton.classList.contains("selected-btn");
-  document.querySelectorAll(".buttons button").forEach((btn) => {
+   document.querySelectorAll(".buttons button").forEach((btn) => {
     btn.classList.remove("selected-btn");
     btn.querySelector(".button-img").classList.remove("selected-btn");
   });
-  if (!isSelected) {
+if (!isSelected) {
     selectedButton.classList.add("selected-btn");
     selectedButton.querySelector(".button-img").classList.add("selected-btn");
     priorityValue = priority;
   } else {
-    
     priorityValue = null;
+  }
+  checkInputs();
+  updateErrorDisplay();
+}
+
+/**
+ * Updates the display of the error message based on the selected priority value.
+ * 
+ * This function shows an error message if no priority is selected and hides it otherwise.
+ */
+function updateErrorDisplay() {
+  if (priorityValue === null) {
+    priorityError.style.display = "contents";
+  } else {
+    priorityError.style.display = "none";
   }
 }
   
@@ -336,9 +352,6 @@ function showIcons(event) {
   }
 }
   
-  
-  
-
 /**
  * Hides the icons inside the element that triggered the event.
  * This function is intended to be used as an event handler for mouse leave events.
@@ -391,7 +404,7 @@ function addHoverEventListeners() {
  * Updates the inner HTML of the element with ID 'added-subtask'.
  */
 function renderSubtasks() {
-  const addedSubtask = document.getElementById('added-subtask');
+  let addedSubtask = document.getElementById('added-subtask');
   addedSubtask.innerHTML = subtaskArr.map(task => generateSubtaskHTML(task)).join("");
   subtaskArr.forEach(task => addSubtaskEventListeners(task));
   addHoverEventListeners();
@@ -437,13 +450,13 @@ function addSubtaskEventListeners(task) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCollaborator">addCollaborator</a></li><li><a href="global.html#addHoverEventListeners">addHoverEventListeners</a></li><li><a href="global.html#addSubtaskEventListeners">addSubtaskEventListeners</a></li><li><a href="global.html#addSubtaskList">addSubtaskList</a></li><li><a href="global.html#assignContactEventListeners">assignContactEventListeners</a></li><li><a href="global.html#changeToFocus">changeToFocus</a></li><li><a href="global.html#checkInputs">checkInputs</a></li><li><a href="global.html#clearAllInputs">clearAllInputs</a></li><li><a href="global.html#clearAllStates">clearAllStates</a></li><li><a href="global.html#clearCollaborators">clearCollaborators</a></li><li><a href="global.html#clearInputSubtask">clearInputSubtask</a></li><li><a href="global.html#clearSelectedContacts">clearSelectedContacts</a></li><li><a href="global.html#clearTaskKind">clearTaskKind</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#deselectContact">deselectContact</a></li><li><a href="global.html#disableButton">disableButton</a></li><li><a href="global.html#editSubtask">editSubtask</a></li><li><a href="global.html#filterContacts">filterContacts</a></li><li><a href="global.html#findAndUpdateOrRemoveSubtask">findAndUpdateOrRemoveSubtask</a></li><li><a href="global.html#getFirstLetterOfName">getFirstLetterOfName</a></li><li><a href="global.html#getUserLists">getUserLists</a></li><li><a href="global.html#handleBlurEvent">handleBlurEvent</a></li><li><a href="global.html#handleClickOutside">handleClickOutside</a></li><li><a href="global.html#handleContactAssignClick">handleContactAssignClick</a></li><li><a href="global.html#handleInputFocusAndEvents">handleInputFocusAndEvents</a></li><li><a href="global.html#handleKeyPressEvent">handleKeyPressEvent</a></li><li><a href="global.html#hideIcons">hideIcons</a></li><li><a href="global.html#loadContactList">loadContactList</a></li><li><a href="global.html#makeEditable">makeEditable</a></li><li><a href="global.html#pushTaskToTasks">pushTaskToTasks</a></li><li><a href="global.html#removeCollaborator">removeCollaborator</a></li><li><a href="global.html#removeSubtask">removeSubtask</a></li><li><a href="global.html#renderCollaborators">renderCollaborators</a></li><li><a href="global.html#renderSubtasks">renderSubtasks</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPriorityButtons">resetPriorityButtons</a></li><li><a href="global.html#resetUIElements">resetUIElements</a></li><li><a href="global.html#selectContact">selectContact</a></li><li><a href="global.html#selectPriority">selectPriority</a></li><li><a href="global.html#setTaskKind">setTaskKind</a></li><li><a href="global.html#setupInputEvents">setupInputEvents</a></li><li><a href="global.html#showAnimation">showAnimation</a></li><li><a href="global.html#showIcons">showIcons</a></li><li><a href="global.html#toggleCategoryList">toggleCategoryList</a></li><li><a href="global.html#updateSubtask">updateSubtask</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCollaborator">addCollaborator</a></li><li><a href="global.html#addHoverEventListeners">addHoverEventListeners</a></li><li><a href="global.html#addSubtaskEventListeners">addSubtaskEventListeners</a></li><li><a href="global.html#addSubtaskList">addSubtaskList</a></li><li><a href="global.html#assignContactEventListeners">assignContactEventListeners</a></li><li><a href="global.html#changeToFocus">changeToFocus</a></li><li><a href="global.html#checkInputs">checkInputs</a></li><li><a href="global.html#clearAllInputs">clearAllInputs</a></li><li><a href="global.html#clearAllStates">clearAllStates</a></li><li><a href="global.html#clearCollaborators">clearCollaborators</a></li><li><a href="global.html#clearInputSubtask">clearInputSubtask</a></li><li><a href="global.html#clearSelectedContacts">clearSelectedContacts</a></li><li><a href="global.html#clearTaskKind">clearTaskKind</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#deselectContact">deselectContact</a></li><li><a href="global.html#editSubtask">editSubtask</a></li><li><a href="global.html#filterContacts">filterContacts</a></li><li><a href="global.html#findAndUpdateOrRemoveSubtask">findAndUpdateOrRemoveSubtask</a></li><li><a href="global.html#getFirstLetterOfName">getFirstLetterOfName</a></li><li><a href="global.html#getUserLists">getUserLists</a></li><li><a href="global.html#handleBlurEvent">handleBlurEvent</a></li><li><a href="global.html#handleClickOutside">handleClickOutside</a></li><li><a href="global.html#handleContactAssignClick">handleContactAssignClick</a></li><li><a href="global.html#handleInputFocusAndEvents">handleInputFocusAndEvents</a></li><li><a href="global.html#handleKeyPressEvent">handleKeyPressEvent</a></li><li><a href="global.html#hideIcons">hideIcons</a></li><li><a href="global.html#loadContactList">loadContactList</a></li><li><a href="global.html#makeEditable">makeEditable</a></li><li><a href="global.html#pushTaskToTasks">pushTaskToTasks</a></li><li><a href="global.html#removeCollaborator">removeCollaborator</a></li><li><a href="global.html#removeSubtask">removeSubtask</a></li><li><a href="global.html#renderCollaborators">renderCollaborators</a></li><li><a href="global.html#renderSubtasks">renderSubtasks</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPriorityButtons">resetPriorityButtons</a></li><li><a href="global.html#resetUIElements">resetUIElements</a></li><li><a href="global.html#selectContact">selectContact</a></li><li><a href="global.html#selectPriority">selectPriority</a></li><li><a href="global.html#setTaskKind">setTaskKind</a></li><li><a href="global.html#setupInputEvents">setupInputEvents</a></li><li><a href="global.html#showAnimation">showAnimation</a></li><li><a href="global.html#showIcons">showIcons</a></li><li><a href="global.html#toggleCategoryList">toggleCategoryList</a></li><li><a href="global.html#updateErrorDisplay">updateErrorDisplay</a></li><li><a href="global.html#updateSubtask">updateSubtask</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Jul 29 2024 16:29:26 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Jul 29 2024 17:43:03 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

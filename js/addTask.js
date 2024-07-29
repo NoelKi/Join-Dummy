@@ -6,7 +6,7 @@ window.onload = function () {
   checkInputs();
 };
 
-let priorityValue = "";
+let priorityValue = null;
 let kindValue = "";
 let kindColor = "";
 let selectionState = {};
@@ -33,6 +33,7 @@ let changedInput = document.getElementById("change-to-focus");
 let generatedContatcs = document.getElementById('hide-box');
 let generateList = document.getElementById('generate-list');
 let inputField = document.getElementById('subtask-input-field');
+let priorityError = document.getElementById('priority-error');
 
 
 
@@ -150,20 +151,12 @@ function resetPriorityButtons() {
 function checkInputs() {
   let isTitleValid = titleInput.value.trim() !== "";
   let isDateValid = dateInput.value.trim() !== "";
-  createTaskBtn.disabled = !(isTitleValid && isDateValid);
+  let isPrioritySelected = priorityValue !== null;
+
+  createTaskBtn.disabled = !(isTitleValid && isDateValid && isPrioritySelected);
+  updateErrorDisplay();
 }
   
-/**
- * Disables the task creation button by setting its `disabled` property to `true`.
- * This function is used to prevent user interaction with the button, typically when certain conditions are not met.
- *
- * @function
- * @returns {void}
- */
-function disableButton() {
-  createTaskBtn.disabled = true;
-}
-
 /**
  * Selects a priority button and updates its visual state. Only one priority can be selected at a time.
  * This function manages the selection state of priority buttons, ensuring only the chosen button is marked as selected.
@@ -173,21 +166,44 @@ function disableButton() {
  * @param {string} priority - The priority level to select, represented as a string. The string should match the ID of the button element.
  * @returns {void}
  */
+/**
+ * Selects a priority button and updates the UI based on the selection.
+ * 
+ * @param {string} priority - The priority level to select (e.g., "High", "Medium", "Low").
+ * 
+ * This function first identifies the button corresponding to the given priority and 
+ * toggles its selected state. If the button is already selected, it will be deselected. 
+ * It also updates the error display based on whether a priority has been selected.
+ */
+
 function selectPriority(priority) {
-  
   let selectedButton = document.getElementById(priority.toLowerCase());
   let isSelected = selectedButton.classList.contains("selected-btn");
-  document.querySelectorAll(".buttons button").forEach((btn) => {
+   document.querySelectorAll(".buttons button").forEach((btn) => {
     btn.classList.remove("selected-btn");
     btn.querySelector(".button-img").classList.remove("selected-btn");
   });
-  if (!isSelected) {
+if (!isSelected) {
     selectedButton.classList.add("selected-btn");
     selectedButton.querySelector(".button-img").classList.add("selected-btn");
     priorityValue = priority;
   } else {
-    
     priorityValue = null;
+  }
+  checkInputs();
+  updateErrorDisplay();
+}
+
+/**
+ * Updates the display of the error message based on the selected priority value.
+ * 
+ * This function shows an error message if no priority is selected and hides it otherwise.
+ */
+function updateErrorDisplay() {
+  if (priorityValue === null) {
+    priorityError.style.display = "contents";
+  } else {
+    priorityError.style.display = "none";
   }
 }
   
@@ -308,9 +324,6 @@ function showIcons(event) {
   }
 }
   
-  
-  
-
 /**
  * Hides the icons inside the element that triggered the event.
  * This function is intended to be used as an event handler for mouse leave events.

@@ -92,17 +92,21 @@ dateInput.addEventListener("focusout", function () {
   checkInputs();
 });
 
+
 /**
- * Event listener for the submit event on the `task-form` element.
- * Validates the form fields (`titleInput` and `dateInput`) when the form is submitted.
- * If either of the fields is empty, prevents the form from being submitted.
- * Displays error messages next to the empty fields.
- *
- * @function
- * @param {Event} event - The submit event object.
- * @returns {void}
+ * Adds an event listener to the task form to handle form submission.
+ * 
+ * This function prevents the form from submitting if either the title or date input fields are empty.
+ * If the title field is empty, it displays an error message for the title input. Similarly, 
+ * if the date field is empty, it displays an error message for the date input. After checking 
+ * the inputs, it calls `checkInputs()` to perform any additional validation.
+ * 
+ * @param {Event} event - The event object associated with the form submission.
+ * 
+ * @listens submit#task-form - This event listener is triggered when the form with ID "task-form" is submitted.
  */
 document.getElementById("task-form").addEventListener("submit", function (event) {
+  
   if (titleInput.value.trim() === "" || dateInput.value.trim() === "") {
     event.preventDefault();
     if (titleInput.value.trim() === "") {
@@ -111,8 +115,15 @@ document.getElementById("task-form").addEventListener("submit", function (event)
     if (dateInput.value.trim() === "") {
       dateError.style.display = "inline";
     }
+    checkInputs();
   }
 });
+
+    
+
+    
+
+    
 
 
 /**

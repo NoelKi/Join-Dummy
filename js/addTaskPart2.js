@@ -288,8 +288,7 @@ function editSubtask(id) {
       CURRENT_USER_DATA.contacts,
       tasks                     
     );
-    disableButton();           
-    setTimeout(() => {
+      setTimeout(() => {
       clearAllInputs();       
     }, 0);
     showAnimation();          
