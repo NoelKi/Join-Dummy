@@ -87,6 +87,7 @@ function resetInputFields() {
   selectValue.value = "Select contacts to assign";
   optionSearch.value = "";
   selectCategoryOption.querySelector("input").value = "Select Category";
+  priorityValue = null;
 }
 
 
@@ -124,6 +125,7 @@ function clearAllStates() {
   clearSelectedContacts();
   renderSubtasks();
   loadContactList();
+  updateErrorDisplay();
 }
 
 /**

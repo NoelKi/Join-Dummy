@@ -9,6 +9,7 @@
 clearTaskBtn.addEventListener("click", function () {
   clearAllInputs();
   checkInputs();
+  
 });
 
 /**
@@ -90,6 +91,7 @@ dateInput.addEventListener("focusout", function () {
     dateInput.style.color = "black";
   }
   checkInputs();
+  
 });
 
 
