@@ -138,16 +138,16 @@ input[type="date"]:focus {
 .clear-task-btn {
   border-radius: 10px;
   outline: 0;
-  border-color: #647188;
+  border: 1px solid #42526E;
   padding: 16px 10px 16px 10px;
   font-size: 23px;
   cursor: pointer;
-  color: #647188;
+  color: #42526E;
   background-color: white;
   border-width: 1px;
   text-align: center;
   font-weight: 400;
-  box-shadow: 0px 4px 8px 0px #00000033;
+  box-shadow: 0px 0px 4px 0px #00000033;
   transition: 100ms ease-out, color 100ms ease-out;
 }
 
@@ -166,7 +166,7 @@ input[type="date"]:focus {
   border-radius: 10px;
   outline: 0;
   border: 1px solid #647188;
-  box-shadow: 0px 4px 8px 0px #00000033;
+  box-shadow: 0px 0px 4px 0px #00000033;
   padding: 12px 8px;
   font-size: 23px;
   cursor: pointer;
