@@ -319,11 +319,11 @@ function handleClickOutside(event) {
 function addSubtaskList() {
   let subtaskInput = document.getElementById('subtask-input-field').value;
   if (subtaskInput.trim() !== "") {
-    let uniqueId = new Date().getTime();
+    let uniqueId = Number(Date.now().toString());
     let newSubtask = {
       name: subtaskInput,
-      state: 'open',
-      id: uniqueId
+      id: uniqueId,
+      state: 'open'
     };
     subtaskArr.push(newSubtask);
     console.log("New subtask added:", newSubtask);
@@ -361,11 +361,11 @@ function renderSubtasks() {
     let task = subtaskArr[i];
 
     addedSubtask.innerHTML += `
-      <div class="input-positioning-subtask" id="input-positioning-${task.id}">
-        <input class="subtask-css-input" id="subtask-input-field-sub-${task.id}" type="text" value="${task.name}" readonly />
+      <div class="input-positioning-subtask" id="input-positioning-${String(task.id)}">
+        <input class="subtask-css-input" id="subtask-input-field-sub-${String(task.id)}" type="text" value="${task.name}" readonly />
         <div class="center-flexbox">
-          <div class="subtask-add-icons d-none" id="d-none-${task.id}">
-            <div class="icons-subtask center-flexbox"><img src="../assets/img/bin.svg" onclick="removeSubtask(${task.id})"></div>
+          <div class="subtask-add-icons d-none" id="d-none-${String(task.id)}">
+            <div class="icons-subtask center-flexbox"><img src="../assets/img/bin.svg" onclick="removeSubtask(${String(task.id)})"></div>
             <div class="separator-subtask"></div>
             <div class="icons-subtask center-flexbox"><img src="../assets/img/subtask_save.svg"></div>
           </div>
@@ -373,8 +373,8 @@ function renderSubtasks() {
       </div>
     `;
 
-    document.getElementById(`subtask-input-field-sub-${task.id}`).addEventListener('dblclick', function () {
-      editSubtask(task.id);
+    document.getElementById(`subtask-input-field-sub-${String(task.id)}`).addEventListener('dblclick', function () {
+      editSubtask(String(task.id));
     });
   }
   addHoverEventListeners();
