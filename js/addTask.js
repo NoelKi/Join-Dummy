@@ -363,7 +363,7 @@ function addHoverEventListeners() {
  * Updates the inner HTML of the element with ID 'added-subtask'.
  */
 function renderSubtasks() {
-  const addedSubtask = document.getElementById('added-subtask');
+  let addedSubtask = document.getElementById('added-subtask');
   addedSubtask.innerHTML = subtaskArr.map(task => generateSubtaskHTML(task)).join("");
   subtaskArr.forEach(task => addSubtaskEventListeners(task));
   addHoverEventListeners();
