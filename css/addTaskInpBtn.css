@@ -127,6 +127,7 @@ input[type="date"]:focus {
 
 .subtask-css-input {
   width: 100%;
+  transition:  ease-out, color 100ms ease-out;
 }
 
 .input-positioning {
