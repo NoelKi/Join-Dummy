@@ -357,37 +357,27 @@ function addHoverEventListeners() {
  * @param {number} task.id - The unique identifier for the task, used to target the specific subtask input field.
  * @returns {void}
  */
-function addSubtaskEventListeners(task) {
-  
-  document.getElementById(`subtask-input-field-sub-${task.id}`).addEventListener('dblclick', function () {
-    editSubtask(task.id);
-  });
+
+/**
+ * Renders all subtasks by generating their HTML and adding necessary event listeners.
+ * Updates the inner HTML of the element with ID 'added-subtask'.
+ */
+function renderSubtasks() {
+  const addedSubtask = document.getElementById('added-subtask');
+  addedSubtask.innerHTML = subtaskArr.map(task => generateSubtaskHTML(task)).join("");
+  subtaskArr.forEach(task => addSubtaskEventListeners(task));
+  addHoverEventListeners();
 }
 
 /**
- * Renders the list of subtasks and updates the DOM with the current subtask data.
- * This function clears the existing subtask elements in the `added-subtask` container,
- * iterates through the `subtaskArr` array, generates HTML for each subtask, and appends it to the container.
- * It also adds event listeners to each subtask and updates hover effects.
+ * Adds event listeners to a subtask for handling specific interactions.
+ * Currently, it adds a double-click event listener for editing the subtask.
  *
- * @function
- * @returns {void}
+ * @param {Object} task - The subtask object containing task details.
+ * @param {number} task.id - The unique identifier for the subtask.
  */
-function renderSubtasks() {
-  
-  let addedSubtask = document.getElementById('added-subtask');
-  
-  addedSubtask.innerHTML = "";
-  for (let i = 0; i < subtaskArr.length; i++) {
-    let task = subtaskArr[i];
-
-    addedSubtask.innerHTML += generateSubtaskHTML(task);
-
-    document.getElementById(`subtask-input-field-sub-${String(task.id)}`).addEventListener('dblclick', function () {
-      editSubtask(String(task.id));
-    });
-  }
-  addHoverEventListeners();
+function addSubtaskEventListeners(task) {
+  document.getElementById(`subtask-input-field-sub-${task.id}`).addEventListener('dblclick', () => editSubtask(task.id));
 }
 
 
