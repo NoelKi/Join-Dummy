@@ -2,6 +2,7 @@
     "source": {
       "include": [
         "./js/addTask.js",
+        "./js/addTaskPart2.js",
         "./js/addTaskEvent.js",
         "./js/loadContactListTask.js"
       ],  
