@@ -31,15 +31,15 @@ function generateContactHTML(contact, index, selectedClass, initials) {
     let taskWithBullet = "&#x2022; " + task.name;
   
     return `
-      <div class="input-positioning-subtask" id="input-positioning-${task.id}">
-        <input class="subtask-css-input" id="subtask-input-field-sub-${task.id}" type="text" value="${taskWithBullet}" readonly />
-        <div class="center-flexbox">
-          <div class="subtask-add-icons d-none" id="d-none-${task.id}">
-            <div class="icons-subtask center-flexbox"><img src="../assets/img/bin.svg" onclick="removeSubtask(${task.id})"></div>
-            <div class="separator-subtask"></div>
-            <div class="icons-subtask center-flexbox"><img src="../assets/img/subtask_save.svg"></div>
-          </div>
+      <div class="input-positioning-subtask" id="input-positioning-${String(task.id)}">
+      <input class="subtask-css-input" id="subtask-input-field-sub-${String(task.id)}" type="text" value="${taskWithBullet}" readonly />
+      <div class="center-flexbox">
+        <div class="subtask-add-icons d-none" id="d-none-${String(task.id)}">
+          <div class="icons-subtask center-flexbox"><img src="../assets/img/bin.svg" onclick="removeSubtask(${String(task.id)})"></div>
+          <div class="separator-subtask"></div>
+          <div class="icons-subtask center-flexbox"><img src="../assets/img/subtask_save.svg"></div>
         </div>
       </div>
+    </div>
     `;
   }
