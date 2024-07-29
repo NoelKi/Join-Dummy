@@ -328,8 +328,8 @@ function createTaskOverlay(element) {
             const name = subtask.name;
             const state = subtask.state;
             const id = subtask.id;
-            a += `<div class="subtask-inner-inner-container">
-            <img src="../assets/img/${subtask.state}CheckButton.svg" onclick="switchSubtaskState(${element.id},${subtask.id})"> 
+            a += `<div class="subtask-inner-inner-container" onclick="switchSubtaskState(${element.id},${subtask.id})">
+            <img src="../assets/img/${subtask.state}CheckButton.svg"> 
             &ensp;${subtask.name}
             </div>`
         }

@@ -18,6 +18,7 @@ aside {
     justify-content: space-between;
     flex-direction: column;
     align-self: stretch;
+    user-select: none;
 }
 
 .wrap {

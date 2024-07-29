@@ -309,6 +309,17 @@
     background-color: transparent;
     margin-top: -90px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.close-btn-overlay:hover {
+    /* margin-right: 10px; */
+    padding: 6px; 
+    background-color: rgba(128, 128, 128, 0.205);
+    border-radius: 50%;
 }
 
 .show-task-overlay {
@@ -322,6 +333,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 }
 
 .show-task-container {
@@ -439,7 +451,9 @@
     display: none;
 }
 
-
+.cursor-pointer {
+    cursor: pointer;
+}
 
 .task-overlay-priority {
     display: flex;
@@ -459,6 +473,8 @@
     align-items: center;
     padding-bottom: 10px;
     padding-left: 12px;
+    cursor: pointer;
+    user-select: none;
 }
 
 .flex-row {
