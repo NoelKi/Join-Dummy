@@ -81,14 +81,6 @@ function clearAllStates() {
   loadContactList();
 }
 
-function clearSelectedContacts() {
-  selectionState = {};
-  document.querySelectorAll(".contact-task-assign").forEach(element => {
-    element.classList.remove("selected");
-    element.querySelector(".check-box-task img").src = "../assets/img/checkBoxTaskHtml.svg";
-  });
-}
-
 function resetPriorityButtons() {
   document.querySelectorAll(".buttons button").forEach((btn) => {
     btn.classList.remove("selected-btn");
@@ -355,23 +347,23 @@ function createTask(event) {
 function showAnimation() {
   let animationDiv = document.getElementById('added-animation');
   animationDiv.style.display = 'flex';
-
   setTimeout(function() {
     animationDiv.classList.add('show');
   }, 10);
-
   setTimeout(function() {
     animationDiv.classList.remove('show');
-
     setTimeout(function() {
       animationDiv.style.display = 'none';
-
       window.location.href = 'board.html';
     }, 500);
   }, 1000);
 }
 
+
+
+
   
+
 
 
 

@@ -72,6 +72,14 @@ function loadContactList(filteredContacts = contacts) {
     });
   }
 
+  function clearSelectedContacts() {
+    selectionState = {};
+    document.querySelectorAll(".contact-task-assign").forEach(element => {
+      element.classList.remove("selected");
+      element.querySelector(".check-box-task img").src = "../assets/img/checkBoxTaskHtml.svg";
+    });
+  }
+
   function filterContacts(searchName) {
     searchName = searchName.toLowerCase();
     return contacts.filter((contact) => {
