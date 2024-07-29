@@ -1,0 +1,39 @@
+.task-css::-webkit-scrollbar,
+.option::-webkit-scrollbar,
+.option-category::-webkit-scrollbar {
+  width: 8px;
+}
+
+.task-css::-webkit-scrollbar-track,
+.option::-webkit-scrollbar-track,
+.option-category::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 6px;
+}
+
+.task-css::-webkit-scrollbar-thumb,
+.option::-webkit-scrollbar-thumb,
+.option-category::-webkit-scrollbar-thumb {
+  background: #a8a8a8;
+  border-radius: 10px;
+}
+
+.option::-webkit-scrollbar-button {
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.option::-webkit-scrollbar-button:start {
+  background-image: url("../assets/img/scrollUp.svg");
+}
+
+.option::-webkit-scrollbar-button:end {
+  background-image: url("../assets/img/scrollDown.svg");
+}
+
+.option::-webkit-scrollbar-button:decrement,
+.option::-webkit-scrollbar-button:increment {
+  display: flex;
+}
+
