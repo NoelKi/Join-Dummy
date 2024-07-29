@@ -125,7 +125,7 @@ function deleteContact(id) {
     }
     closeContactDetailCard();
     renderContacts();
-    updateUser(currUserData.name, currUserData.email, currUserData.password, contacts);
+    updateUser(CURRENT_USER_DATA.name, CURRENT_USER_DATA.email, CURRENT_USER_DATA.password, contacts);
 }
 
 function deleteContactOverlay(id) {
@@ -138,7 +138,7 @@ function deleteContactOverlay(id) {
         }
         renderContacts();
     }, 0);
-    updateUser(currUserData.name, currUserData.email, currUserData.password, contacts);
+    updateUser(CURRENT_USER_DATA.name, CURRENT_USER_DATA.email, CURRENT_USER_DATA.password, contacts);
 }
 
 function sortContactsByName() {
@@ -185,7 +185,7 @@ function addContact() {
     contacts.push({ id: id, name: name, surname: surname, email: email, phoneNumber: phoneNumber, color: color });
     closeOverlay();
     renderContacts();
-    updateUser(currUserData.name, currUserData.email, currUserData.password, contacts, tasks);
+    updateUser(CURRENT_USER_DATA.name, CURRENT_USER_DATA.email, CURRENT_USER_DATA.password, contacts, tasks);
 }
 
 function editContact(id, initials) {
@@ -198,7 +198,7 @@ function editContact(id, initials) {
     closeOverlay();
     renderContacts();
     renderContactDetailCard(id, initials);
-    updateUser(currUserData.name, currUserData.email, currUserData.password, contacts, tasks);
+    updateUser(CURRENT_USER_DATA.name, CURRENT_USER_DATA.email, CURRENT_USER_DATA.password, contacts, tasks);
 }
 
 function setContactActive(e) {

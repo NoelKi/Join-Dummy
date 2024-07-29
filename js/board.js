@@ -357,14 +357,13 @@ function getObjectById(array, id) {
 }
 
 function switchSubtaskState(taskId, subtaskId) {
-    const element = getObjectById(tasks, `${taskId}`);
-    const subtask = getObjectById(element.subtask, subtaskId)
-    console.log(element);
+    const object = getObjectById(tasks, `${taskId}`);
+    const subtask = getObjectById(object.subtask, subtaskId)
     if (subtask.state === 'done') {
         subtask.state = 'open';
     } else { subtask.state = 'done' }
     renderTaskOverlay(taskId);
-    renderTasks(element);
+    renderTasks(object);
 }
 
 function getIndexById(arr, id) {

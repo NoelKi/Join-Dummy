@@ -41,7 +41,6 @@ function createDetailedContactCard(id, initials) {
 
 function createEditOverlay(id, initials) {
     const contact = getObjectById(contacts, id);
-    console.log(id);
     return `
     <div class="overlay-section">
         <div class="edit-overlay-container slide-in-overlay-left" id="edit-overlay-container">
