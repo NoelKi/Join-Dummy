@@ -29,58 +29,6 @@ let tasksExample = [{
         'state': 'done',
         'id': 206
     },]
-}, {
-    'id': 1,
-    'date': '10/21/2024',
-    'title': 'Kochen',
-    'kind': 'User Story',
-    'taskColor': '#FF7A00',
-    'description': 'BlaBliBulb',
-    'category': 'toDo',
-    'priority': 'Low',
-    'collaborators': [{
-        'name': 'Anche Apfelgrün',
-        'color': '#FF7A00'
-    }],
-    'subtask': [{
-        'name': 'Abendbrot kochen',
-        'state': 'done',
-        'id': 2029
-    },
-    {
-        'name': 'Frühstück kochen',
-        'state': 'open',
-        'id': 2028
-    },]
-}, {
-    'id': 2,
-    'date': '10/21/2024',
-    'title': 'Einkaufen',
-    'kind': 'User Story',
-    'taskColor': '#FF7A00',
-    'description': 'BlaBliBulb',
-    'category': 'awaitFeedback',
-    'priority': 'Urgent',
-    'collaborators': [{
-        'name': 'Anche Apfelgrün',
-        'color': '#1FD7C1'
-    },
-    {
-        'name': 'Rosi Rot',
-        'color': '#00BEE8'
-    }],
-    'subtask': []
-}, {
-    'id': 3,
-    'date': '10/24/2024',
-    'title': 'Dachrinne Reinigen',
-    'kind': 'Technical Task',
-    'taskColor': '#0038FF',
-    'description': 'BlaBliBulb',
-    'category': 'awaitFeedback',
-    'priority': 'Urgent',
-    'collaborators': [],
-    'subtask': []
 }];
 
 window.onload = function () {
@@ -380,20 +328,22 @@ function createTaskOverlay(element) {
             const name = subtask.name;
             const state = subtask.state;
             const id = subtask.id;
-            a += `<div class="subtask-inner-inner-container">
-            <img src="../assets/img/${subtask.state}CheckButton.svg" onclick="switchSubtaskState(${element.id},${subtask.id})"> 
+            a += `<div class="subtask-inner-inner-container" onclick="switchSubtaskState(${element.id},${subtask.id})">
+            <img src="../assets/img/${subtask.state}CheckButton.svg"> 
             &ensp;${subtask.name}
             </div>`
         }
         a += `</div>`;
     }
     a += `  <div class="task-edit-container">
-                <div class="delete-task-overlay-btn">
-                    <img src="../assets/img/bin.svg"> Delete 
+                <div class="delete-task-overlay-btn" onclick="deleteTask(${element.id})">
+                    <img class="delete-unhover" src="../assets/img/deleteUnhover.svg">
+                    <img class="delete-hover" src="../assets/img/deleteHover.svg">
                 </div>
                 <div class="horizontal-separator"></div>
                 <div class="edit-task-overlay-btn">
-                    <img src="../assets/img/pencil.svg"> Edit
+                    <img class="edit-unhover" src="../assets/img/editUnhover.svg">
+                    <img class="edit-hover" src="../assets/img/editHover.svg">
                 </div>
             </div>
         </div>
@@ -428,3 +378,17 @@ function getIndexById(arr, id) {
     }
     return -1;
 }
+
+function deleteTask(id) {
+    const taskIndex = getIndexById(`${id}`);
+    tasks.splice(taskIndex,1);
+    updateUser(
+        CURRENT_USER_DATA.name,
+        CURRENT_USER_DATA.email,
+        CURRENT_USER_DATA.password,
+        CURRENT_USER_DATA.contacts,
+        tasks
+      );
+    renderTasks();
+    closeOverlay();
+    }

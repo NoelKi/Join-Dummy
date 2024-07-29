@@ -136,18 +136,18 @@ input[type="date"]:focus {
 }
 
 .clear-task-btn {
+  font-family: 'Open sans' ,sans-serif;
   border-radius: 10px;
   outline: 0;
-  border-color: #647188;
+  border: 1px solid rgba(128, 128, 128, 0.2);
   padding: 16px 10px 16px 10px;
   font-size: 23px;
   cursor: pointer;
-  color: #647188;
+  color: #42526E;
   background-color: white;
-  border-width: 1px;
   text-align: center;
   font-weight: 400;
-  box-shadow: 0px 4px 8px 0px #00000033;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.233);
   transition: 100ms ease-out, color 100ms ease-out;
 }
 
@@ -155,7 +155,7 @@ input[type="date"]:focus {
   border: 1px solid #005dff;
   background-color: white;
   color: #005dff;
-  box-shadow: 0px 4px 8px 0px #00000033;
+  box-shadow: 0px 0px 4px 0px #00000033;
 }
 
 .clear-task-btn:hover .icon-clear path {
@@ -163,11 +163,12 @@ input[type="date"]:focus {
 }
 
 .create-task-btn {
+  font-family: 'Open sans' ,sans-serif;
   border-radius: 10px;
   outline: 0;
-  border: 1px solid #647188;
-  box-shadow: 0px 4px 8px 0px #00000033;
-  padding: 12px 8px;
+  border-style: none;
+  box-shadow: 0px 0px 4px 0px #00000033;
+  padding: 16px 10px;
   font-size: 23px;
   cursor: pointer;
   color: white;
@@ -191,7 +192,7 @@ input[type="date"]:focus {
   background-color: white;
   color: #4589ff;
   border: none;
-  box-shadow: 0px 4px 8px 0px #00000033;
+  box-shadow: 0px 0px 4px 0px #00000033;
   border: 1px solid transparent;
   cursor: not-allowed;
 }

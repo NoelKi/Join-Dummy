@@ -309,6 +309,17 @@
     background-color: transparent;
     margin-top: -90px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.close-btn-overlay:hover {
+    /* margin-right: 10px; */
+    padding: 6px; 
+    background-color: rgba(128, 128, 128, 0.205);
+    border-radius: 50%;
 }
 
 .show-task-overlay {
@@ -322,6 +333,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 }
 
 .show-task-container {
@@ -406,12 +418,40 @@
     cursor: pointer;
 }
 
+.delete-task-overlay-btn:hover .delete-unhover {
+    display: none;
+}
+
+.delete-task-overlay-btn:hover .delete-hover {
+    display: block;
+}
+
+.delete-hover {
+    display: none;
+}
+
 .edit-task-overlay-btn {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-left: 10px;
     width: 60px;
+    cursor: pointer;
+}
+
+.edit-task-overlay-btn:hover .edit-hover {
+    display: block;
+}
+
+.edit-task-overlay-btn:hover .edit-unhover {
+    display: none;
+}
+
+.edit-hover {
+    display: none;
+}
+
+.cursor-pointer {
     cursor: pointer;
 }
 
@@ -433,6 +473,8 @@
     align-items: center;
     padding-bottom: 10px;
     padding-left: 12px;
+    cursor: pointer;
+    user-select: none;
 }
 
 .flex-row {
