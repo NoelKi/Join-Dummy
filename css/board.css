@@ -406,6 +406,18 @@
     cursor: pointer;
 }
 
+.delete-task-overlay-btn:hover .delete-unhover {
+    display: none;
+}
+
+.delete-task-overlay-btn:hover .delete-hover {
+    display: block;
+}
+
+.delete-hover {
+    display: none;
+}
+
 .edit-task-overlay-btn {
     display: flex;
     align-items: center;
@@ -414,6 +426,20 @@
     width: 60px;
     cursor: pointer;
 }
+
+.edit-task-overlay-btn:hover .edit-hover {
+    display: block;
+}
+
+.edit-task-overlay-btn:hover .edit-unhover {
+    display: none;
+}
+
+.edit-hover {
+    display: none;
+}
+
+
 
 .task-overlay-priority {
     display: flex;
