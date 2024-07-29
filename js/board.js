@@ -407,7 +407,8 @@ function getObjectById(array, id) {
 
 function switchSubtaskState(taskId, subtaskId) {
     const element = getObjectById(tasks, `${taskId}`);
-    const subtask = getObjectById(element.subtask, `${subtaskId}`)
+    const subtask = getObjectById(element.subtask, subtaskId)
+    console.log(element);
     if (subtask.state === 'done') {
         subtask.state = 'open';
     } else { subtask.state = 'done' }

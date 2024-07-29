@@ -257,11 +257,11 @@ function addSubtaskList() {
   
   let subtaskInput = document.getElementById('subtask-input-field').value;
   if (subtaskInput.trim() !== "") {
-    let uniqueId = new Date().getTime();
+    let uniqueId = Number(Date.now().toString());
     let newSubtask = {
       name: subtaskInput,
-      state: 'open',
-      id: uniqueId
+      id: uniqueId,
+      state: 'open'
     };
     subtaskArr.push(newSubtask);
     document.getElementById('subtask-input-field').value = "";
@@ -379,8 +379,23 @@ function renderSubtasks() {
   addedSubtask.innerHTML = "";
   for (let i = 0; i < subtaskArr.length; i++) {
     let task = subtaskArr[i];
-    addedSubtask.innerHTML += generateSubtaskHTML(task);
-    addSubtaskEventListeners(task);
+
+    addedSubtask.innerHTML += `
+      <div class="input-positioning-subtask" id="input-positioning-${String(task.id)}">
+        <input class="subtask-css-input" id="subtask-input-field-sub-${String(task.id)}" type="text" value="${task.name}" readonly />
+        <div class="center-flexbox">
+          <div class="subtask-add-icons d-none" id="d-none-${String(task.id)}">
+            <div class="icons-subtask center-flexbox"><img src="../assets/img/bin.svg" onclick="removeSubtask(${String(task.id)})"></div>
+            <div class="separator-subtask"></div>
+            <div class="icons-subtask center-flexbox"><img src="../assets/img/subtask_save.svg"></div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById(`subtask-input-field-sub-${String(task.id)}`).addEventListener('dblclick', function () {
+      editSubtask(String(task.id));
+    });
   }
   addHoverEventListeners();
 }
