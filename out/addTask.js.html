@@ -1,4 +1,32 @@
-window.onload = function () {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: addTask.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: addTask.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>window.onload = function () {
   includeHTML();
   clearAllInputs();
   getUserLists();
@@ -44,7 +72,7 @@ let inputField = document.getElementById('subtask-input-field');
  *
  * @async
  * @function
- * @returns {Promise<void>} - A promise that resolves when the user data has been successfully fetched and processed.
+ * @returns {Promise&lt;void>} - A promise that resolves when the user data has been successfully fetched and processed.
  * @throws {Error} - Throws an error if the user data retrieval fails, which is logged to the console.
  */
 async function getUserLists() {
@@ -150,7 +178,7 @@ function resetPriorityButtons() {
 function checkInputs() {
   let isTitleValid = titleInput.value.trim() !== "";
   let isDateValid = dateInput.value.trim() !== "";
-  createTaskBtn.disabled = !(isTitleValid && isDateValid);
+  createTaskBtn.disabled = !(isTitleValid &amp;&amp; isDateValid);
 }
   
 /**
@@ -257,11 +285,11 @@ function addSubtaskList() {
   
   let subtaskInput = document.getElementById('subtask-input-field').value;
   if (subtaskInput.trim() !== "") {
-    let uniqueId = Number(Date.now().toString());
+    let uniqueId = new Date().getTime();
     let newSubtask = {
       name: subtaskInput,
-      id: uniqueId,
-      state: 'open'
+      state: 'open',
+      id: uniqueId
     };
     subtaskArr.push(newSubtask);
     document.getElementById('subtask-input-field').value = "";
@@ -284,7 +312,7 @@ function addSubtaskList() {
 function handleClickOutside(event) {
   
   let inputWrapper = document.getElementById('subtask-input-wrapper');
-  if (inputWrapper && !inputWrapper.contains(event.target)) {
+  if (inputWrapper &amp;&amp; !inputWrapper.contains(event.target)) {
     clearInputSubtask();
     document.removeEventListener('click', handleClickOutside, true);
   }
@@ -377,25 +405,10 @@ function renderSubtasks() {
   
   let addedSubtask = document.getElementById('added-subtask');
   addedSubtask.innerHTML = "";
-  for (let i = 0; i < subtaskArr.length; i++) {
+  for (let i = 0; i &lt; subtaskArr.length; i++) {
     let task = subtaskArr[i];
-
-    addedSubtask.innerHTML += `
-      <div class="input-positioning-subtask" id="input-positioning-${String(task.id)}">
-        <input class="subtask-css-input" id="subtask-input-field-sub-${String(task.id)}" type="text" value="${task.name}" readonly />
-        <div class="center-flexbox">
-          <div class="subtask-add-icons d-none" id="d-none-${String(task.id)}">
-            <div class="icons-subtask center-flexbox"><img src="../assets/img/bin.svg" onclick="removeSubtask(${String(task.id)})"></div>
-            <div class="separator-subtask"></div>
-            <div class="icons-subtask center-flexbox"><img src="../assets/img/subtask_save.svg"></div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    document.getElementById(`subtask-input-field-sub-${String(task.id)}`).addEventListener('dblclick', function () {
-      editSubtask(String(task.id));
-    });
+    addedSubtask.innerHTML += generateSubtaskHTML(task);
+    addSubtaskEventListeners(task);
   }
   addHoverEventListeners();
 }
@@ -531,14 +544,14 @@ function updateSubtask(id, newValue) {
  */
 function findAndUpdateOrRemoveSubtask(id, newValue) {
   if (newValue === "") {
-    for (let i = 0; i < subtaskArr.length; i++) {
+    for (let i = 0; i &lt; subtaskArr.length; i++) {
       if (subtaskArr[i].id === id) {
         subtaskArr.splice(i, 1);
         break;
       }
     }
   } else {
-    for (let i = 0; i < subtaskArr.length; i++) {
+    for (let i = 0; i &lt; subtaskArr.length; i++) {
       if (subtaskArr[i].id === id) {
         subtaskArr[i].name = newValue;
         break;
@@ -743,3 +756,26 @@ function showAnimation() {
 
 
 
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addHoverEventListeners">addHoverEventListeners</a></li><li><a href="global.html#addSubtaskEventListeners">addSubtaskEventListeners</a></li><li><a href="global.html#addSubtaskList">addSubtaskList</a></li><li><a href="global.html#changeToFocus">changeToFocus</a></li><li><a href="global.html#checkInputs">checkInputs</a></li><li><a href="global.html#clearAllInputs">clearAllInputs</a></li><li><a href="global.html#clearAllStates">clearAllStates</a></li><li><a href="global.html#clearCollaborators">clearCollaborators</a></li><li><a href="global.html#clearInputSubtask">clearInputSubtask</a></li><li><a href="global.html#clearTaskKind">clearTaskKind</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#disableButton">disableButton</a></li><li><a href="global.html#editSubtask">editSubtask</a></li><li><a href="global.html#findAndUpdateOrRemoveSubtask">findAndUpdateOrRemoveSubtask</a></li><li><a href="global.html#getFirstLetterOfName">getFirstLetterOfName</a></li><li><a href="global.html#getUserLists">getUserLists</a></li><li><a href="global.html#handleBlurEvent">handleBlurEvent</a></li><li><a href="global.html#handleClickOutside">handleClickOutside</a></li><li><a href="global.html#handleInputFocusAndEvents">handleInputFocusAndEvents</a></li><li><a href="global.html#handleKeyPressEvent">handleKeyPressEvent</a></li><li><a href="global.html#hideIcons">hideIcons</a></li><li><a href="global.html#makeEditable">makeEditable</a></li><li><a href="global.html#pushTaskToTasks">pushTaskToTasks</a></li><li><a href="global.html#removeSubtask">removeSubtask</a></li><li><a href="global.html#renderSubtasks">renderSubtasks</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPriorityButtons">resetPriorityButtons</a></li><li><a href="global.html#resetUIElements">resetUIElements</a></li><li><a href="global.html#selectPriority">selectPriority</a></li><li><a href="global.html#setTaskKind">setTaskKind</a></li><li><a href="global.html#setupInputEvents">setupInputEvents</a></li><li><a href="global.html#showAnimation">showAnimation</a></li><li><a href="global.html#showIcons">showIcons</a></li><li><a href="global.html#toggleCategoryList">toggleCategoryList</a></li><li><a href="global.html#updateSubtask">updateSubtask</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Jul 29 2024 11:38:10 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,11 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: loadContactListTask.js</title>
 
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: loadContactListTask.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
 /**
  * Renders a list of contacts into the DOM. Clears the existing list and populates
  * it with HTML content generated from the `filteredContacts` array. Optionally,
  * uses a default list of contacts if no argument is provided. Also assigns event
  * listeners to each contact item.
  *
- * @param {Array<Object>} [filteredContacts=contacts] - An array of contact objects to display. 
+ * @param {Array&lt;Object>} [filteredContacts=contacts] - An array of contact objects to display. 
  * Each contact object should contain at least `name`, `surname`, and `id` properties.
  * If not provided, the function defaults to using the global `contacts` array.
  * 
@@ -16,7 +44,7 @@ function loadContactList(filteredContacts = contacts) {
   listContainer.innerHTML = "";
   let htmlContent = "";
 
-  for (let i = 0; i < filteredContacts.length; i++) {
+  for (let i = 0; i &lt; filteredContacts.length; i++) {
     let contact = filteredContacts[i];
     let initials = getFirstLetterOfName(contact.name) + getFirstLetterOfName(contact.surname);
     let selectedClass = selectionState[contact.id] ? 'selected' : '';
@@ -33,7 +61,7 @@ function loadContactList(filteredContacts = contacts) {
  * with the clicked element and the `filteredContacts` array as arguments.
  *
  * @function
- * @param {Array<Object>} filteredContacts - An array of contact objects to be used by the event handler.
+ * @param {Array&lt;Object>} filteredContacts - An array of contact objects to be used by the event handler.
  * Each contact object should contain relevant properties for processing within `handleContactAssignClick`.
  * @returns {void}
  */
@@ -53,7 +81,7 @@ function assignContactEventListeners(filteredContacts) {
  * @function
  * @param {HTMLElement} element - The clicked contact assignment element. This element should have a `data-index` attribute
  *                                 indicating the index of the contact in the `filteredContacts` array.
- * @param {Array<Object>} filteredContacts - An array of contact objects. Each contact object represents a contact
+ * @param {Array&lt;Object>} filteredContacts - An array of contact objects. Each contact object represents a contact
  *                                            and should include properties relevant for selection.
  * @returns {void}
  */
@@ -155,7 +183,7 @@ function renderCollaborators() {
   collaborators.forEach(collaborator => {
       let initials = getFirstLetterOfName(collaborator.name.split(" ")[0]) + getFirstLetterOfName(collaborator.name.split(" ")[1]);
       assignContactsCircle.innerHTML += `
-          <div class="initials-task-circle" style="background-color: ${collaborator.color};">${initials}</div>
+          &lt;div class="initials-task-circle" style="background-color: ${collaborator.color};">${initials}&lt;/div>
       `;
   });
 }
@@ -186,7 +214,7 @@ function clearSelectedContacts() {
  * @function
  * @param {string} searchName - The search query used to filter contacts. This string is converted to lowercase
  *                               for case-insensitive comparison.
- * @returns {Array<Object>} - An array of contact objects that match the search query. Each contact object should
+ * @returns {Array&lt;Object>} - An array of contact objects that match the search query. Each contact object should
  *                             include at least `name` and `surname` properties.
  */
 function filterContacts(searchName) {
@@ -209,4 +237,26 @@ function filterContacts(searchName) {
 function getFirstLetterOfName(name) {
   name = name.slice(0, 1);
   return name.toUpperCase();
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCollaborator">addCollaborator</a></li><li><a href="global.html#assignContactEventListeners">assignContactEventListeners</a></li><li><a href="global.html#clearSelectedContacts">clearSelectedContacts</a></li><li><a href="global.html#deselectContact">deselectContact</a></li><li><a href="global.html#filterContacts">filterContacts</a></li><li><a href="global.html#getFirstLetterOfName">getFirstLetterOfName</a></li><li><a href="global.html#handleContactAssignClick">handleContactAssignClick</a></li><li><a href="global.html#loadContactList">loadContactList</a></li><li><a href="global.html#removeCollaborator">removeCollaborator</a></li><li><a href="global.html#renderCollaborators">renderCollaborators</a></li><li><a href="global.html#selectContact">selectContact</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Jul 29 2024 11:43:26 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
