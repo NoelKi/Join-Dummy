@@ -20,7 +20,6 @@ async function getUserData() {
             throw new Error('Netzwerk-Antwort war nicht ok');
         }
         const data = await response.json();
-        console.log(data);
         return data;
     } catch (error) {
         console.error('Fehler:', error);
@@ -44,7 +43,6 @@ async function putData(path = "", data = {}) {
         body: JSON.stringify(data),
     });
     const responseJson = await response.json();
-    console.log(responseJson); // parses JSON response into native JavaScript objects
     return responseJson;
 }
 

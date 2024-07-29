@@ -38,23 +38,23 @@ window.onload = function () {
 
 async function getUserLists() {
     try {
-      CURRENT_USER_DATA = await getUserData(USER_ID);
-      setUserInitals();
-      if (!CURRENT_USER_DATA.contacts) {
-        contacts = [];
-      } else {
-        contacts = CURRENT_USER_DATA.contacts;
-      }
-      if (!CURRENT_USER_DATA.tasks) {
-        tasks = [];
-      } else {
-        tasks = CURRENT_USER_DATA.tasks;
-        renderTasks();
-      }
+        CURRENT_USER_DATA = await getUserData(USER_ID);
+        setUserInitals();
+        if (!CURRENT_USER_DATA.contacts) {
+            contacts = [];
+        } else {
+            contacts = CURRENT_USER_DATA.contacts;
+        }
+        if (!CURRENT_USER_DATA.tasks) {
+            tasks = [];
+        } else {
+            tasks = CURRENT_USER_DATA.tasks;
+            renderTasks();
+        }
     } catch (error) {
-      console.error("Fehler beim Abrufen der Benutzerdaten:", error);
+        console.error("Fehler beim Abrufen der Benutzerdaten:", error);
     }
-  }
+}
 
 function renderTasks() {
     renderToDo();
@@ -140,9 +140,7 @@ function isBefore(el1, el2) {
     return false;
 }
 
-// element.querySelector('li')
 function dragOver(e) {
-    console.log(isBefore(currentDraggedElement, e.currentTarget));
     if (isBefore(currentDraggedElement, e.currentTarget)) {
         e.currentTarget.parentNode.insertBefore(currentDraggedElement, e.currentTarget);
         console.log(e.currentTarget.parentNode);
@@ -154,7 +152,6 @@ function dragOver(e) {
 function drop(event) {
     const category = event.currentTarget.id;
     if (category !== tasks[currentTaskElement]['category']) {
-        console.log('newCat');
         tasks[currentTaskElement]['category'] = category;
         removeHighlight(event);
         renderTasks();
@@ -171,7 +168,6 @@ function drop(event) {
             newTasks.push(taskObj);
         }
         tasks = newTasks;
-        console.log('Halllo', tasks);
         removeHighlight(event);
         renderTasks();
         currentDraggedElement = null;
@@ -182,7 +178,7 @@ function drop(event) {
         CURRENT_USER_DATA.password,
         CURRENT_USER_DATA.contacts,
         tasks
-      );
+    );
 }
 
 function highlight(event) {
@@ -279,7 +275,6 @@ function createAddTaskOverlay() {
 
 function renderTaskOverlay(id) {
     const element = getObjectById(tasks, `${id}`);
-    console.log(element, `${id}`, tasks);
     const content = document.getElementById('board-overlay-section');
     content.style.display = 'block';
     content.innerHTML = createTaskOverlay(element);
@@ -309,31 +304,10 @@ function createTaskOverlay(element) {
                 <b>Priority:</b>&ensp;&ensp;&ensp; ${element.priority} <img src="../assets/img/priority${element.priority}.svg">
             </div>`;
     if (element.collaborators) {
-        a += `<div>
-                <b>Assigned to:</b> <br>`;
-        for (const collab of element.collaborators) {
-            [name, surname] = collab.name;
-            initials = getFirstLetterOfName(name) + getFirstLetterOfName(surname);
-            a += `<div class="flex-row m-l-12 m-t-12"> 
-            <div class="initials m-r-10" style="background-color: ${collab.color}">${initials}</div> ${collab.name}
-            </div>`;
-        }
-        a += `</div>`;
+        a += createTaskOverlayCollaborators(element.collaborators);
     }
     if (element.subtask) {
-        a += `<div class="task-subtask-container m-t-12" id="subtasks-overlay">
-                <b>Subtasks</b>
-            <div class="subtask-inner-container m-t-20">`;
-        for (const subtask of element.subtask) {
-            const name = subtask.name;
-            const state = subtask.state;
-            const id = subtask.id;
-            a += `<div class="subtask-inner-inner-container" onclick="switchSubtaskState(${element.id},${subtask.id})">
-            <img src="../assets/img/${subtask.state}CheckButton.svg"> 
-            &ensp;${subtask.name}
-            </div>`
-        }
-        a += `</div>`;
+        a += createTaskOverlaySubtasks(element.subtask, element.id);
     }
     a += `  <div class="task-edit-container">
                 <div class="delete-task-overlay-btn" onclick="deleteTask(${element.id})">
@@ -351,6 +325,33 @@ function createTaskOverlay(element) {
     return a;
 }
 
+function createTaskOverlayCollaborators(collaborators) {
+    let content = `<div> <b>Assigned to:</b> <br>`;
+    for (const collab of collaborators) {
+        [name, surname] = collab.name;
+        initials = getFirstLetterOfName(name) + getFirstLetterOfName(surname);
+        content += `<div class="flex-row m-l-12 m-t-12"> 
+            <div class="initials m-r-10" style="background-color: ${collab.color}">${initials}</div> ${collab.name}
+            </div>`;
+    }
+    content += `</div>`;
+    return content;
+}
+
+function createTaskOverlaySubtasks(subtasks,objectId) {
+    let content = `<div class="task-subtask-container m-t-12" id="subtasks-overlay">
+                        <b>Subtasks</b>
+                            <div class="subtask-inner-container m-t-20">`;
+    for (const subtask of subtasks) {
+        content += `<div class="subtask-inner-inner-container" onclick="switchSubtaskState(${objectId},${subtask.id})">
+            <img src="../assets/img/${subtask.state}CheckButton.svg"> 
+                &ensp;${subtask.name}
+            </div>`
+    }
+    content += `</div>`;
+    return content;
+}
+
 function getObjectById(array, id) {
     return array.find(obj => obj.id === id);
 }
@@ -363,7 +364,6 @@ function switchSubtaskState(taskId, subtaskId) {
         subtask.state = 'open';
     } else { subtask.state = 'done' }
     renderTaskOverlay(taskId);
-    console.log('hallo');
     renderTasks(element);
 }
 
@@ -381,14 +381,14 @@ function getIndexById(arr, id) {
 
 function deleteTask(id) {
     const taskIndex = getIndexById(`${id}`);
-    tasks.splice(taskIndex,1);
+    tasks.splice(taskIndex, 1);
     updateUser(
         CURRENT_USER_DATA.name,
         CURRENT_USER_DATA.email,
         CURRENT_USER_DATA.password,
         CURRENT_USER_DATA.contacts,
         tasks
-      );
+    );
     renderTasks();
     closeOverlay();
-    }
+}
