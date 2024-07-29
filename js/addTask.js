@@ -376,22 +376,12 @@ function addSubtaskEventListeners(task) {
 function renderSubtasks() {
   
   let addedSubtask = document.getElementById('added-subtask');
+  
   addedSubtask.innerHTML = "";
   for (let i = 0; i < subtaskArr.length; i++) {
     let task = subtaskArr[i];
 
-    addedSubtask.innerHTML += `
-      <div class="input-positioning-subtask" id="input-positioning-${String(task.id)}">
-        <input class="subtask-css-input" id="subtask-input-field-sub-${String(task.id)}" type="text" value="${task.name}" readonly />
-        <div class="center-flexbox">
-          <div class="subtask-add-icons d-none" id="d-none-${String(task.id)}">
-            <div class="icons-subtask center-flexbox"><img src="../assets/img/bin.svg" onclick="removeSubtask(${String(task.id)})"></div>
-            <div class="separator-subtask"></div>
-            <div class="icons-subtask center-flexbox"><img src="../assets/img/subtask_save.svg"></div>
-          </div>
-        </div>
-      </div>
-    `;
+    addedSubtask.innerHTML += generateSubtaskHTML(task);
 
     document.getElementById(`subtask-input-field-sub-${String(task.id)}`).addEventListener('dblclick', function () {
       editSubtask(String(task.id));
