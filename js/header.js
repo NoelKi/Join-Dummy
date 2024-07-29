@@ -26,5 +26,4 @@ function setUserInitals() {
   const [name,  surname = ''] = fullName.split(' ');
   const initials = getFirstLetterOfName(name) + getFirstLetterOfName(surname);
   document.getElementById("profil-btn").innerHTML = initials;
-  console.log(initials);
 } 
