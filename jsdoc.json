@@ -1,0 +1,17 @@
+{
+    "source": {
+      "include": [
+        "./js/addTask.js",
+        "./js/addTaskEvent.js",
+        "./js/loadContactListTask.js"
+      ],  
+      "exclude": [
+        "../node_modules",  
+        "../tests"  
+      ]
+    },
+    "opts": {
+      "destination": "./out",  
+      "recurse": true  
+    }
+  }
