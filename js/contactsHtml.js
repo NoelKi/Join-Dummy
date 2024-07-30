@@ -163,7 +163,6 @@ function createEditDeleteBtn(id,initials) {
 
 function renderEditContainer(id, initials) {
     const content = document.getElementById('edit-btn-media');
-    // content.innerHTML = '';
     content.innerHTML = createEditContainer(id, initials);
 }
 

@@ -214,7 +214,30 @@ function addContact() {
     contacts.push({ id: id, name: name, surname: surname, email: email, phoneNumber: phoneNumber, color: color });
     closeOverlay();
     renderContacts();
+    const initials = `${getFirstLetterOfName(name)}${getFirstLetterOfName(surname)}`;
+    renderContactDetailCard(id,initials);
+    renderContactSnack();
     updateUser(CURRENT_USER_DATA.name, CURRENT_USER_DATA.email, CURRENT_USER_DATA.password, contacts, tasks);
+    setTimeout(() => {
+        closeContactSnack();
+    }, 1000);
+}
+
+function renderContactSnack() {
+    const content = document.getElementById('snack');
+    content.classList.add('slide-in-bottom');
+    content.innerHTML = createContactSnack();
+}
+
+function closeContactSnack() {
+    const content = document.getElementById('snack');
+    content.classList.add('slide-out-bottom');
+}
+
+function createContactSnack() {
+    return `<div class="snack slide-in-bottom">
+    Contact succesfully created    
+    </div>`;
 }
 
 function editContact(id, initials) {
@@ -236,3 +259,4 @@ function setContactActive(e) {
     const currTarget = e.currentTarget;
     currTarget.classList.add('active');
 }
+
