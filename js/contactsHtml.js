@@ -12,6 +12,7 @@ function createContactCard(contact, initials) {
 function createDetailedContactCard(id, initials) {
     const contact = getObjectById(contacts, id);
     return `
+    <div class="contact-information-container">Contact Information <img class="back-arrow-contact-detail-card" src="../assets/img/arrowLeft.svg" alt="Arrow left" onclick="closeContactDetailCard()"></div>
     <div class="top-contact-container">
         <div class="initials-big" style="background-color: ${contact.color};" id="initials">${initials}</div>
         <div class="contact-name-container">
@@ -26,7 +27,6 @@ function createDetailedContactCard(id, initials) {
                     <img class="hover-btn" src="../assets/img/deleteHover.svg" alt="pencil">
                 </div>
             </div>
-
         </div>
     </div>
     <div class="contact-detail-container">

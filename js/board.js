@@ -149,7 +149,6 @@ function isBefore(el1, el2) {
 function dragOver(e) {
     if (isBefore(currentDraggedElement, e.currentTarget)) {
         e.currentTarget.parentNode.insertBefore(currentDraggedElement, e.currentTarget);
-        console.log(e.currentTarget.parentNode);
     }
     else
         e.currentTarget.parentNode.insertBefore(currentDraggedElement, e.currentTarget.nextSibling);
@@ -158,25 +157,9 @@ function dragOver(e) {
 function drop(event) {
     const category = event.currentTarget.id;
     if (category !== tasks[currentTaskElement]['category']) {
-        tasks[currentTaskElement]['category'] = category;
-        removeHighlight(event);
-        renderTasks();
-        currentDraggedElement = null;
+        dropDifferentCategory(event,category);
     } else {
-        const array = event.currentTarget.children;
-        const idList = [];
-        const newTasks = [];
-        for (let i = 0; i < array.length; i++) {
-            const elId = array[i].id;
-            const currIndex = getIndexById(tasks, elId);
-            // console.log(tasks[currIndex].title,i,'Element');
-            const taskObj = tasks[currIndex];
-            newTasks.push(taskObj);
-        }
-        tasks = newTasks;
-        removeHighlight(event);
-        renderTasks();
-        currentDraggedElement = null;
+        dropSameCategory(event);
     }
     updateUser(
         CURRENT_USER_DATA.name,
@@ -185,6 +168,30 @@ function drop(event) {
         CURRENT_USER_DATA.contacts,
         tasks
     );
+}
+
+function dropSameCategory(event) {
+    const array = event.currentTarget.children;
+    const idList = [];
+    const newTasks = [];
+    for (let i = 0; i < array.length; i++) {
+        const elId = array[i].id;
+        const currIndex = getIndexById(tasks, elId);
+        // console.log(tasks[currIndex].title,i,'Element');
+        const taskObj = tasks[currIndex];
+        newTasks.push(taskObj);
+    }
+    tasks = newTasks;
+    removeHighlight(event);
+    renderTasks();
+    currentDraggedElement = null;
+}
+
+function dropDifferentCategory(event, category) {
+    tasks[currentTaskElement]['category'] = category;
+    removeHighlight(event);
+    renderTasks();
+    currentDraggedElement = null;
 }
 
 function highlight(event) {
@@ -331,7 +338,7 @@ function createTaskOverlayCollaborators(collaborators) {
     return content;
 }
 
-function createTaskOverlaySubtasks(subtasks,objectId) {
+function createTaskOverlaySubtasks(subtasks, objectId) {
     let content = `<div class="task-subtask-container m-t-12" id="subtasks-overlay">
                         <b>Subtasks</b>
                             <div class="subtask-inner-container m-t-20">`;
@@ -383,4 +390,8 @@ function deleteTask(id) {
     );
     renderTasks();
     closeOverlay();
+}
+
+function closeContactDetailCard() {
+    const content = document.getElementsByClassName('contact-detail-section').style.display = 'none';
 }

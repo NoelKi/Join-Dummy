@@ -55,6 +55,8 @@ function giveGroupedContacts() {
 
 function renderContactDetailCard(id, initials) {
     const content = document.getElementById('contact-detail-card');
+    // const content2 = document.getElementsByClassName('contact-detail-section');
+    // content2.style.display = 'flex';
     content.style.display = 'block';
     content.innerHTML = '';
     content.innerHTML = createDetailedContactCard(id, initials);
@@ -67,6 +69,7 @@ function closeContactDetailCard() {
     setTimeout(() => {
         content.innerHTML = '';
         content.classList.remove('slide-out')
+        content.style.display = 'none';
     }, 400);
 }
 
