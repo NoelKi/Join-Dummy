@@ -284,7 +284,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 518px;
+    width: 480px;
     height: 100vh;
     background-color: white;
     z-index: 1;
@@ -293,33 +293,42 @@
 }
 
 .board-overlay-top-container {
-    width: 478px;
-    height: 156px;
+    
+    padding-top: 24px;
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
     font-size: 48px;
     font-weight: 700;
-    padding-left: 40px;
+    padding-left: 24px;
+    
 }
 
 .close-btn-overlay {
     border: none;
     background-color: transparent;
-    margin-top: -90px;
     cursor: pointer;
     display: flex;
+    border-radius: 50%;
     align-items: center;
     justify-content: center;
     user-select: none;
+    
 }
 
-.close-btn-overlay:hover {
-    /* margin-right: 10px; */
-    padding: 6px; 
-    background-color: rgba(128, 128, 128, 0.205);
+.close-btn-overlay img {
+    transition: background-color 100ms ease-out, padding 100ms ease-out, border-radius 100ms ease-out;
+}
+
+.close-btn-overlay img:hover {
     border-radius: 50%;
+    background-color: rgba(128, 128, 128, 0.205);
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    
 }
 
 .show-task-overlay {

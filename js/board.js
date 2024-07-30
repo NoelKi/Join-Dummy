@@ -271,7 +271,7 @@ function createAddTaskOverlay() {
             <div class="board-overlay-main-container">
             
             <div class="add-task-container">
-      <form id="task-form" class="task-css" onsubmit="createTask(event);">
+      <form id="task-form" class="task-css-board" onsubmit="createTask(event);">
 
         <div class="task-section-div">
           <input id="add-title" type="text" class="input-title-task" placeholder="Enter a title*" /><br />
@@ -358,20 +358,8 @@ function createAddTaskOverlay() {
 
            <div id="added-subtask" class="added-subtask-input"> </div>
 
-
-        </div>
-        
-        
-        
-        
-        <div class="clear-create-buttons">
-          <button class="clear-task-btn center-flexbox" id="clear-task-btn" type="button">Clear <svg
-              class="margin-left-12 icon-clear" width="14" height="13" viewBox="0 0 14 13" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M7.00081 6.50008L12.2438 11.7431M1.75781 11.7431L7.00081 6.50008L1.75781 11.7431ZM12.2438 1.25708L6.99981 6.50008L12.2438 1.25708ZM6.99981 6.50008L1.75781 1.25708L6.99981 6.50008Z"
-                stroke="#647188" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></button>
+              <div class="create-button-overlay">
+         
 
           <button class="create-task-btn center-flexbox" id="add-task-btn" type="submit">Create
             Task <svg class="margin-left-12 icon-create" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -390,6 +378,13 @@ function createAddTaskOverlay() {
           </button>
         </div>
         
+
+
+        </div>
+        
+        
+        
+       
         
           <div id="added-animation">
             <p>Task Added to Board</p>
