@@ -58,7 +58,7 @@ function giveGroupedContacts() {
 }
 
 function renderContactDetailCard(id, initials) {
-    renderMobileEditBtn();
+    renderMobileEditBtn(id, initials);
     const width = document.body.clientWidth;
     const content = document.getElementById('contact-detail-card');
     content.style.display = 'block';
