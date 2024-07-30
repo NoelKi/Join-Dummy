@@ -25,10 +25,24 @@
     font-size: 16px;
     padding-left: 20px;
     margin: 0;
+    background: white url(../assets/img/searchGlas.svg) no-repeat;
+    background-position: calc(100% - 16px) center;
 }
 
-.outer-board-container {
-    /* height: calc(100vh - 296px - 36px); */
+
+.searchbar-board:hover {
+    background: white url(../assets/img/searchGlasHover.svg) no-repeat;
+    background-position: calc(100% - 16px) center;
+}
+
+
+.searchbar-board:focus-visible {
+    outline-width: 0;
+}
+
+.searchbar-board:focus {
+    outline-width: 0;
+    border: 1px solid #4589FF;
 }
 
 .searchbar-container {
@@ -50,6 +64,16 @@
     font-weight: 300;
     cursor: pointer;
     margin-left: 40px;
+}
+
+.add-task-btn:hover {
+    background-color: #005DFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.168);
+}
+
+.add-task-btn:active {
+    background-color: black;
+    border: 1px solid  #005DFF;
 }
 
 .board-headline-container {
@@ -118,6 +142,7 @@
 
 .board-content-container::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 
 .board-content-container::-webkit-scrollbar-track {
@@ -503,13 +528,14 @@
     .outer-board-container {
         min-height: 50px;
         width: calc(100vw - 196px);
-        /* height: 150px; */
     }
+
     .task-container {
-        width: 200px;
+        width: 210px;
         margin-right: 10px;
         margin-bottom: 0;
     }
+
     .empty-box {
         width: 300px;
     }
