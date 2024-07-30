@@ -57,7 +57,7 @@ function renderContactDetailCard(id, initials) {
     const width = document.body.clientWidth;
     const content = document.getElementById('contact-detail-card');
     const editBtn = document.getElementById('edit-btn-media');
-    editBtn.innerHTML = createEditDeleteBtn();
+    editBtn.innerHTML = createEditDeleteBtn(id, initials);
     if (width <= 800) {
         editBtn.style.display = 'flex';
     }
@@ -143,6 +143,16 @@ function deleteContact(id) {
         contacts.splice(index, 1);
     }
     closeContactDetailCard();
+    renderContacts();
+    updateUser(CURRENT_USER_DATA.name, CURRENT_USER_DATA.email, CURRENT_USER_DATA.password, contacts);
+}
+
+function deleteContactMedia(id) {
+    const index = contacts.findIndex(contact => contact.id === id);
+    if (index !== -1) {
+        contacts.splice(index, 1);
+    }
+    closeContactDetailCardWithoutSlideIn();
     renderContacts();
     updateUser(CURRENT_USER_DATA.name, CURRENT_USER_DATA.email, CURRENT_USER_DATA.password, contacts);
 }

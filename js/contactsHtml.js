@@ -154,9 +154,33 @@ function createButtonCard() {
     ;
 }
 
-function createEditDeleteBtn() {
+function createEditDeleteBtn(id,initials) {
     return `
-    <div class="edit-contacts-container-media">
+    <div class="edit-contacts-container-media" onclick="renderEditContainer(${id},'${initials}')">
         <img src="../assets/img/threeDots.svg" alt=":">
     </div>`;
+}
+
+function renderEditContainer(id, initials) {
+    const content = document.getElementById('edit-btn-media');
+    // content.innerHTML = '';
+    content.innerHTML = createEditContainer(id, initials);
+}
+
+function createEditContainer(id, initials) {
+    const contact = getObjectById(contacts, id);
+    return `
+    <div class="edit-delete-overlay-container">            
+        <div class="contact-edit-container-media">
+            <div class="contact-edit-inner-container" onclick="renderEditOverlay(${contact.id},'${initials}');">
+                <img class="unhover-btn" src="../assets/img/editUnhover.svg" alt="pencil">
+                <img class="hover-btn" src="../assets/img/editHover.svg" alt="pencil">
+            </div>
+            <div class="contact-edit-inner-container" onclick="deleteContactMedia(${id});" style="margin-top: 16px;">
+                <img class="unhover-btn" src="../assets/img/deleteUnhover.svg" alt="bin">
+                <img class="hover-btn" src="../assets/img/deleteHover.svg" alt="pencil">
+            </div>
+        </div>
+    </div>
+    `;
 }
