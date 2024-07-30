@@ -768,4 +768,22 @@
     .contact-information-container {
       margin-right: 5vw;
     }
+
+    .contacts-section {
+      width: 100vw;
+    }
+
+    .contact-card {
+      margin: 0;
+    }
+}
+
+@media (max-width: 400px) {
+  .contact-card {
+    width: 90vw;
+  }
+
+  .letter-container {
+    width: 90vw;
+  }
 }
