@@ -1,7 +1,7 @@
 window.onload = function () {
     includeHTML();
     getUserListsBoard();
-    getUserLists();
+    getUser();
     renderTasks();
     checkInputs();
     
