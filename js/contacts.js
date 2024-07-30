@@ -3,10 +3,10 @@ let contacts = [];
 window.onload = function () {
     includeHTML();
     renderContacts();
-    getUserLists();
+    getUser();
 };
 
-async function getUserLists() {
+async function getUser() {
     try {
         CURRENT_USER_DATA = await getUserData(USER_ID);
         setUserInitals();
