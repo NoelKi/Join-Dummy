@@ -213,23 +213,33 @@ function getObjectById(array, id) {
 }
 
 function addContact() {
-    const [name, surname = ''] = document.getElementById('add-name-overlay').value.split(" ");
-    const email = document.getElementById('add-email-overlay').value;
-    const phoneNumber = document.getElementById('add-phoneNumber-overlay').value;
-    const colorArr = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
-    const rand = Math.floor(Math.random() * colorArr.length);
-    const color = colorArr[rand];
-    const id = Number(Date.now().toString());
-    contacts.push({ id: id, name: name, surname: surname, email: email, phoneNumber: phoneNumber, color: color });
+    const [initials, id] = setContactProperties();
     closeOverlay();
     renderContacts();
-    const initials = `${getFirstLetterOfName(name)}${getFirstLetterOfName(surname)}`;
     renderContactDetailCard(id,initials);
     renderContactSnack();
     updateUser(CURRENT_USER_DATA.name, CURRENT_USER_DATA.email, CURRENT_USER_DATA.password, contacts, tasks);
     setTimeout(() => {
         closeContactSnack();
     }, 1000);
+}
+
+function setContactProperties() {
+    const [name, surname = ''] = document.getElementById('add-name-overlay').value.split(" ");
+    const email = document.getElementById('add-email-overlay').value;
+    const phoneNumber = document.getElementById('add-phoneNumber-overlay').value;
+    const color = colorRandomizer();
+    const id = Number(Date.now().toString());
+    contacts.push({ id: id, name: name, surname: surname, email: email, phoneNumber: phoneNumber, color: color }); 
+    const initials = `${getFirstLetterOfName(name)}${getFirstLetterOfName(surname)}`;
+    return [initials, id];
+}
+
+function colorRandomizer() {
+    const colorArr = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
+    const rand = Math.floor(Math.random() * colorArr.length);
+    const color = colorArr[rand];
+    return color;
 }
 
 function renderContactSnack() {
