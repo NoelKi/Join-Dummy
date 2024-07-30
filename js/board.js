@@ -1,10 +1,8 @@
 window.onload = function () {
     includeHTML();
-    getUserListsBoard();
-    getUser();
+    getUserBoard();
     renderTasks();
     checkInputs();
-    
 }
 
 
@@ -42,24 +40,28 @@ let tasksExample = [{
 }];
 
 
-async function getUserListsBoard() {
+async function getUserBoard() {
     try {
         CURRENT_USER_DATA = await getUserData(USER_ID);
-        setUserInitals();
-        if (!CURRENT_USER_DATA.contacts) {
-            contacts = [];
-        } else {
-            contacts = CURRENT_USER_DATA.contacts;
-            
-        }
-        if (!CURRENT_USER_DATA.tasks) {
-            tasks = [];
-        } else {
-            tasks = CURRENT_USER_DATA.tasks;
-            renderTasks();
-        }
+        setUserInitals();   
+        setUserListsBoard();
     } catch (error) {
         console.error("Fehler beim Abrufen der Benutzerdaten:", error);
+    }
+}
+
+function setUserListsBoard() {
+    if (!CURRENT_USER_DATA.contacts) {
+        contacts = [];
+    } else {
+        contacts = CURRENT_USER_DATA.contacts;
+        
+    }
+    if (!CURRENT_USER_DATA.tasks) {
+        tasks = [];
+    } else {
+        tasks = CURRENT_USER_DATA.tasks;
+        renderTasks();
     }
 }
 
@@ -77,6 +79,7 @@ function renderToDo() {
         const element = toDo[index];
         document.getElementById('toDo').innerHTML += renderTaskHtml(element);
     }
+    console.log(toDo.length);
     if (toDo.length === 0) {
         document.getElementById('toDo').innerHTML = renderEmptyBox('to do');
     }
