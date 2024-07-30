@@ -58,19 +58,23 @@ function giveGroupedContacts() {
 }
 
 function renderContactDetailCard(id, initials) {
-    const width = document.body.clientWidth;
     const content = document.getElementById('contact-detail-card');
-    const editBtn = document.getElementById('edit-btn-media');
-    editBtn.innerHTML = createEditDeleteBtn(id, initials);
-    if (width <= 800) {
-        editBtn.style.display = 'flex';
-    }
+    renderMobileEditBtn(id, initials);
     content.style.display = 'block';
     content.innerHTML = '';
     content.innerHTML = createDetailedContactCard(id, initials);
     if (width > 1200) {
         content.classList.add('slide-in');
     } 
+}
+
+function renderMobileEditBtn(id, initials) {
+    const width = document.body.clientWidth;
+    const editBtn = document.getElementById('edit-btn-media');
+    editBtn.innerHTML = createEditDeleteBtn(id, initials);
+    if (width <= 800) {
+        editBtn.style.display = 'flex';
+    }
 }
 
 function closeContactDetailCard() {
