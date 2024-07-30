@@ -12,7 +12,7 @@ function createContactCard(contact, initials) {
 function createDetailedContactCard(id, initials) {
     const contact = getObjectById(contacts, id);
     return `
-    <div class="contact-information-container">Contact Information <img class="back-arrow-contact-detail-card" src="../assets/img/arrowLeft.svg" alt="Arrow left" onclick="closeContactDetailCard()"></div>
+    <div class="contact-information-container">Contact Information <img class="back-arrow-contact-detail-card" src="../assets/img/arrowLeft.svg" alt="Arrow left" onclick="closeContactDetailCardWithoutSlideIn()"></div>
     <div class="top-contact-container">
         <div class="initials-big" style="background-color: ${contact.color};" id="initials">${initials}</div>
         <div class="contact-name-container">
@@ -50,6 +50,9 @@ function createEditOverlay(id, initials) {
                 <button class="close-btn-overlay" onclick="closeOverlayEdit()">
                     <img src="../assets/img/closeOverlay.svg" alt="X">
                 </button>
+                <div class="initials-overlay-media margin-special"  style="background-color: #D1D1D1;">
+                    <img class="initials-placeholder" src="../assets/img/personOverlay.svg" alt="">
+                </div>
             </div>
             <div class="edit-bottom-container">
                 <div class="edit-container">
@@ -91,6 +94,9 @@ function createAddOverlay() {
                 <button class="close-btn-overlay" onclick="closeOverlayAdd()">
                     <img src="../assets/img/closeOverlay.svg" alt="X">
                 </button>
+                <div class="initials-overlay-media" style="background-color: #D1D1D1;">
+                    <img class="initials-placeholder" src="../assets/img/personOverlay.svg" alt="">
+                </div>
             </div>
             <div class="edit-bottom-container">
                 <div class="edit-container">
@@ -110,7 +116,7 @@ function createAddOverlay() {
                             <input class="overlay-input-field input-tel" placeholder="Phone" type="tel" id="add-phoneNumber-overlay" required>
                         </div>
                         <div class="overlay-btn">
-                            <button class="overlay-white-btn" onclick="closeOverlay();" type="button">
+                            <button class="overlay-white-btn" id="cancel-btn-overlay" onclick="closeOverlay();" type="button">
                                 Cancel <img src='../assets/img/closeAddContacts.svg' class="hover-btn-grey" alt="x"> <img src='../assets/img/closeAddContactHover.svg' class="hover-btn-blue" alt="x">
                             </button>
                             <button class="overlay-blue-btn" type="submit">
@@ -141,5 +147,16 @@ function createButtonCard() {
             <img class="contact-icon" src="../assets/img/contact.svg" alt="contact-img">
             <img class="contact-icon-hover" src="../assets/img/contactHover.svg" alt="contact-img">
         </button>
+    </div>
+    <div class="add-contacts-container-media" onclick="renderAddOverlay()">
+        <img src="../assets/img/contact.svg" alt="contact-img">
+    </div>`
+    ;
+}
+
+function createEditDeleteBtn() {
+    return `
+    <div class="edit-contacts-container-media">
+        <img src="../assets/img/threeDots.svg" alt=":">
     </div>`;
 }

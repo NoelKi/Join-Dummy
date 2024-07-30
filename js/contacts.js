@@ -8,23 +8,23 @@ window.onload = function () {
 
 async function getUserLists() {
     try {
-      CURRENT_USER_DATA = await getUserData(USER_ID);
-      setUserInitals();
-      if (!CURRENT_USER_DATA.contacts) {
-        contacts = [];
-      } else {
-        contacts = CURRENT_USER_DATA.contacts;
-        renderContacts();
-      }
-      if (!CURRENT_USER_DATA.tasks) {
-        tasks = [];
-      } else {
-        tasks = CURRENT_USER_DATA.tasks;
-      }
+        CURRENT_USER_DATA = await getUserData(USER_ID);
+        setUserInitals();
+        if (!CURRENT_USER_DATA.contacts) {
+            contacts = [];
+        } else {
+            contacts = CURRENT_USER_DATA.contacts;
+            renderContacts();
+        }
+        if (!CURRENT_USER_DATA.tasks) {
+            tasks = [];
+        } else {
+            tasks = CURRENT_USER_DATA.tasks;
+        }
     } catch (error) {
-      console.error("Fehler beim Abrufen der Benutzerdaten:", error);
+        console.error("Fehler beim Abrufen der Benutzerdaten:", error);
     }
-  }
+}
 
 function loadUserIdLocalStorage() {
     const idAsText = localStorage.getItem('userId');
@@ -54,13 +54,19 @@ function giveGroupedContacts() {
 }
 
 function renderContactDetailCard(id, initials) {
+    const width = document.body.clientWidth;
     const content = document.getElementById('contact-detail-card');
-    // const content2 = document.getElementsByClassName('contact-detail-section');
-    // content2.style.display = 'flex';
+    const editBtn = document.getElementById('edit-btn-media');
+    editBtn.innerHTML = createEditDeleteBtn();
+    if (width <= 800) {
+        editBtn.style.display = 'flex';
+    }
     content.style.display = 'block';
     content.innerHTML = '';
     content.innerHTML = createDetailedContactCard(id, initials);
-    content.classList.add('slide-in');
+    if (width > 1200) {
+        content.classList.add('slide-in');
+    } 
 }
 
 function closeContactDetailCard() {
@@ -71,6 +77,16 @@ function closeContactDetailCard() {
         content.classList.remove('slide-out')
         content.style.display = 'none';
     }, 400);
+}
+
+function closeContactDetailCardWithoutSlideIn() {
+    const content = document.getElementById('contact-detail-card');
+    const editBtn = document.getElementById('edit-btn-media');
+    setTimeout(() => {
+        content.innerHTML = '';
+        editBtn.style.display = 'none';
+        content.style.display = 'none';
+    }, 0);
 }
 
 function renderEditOverlay(id, initials) {

@@ -146,7 +146,7 @@ aside {
     display: none;
 }
 
-@media(min-width: 800px) {
+@media(min-width: 801px) {
     .bottom-nav {
         display: none;
     }
