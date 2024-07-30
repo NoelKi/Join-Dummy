@@ -1,0 +1,26 @@
+
+
+.create-button-overlay {
+    display: flex;
+  gap: 24px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 46px;
+  padding-right: 32px;
+}
+
+
+
+.task-css-board {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    overflow-y: auto;
+    height: calc(100vh - 120px);
+  }
+
+  .close-btn-overlay img {
+    margin-bottom: 26px;
+    margin-right: 16px;
+  }

@@ -30,7 +30,7 @@
   <div w3-include-html="../assets/templates/header.html"></div>
   <div class="wrap">
     <div w3-include-html="../assets/templates/sidebar.html"></div>
-    <div class="task-container">
+    <div class="add-task-container">
       <form id="task-form" class="task-css" onsubmit="createTask(event);">
 
         <div class="task-section-div">
@@ -52,7 +52,7 @@
 
         <div class="task-section-div">
           <div class="buttons margin-bottom-8"><label for="Priotity">Priority</label><br></div>
-          <div class="buttons">
+          <div class="buttons" id="unselected-error">
             <button class="button-urgent" id="urgent" type="button" onclick="selectPriority('Urgent')">Urgent <img
                 class="button-img" src="../assets/img/urgentIcon.svg"> </button>
             <button class="button-medium" id="medium" type="button" onclick="selectPriority('Medium')">Medium <img
@@ -60,6 +60,7 @@
             <button class="button-low" id="low" type="button" onclick="selectPriority('Low')">Low <img
                 class="button-img" src="../assets/img/low.svg"></button>
           </div>
+          <span id="priority-error" class="error">This field is required*</span>
         </div>
 
 

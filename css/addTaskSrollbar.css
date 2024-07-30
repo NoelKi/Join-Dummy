@@ -1,9 +1,12 @@
+
 .task-css::-webkit-scrollbar,
+.task-css-board::-webkit-scrollbar,
 .option::-webkit-scrollbar,
 .option-category::-webkit-scrollbar {
   width: 8px;
 }
 
+.task-css-board::-webkit-scrollbar,
 .task-css::-webkit-scrollbar-track,
 .option::-webkit-scrollbar-track,
 .option-category::-webkit-scrollbar-track {
@@ -11,6 +14,7 @@
   border-radius: 6px;
 }
 
+.task-css-board::-webkit-scrollbar,
 .task-css::-webkit-scrollbar-thumb,
 .option::-webkit-scrollbar-thumb,
 .option-category::-webkit-scrollbar-thumb {
