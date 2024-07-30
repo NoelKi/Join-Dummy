@@ -161,10 +161,12 @@ function createEditDeleteBtn(id,initials) {
     </div>`;
 }
 
-function renderEditContainer(id, initials) {
-    const content = document.getElementById('edit-btn-media');
-    content.innerHTML = createEditContainer(id, initials);
+function createContactSnack() {
+    return `<div class="snack slide-in-bottom">
+    Contact succesfully created    
+    </div>`;
 }
+
 
 function createEditContainer(id, initials) {
     const contact = getObjectById(contacts, id);

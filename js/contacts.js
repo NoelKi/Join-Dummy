@@ -234,12 +234,6 @@ function closeContactSnack() {
     content.classList.add('slide-out-bottom');
 }
 
-function createContactSnack() {
-    return `<div class="snack slide-in-bottom">
-    Contact succesfully created    
-    </div>`;
-}
-
 function editContact(id, initials) {
     const contact = getObjectById(contacts, id);
     const [name, surname = ''] = document.getElementById('edit-name-overlay').value.split(" ");
@@ -260,3 +254,7 @@ function setContactActive(e) {
     currTarget.classList.add('active');
 }
 
+function renderEditContainer(id, initials) {
+    const content = document.getElementById('edit-btn-media');
+    content.innerHTML = createEditContainer(id, initials);
+}
