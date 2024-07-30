@@ -3,6 +3,7 @@ window.onload = function () {
     getUserListsBoard();
     getUserLists();
     renderTasks();
+    checkInputs();
     
 }
 
