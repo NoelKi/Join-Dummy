@@ -10,19 +10,23 @@ async function getUserLists() {
     try {
         CURRENT_USER_DATA = await getUserData(USER_ID);
         setUserInitals();
-        if (!CURRENT_USER_DATA.contacts) {
-            contacts = [];
-        } else {
-            contacts = CURRENT_USER_DATA.contacts;
-            renderContacts();
-        }
-        if (!CURRENT_USER_DATA.tasks) {
-            tasks = [];
-        } else {
-            tasks = CURRENT_USER_DATA.tasks;
-        }
+        setUserLists();
     } catch (error) {
         console.error("Fehler beim Abrufen der Benutzerdaten:", error);
+    }
+}
+
+function setUserLists() {
+    if (!CURRENT_USER_DATA.contacts) {
+        contacts = [];
+    } else {
+        contacts = CURRENT_USER_DATA.contacts;
+        renderContacts();
+    }
+    if (!CURRENT_USER_DATA.tasks) {
+        tasks = [];
+    } else {
+        tasks = CURRENT_USER_DATA.tasks;
     }
 }
 
