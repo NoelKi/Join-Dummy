@@ -1,3 +1,12 @@
+window.onload = function () {
+    includeHTML();
+    getUserListsBoard();
+    getUserLists();
+    renderTasks();
+    
+}
+
+
 let currentTaskElement;
 let tasks = [];
 let currentDraggedElement;
@@ -31,12 +40,8 @@ let tasksExample = [{
     },]
 }];
 
-window.onload = function () {
-    includeHTML();
-    getUserLists();
-}
 
-async function getUserLists() {
+async function getUserListsBoard() {
     try {
         CURRENT_USER_DATA = await getUserData(USER_ID);
         setUserInitals();
@@ -44,6 +49,7 @@ async function getUserLists() {
             contacts = [];
         } else {
             contacts = CURRENT_USER_DATA.contacts;
+            
         }
         if (!CURRENT_USER_DATA.tasks) {
             tasks = [];
@@ -262,150 +268,10 @@ function closeOverlay() {
 function renderAddTaskOverlay() {
     const content = document.getElementById('board-overlay-section');
     content.style.display = 'block';
-    content.innerHTML = createAddTaskOverlay();
+    
 }
 
-function createAddTaskOverlay() {
-    return `    
-    <div class="board-overlay-section">
-        <div class="board-overlay-container" id="board-overlay-container">
-            <div class="board-overlay-top-container">
-                Add Task
-                <button class="close-btn-overlay" onclick="closeOverlay()">
-                    <img src="../assets/img/closeTask.svg">
-                </button>
-            </div>
-            <div class="board-overlay-main-container">
-            
-            <div class="add-task-container">
-      <form id="task-form" class="task-css-board" onsubmit="createTask(event);">
 
-        <div class="task-section-div">
-          <input id="add-title" type="text" class="input-title-task" placeholder="Enter a title*" /><br />
-          <span id="title-error" class="error">This field is required*</span>
-        </div>
-
-        <div class="task-section-div">
-          <div class="margin-bottom-5"><label>Description <span class="optional-text">(optional)</span></label><br />
-          </div>
-          <textarea placeholder="Enter a Description" class="task-text" id="textarea-task"></textarea>
-        </div>
-
-        <div class="task-section-div">
-          <label for="due-date">Due Date*</label><br>
-          <input class="date-css" id="due-date" type="date" placeholder="dd/mm/yyyy"><br>
-          <span id="date-error" class="error">This field is required*</span>
-        </div>
-
-        <div class="task-section-div">
-          <div class="buttons margin-bottom-8"><label for="Priotity">Priority</label><br></div>
-          <div class="buttons" id="unselected-error">
-            <button class="button-urgent" id="urgent" type="button" onclick="selectPriority('Urgent')">Urgent <img
-                class="button-img" src="../assets/img/urgentIcon.svg"> </button>
-            <button class="button-medium" id="medium" type="button" onclick="selectPriority('Medium')">Medium <img
-                class="button-img" src="../assets/img/medium.svg"></button>
-            <button class="button-low" id="low" type="button" onclick="selectPriority('Low')">Low <img
-                class="button-img" src="../assets/img/low.svg"></button>
-          </div>
-          <span id="priority-error" class="error">This field is required*</span>
-        </div>
-
-
-        <div class="task-section-div">
-          <label for="assigned-to">Assigned to <span class="optional-text">(optional)</span></label><br />
-          <div class="select-box" id="hide-box">
-            <div class="select-option">
-              <div class="input-positioning">
-                <input type="input-positioning" value="Select contacts to assign" id="select-value" readonly>
-                <div class="drop-down-arrow center-flexbox"><img src="../assets/img/arrow_drop_down.svg" alt=""></div>
-              </div>
-            </div>
-
-            <div class="select-content">
-              <div class="search-assign">
-                <input type="text" id="option-search" placeholder="  An">
-              </div>
-              <ul id="generate-list" class="option"></ul>
-            </div>
-            <div class="circle-positioning" id="assign-contacts-circle"></div>
-          </div>
-        </div>
-
-        <div class="task-section-div">
-          <label for="category-task">Category</label><br />
-          <div class="select-box-category">
-            <div class="select-option" id="select-category">
-              <div class="input-positioning">
-                <input type="text" value="Select category" id="category-value" readonly>
-                <div class="drop-down-arrow-cat center-flexbox"><img src="../assets/img/arrow_drop_down.svg" alt="">
-                </div>
-              </div>
-            </div>
-            <div class="category-list-div">
-              <ul id="category-list" class="option-category">
-                <li onclick="setTaskKind('TT')">Technical task</li>
-                <li onclick="setTaskKind('US')">User story</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="task-section-div">
-          <label for="subtask-optional">Subtasks <span class="optional-text">(optional)</span></label><br />
-          <div id="subtask-list" class="subtask-list"></div>
-          <div id="input-subtask-add" class="select-option" onclick="changeToFocus()">
-            <div class="input-positioning">
-              <input class="subtask-css-input" id="subtask-input-field" type="text" placeholder="Add subtask" />
-              <div class="add-symbol-css center-flexbox">
-                <img src="../assets/img/add.svg" alt=""><br>
-                
-              </div>
-            </div>
-          </div>
-
-           <div id="added-subtask" class="added-subtask-input"> </div>
-
-              <div class="create-button-overlay">
-         
-
-          <button class="create-task-btn center-flexbox" id="add-task-btn" type="submit">Create
-            Task <svg class="margin-left-12 icon-create" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <mask id="mask0_19053_7126" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
-                height="24">
-                <rect width="24" height="24" fill="#D9D9D9" />
-              </mask>
-              <g mask="url(#mask0_19053_7126)">
-                <path
-                  d="M9.55021 15.15L18.0252 6.675C18.2252 6.475 18.4627 6.375 18.7377 6.375C19.0127 6.375 19.2502 6.475 19.4502 6.675C19.6502 6.875 19.7502 7.1125 19.7502 7.3875C19.7502 7.6625 19.6502 7.9 19.4502 8.1L10.2502 17.3C10.0502 17.5 9.81687 17.6 9.55021 17.6C9.28354 17.6 9.05021 17.5 8.85021 17.3L4.55021 13C4.35021 12.8 4.25437 12.5625 4.26271 12.2875C4.27104 12.0125 4.37521 11.775 4.57521 11.575C4.77521 11.375 5.01271 11.275 5.28771 11.275C5.56271 11.275 5.80021 11.375 6.00021 11.575L9.55021 15.15Z"
-                  fill="white" />
-              </g>
-            </svg>
-
-          </button>
-        </div>
-        
-
-
-        </div>
-        
-        
-        
-       
-        
-          <div id="added-animation">
-            <p>Task Added to Board</p>
-            <img class="white-color-board" src="../assets/img/board_icon.svg">
-          </div>
-       
-      </form>
-    </div>
-            
-            
-            </div>
-        </div>
-    </div>`;
-}
 
 function renderTaskOverlay(id) {
     const element = getObjectById(tasks, `${id}`);

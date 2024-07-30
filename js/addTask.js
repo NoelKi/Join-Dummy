@@ -1,10 +1,11 @@
-window.onload = function () {
+function init() {
   includeHTML();
   clearAllInputs();
   getUserLists();
   loadContactList();
   checkInputs();
 };
+  
 
 let priorityValue = null;
 let kindValue = "";
