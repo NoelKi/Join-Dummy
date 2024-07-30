@@ -3,30 +3,26 @@ let contacts = [];
 window.onload = function () {
     includeHTML();
     renderContacts();
-    getUser();
+    getUserLists();
 };
 
-async function getUser() {
+async function getUserLists() {
     try {
         CURRENT_USER_DATA = await getUserData(USER_ID);
         setUserInitals();
-        setUserLists();
+        if (!CURRENT_USER_DATA.contacts) {
+            contacts = [];
+        } else {
+            contacts = CURRENT_USER_DATA.contacts;
+            renderContacts();
+        }
+        if (!CURRENT_USER_DATA.tasks) {
+            tasks = [];
+        } else {
+            tasks = CURRENT_USER_DATA.tasks;
+        }
     } catch (error) {
         console.error("Fehler beim Abrufen der Benutzerdaten:", error);
-    }
-}
-
-function setUserLists() {
-    if (!CURRENT_USER_DATA.contacts) {
-        contacts = [];
-    } else {
-        contacts = CURRENT_USER_DATA.contacts;
-        renderContacts();
-    }
-    if (!CURRENT_USER_DATA.tasks) {
-        tasks = [];
-    } else {
-        tasks = CURRENT_USER_DATA.tasks;
     }
 }
 
@@ -58,23 +54,19 @@ function giveGroupedContacts() {
 }
 
 function renderContactDetailCard(id, initials) {
+    const width = document.body.clientWidth;
     const content = document.getElementById('contact-detail-card');
-    renderMobileEditBtn(id, initials);
+    const editBtn = document.getElementById('edit-btn-media');
+    editBtn.innerHTML = createEditDeleteBtn(id, initials);
+    if (width <= 800) {
+        editBtn.style.display = 'flex';
+    }
     content.style.display = 'block';
     content.innerHTML = '';
     content.innerHTML = createDetailedContactCard(id, initials);
     if (width > 1200) {
         content.classList.add('slide-in');
     } 
-}
-
-function renderMobileEditBtn(id, initials) {
-    const width = document.body.clientWidth;
-    const editBtn = document.getElementById('edit-btn-media');
-    editBtn.innerHTML = createEditDeleteBtn(id, initials);
-    if (width <= 800) {
-        editBtn.style.display = 'flex';
-    }
 }
 
 function closeContactDetailCard() {
@@ -241,6 +233,12 @@ function closeContactSnack() {
     const content = document.getElementById('snack');
     content.classList.add('slide-out-bottom');
 }
+
+// function createContactSnack() {
+//     return `<div class="snack slide-in-bottom">
+//     Contact succesfully created    
+//     </div>`;
+// }
 
 function editContact(id, initials) {
     const contact = getObjectById(contacts, id);
