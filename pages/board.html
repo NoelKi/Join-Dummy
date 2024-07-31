@@ -47,7 +47,7 @@
         <div class="outer-board-container">
           <div class="board-top-container">
             <h4>To do</h4>
-            <button class="add-task-btn-small" onclick="openAddTaskOverlay()">
+            <button class="add-task-btn-small" onclick="renderAddTaskOverlay()">
               <img class="add-task-btn-unhover" src="../assets/img/addTaskBtn.svg" alt="+">
               <img class="add-task-btn-hover" src="../assets/img/addTaskBtnHover.svg" alt="+">
             </button>
@@ -59,7 +59,7 @@
         <div class="outer-board-container">
           <div class="board-top-container">
             <h4>In progress</h4>
-            <button class="add-task-btn-small" onclick="openAddTaskOverlay()">
+            <button class="add-task-btn-small" onclick="renderAddTaskOverlay('inProgress')">
               <img class="add-task-btn-unhover" src="../assets/img/addTaskBtn.svg" alt="+">
               <img class="add-task-btn-hover" src="../assets/img/addTaskBtnHover.svg" alt="+">
             </button>
@@ -71,7 +71,7 @@
         <div class="outer-board-container">
           <div class="board-top-container">
             <h4>Await feedback</h4>
-            <button class="add-task-btn-small" onclick="openAddTaskOverlay()">
+            <button class="add-task-btn-small" onclick="renderAddTaskOverlay('awaitFeedback')">
               <img class="add-task-btn-unhover" src="../assets/img/addTaskBtn.svg" alt="+">
               <img class="add-task-btn-hover" src="../assets/img/addTaskBtnHover.svg" alt="+">
             </button>

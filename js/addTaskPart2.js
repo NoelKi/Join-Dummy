@@ -270,7 +270,7 @@ function clearTaskKind() {
  */
 function createTask(event) {
   event.preventDefault();
-  pushTaskToTasks();
+  pushTaskToTasks(CAT);
   updateUser(
     CURRENT_USER_DATA.name,
     CURRENT_USER_DATA.email,
