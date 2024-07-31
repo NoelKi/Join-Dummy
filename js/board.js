@@ -5,7 +5,6 @@ window.onload = function () {
     checkInputs();
 }
 
-
 let currentTaskElement;
 let tasks = [];
 let currentDraggedElement;
@@ -45,6 +44,7 @@ async function getUserBoard() {
         CURRENT_USER_DATA = await getUserData(USER_ID);
         setUserInitals();   
         setUserListsBoard();
+        loadContactList();
     } catch (error) {
         console.error("Fehler beim Abrufen der Benutzerdaten:", error);
     }
