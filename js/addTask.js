@@ -30,11 +30,15 @@ let selectBoxCategory = document.querySelector(".select-box-category");
 let selectCategoryOption = document.getElementById("select-category");
 let categoryList = document.getElementById("category-list");
 let changedInput = document.getElementById("change-to-focus");
-let generatedContatcs = document.getElementById("hide-box");
-let generateList = document.getElementById("generate-list");
-let inputField = document.getElementById("subtask-input-field");
-let priorityError = document.getElementById("priority-error");
-let categoryInput = document.getElementById("category-value");
+let generatedContatcs = document.getElementById('hide-box');
+let generateList = document.getElementById('generate-list');
+let inputField = document.getElementById('subtask-input-field');
+let priorityError = document.getElementById('priority-error');
+let categoryInput = document.getElementById('category-value');
+let selectErrorBlock = document.getElementById('select-error-block');
+
+
+
 
 /**
  * Asynchronously retrieves user data and initializes the application's user-specific information.
@@ -121,7 +125,7 @@ function clearAllStates() {
   clearSelectedContacts();
   renderSubtasks();
   loadContactList();
-  updateErrorDisplay();
+ 
 }
 
 /**
@@ -154,13 +158,8 @@ function checkInputs() {
     categoryInput.value === "Technical task" ||
     categoryInput.value === "User story";
 
-  createTaskBtn.disabled = !(
-    isTitleValid &&
-    isDateValid &&
-    isPrioritySelected &&
-    isCategoryValid
-  );
-  updateErrorDisplay();
+  createTaskBtn.disabled = !(isTitleValid && isDateValid && isPrioritySelected && isCategoryValid);
+  
 }
 
 /**
@@ -197,7 +196,7 @@ function selectPriority(priority) {
     priorityValue = null;
   }
   checkInputs();
-  updateErrorDisplay();
+  
 }
 
 /**
@@ -205,14 +204,8 @@ function selectPriority(priority) {
  *
  * This function shows an error message if no priority is selected and hides it otherwise.
  */
-function updateErrorDisplay() {
-  if (priorityValue === null) {
-    priorityError.style.display = "contents";
-  } else {
-    priorityError.style.display = "none";
-  }
-}
 
+  
 /**
  * Clears the list of collaborators and resets the selection state.
  * This function empties the `collaborators` array, clears the `selectionState` object,
@@ -394,3 +387,15 @@ function addSubtaskEventListeners(task) {
     .getElementById(`subtask-input-field-sub-${task.id}`)
     .addEventListener("dblclick", () => editSubtask(task.id));
 }
+
+
+function disabledClick() {
+
+}
+
+  
+
+
+
+
+

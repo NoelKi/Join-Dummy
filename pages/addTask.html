@@ -98,7 +98,7 @@
                 Low <img class="button-img" src="../assets/img/low.svg" />
               </button>
             </div>
-            <span id="priority-error" class="error"
+            <span id="priority-error" class="error-block"
               >This field is required*</span
             >
           </div>
@@ -148,7 +148,7 @@
                   </div>
                 </div>
               </div>
-              <div id="date-error" class="error">This field is required*</div>
+              <div id="select-error-block" class="error-block">This field is required*</div>
               <div class="category-list-div">
                 <ul id="category-list" class="option-category">
                   <li onclick="setTaskKind('TT')">Technical task</li>
@@ -208,12 +208,13 @@
                 />
               </svg>
             </button>
-
+            <div onclick="disabledClick()" class="hiddenError"></div>
             <button
               class="create-task-btn center-flexbox"
               id="add-task-btn"
               type="submit"
-            >
+              
+              >
               Create Task
               <svg
                 class="margin-left-12 icon-create"
@@ -242,6 +243,7 @@
                 </g>
               </svg>
             </button>
+            </div>
           </div>
 
           <div id="added-animation">
