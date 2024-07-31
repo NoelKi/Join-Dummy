@@ -87,12 +87,13 @@ function renderTasks() {
 
 function renderToDo(tasks) {
   let toDo = tasks.filter((t) => t["category"] == "toDo");
+
   document.getElementById("toDo").innerHTML = "";
+
   for (let index = 0; index < toDo.length; index++) {
     const element = toDo[index];
     document.getElementById("toDo").innerHTML += renderTaskHtml(element);
   }
-  console.log(toDo.length);
   if (toDo.length === 0) {
     document.getElementById("toDo").innerHTML = renderEmptyBox("to do");
   }
