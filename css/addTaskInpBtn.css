@@ -127,7 +127,7 @@ input[type="date"]:focus {
 
 .subtask-css-input {
   width: 100%;
-  transition:  ease-out, color 100ms ease-out;
+  transition: ease-out, color 100ms ease-out;
 }
 
 .input-positioning {
@@ -137,14 +137,14 @@ input[type="date"]:focus {
 }
 
 .clear-task-btn {
-  font-family: 'Open sans' ,sans-serif;
+  font-family: "Open sans", sans-serif;
   border-radius: 10px;
   outline: 0;
   border: 1px solid rgba(128, 128, 128, 0.2);
   padding: 16px 10px 16px 10px;
   font-size: 23px;
   cursor: pointer;
-  color: #42526E;
+  color: #42526e;
   background-color: white;
   text-align: center;
   font-weight: 400;
@@ -164,7 +164,7 @@ input[type="date"]:focus {
 }
 
 .create-task-btn {
-  font-family: 'Open sans' ,sans-serif;
+  font-family: "Open sans", sans-serif;
   border-radius: 10px;
   outline: 0;
   border-style: none;
@@ -178,6 +178,8 @@ input[type="date"]:focus {
   box-sizing: border-box;
   font-weight: 400;
   transition: 100ms ease-out, color 100ms ease-out;
+  position: relative;
+  z-index: -1;
 }
 
 .create-task-btn:not(:disabled):hover {

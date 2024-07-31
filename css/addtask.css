@@ -5,11 +5,9 @@
 }
 .error-block {
   color: #ff8190;
-  display: none;
   font-size: 13px;
+  display: none;
 }
-
-
 
 .add-task-container {
   width: 460px;
