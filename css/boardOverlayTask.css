@@ -27,21 +27,14 @@
 .create-button-overlay {
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 0;
   padding: 18px;
   display: flex;
   justify-content: flex-end;
   height: 60px;
-  width: 445px;
+  width: 444px;
   background-color: rgba(255, 255, 255, 1);
   border-bottom-left-radius: 30px;
-}
-
-.create-button-overlay.fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
   z-index: 1000;
   background-color: white;
 }
