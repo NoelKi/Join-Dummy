@@ -1,4 +1,9 @@
 /**
+ * @type {String} String
+ */
+CAT = "toDo";
+
+/**
  * Enables editing mode for a subtask with the specified ID.
  * This function locates the subtask element, input field, and icon elements based on the provided ID.
  * It then makes the subtask editable and sets up the necessary input events for user interactions.
@@ -270,7 +275,7 @@ function clearTaskKind() {
  */
 function createTask(event) {
   event.preventDefault();
-  pushTaskToTasks();
+  pushTaskToTasks(CAT);
   updateUser(
     CURRENT_USER_DATA.name,
     CURRENT_USER_DATA.email,
