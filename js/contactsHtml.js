@@ -177,7 +177,7 @@ function createEditContainer(id, initials) {
             </div>
             <div class="contact-edit-inner-container" onclick="deleteContactMedia(${id});" style="margin-top: 16px;">
                 <img class="unhover-btn" src="../assets/img/deleteUnhover.svg" alt="bin">
-                <img class="hover-btn" src="../assets/img/deleteHover.svg" alt="pencil">
+                <img class="hover-btn" src="../assets/img/deleteHover.svg" alt="bin">
             </div>
         </div>
     </div>
