@@ -6,7 +6,7 @@
   height: calc(100vh - 120px);
 }
 
-.close-btn-overlay img {
+.close-btn-overlay-task img {
   height: 18px;
   width: 18px;
 }
@@ -51,4 +51,22 @@
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+.close-btn-overlay-task {
+  cursor: pointer;
+  display: flex;
+  border-radius: 50%;
+  justify-content: center;
+  user-select: none;
+  padding: 6px;
+  transition: background-color 100ms ease-out, padding 100ms ease-out,
+    border-radius 100ms ease-out;
+  margin-bottom: 22px;
+  margin-right: 24px;
+}
+
+.close-btn-overlay-task:hover {
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.205);
 }

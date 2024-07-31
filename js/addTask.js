@@ -35,6 +35,7 @@ let generatedContatcs = document.getElementById('hide-box');
 let generateList = document.getElementById('generate-list');
 let inputField = document.getElementById('subtask-input-field');
 let priorityError = document.getElementById('priority-error');
+let categoryInput = document.getElementById('category-value');
 
 
 
@@ -155,8 +156,9 @@ function checkInputs() {
   let isTitleValid = titleInput.value.trim() !== "";
   let isDateValid = dateInput.value.trim() !== "";
   let isPrioritySelected = priorityValue !== null;
+  let isCategoryValid = categoryInput.value === "Technical task" || categoryInput.value === "User story";
 
-  createTaskBtn.disabled = !(isTitleValid && isDateValid && isPrioritySelected);
+  createTaskBtn.disabled = !(isTitleValid && isDateValid && isPrioritySelected && isCategoryValid);
   updateErrorDisplay();
 }
   

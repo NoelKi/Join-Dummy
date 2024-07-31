@@ -1,4 +1,3 @@
-
 /**
  * Event listener for the click event on the `clearTaskBtn` element.
  * Clears all input fields and then performs a check on the inputs.
@@ -9,7 +8,6 @@
 clearTaskBtn.addEventListener("click", function () {
   clearAllInputs();
   checkInputs();
-  
 });
 
 /**
@@ -23,12 +21,10 @@ selectOption.addEventListener("click", function () {
   selectBox.classList.toggle("active-task");
 });
 
-
-
 /**
  * Adds a click event listener to each element in the `optionList` array.
- * When an element is clicked, it updates the `selectValue` input with the 
- * text content of the clicked element, removes the "active-task" class from 
+ * When an element is clicked, it updates the `selectValue` input with the
+ * text content of the clicked element, removes the "active-task" class from
  * the `selectBox` element, and performs a check on the inputs.
  *
  * @param {HTMLElement[]} optionList - An array of HTML elements representing options in a list.
@@ -45,7 +41,6 @@ optionList.forEach(function (optionListSingle) {
     checkInputs();
   });
 });
-
 
 /**
  * Event listener for the focusout event on the `titleInput` element.
@@ -67,7 +62,6 @@ titleInput.addEventListener("focusout", function () {
   }
   checkInputs();
 });
-
 
 /**
  * Event listener for the focusout event on the `dateInput` element.
@@ -91,42 +85,34 @@ dateInput.addEventListener("focusout", function () {
     dateInput.style.color = "black";
   }
   checkInputs();
-  
 });
-
 
 /**
  * Adds an event listener to the task form to handle form submission.
- * 
+ *
  * This function prevents the form from submitting if either the title or date input fields are empty.
- * If the title field is empty, it displays an error message for the title input. Similarly, 
- * if the date field is empty, it displays an error message for the date input. After checking 
+ * If the title field is empty, it displays an error message for the title input. Similarly,
+ * if the date field is empty, it displays an error message for the date input. After checking
  * the inputs, it calls `checkInputs()` to perform any additional validation.
- * 
+ *
  * @param {Event} event - The event object associated with the form submission.
- * 
+ *
  * @listens submit#task-form - This event listener is triggered when the form with ID "task-form" is submitted.
  */
-document.getElementById("task-form").addEventListener("submit", function (event) {
-  
-  if (titleInput.value.trim() === "" || dateInput.value.trim() === "") {
-    event.preventDefault();
-    if (titleInput.value.trim() === "") {
-      titleError.style.display = "inline";
+document
+  .getElementById("task-form")
+  .addEventListener("submit", function (event) {
+    if (titleInput.value.trim() === "" || dateInput.value.trim() === "") {
+      event.preventDefault();
+      if (titleInput.value.trim() === "") {
+        titleError.style.display = "inline";
+      }
+      if (dateInput.value.trim() === "") {
+        dateError.style.display = "inline";
+      }
+      checkInputs();
     }
-    if (dateInput.value.trim() === "") {
-      dateError.style.display = "inline";
-    }
-    checkInputs();
-  }
-});
-
-    
-
-    
-
-    
-
+  });
 
 /**
  * Event listener for the click event on the document.
@@ -143,7 +129,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-
 /**
  * Event listener for the click event on the `generateList` element.
  * Stops the propagation of the click event to parent elements, preventing
@@ -157,7 +142,6 @@ generateList.addEventListener("click", (e) => {
   e.stopPropagation();
 });
 
-
 /**
  * Event listener for the input event on the element with ID "option-search".
  * Filters the contact list based on the current input value and updates
@@ -167,12 +151,13 @@ generateList.addEventListener("click", (e) => {
  * @param {Event} event - The input event object containing details about the user input.
  * @returns {void}
  */
-document.getElementById("option-search").addEventListener("input", function (event) {
-  let searchName = event.target.value;
-  let filteredContacts = filterContacts(searchName);
-  loadContactList(filteredContacts);
-});
-
+document
+  .getElementById("option-search")
+  .addEventListener("input", function (event) {
+    let searchName = event.target.value;
+    let filteredContacts = filterContacts(searchName);
+    loadContactList(filteredContacts);
+  });
 
 /**
  * Adds a click event listener to each element with the class "contact-item".
@@ -254,4 +239,10 @@ categoryList.addEventListener("click", function (e) {
     checkInputs();
   }
 });
+
+categoryInput.addEventListener("focus", function () {
+  checkInputs();
+});
+
+
 
