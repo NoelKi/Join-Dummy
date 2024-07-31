@@ -36,6 +36,7 @@ let generateList = document.getElementById('generate-list');
 let inputField = document.getElementById('subtask-input-field');
 let priorityError = document.getElementById('priority-error');
 let categoryInput = document.getElementById('category-value');
+let selectErrorBlock = document.getElementById('select-error-block');
 
 
 
@@ -127,7 +128,7 @@ function clearAllStates() {
   clearSelectedContacts();
   renderSubtasks();
   loadContactList();
-  updateErrorDisplay();
+ 
 }
 
 /**
@@ -159,7 +160,7 @@ function checkInputs() {
   let isCategoryValid = categoryInput.value === "Technical task" || categoryInput.value === "User story";
 
   createTaskBtn.disabled = !(isTitleValid && isDateValid && isPrioritySelected && isCategoryValid);
-  updateErrorDisplay();
+  
 }
   
 /**
@@ -196,7 +197,7 @@ if (!isSelected) {
     priorityValue = null;
   }
   checkInputs();
-  updateErrorDisplay();
+  
 }
 
 /**
@@ -204,13 +205,7 @@ if (!isSelected) {
  * 
  * This function shows an error message if no priority is selected and hides it otherwise.
  */
-function updateErrorDisplay() {
-  if (priorityValue === null) {
-    priorityError.style.display = "contents";
-  } else {
-    priorityError.style.display = "none";
-  }
-}
+
   
 /**
  * Clears the list of collaborators and resets the selection state.
@@ -399,17 +394,9 @@ function addSubtaskEventListeners(task) {
 }
 
 
+function disabledClick() {
 
-
-
-
-
-  
-
-
-
-
-
+}
 
   
 

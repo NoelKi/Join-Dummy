@@ -3,6 +3,13 @@
   display: none;
   font-size: 13px;
 }
+.error-block {
+  color: #ff8190;
+  display: none;
+  font-size: 13px;
+}
+
+
 
 .add-task-container {
   width: 460px;
