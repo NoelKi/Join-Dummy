@@ -1,17 +1,17 @@
 function createContactCard(contact, initials) {
-    return `
+  return `
     <div class="contact-card" id="contact-card-${contact.id}" onclick="renderContactDetailCard(${contact.id},'${initials}'); setContactActive(event);">
-    <div class="initials" style="background-color: ${contact.color};" id="initials">${initials}</div>
-    <div class="contact-data">
-    <p id="contact-name">${contact.name} ${contact.surname}</p>
-    <p class="contact-email">${contact.email}</p>
-    </div>
+        <div class="initials" style="background-color: ${contact.color};" id="initials">${initials}</div>
+        <div class="contact-data">
+            <p id="contact-name">${contact.name} ${contact.surname}</p>
+            <p class="contact-email">${contact.email}</p>
+        </div>
     </div>`;
 }
 
 function createDetailedContactCard(id, initials) {
-    const contact = getObjectById(contacts, id);
-    return `
+  const contact = getObjectById(contacts, id);
+  return `
     <div class="contact-information-container">Contact Information <img class="back-arrow-contact-detail-card" src="../assets/img/arrowLeft.svg" alt="Arrow left" onclick="closeContactDetailCardWithoutSlideIn()"></div>
     <div class="top-contact-container">
         <div class="initials-big" style="background-color: ${contact.color};" id="initials">${initials}</div>
@@ -40,8 +40,8 @@ function createDetailedContactCard(id, initials) {
 }
 
 function createEditOverlay(id, initials) {
-    const contact = getObjectById(contacts, id);
-    return `
+  const contact = getObjectById(contacts, id);
+  return `
     <div class="overlay-section">
         <div class="edit-overlay-container slide-in-overlay-left" id="edit-overlay-container">
             <div class="edit-top-container">
@@ -84,7 +84,7 @@ function createEditOverlay(id, initials) {
 }
 
 function createAddOverlay() {
-    return `        
+  return `        
     <div class="overlay-section">
         <div class="add-overlay-container slide-in-overlay" id="add-overlay-container">
             <div class="add-top-container">
@@ -132,7 +132,7 @@ function createAddOverlay() {
 }
 
 function createLetterCard(letter) {
-    return `
+  return `
     <div class="letter-container">
     <p id="letter">${letter}</p>
     <div class="contacts-separator"></div>
@@ -140,7 +140,7 @@ function createLetterCard(letter) {
 }
 
 function createButtonCard() {
-    return `
+  return `
     <div class="add-contacts-container">
         <button class="add-contacts-btn" onclick="renderAddOverlay()">
             Add new contact 
@@ -150,27 +150,25 @@ function createButtonCard() {
     </div>
     <div class="add-contacts-container-media" onclick="renderAddOverlay()">
         <img src="../assets/img/contact.svg" alt="contact-img">
-    </div>`
-    ;
+    </div>`;
 }
 
-function createEditDeleteBtn(id,initials) {
-    return `
+function createEditDeleteBtn(id, initials) {
+  return `
     <div class="edit-contacts-container-media" onclick="renderEditContainer(${id},'${initials}')">
         <img src="../assets/img/threeDots.svg" alt=":">
     </div>`;
 }
 
 function createContactSnack() {
-    return `<div class="snack slide-in-bottom">
+  return `<div class="snack slide-in-bottom">
     Contact succesfully created    
     </div>`;
 }
 
-
 function createEditContainer(id, initials) {
-    const contact = getObjectById(contacts, id);
-    return `
+  const contact = getObjectById(contacts, id);
+  return `
     <div class="edit-delete-overlay-container">            
         <div class="contact-edit-container-media">
             <div class="contact-edit-inner-container" onclick="renderEditOverlay(${contact.id},'${initials}');">
