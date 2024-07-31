@@ -269,17 +269,19 @@ function closeOverlay() {
     content.style.display = 'none';
 }
 
+function closeTaskOverlay() {
+    const content = document.getElementById('board-task-overlay-section');
+    content.style.display = 'none';
+}
+
 function renderAddTaskOverlay() {
     const content = document.getElementById('board-overlay-section');
     content.style.display = 'block';
-    
 }
-
-
 
 function renderTaskOverlay(id) {
     const element = getObjectById(tasks, `${id}`);
-    const content = document.getElementById('board-overlay-section');
+    const content = document.getElementById('board-task-overlay-section');
     content.style.display = 'block';
     content.innerHTML = createTaskOverlay(element);
 }
@@ -291,7 +293,7 @@ function createTaskOverlay(element) {
                 <div class="task-kind-container no-margin font-size-19" style="background-color: ${element.taskColor}">
                     ${element.kind}
                 </div>
-                <button class="close-btn-overlay no-margin" onclick="closeOverlay()">
+                <button class="close-btn-overlay no-margin" onclick="closeTaskOverlay()">
                     <img src="../assets/img/closeTask.svg">
                 </button>
             </div>

@@ -39,7 +39,6 @@
 .searchbar-board:focus-visible {
     outline-width: 0;
 }
-
 .searchbar-board:focus {
     outline-width: 0;
     border: 1px solid #4589FF;
@@ -326,14 +325,6 @@
     justify-content: space-between;
     padding-left: 24px;
 }
-    
-    
-    
-
-
-
-
-
 
 .close-btn-overlay {
 
@@ -346,14 +337,11 @@
     transition: background-color 100ms ease-out, padding 100ms ease-out, border-radius 100ms ease-out;
     margin-bottom: 22px;
     margin-right: 24px;
-  
 }
     
 .close-btn-overlay:hover {
     border-radius: 50%;
     background-color: rgba(128, 128, 128, 0.205);
-   
-    
 }
 
 .title-add-text {
