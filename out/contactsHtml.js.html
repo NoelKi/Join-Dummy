@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: contactsHtml.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: contactsHtml.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Creates a contact card HTML string
+ * @param {Object} contact - The contact object
+ * @param {string} initials - The initials of the contact
+ * @returns {string} HTML string for the contact card
+ */
+function createContactCard(contact, initials) {
+  return `
+      &lt;div class="contact-card" id="contact-card-${contact.id}" onclick="renderContactDetailCard(${contact.id},'${initials}'); setContactActive(event);">
+          &lt;div class="initials" style="background-color: ${contact.color};" id="initials">${initials}&lt;/div>
+          &lt;div class="contact-data">
+              &lt;p id="contact-name">${contact.name} ${contact.surname}&lt;/p>
+              &lt;p class="contact-email">${contact.email}&lt;/p>
+          &lt;/div>
+      &lt;/div>`;
+}
+
+/**
+ * Creates a detailed contact card HTML string
+ * @param {number} id - The ID of the contact
+ * @param {string} initials - The initials of the contact
+ * @returns {string} HTML string for the detailed contact card
+ */
+function createDetailedContactCard(id, initials) {
+  const contact = getObjectById(contacts, id);
+  return `
+      &lt;div class="contact-information-container">Contact Information &lt;img class="back-arrow-contact-detail-card" src="../assets/img/arrowLeft.svg" alt="Arrow left" onclick="closeContactDetailCardWithoutSlideIn()">&lt;/div>
+      &lt;div class="top-contact-container">
+          &lt;div class="initials-big" style="background-color: ${contact.color};" id="initials">${initials}&lt;/div>
+          &lt;div class="contact-name-container">
+              &lt;p class="contact-detail-name">${contact.name} ${contact.surname}&lt;/p>
+              &lt;div class="contact-edit-container">
+                  &lt;div class="contact-edit-inner-container" onclick="renderEditOverlay(${contact.id},'${initials}');">
+                      &lt;img class="unhover-btn" src="../assets/img/editUnhover.svg" alt="pencil">
+                      &lt;img class="hover-btn" src="../assets/img/editHover.svg" alt="pencil">
+                  &lt;/div>
+                  &lt;div class="contact-edit-inner-container" onclick="deleteContact(${id});">
+                      &lt;img class="unhover-btn" src="../assets/img/deleteUnhover.svg" alt="bin">
+                      &lt;img class="hover-btn" src="../assets/img/deleteHover.svg" alt="pencil">
+                  &lt;/div>
+              &lt;/div>
+          &lt;/div>
+      &lt;/div>
+      &lt;div class="contact-detail-container">
+          &lt;p class="contact-information">&lt;b>Contact Information&lt;/b>&lt;/p>
+          &lt;p class="contact-sign">Email&lt;/p>
+          &lt;p class="contact-email">${contact.email}&lt;/p>
+          &lt;p class="contact-sign">Phone&lt;/p>
+          &lt;p class="contact-phoneNumber">${contact.phoneNumber}&lt;/p>
+      &lt;/div>
+      `;
+}
+
+/**
+ * Creates an edit overlay HTML string
+ * @param {number} id - The ID of the contact
+ * @param {string} initials - The initials of the contact
+ * @returns {string} HTML string for the edit overlay
+ */
+function createEditOverlay(id, initials) {
+  const contact = getObjectById(contacts, id);
+  return `
+      &lt;div class="overlay-section">
+          &lt;div class="edit-overlay-container slide-in-overlay-left" id="edit-overlay-container">
+              &lt;div class="edit-top-container">
+                  &lt;img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
+                  &lt;p class="overlay-headline">Edit contact&lt;/p>
+                  &lt;button class="close-btn-overlay" onclick="closeOverlayEdit()">
+                      &lt;img src="../assets/img/closeOverlay.svg" alt="X">
+                  &lt;/button>
+                  &lt;div class="initials-overlay-media margin-special" style="background-color: #D1D1D1;">
+                      &lt;img class="initials-placeholder" src="../assets/img/personOverlay.svg" alt="">
+                  &lt;/div>
+              &lt;/div>
+              &lt;div class="edit-bottom-container">
+                  &lt;div class="edit-container">
+                      &lt;div class="initials-overlay" style="background-color: ${contact.color};">${initials}&lt;/div>
+                      &lt;form class="overlay-form" onsubmit="editContact(${contact.id},'${initials}'); return false;">
+                          &lt;div class="overlay-input-container">
+                              &lt;input class="overlay-input-field input-person" id="edit-name-overlay" type="text" value="${contact.name} ${contact.surname}" required>
+                          &lt;/div>
+                          &lt;div class="overlay-input-container">
+                              &lt;input class="overlay-input-field input-letter" id="edit-email-overlay" type="email" value="${contact.email}" required>
+                          &lt;/div>
+                          &lt;div class="overlay-input-container">
+                              &lt;input class="overlay-input-field input-tel" id="edit-phoneNumber-overlay" value="${contact.phoneNumber}" required>
+                          &lt;/div>
+                          &lt;div class="overlay-btn">
+                              &lt;button class="overlay-white-btn" onclick="deleteContactOverlay(${id})" type="button">
+                                  Delete
+                              &lt;/button>
+                              &lt;button class="overlay-blue-btn" type="submit">
+                                  Save &amp;emsp; &lt;img src="../assets/img/checkOverlay.svg" class="white-check-overlay" alt="check">&lt;img src="../assets/img/checkOverlayBlue.svg" class="blue-check-overlay" alt="check">
+                              &lt;/button>
+                          &lt;/div>
+                      &lt;/form>
+                  &lt;/div>
+              &lt;/div>
+          &lt;/div>
+      &lt;/div>
+      `;
+}
+
+/**
+ * Creates an add overlay HTML string
+ * @returns {string} HTML string for the add overlay
+ */
+function createAddOverlay() {
+  return `        
+      &lt;div class="overlay-section">
+          &lt;div class="add-overlay-container slide-in-overlay" id="add-overlay-container">
+              &lt;div class="add-top-container">
+                  &lt;img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
+                  &lt;p class="overlay-headline">Add contact&lt;/p>
+                  &lt;p class="overlay-p">Tasks are better with a team!&lt;/p>
+                  &lt;button class="close-btn-overlay" onclick="closeOverlayAdd()">
+                      &lt;img src="../assets/img/closeOverlay.svg" alt="X">
+                  &lt;/button>
+                  &lt;div class="initials-overlay-media" style="background-color: #D1D1D1;">
+                      &lt;img class="initials-placeholder" src="../assets/img/personOverlay.svg" alt="">
+                  &lt;/div>
+              &lt;/div>
+              &lt;div class="edit-bottom-container">
+                  &lt;div class="edit-container">
+                      &lt;div class="initials-overlay" style="background-color: #D1D1D1;">
+                          &lt;img class="initials-placeholder" src="../assets/img/personOverlay.svg" alt="">
+                      &lt;/div>
+                      &lt;form class="overlay-form"  onsubmit="addContact(); return false;">
+                          &lt;div class="overlay-input-container">
+                              &lt;input class="overlay-input-field input-person" placeholder="Name" type="text" id="add-name-overlay" required>
+                              &lt;label for="add-name-overlay">&lt;/label>
+                              &lt;p id="error-message" style="color: red; display: none;">Bitte geben Sie sowohl einen Vor- als auch einen Nachnamen ein.&lt;/p>
+                          &lt;/div>
+                          &lt;div class="overlay-input-container">
+                              &lt;input class="overlay-input-field input-letter" placeholder="Email" type="email" id="add-email-overlay" required>
+                          &lt;/div>
+                          &lt;div class="overlay-input-container">
+                              &lt;input class="overlay-input-field input-tel" placeholder="Phone" type="tel" id="add-phoneNumber-overlay" required>
+                          &lt;/div>
+                          &lt;div class="overlay-btn">
+                              &lt;button class="overlay-white-btn" id="cancel-btn-overlay" onclick="closeOverlay();" type="button">
+                                  Cancel &lt;img src='../assets/img/closeAddContacts.svg' class="hover-btn-grey" alt="x"> &lt;img src='../assets/img/closeAddContactHover.svg' class="hover-btn-blue" alt="x">
+                              &lt;/button>
+                              &lt;button class="overlay-blue-btn" type="submit">
+                                  Create Contact &amp;ensp; &lt;img src="../assets/img/checkOverlay.svg" class="white-check-overlay" alt="check">&lt;img src="../assets/img/checkOverlayBlue.svg" class="blue-check-overlay" alt="check">
+                              &lt;/button>
+                          &lt;/div>
+                      &lt;/form>
+                  &lt;/div>
+              &lt;/div>
+          &lt;/div>
+      &lt;/div>
+  `;
+}
+
+/**
+ * Creates a letter card HTML string
+ * @param {string} letter - The letter to display
+ * @returns {string} HTML string for the letter card
+ */
+function createLetterCard(letter) {
+  return `
+      &lt;div class="letter-container">
+      &lt;p id="letter">${letter}&lt;/p>
+      &lt;div class="contacts-separator">&lt;/div>
+      &lt;/div>`;
+}
+
+/**
+ * Creates a button card HTML string
+ * @returns {string} HTML string for the button card
+ */
+function createButtonCard() {
+  return `
+      &lt;div class="add-contacts-container">
+          &lt;button class="add-contacts-btn" onclick="renderAddOverlay()">
+              Add new contact 
+              &lt;img class="contact-icon" src="../assets/img/contact.svg" alt="contact-img">
+              &lt;img class="contact-icon-hover" src="../assets/img/contactHover.svg" alt="contact-img">
+          &lt;/button>
+      &lt;/div>
+      &lt;div class="add-contacts-container-media" onclick="renderAddOverlay()">
+          &lt;img src="../assets/img/contact.svg" alt="contact-img">
+      &lt;/div>`;
+}
+
+/**
+ * Creates an edit/delete button HTML string
+ * @param {number} id - The ID of the contact
+ * @param {string} initials - The initials of the contact
+ * @returns {string} HTML string for the edit/delete button
+ */
+function createEditDeleteBtn(id, initials) {
+  return `
+      &lt;div class="edit-contacts-container-media" onclick="renderEditContainer(${id},'${initials}')">
+          &lt;img src="../assets/img/threeDots.svg" alt=":">
+      &lt;/div>`;
+}
+
+/**
+ * Creates a contact snack notification HTML string
+ * @returns {string} HTML string for the contact snack notification
+ */
+function createContactSnack() {
+  return `&lt;div class="snack slide-in-bottom">
+      Contact succesfully created    
+      &lt;/div>`;
+}
+
+/**
+ * Creates an edit container HTML string
+ * @param {number} id - The ID of the contact
+ * @param {string} initials - The initials of the contact
+ * @returns {string} HTML string for the edit container
+ */
+function createEditContainer(id, initials) {
+  const contact = getObjectById(contacts, id);
+  return `
+      &lt;div class="edit-delete-overlay-container">            
+          &lt;div class="contact-edit-container-media">
+              &lt;div class="contact-edit-inner-container" onclick="renderEditOverlay(${contact.id},'${initials}');">
+                  &lt;img class="unhover-btn" src="../assets/img/editUnhover.svg" alt="pencil">
+                  &lt;img class="hover-btn" src="../assets/img/editHover.svg" alt="pencil">
+              &lt;/div>
+              &lt;div class="contact-edit-inner-container" onclick="deleteContactMedia(${id});" style="margin-top: 16px;">
+                  &lt;img class="unhover-btn" src="../assets/img/deleteUnhover.svg" alt="bin">
+                  &lt;img class="hover-btn" src="../assets/img/deleteHover.svg" alt="bin">
+              &lt;/div>
+          &lt;/div>
+      &lt;/div>
+      `;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCollaborator">addCollaborator</a></li><li><a href="global.html#addContact">addContact</a></li><li><a href="global.html#addHoverEventListeners">addHoverEventListeners</a></li><li><a href="global.html#addSubtaskEventListeners">addSubtaskEventListeners</a></li><li><a href="global.html#addSubtaskList">addSubtaskList</a></li><li><a href="global.html#assignContactEventListeners">assignContactEventListeners</a></li><li><a href="global.html#changeToFocus">changeToFocus</a></li><li><a href="global.html#checkInputs">checkInputs</a></li><li><a href="global.html#clearAllInputs">clearAllInputs</a></li><li><a href="global.html#clearAllStates">clearAllStates</a></li><li><a href="global.html#clearCollaborators">clearCollaborators</a></li><li><a href="global.html#clearInputSubtask">clearInputSubtask</a></li><li><a href="global.html#clearSelectedContacts">clearSelectedContacts</a></li><li><a href="global.html#clearTaskKind">clearTaskKind</a></li><li><a href="global.html#closeContactDetailCard">closeContactDetailCard</a></li><li><a href="global.html#closeContactDetailCardWithoutSlideIn">closeContactDetailCardWithoutSlideIn</a></li><li><a href="global.html#closeContactSnack">closeContactSnack</a></li><li><a href="global.html#closeOverlay">closeOverlay</a></li><li><a href="global.html#closeOverlayAdd">closeOverlayAdd</a></li><li><a href="global.html#closeOverlayEdit">closeOverlayEdit</a></li><li><a href="global.html#colorRandomizer">colorRandomizer</a></li><li><a href="global.html#contacts">contacts</a></li><li><a href="global.html#createAddOverlay">createAddOverlay</a></li><li><a href="global.html#createButtonCard">createButtonCard</a></li><li><a href="global.html#createContactCard">createContactCard</a></li><li><a href="global.html#createContactSnack">createContactSnack</a></li><li><a href="global.html#createDetailedContactCard">createDetailedContactCard</a></li><li><a href="global.html#createEditContainer">createEditContainer</a></li><li><a href="global.html#createEditDeleteBtn">createEditDeleteBtn</a></li><li><a href="global.html#createEditOverlay">createEditOverlay</a></li><li><a href="global.html#createLetterCard">createLetterCard</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteContactMedia">deleteContactMedia</a></li><li><a href="global.html#deleteContactOverlay">deleteContactOverlay</a></li><li><a href="global.html#deselectContact">deselectContact</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#editSubtask">editSubtask</a></li><li><a href="global.html#filterContacts">filterContacts</a></li><li><a href="global.html#findAndUpdateOrRemoveSubtask">findAndUpdateOrRemoveSubtask</a></li><li><a href="global.html#getFirstLetterOfName">getFirstLetterOfName</a></li><li><a href="global.html#getObjectById">getObjectById</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#getUserLists">getUserLists</a></li><li><a href="global.html#giveGroupedContacts">giveGroupedContacts</a></li><li><a href="global.html#groupByInitials">groupByInitials</a></li><li><a href="global.html#handleBlurEvent">handleBlurEvent</a></li><li><a href="global.html#handleClickOutside">handleClickOutside</a></li><li><a href="global.html#handleContactAssignClick">handleContactAssignClick</a></li><li><a href="global.html#handleInputFocusAndEvents">handleInputFocusAndEvents</a></li><li><a href="global.html#handleKeyPressEvent">handleKeyPressEvent</a></li><li><a href="global.html#hideIcons">hideIcons</a></li><li><a href="global.html#loadContactList">loadContactList</a></li><li><a href="global.html#loadUserIdLocalStorage">loadUserIdLocalStorage</a></li><li><a href="global.html#makeEditable">makeEditable</a></li><li><a href="global.html#pushTaskToTasks">pushTaskToTasks</a></li><li><a href="global.html#removeCollaborator">removeCollaborator</a></li><li><a href="global.html#removeSubtask">removeSubtask</a></li><li><a href="global.html#renderAddOverlay">renderAddOverlay</a></li><li><a href="global.html#renderCollaborators">renderCollaborators</a></li><li><a href="global.html#renderContactDetailCard">renderContactDetailCard</a></li><li><a href="global.html#renderContactSnack">renderContactSnack</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderEditContainer">renderEditContainer</a></li><li><a href="global.html#renderEditOverlay">renderEditOverlay</a></li><li><a href="global.html#renderMobileEditBtn">renderMobileEditBtn</a></li><li><a href="global.html#renderSubtasks">renderSubtasks</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPriorityButtons">resetPriorityButtons</a></li><li><a href="global.html#resetUIElements">resetUIElements</a></li><li><a href="global.html#selectContact">selectContact</a></li><li><a href="global.html#selectPriority">selectPriority</a></li><li><a href="global.html#setContactActive">setContactActive</a></li><li><a href="global.html#setContactProperties">setContactProperties</a></li><li><a href="global.html#setTaskKind">setTaskKind</a></li><li><a href="global.html#setUserLists">setUserLists</a></li><li><a href="global.html#setupInputEvents">setupInputEvents</a></li><li><a href="global.html#showAnimation">showAnimation</a></li><li><a href="global.html#showIcons">showIcons</a></li><li><a href="global.html#sortContactsByName">sortContactsByName</a></li><li><a href="global.html#toggleCategoryList">toggleCategoryList</a></li><li><a href="global.html#updateErrorDisplay">updateErrorDisplay</a></li><li><a href="global.html#updateSubtask">updateSubtask</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jul 31 2024 15:54:42 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

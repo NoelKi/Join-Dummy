@@ -94,6 +94,82 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="contacts"><span class="type-signature"></span>contacts<span class="type-signature"> :Array</span></h4>
+
+
+
+
+<div class="description">
+    Array to store contacts
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -112,7 +188,8 @@
 
 
 <div class="description">
-    Adds a contact to the list of collaborators.Creates a new collaborator object with the contact's ID, full name, and color, and appends it to the `collaborators` array.
+    Adds a contact to the list of collaborators.
+Creates a new collaborator object with the contact's ID, full name, and color, and appends it to the `collaborators` array.
 </div>
 
 
@@ -164,7 +241,11 @@
 
             
 
-            <td class="description last">The contact object to be added as a collaborator. This object should include:                           - `id`: The unique identifier of the contact.                           - `name`: The first name of the contact.                           - `surname`: The surname of the contact.                           - `color`: A color associated with the contact.</td>
+            <td class="description last">The contact object to be added as a collaborator. This object should include:
+                           - `id`: The unique identifier of the contact.
+                           - `name`: The first name of the contact.
+                           - `surname`: The surname of the contact.
+                           - `color`: A color associated with the contact.</td>
         </tr>
 
     
@@ -259,7 +340,7 @@
     
 
     
-    <h4 class="name" id="addHoverEventListeners"><span class="type-signature"></span>addHoverEventListeners<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+    <h4 class="name" id="addContact"><span class="type-signature"></span>addContact<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -267,7 +348,7 @@
 
 
 <div class="description">
-    Adds mouse hover event listeners to elements with the class `input-positioning-subtask`.The event listeners handle showing and hiding icons based on mouse interactions.- On `mouseenter`, the `showIcons` function is called to display the icons.- On `mouseleave`, the `hideIcons` function is called to hide the icons.
+    Adds a new contact
 </div>
 
 
@@ -311,7 +392,98 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line354">line 354</a>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line331">line 331</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="addHoverEventListeners"><span class="type-signature"></span>addHoverEventListeners<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Adds mouse hover event listeners to elements with the class `input-positioning-subtask`.
+The event listeners handle showing and hiding icons based on mouse interactions.
+- On `mouseenter`, the `showIcons` function is called to display the icons.
+- On `mouseleave`, the `hideIcons` function is called to hide the icons.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line359">line 359</a>
     </li></ul></dd>
     
 
@@ -373,7 +545,8 @@
 
 
 <div class="description">
-    Adds event listeners to a subtask for handling specific interactions.Currently, it adds a double-click event listener for editing the subtask.
+    Adds event listeners to a subtask for handling specific interactions.
+Currently, it adds a double-click event listener for editing the subtask.
 </div>
 
 
@@ -515,7 +688,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line392">line 392</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line397">line 397</a>
     </li></ul></dd>
     
 
@@ -559,7 +732,10 @@
 
 
 <div class="description">
-    Adds a new subtask to the list and updates the UI.This function retrieves the value from the subtask input field, creates a new subtask object if the input is not empty,assigns a unique ID, and adds it to the `subtaskArr` array. After adding the subtask, it clears the input fieldand calls `renderSubtasks` to update the display. If the input is empty, it calls `clearInputSubtask` to handle the empty case.
+    Adds a new subtask to the list and updates the UI.
+This function retrieves the value from the subtask input field, creates a new subtask object if the input is not empty,
+assigns a unique ID, and adds it to the `subtaskArr` array. After adding the subtask, it clears the input field
+and calls `renderSubtasks` to update the display. If the input is empty, it calls `clearInputSubtask` to handle the empty case.
 </div>
 
 
@@ -603,7 +779,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line272">line 272</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line277">line 277</a>
     </li></ul></dd>
     
 
@@ -665,7 +841,9 @@
 
 
 <div class="description">
-    Assigns click event listeners to all elements with the class "contact-task-assign".When a contact assignment element is clicked, it triggers the `handleContactAssignClick` functionwith the clicked element and the `filteredContacts` array as arguments.
+    Assigns click event listeners to all elements with the class "contact-task-assign".
+When a contact assignment element is clicked, it triggers the `handleContactAssignClick` function
+with the clicked element and the `filteredContacts` array as arguments.
 </div>
 
 
@@ -717,7 +895,8 @@
 
             
 
-            <td class="description last">An array of contact objects to be used by the event handler.Each contact object should contain relevant properties for processing within `handleContactAssignClick`.</td>
+            <td class="description last">An array of contact objects to be used by the event handler.
+Each contact object should contain relevant properties for processing within `handleContactAssignClick`.</td>
         </tr>
 
     
@@ -820,7 +999,9 @@
 
 
 <div class="description">
-    Updates the content of the subtask input field and sets up event handlers for it.This function replaces the inner HTML of the element with the ID `input-subtask-add` with the HTMLfor the subtask input field and then initializes event handlers and focus management for the input field.
+    Updates the content of the subtask input field and sets up event handlers for it.
+This function replaces the inner HTML of the element with the ID `input-subtask-add` with the HTML
+for the subtask input field and then initializes event handlers and focus management for the input field.
 </div>
 
 
@@ -864,7 +1045,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line256">line 256</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line261">line 261</a>
     </li></ul></dd>
     
 
@@ -926,7 +1107,9 @@
 
 
 <div class="description">
-    Validates the form inputs and enables or disables the task creation button accordingly.This function checks if the title and date input fields are not empty and updates the `createTaskBtn` button'sdisabled state based on the validity of these inputs.
+    Validates the form inputs and enables or disables the task creation button accordingly.
+This function checks if the title and date input fields are not empty and updates the `createTaskBtn` button's
+disabled state based on the validity of these inputs.
 </div>
 
 
@@ -970,7 +1153,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line151">line 151</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line155">line 155</a>
     </li></ul></dd>
     
 
@@ -1032,7 +1215,8 @@
 
 
 <div class="description">
-    Clears all input fields, UI elements, and internal states to reset the form or application state.This function performs a complete reset by calling helper functions to handle inputs, UI, and application states.
+    Clears all input fields, UI elements, and internal states to reset the form or application state.
+This function performs a complete reset by calling helper functions to handle inputs, UI, and application states.
 </div>
 
 
@@ -1076,7 +1260,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line70">line 70</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line72">line 72</a>
     </li></ul></dd>
     
 
@@ -1138,7 +1322,9 @@
 
 
 <div class="description">
-    Clears all internal states related to the form or application.This function resets application states such as subtasks, priorities, collaborators, and selected contacts.It also triggers re-rendering of subtasks and contact lists.
+    Clears all internal states related to the form or application.
+This function resets application states such as subtasks, priorities, collaborators, and selected contacts.
+It also triggers re-rendering of subtasks and contact lists.
 </div>
 
 
@@ -1182,7 +1368,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line120">line 120</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line123">line 123</a>
     </li></ul></dd>
     
 
@@ -1244,7 +1430,9 @@
 
 
 <div class="description">
-    Clears the list of collaborators and resets the selection state.This function empties the `collaborators` array, clears the `selectionState` object,and updates the UI to reflect the cleared collaborator list.
+    Clears the list of collaborators and resets the selection state.
+This function empties the `collaborators` array, clears the `selectionState` object,
+and updates the UI to reflect the cleared collaborator list.
 </div>
 
 
@@ -1288,7 +1476,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line218">line 218</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line223">line 223</a>
     </li></ul></dd>
     
 
@@ -1350,7 +1538,9 @@
 
 
 <div class="description">
-    Clears the value of the subtask input field.This function sets the value of the input field with the ID 'subtask-input-field' to an empty string,effectively clearing any text entered by the user.
+    Clears the value of the subtask input field.
+This function sets the value of the input field with the ID 'subtask-input-field' to an empty string,
+effectively clearing any text entered by the user.
 </div>
 
 
@@ -1456,7 +1646,9 @@
 
 
 <div class="description">
-    Clears the selection state for all contacts and updates the UI accordingly.Resets the `selectionState` object, removes the "selected" class from all contact assignment elements,and updates the checkbox images to their default unchecked state.
+    Clears the selection state for all contacts and updates the UI accordingly.
+Resets the `selectionState` object, removes the "selected" class from all contact assignment elements,
+and updates the checkbox images to their default unchecked state.
 </div>
 
 
@@ -1562,7 +1754,9 @@
 
 
 <div class="description">
-    Clears the current task kind settings by resetting `kindColor` and `kindValue`.This function is used to remove any previously set kind and its associated color, effectively resetting these properties to their default empty values.
+    Clears the current task kind settings by resetting `kindColor` and `kindValue`.
+This function is used to remove any previously set kind and its associated color, 
+effectively resetting these properties to their default empty values.
 </div>
 
 
@@ -1660,6 +1854,2043 @@
     
 
     
+    <h4 class="name" id="closeContactDetailCard"><span class="type-signature"></span>closeContactDetailCard<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes the contact detail card with a slide-out animation
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line119">line 119</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeContactDetailCardWithoutSlideIn"><span class="type-signature"></span>closeContactDetailCardWithoutSlideIn<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes the contact detail card without slide-in animation
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line132">line 132</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeContactSnack"><span class="type-signature"></span>closeContactSnack<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes the contact snack notification
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line414">line 414</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeOverlay"><span class="type-signature"></span>closeOverlay<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes the overlay
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line173">line 173</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeOverlayAdd"><span class="type-signature"></span>closeOverlayAdd<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes the add overlay with a slide-out animation
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line196">line 196</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeOverlayEdit"><span class="type-signature"></span>closeOverlayEdit<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes the edit overlay with a slide-out animation
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line181">line 181</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="colorRandomizer"><span class="type-signature"></span>colorRandomizer<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Randomizes and returns a color from a predefined array
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line379">line 379</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A random color
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createAddOverlay"><span class="type-signature"></span>createAddOverlay<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates an add overlay HTML string
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contactsHtml.js.html">contactsHtml.js</a>, <a href="contactsHtml.js.html#line108">line 108</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    HTML string for the add overlay
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createButtonCard"><span class="type-signature"></span>createButtonCard<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a button card HTML string
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contactsHtml.js.html">contactsHtml.js</a>, <a href="contactsHtml.js.html#line173">line 173</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    HTML string for the button card
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createContactCard"><span class="type-signature"></span>createContactCard<span class="signature">(contact, initials)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a contact card HTML string
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>contact</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The contact object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The initials of the contact</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contactsHtml.js.html">contactsHtml.js</a>, <a href="contactsHtml.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    HTML string for the contact card
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createContactSnack"><span class="type-signature"></span>createContactSnack<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a contact snack notification HTML string
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contactsHtml.js.html">contactsHtml.js</a>, <a href="contactsHtml.js.html#line204">line 204</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    HTML string for the contact snack notification
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createDetailedContactCard"><span class="type-signature"></span>createDetailedContactCard<span class="signature">(id, initials)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a detailed contact card HTML string
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The initials of the contact</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contactsHtml.js.html">contactsHtml.js</a>, <a href="contactsHtml.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    HTML string for the detailed contact card
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createEditContainer"><span class="type-signature"></span>createEditContainer<span class="signature">(id, initials)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates an edit container HTML string
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The initials of the contact</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contactsHtml.js.html">contactsHtml.js</a>, <a href="contactsHtml.js.html#line216">line 216</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    HTML string for the edit container
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createEditDeleteBtn"><span class="type-signature"></span>createEditDeleteBtn<span class="signature">(id, initials)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates an edit/delete button HTML string
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The initials of the contact</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contactsHtml.js.html">contactsHtml.js</a>, <a href="contactsHtml.js.html#line193">line 193</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    HTML string for the edit/delete button
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createEditOverlay"><span class="type-signature"></span>createEditOverlay<span class="signature">(id, initials)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates an edit overlay HTML string
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The initials of the contact</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contactsHtml.js.html">contactsHtml.js</a>, <a href="contactsHtml.js.html#line60">line 60</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    HTML string for the edit overlay
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createLetterCard"><span class="type-signature"></span>createLetterCard<span class="signature">(letter)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a letter card HTML string
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>letter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The letter to display</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contactsHtml.js.html">contactsHtml.js</a>, <a href="contactsHtml.js.html#line161">line 161</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    HTML string for the letter card
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="createTask"><span class="type-signature"></span>createTask<span class="signature">(event)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
@@ -1668,7 +3899,11 @@
 
 
 <div class="description">
-    Handles the task creation process when a form is submitted.This function prevents the default form submission, adds the new task to the `tasks` array,updates the user data with the new task list, disables the task creation button, and clearsall input fields after a short delay. Additionally, it triggers an animation to indicate thesuccessful creation of the task.
+    Handles the task creation process when a form is submitted.
+This function prevents the default form submission, adds the new task to the `tasks` array,
+updates the user data with the new task list, disables the task creation button, and clears
+all input fields after a short delay. Additionally, it triggers an animation to indicate the
+successful creation of the task.
 </div>
 
 
@@ -1815,6 +4050,417 @@
     
 
     
+    <h4 class="name" id="deleteContact"><span class="type-signature"></span>deleteContact<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Deletes a contact by ID
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact to be deleted</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line212">line 212</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="deleteContactMedia"><span class="type-signature"></span>deleteContactMedia<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Deletes a contact by ID for media view
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact to be deleted</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line231">line 231</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="deleteContactOverlay"><span class="type-signature"></span>deleteContactOverlay<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Deletes a contact by ID using overlay
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact to be deleted</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line250">line 250</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="deselectContact"><span class="type-signature"></span>deselectContact<span class="signature">(element, contact)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
@@ -1823,7 +4469,9 @@
 
 
 <div class="description">
-    Deselects a contact and updates the UI and internal state accordingly.Removes the "selected" class from the contact element, updates the checkbox image to its default state,and removes the contact from the selection state and collaborators.
+    Deselects a contact and updates the UI and internal state accordingly.
+Removes the "selected" class from the contact element, updates the checkbox image to its default state,
+and removes the contact from the selection state and collaborators.
 </div>
 
 
@@ -1875,7 +4523,8 @@
 
             
 
-            <td class="description last">The contact element that is being deselected. This element should have a class of "selected"                               and include a child element with the class "check-box-task" containing an image.</td>
+            <td class="description last">The contact element that is being deselected. This element should have a class of "selected"
+                               and include a child element with the class "check-box-task" containing an image.</td>
         </tr>
 
     
@@ -1898,7 +4547,8 @@
 
             
 
-            <td class="description last">The contact object being deselected. This object should have at least an `id` property used to                           identify the contact in the `selectionState` and collaborators.</td>
+            <td class="description last">The contact object being deselected. This object should have at least an `id` property used to
+                           identify the contact in the `selectionState` and collaborators.</td>
         </tr>
 
     
@@ -1993,6 +4643,166 @@
     
 
     
+    <h4 class="name" id="editContact"><span class="type-signature"></span>editContact<span class="signature">(id, initials)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Edits a contact by ID and initials
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact to be edited</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The initials of the contact</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line424">line 424</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="editSubtask"><span class="type-signature"></span>editSubtask<span class="signature">(id)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
@@ -2001,7 +4811,9 @@
 
 
 <div class="description">
-    Enables editing mode for a subtask with the specified ID.This function locates the subtask element, input field, and icon elements based on the provided ID.It then makes the subtask editable and sets up the necessary input events for user interactions.
+    Enables editing mode for a subtask with the specified ID.
+This function locates the subtask element, input field, and icon elements based on the provided ID.
+It then makes the subtask editable and sets up the necessary input events for user interactions.
 </div>
 
 
@@ -2156,7 +4968,8 @@
 
 
 <div class="description">
-    Filters the list of contacts based on a search query. Returns a new array of contacts whose names or surnamesmatch the search query.
+    Filters the list of contacts based on a search query. Returns a new array of contacts whose names or surnames
+match the search query.
 </div>
 
 
@@ -2208,7 +5021,8 @@
 
             
 
-            <td class="description last">The search query used to filter contacts. This string is converted to lowercase                              for case-insensitive comparison.</td>
+            <td class="description last">The search query used to filter contacts. This string is converted to lowercase
+                              for case-insensitive comparison.</td>
         </tr>
 
     
@@ -2278,7 +5092,8 @@
 
         
 <div class="param-desc">
-    - An array of contact objects that match the search query. Each contact object should                            include at least `name` and `surname` properties.
+    - An array of contact objects that match the search query. Each contact object should
+                            include at least `name` and `surname` properties.
 </div>
 
 
@@ -2315,7 +5130,9 @@
 
 
 <div class="description">
-    Finds a subtask by its ID and either updates its name or removes it from the list.If the `newValue` is an empty string, the subtask with the matching ID is removed from the `subtaskArr` array.Otherwise, the subtask's name is updated with the provided `newValue`.
+    Finds a subtask by its ID and either updates its name or removes it from the list.
+If the `newValue` is an empty string, the subtask with the matching ID is removed from the `subtaskArr` array.
+Otherwise, the subtask's name is updated with the provided `newValue`.
 </div>
 
 
@@ -2493,7 +5310,10 @@
 
 
 <div class="description">
-    Extracts the first letter from a given name and converts it to uppercase.This function takes a string representing a name, extracts the first character, andreturns it in uppercase format. It is useful for generating initials or displaying the first letter of a name.
+    Extracts the first letter from a given name and converts it to uppercase.
+This function takes a string representing a name, extracts the first character, and
+returns it in uppercase format. It is useful for generating initials or displaying the 
+first letter of a name.
 </div>
 
 
@@ -2803,7 +5623,7 @@
     
 
     
-    <h4 class="name" id="getUserLists"><span class="type-signature">(async) </span>getUserLists<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    <h4 class="name" id="getFirstLetterOfName"><span class="type-signature"></span>getFirstLetterOfName<span class="signature">(name)</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
     
@@ -2811,7 +5631,348 @@
 
 
 <div class="description">
-    Asynchronously retrieves user data and initializes the application's user-specific information.Fetches user data based on `USER_ID`, sets user initials, and loads the user's contacts and tasks.Updates the UI with the loaded contact list.
+    Gets the first letter of a name
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name to extract the first letter from</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line313">line 313</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The first letter of the name
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getObjectById"><span class="type-signature"></span>getObjectById<span class="signature">(array, id)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Finds an object by ID in an array
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>array</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The array to search in</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the object to find</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line324">line 324</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The object with the specified ID
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getUser"><span class="type-signature">(async) </span>getUser<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Asynchronously fetches user data and sets user initials and lists
 </div>
 
 
@@ -2855,7 +6016,115 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line51">line 51</a>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getUserLists"><span class="type-signature">(async) </span>getUserLists<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Asynchronously retrieves user data and initializes the application's user-specific information.
+Fetches user data based on `USER_ID`, sets user initials, and loads the user's contacts and tasks.
+Updates the UI with the loaded contact list.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -2942,6 +6211,275 @@
     
 
     
+    <h4 class="name" id="giveGroupedContacts"><span class="type-signature"></span>giveGroupedContacts<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Groups and sorts contacts by their initials
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line80">line 80</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Grouped contacts by initials
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="groupByInitials"><span class="type-signature"></span>groupByInitials<span class="signature">(arr)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Groups contacts by their initials
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>arr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Array of contacts</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line290">line 290</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Grouped contacts by initials
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="handleBlurEvent"><span class="type-signature"></span>handleBlurEvent<span class="signature">(id, inputField)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
@@ -2950,7 +6488,9 @@
 
 
 <div class="description">
-    Handles the blur event for an input field by updating the subtask with the new value.When the input field loses focus, this function attempts to update the subtask with the provided ID.If an error occurs during the update, an alert is displayed with the error message, and the input field is refocused.
+    Handles the blur event for an input field by updating the subtask with the new value.
+When the input field loses focus, this function attempts to update the subtask with the provided ID.
+If an error occurs during the update, an alert is displayed with the error message, and the input field is refocused.
 </div>
 
 
@@ -3157,7 +6697,9 @@
 
 
 <div class="description">
-    Handles clicks outside of the subtask input field to clear the input and remove the click event listener.This function checks if the click event occurred outside the element with the ID `subtask-input-wrapper`.If so, it clears the subtask input field and removes the document-wide click event listener that invoked this function.
+    Handles clicks outside of the subtask input field to clear the input and remove the click event listener.
+This function checks if the click event occurred outside the element with the ID `subtask-input-wrapper`.
+If so, it clears the subtask input field and removes the document-wide click event listener that invoked this function.
 </div>
 
 
@@ -3250,7 +6792,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line300">line 300</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line305">line 305</a>
     </li></ul></dd>
     
 
@@ -3312,7 +6854,8 @@
 
 
 <div class="description">
-    Handles click events on contact assignment elements. Toggles the selection stateof the clicked contact based on its current state and updates the UI accordingly.
+    Handles click events on contact assignment elements. Toggles the selection state
+of the clicked contact based on its current state and updates the UI accordingly.
 </div>
 
 
@@ -3364,7 +6907,8 @@
 
             
 
-            <td class="description last">The clicked contact assignment element. This element should have a `data-index` attribute                                indicating the index of the contact in the `filteredContacts` array.</td>
+            <td class="description last">The clicked contact assignment element. This element should have a `data-index` attribute
+                                indicating the index of the contact in the `filteredContacts` array.</td>
         </tr>
 
     
@@ -3387,7 +6931,8 @@
 
             
 
-            <td class="description last">An array of contact objects. Each contact object represents a contact                                           and should include properties relevant for selection.</td>
+            <td class="description last">An array of contact objects. Each contact object represents a contact
+                                           and should include properties relevant for selection.</td>
         </tr>
 
     
@@ -3490,7 +7035,9 @@
 
 
 <div class="description">
-    Initializes event handlers for the subtask input field and sets focus on it.This function focuses on the input field, adds event listeners for the `blur` and `keypress` events,and also sets up a document-wide click event listener to handle clicks outside the input field.
+    Initializes event handlers for the subtask input field and sets focus on it.
+This function focuses on the input field, adds event listeners for the `blur` and `keypress` events,
+and also sets up a document-wide click event listener to handle clicks outside the input field.
 </div>
 
 
@@ -3534,7 +7081,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line232">line 232</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line237">line 237</a>
     </li></ul></dd>
     
 
@@ -3596,7 +7143,9 @@
 
 
 <div class="description">
-    Handles the keypress event for an input field by checking for the Enter key.If the Enter key is pressed, this function triggers a blur event on the input field,which typically causes the input field to lose focus and any associated blur event handlers to execute.
+    Handles the keypress event for an input field by checking for the Enter key.
+If the Enter key is pressed, this function triggers a blur event on the input field,
+which typically causes the input field to lose focus and any associated blur event handlers to execute.
 </div>
 
 
@@ -3774,7 +7323,10 @@
 
 
 <div class="description">
-    Hides the icons inside the element that triggered the event.This function is intended to be used as an event handler for mouse leave events.It locates the child element with the class `subtask-add-icons` and addsthe `d-none` class to hide it from view.
+    Hides the icons inside the element that triggered the event.
+This function is intended to be used as an event handler for mouse leave events.
+It locates the child element with the class `subtask-add-icons` and adds
+the `d-none` class to hide it from view.
 </div>
 
 
@@ -3867,7 +7419,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line337">line 337</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line342">line 342</a>
     </li></ul></dd>
     
 
@@ -3929,7 +7481,10 @@
 
 
 <div class="description">
-    Renders a list of contacts into the DOM. Clears the existing list and populatesit with HTML content generated from the `filteredContacts` array. Optionally,uses a default list of contacts if no argument is provided. Also assigns eventlisteners to each contact item.
+    Renders a list of contacts into the DOM. Clears the existing list and populates
+it with HTML content generated from the `filteredContacts` array. Optionally,
+uses a default list of contacts if no argument is provided. Also assigns event
+listeners to each contact item.
 </div>
 
 
@@ -4001,7 +7556,9 @@
                 </td>
             
 
-            <td class="description last">An array of contact objects to display. Each contact object should contain at least `name`, `surname`, and `id` properties.If not provided, the function defaults to using the global `contacts` array.</td>
+            <td class="description last">An array of contact objects to display. 
+Each contact object should contain at least `name`, `surname`, and `id` properties.
+If not provided, the function defaults to using the global `contacts` array.</td>
         </tr>
 
     
@@ -4096,6 +7653,94 @@
     
 
     
+    <h4 class="name" id="loadUserIdLocalStorage"><span class="type-signature"></span>loadUserIdLocalStorage<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Loads the user ID from local storage
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line49">line 49</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="makeEditable"><span class="type-signature"></span>makeEditable<span class="signature">(subTaskDiv, showIcons, inputField)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
@@ -4104,7 +7749,10 @@
 
 
 <div class="description">
-    Configures the provided subtask element to be editable.This function sets the subtask element to an editable state by adding a CSS class,showing the icons associated with the subtask, and making the input field interactive.It also focuses the input field to allow immediate user input.
+    Configures the provided subtask element to be editable.
+This function sets the subtask element to an editable state by adding a CSS class,
+showing the icons associated with the subtask, and making the input field interactive.
+It also focuses the input field to allow immediate user input.
 </div>
 
 
@@ -4305,7 +7953,10 @@
 
 
 <div class="description">
-    Adds a new task to the `tasks` array with the current input values and properties.This function creates a new task object with various attributes including an ID, date,title, kind, color, description, category, priority, collaborators, and subtasks.The new task is then appended to the `tasks` array.
+    Adds a new task to the `tasks` array with the current input values and properties.
+This function creates a new task object with various attributes including an ID, date,
+title, kind, color, description, category, priority, collaborators, and subtasks.
+The new task is then appended to the `tasks` array.
 </div>
 
 
@@ -4411,7 +8062,8 @@
 
 
 <div class="description">
-    Removes a collaborator from the list of collaborators based on the provided contact ID.Filters out the collaborator with the matching ID from the `collaborators` array.
+    Removes a collaborator from the list of collaborators based on the provided contact ID.
+Filters out the collaborator with the matching ID from the `collaborators` array.
 </div>
 
 
@@ -4466,7 +8118,8 @@
 
             
 
-            <td class="description last">The ID of the contact to be removed from the collaborators list.                                    The ID should match the `id` property of a collaborator object.</td>
+            <td class="description last">The ID of the contact to be removed from the collaborators list.
+                                    The ID should match the `id` property of a collaborator object.</td>
         </tr>
 
     
@@ -4569,7 +8222,9 @@
 
 
 <div class="description">
-    Removes a subtask from the list based on its unique identifier.This function filters out the subtask with the specified `id` from the `subtaskArr` arrayand then re-renders the list of subtasks to reflect the removal.
+    Removes a subtask from the list based on its unique identifier.
+This function filters out the subtask with the specified `id` from the `subtaskArr` array
+and then re-renders the list of subtasks to reflect the removal.
 </div>
 
 
@@ -4716,6 +8371,143 @@
     
 
     
+    <h4 class="name" id="renderAddOverlay"><span class="type-signature"></span>renderAddOverlay<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders the add overlay for a contact
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line158">line 158</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="renderCollaborators"><span class="type-signature"></span>renderCollaborators<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
@@ -4724,7 +8516,8 @@
 
 
 <div class="description">
-    Renders the list of collaborators in the DOM. Updates the content of the element with the ID "assign-contacts-circle"to display each collaborator's initials inside a circle. Each circle is styled with the collaborator's associated color.
+    Renders the list of collaborators in the DOM. Updates the content of the element with the ID "assign-contacts-circle"
+to display each collaborator's initials inside a circle. Each circle is styled with the collaborator's associated color.
 </div>
 
 
@@ -4822,7 +8615,7 @@
     
 
     
-    <h4 class="name" id="renderSubtasks"><span class="type-signature"></span>renderSubtasks<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="renderContactDetailCard"><span class="type-signature"></span>renderContactDetailCard<span class="signature">(id, initials)</span><span class="type-signature"></span></h4>
     
 
     
@@ -4830,7 +8623,167 @@
 
 
 <div class="description">
-    Renders all subtasks by generating their HTML and adding necessary event listeners.Updates the inner HTML of the element with ID 'added-subtask'.
+    Renders the contact detail card
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The initials of the contact</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line90">line 90</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderContactSnack"><span class="type-signature"></span>renderContactSnack<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders the contact snack notification
 </div>
 
 
@@ -4874,7 +8827,664 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line378">line 378</a>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line405">line 405</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderContacts"><span class="type-signature"></span>renderContacts<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders the contacts to the DOM
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line57">line 57</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderEditContainer"><span class="type-signature"></span>renderEditContainer<span class="signature">(id, initials)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders the edit container for a contact
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The initials of the contact</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line463">line 463</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderEditOverlay"><span class="type-signature"></span>renderEditOverlay<span class="signature">(id, initials)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders the edit overlay for a contact
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The initials of the contact</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line147">line 147</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderMobileEditBtn"><span class="type-signature"></span>renderMobileEditBtn<span class="signature">(id, initials)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders the mobile edit button
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The initials of the contact</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line107">line 107</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderSubtasks"><span class="type-signature"></span>renderSubtasks<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders all subtasks by generating their HTML and adding necessary event listeners.
+Updates the inner HTML of the element with ID 'added-subtask'.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line383">line 383</a>
     </li></ul></dd>
     
 
@@ -4918,7 +9528,8 @@
 
 
 <div class="description">
-    Resets all form input fields to their default values.This function clears the values of input fields, text areas, and selects default options for dropdowns.
+    Resets all form input fields to their default values.
+This function clears the values of input fields, text areas, and selects default options for dropdowns.
 </div>
 
 
@@ -4962,7 +9573,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line83">line 83</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line85">line 85</a>
     </li></ul></dd>
     
 
@@ -5024,7 +9635,8 @@
 
 
 <div class="description">
-    Resets the priority buttons by removing the "selected-btn" class from all buttons and their associated images.This function is used to clear any visual selection state on the priority buttons, ensuring that none are marked as selected.
+    Resets the priority buttons by removing the "selected-btn" class from all buttons and their associated images.
+This function is used to clear any visual selection state on the priority buttons, ensuring that none are marked as selected.
 </div>
 
 
@@ -5068,7 +9680,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line136">line 136</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line140">line 140</a>
     </li></ul></dd>
     
 
@@ -5130,7 +9742,8 @@
 
 
 <div class="description">
-    Resets UI elements to their default state.This function hides or resets various UI elements such as dropdowns, error messages, and styling.
+    Resets UI elements to their default state.
+This function hides or resets various UI elements such as dropdowns, error messages, and styling.
 </div>
 
 
@@ -5174,7 +9787,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line100">line 100</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line103">line 103</a>
     </li></ul></dd>
     
 
@@ -5236,7 +9849,9 @@
 
 
 <div class="description">
-    Selects a contact and updates the UI and internal state accordingly.Adds the "selected" class to the contact element, updates the checkbox image to the checked state,and adds the contact to the selection state and collaborators list.
+    Selects a contact and updates the UI and internal state accordingly.
+Adds the "selected" class to the contact element, updates the checkbox image to the checked state,
+and adds the contact to the selection state and collaborators list.
 </div>
 
 
@@ -5288,7 +9903,9 @@
 
             
 
-            <td class="description last">The contact element being selected. This element should not have the "selected"                               class before selection and should include a child element with the class "check-box-task"                               containing an image.</td>
+            <td class="description last">The contact element being selected. This element should not have the "selected"
+                               class before selection and should include a child element with the class "check-box-task"
+                               containing an image.</td>
         </tr>
 
     
@@ -5311,7 +9928,8 @@
 
             
 
-            <td class="description last">The contact object being selected. This object should have at least an `id` property used to                           update the `selectionState` and the collaborators list.</td>
+            <td class="description last">The contact object being selected. This object should have at least an `id` property used to
+                           update the `selectionState` and the collaborators list.</td>
         </tr>
 
     
@@ -5466,7 +10084,11 @@
 
             
 
-            <td class="description last">The priority level to select (e.g., "High", "Medium", "Low").This function first identifies the button corresponding to the given priority and toggles its selected state. If the button is already selected, it will be deselected. It also updates the error display based on whether a priority has been selected.</td>
+            <td class="description last">The priority level to select (e.g., "High", "Medium", "Low").
+
+This function first identifies the button corresponding to the given priority and 
+toggles its selected state. If the button is already selected, it will be deselected. 
+It also updates the error display based on whether a priority has been selected.</td>
         </tr>
 
     
@@ -5507,7 +10129,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line179">line 179</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line184">line 184</a>
     </li></ul></dd>
     
 
@@ -5543,6 +10165,253 @@
     
 
     
+    <h4 class="name" id="setContactActive"><span class="type-signature"></span>setContactActive<span class="signature">(e)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sets the active contact
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>e</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Event</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The event object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line451">line 451</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setContactProperties"><span class="type-signature"></span>setContactProperties<span class="signature">()</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sets the properties of a new contact
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line353">line 353</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Array containing the initials and ID of the new contact
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="setTaskKind"><span class="type-signature"></span>setTaskKind<span class="signature">(kind)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
@@ -5551,7 +10420,9 @@
 
 
 <div class="description">
-    Sets the task kind and its associated color based on the provided kind identifier.This function updates the `kindValue` and `kindColor` variables according to the kind identifier.The function supports specific kinds of tasks such as "Technical task" and "User Story", each with a unique color.
+    Sets the task kind and its associated color based on the provided kind identifier.
+This function updates the `kindValue` and `kindColor` variables according to the kind identifier.
+The function supports specific kinds of tasks such as "Technical task" and "User Story", each with a unique color.
 </div>
 
 
@@ -5698,6 +10569,94 @@
     
 
     
+    <h4 class="name" id="setUserLists"><span class="type-signature"></span>setUserLists<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sets the user's contacts and tasks lists
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="setupInputEvents"><span class="type-signature"></span>setupInputEvents<span class="signature">(id, inputField)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
@@ -5706,7 +10665,9 @@
 
 
 <div class="description">
-    Sets up event listeners for the provided input field associated with a subtask.This function adds a `blur` event listener to handle when the input field loses focus,and a `keypress` event listener to handle user keypresses, such as the Enter key.
+    Sets up event listeners for the provided input field associated with a subtask.
+This function adds a `blur` event listener to handle when the input field loses focus,
+and a `keypress` event listener to handle user keypresses, such as the Enter key.
 </div>
 
 
@@ -5884,7 +10845,13 @@
 
 
 <div class="description">
-    Displays an animation to indicate a successful task creation.This function makes an animation element visible, triggers a CSS animation by adding a class,then hides the animation element and redirects the user to the 'board.html' page.The animation is displayed by setting its `display` style to `flex`, and the CSS class `show`is added to trigger the animation effect. After a short delay, the class is removed, and theelement is hidden again. Finally, the user is redirected to the 'board.html' page.
+    Displays an animation to indicate a successful task creation.
+This function makes an animation element visible, triggers a CSS animation by adding a class,
+then hides the animation element and redirects the user to the 'board.html' page.
+
+The animation is displayed by setting its `display` style to `flex`, and the CSS class `show`
+is added to trigger the animation effect. After a short delay, the class is removed, and the
+element is hidden again. Finally, the user is redirected to the 'board.html' page.
 </div>
 
 
@@ -5990,7 +10957,10 @@
 
 
 <div class="description">
-    Reveals the icons inside the element that triggered the event.This function is intended to be used as an event handler for mouse enter events.It locates the child element with the class `subtask-add-icons` and removesthe `d-none` class to make it visible.
+    Reveals the icons inside the element that triggered the event.
+This function is intended to be used as an event handler for mouse enter events.
+It locates the child element with the class `subtask-add-icons` and removes
+the `d-none` class to make it visible.
 </div>
 
 
@@ -6083,7 +11053,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line319">line 319</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line324">line 324</a>
     </li></ul></dd>
     
 
@@ -6137,6 +11107,116 @@
     
 
     
+    <h4 class="name" id="sortContactsByName"><span class="type-signature"></span>sortContactsByName<span class="signature">()</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sorts contacts by their name
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line272">line 272</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Sorted array of contacts
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="toggleCategoryList"><span class="type-signature"></span>toggleCategoryList<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
@@ -6145,7 +11225,10 @@
 
 
 <div class="description">
-    Toggles the visibility of the category list and rotates the dropdown arrow.This function checks the current display style of the category list. If it is set to "block",it hides the list and resets the arrow rotation. If it is set to "none", it shows the listand rotates the arrow to indicate the expanded state.
+    Toggles the visibility of the category list and rotates the dropdown arrow.
+This function checks the current display style of the category list. If it is set to "block",
+it hides the list and resets the arrow rotation. If it is set to "none", it shows the list
+and rotates the arrow to indicate the expanded state.
 </div>
 
 
@@ -6251,7 +11334,9 @@
 
 
 <div class="description">
-    Updates the display of the error message based on the selected priority value.This function shows an error message if no priority is selected and hides it otherwise.
+    Updates the display of the error message based on the selected priority value.
+
+This function shows an error message if no priority is selected and hides it otherwise.
 </div>
 
 
@@ -6295,7 +11380,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line202">line 202</a>
+        <a href="addTask.js.html">addTask.js</a>, <a href="addTask.js.html#line207">line 207</a>
     </li></ul></dd>
     
 
@@ -6339,7 +11424,10 @@
 
 
 <div class="description">
-    Updates the value of a subtask identified by the given ID.This function trims the input value, removes any leading bullet points, and then updates or removes the subtask using the `findAndUpdateOrRemoveSubtask` function.After updating, it re-renders the list of subtasks to reflect the changes.
+    Updates the value of a subtask identified by the given ID.
+This function trims the input value, removes any leading bullet points, 
+and then updates or removes the subtask using the `findAndUpdateOrRemoveSubtask` function.
+After updating, it re-renders the list of subtasks to reflect the changes.
 </div>
 
 
@@ -6519,13 +11607,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCollaborator">addCollaborator</a></li><li><a href="global.html#addHoverEventListeners">addHoverEventListeners</a></li><li><a href="global.html#addSubtaskEventListeners">addSubtaskEventListeners</a></li><li><a href="global.html#addSubtaskList">addSubtaskList</a></li><li><a href="global.html#assignContactEventListeners">assignContactEventListeners</a></li><li><a href="global.html#changeToFocus">changeToFocus</a></li><li><a href="global.html#checkInputs">checkInputs</a></li><li><a href="global.html#clearAllInputs">clearAllInputs</a></li><li><a href="global.html#clearAllStates">clearAllStates</a></li><li><a href="global.html#clearCollaborators">clearCollaborators</a></li><li><a href="global.html#clearInputSubtask">clearInputSubtask</a></li><li><a href="global.html#clearSelectedContacts">clearSelectedContacts</a></li><li><a href="global.html#clearTaskKind">clearTaskKind</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#deselectContact">deselectContact</a></li><li><a href="global.html#editSubtask">editSubtask</a></li><li><a href="global.html#filterContacts">filterContacts</a></li><li><a href="global.html#findAndUpdateOrRemoveSubtask">findAndUpdateOrRemoveSubtask</a></li><li><a href="global.html#getFirstLetterOfName">getFirstLetterOfName</a></li><li><a href="global.html#getUserLists">getUserLists</a></li><li><a href="global.html#handleBlurEvent">handleBlurEvent</a></li><li><a href="global.html#handleClickOutside">handleClickOutside</a></li><li><a href="global.html#handleContactAssignClick">handleContactAssignClick</a></li><li><a href="global.html#handleInputFocusAndEvents">handleInputFocusAndEvents</a></li><li><a href="global.html#handleKeyPressEvent">handleKeyPressEvent</a></li><li><a href="global.html#hideIcons">hideIcons</a></li><li><a href="global.html#loadContactList">loadContactList</a></li><li><a href="global.html#makeEditable">makeEditable</a></li><li><a href="global.html#pushTaskToTasks">pushTaskToTasks</a></li><li><a href="global.html#removeCollaborator">removeCollaborator</a></li><li><a href="global.html#removeSubtask">removeSubtask</a></li><li><a href="global.html#renderCollaborators">renderCollaborators</a></li><li><a href="global.html#renderSubtasks">renderSubtasks</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPriorityButtons">resetPriorityButtons</a></li><li><a href="global.html#resetUIElements">resetUIElements</a></li><li><a href="global.html#selectContact">selectContact</a></li><li><a href="global.html#selectPriority">selectPriority</a></li><li><a href="global.html#setTaskKind">setTaskKind</a></li><li><a href="global.html#setupInputEvents">setupInputEvents</a></li><li><a href="global.html#showAnimation">showAnimation</a></li><li><a href="global.html#showIcons">showIcons</a></li><li><a href="global.html#toggleCategoryList">toggleCategoryList</a></li><li><a href="global.html#updateErrorDisplay">updateErrorDisplay</a></li><li><a href="global.html#updateSubtask">updateSubtask</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCollaborator">addCollaborator</a></li><li><a href="global.html#addContact">addContact</a></li><li><a href="global.html#addHoverEventListeners">addHoverEventListeners</a></li><li><a href="global.html#addSubtaskEventListeners">addSubtaskEventListeners</a></li><li><a href="global.html#addSubtaskList">addSubtaskList</a></li><li><a href="global.html#assignContactEventListeners">assignContactEventListeners</a></li><li><a href="global.html#changeToFocus">changeToFocus</a></li><li><a href="global.html#checkInputs">checkInputs</a></li><li><a href="global.html#clearAllInputs">clearAllInputs</a></li><li><a href="global.html#clearAllStates">clearAllStates</a></li><li><a href="global.html#clearCollaborators">clearCollaborators</a></li><li><a href="global.html#clearInputSubtask">clearInputSubtask</a></li><li><a href="global.html#clearSelectedContacts">clearSelectedContacts</a></li><li><a href="global.html#clearTaskKind">clearTaskKind</a></li><li><a href="global.html#closeContactDetailCard">closeContactDetailCard</a></li><li><a href="global.html#closeContactDetailCardWithoutSlideIn">closeContactDetailCardWithoutSlideIn</a></li><li><a href="global.html#closeContactSnack">closeContactSnack</a></li><li><a href="global.html#closeOverlay">closeOverlay</a></li><li><a href="global.html#closeOverlayAdd">closeOverlayAdd</a></li><li><a href="global.html#closeOverlayEdit">closeOverlayEdit</a></li><li><a href="global.html#colorRandomizer">colorRandomizer</a></li><li><a href="global.html#contacts">contacts</a></li><li><a href="global.html#createAddOverlay">createAddOverlay</a></li><li><a href="global.html#createButtonCard">createButtonCard</a></li><li><a href="global.html#createContactCard">createContactCard</a></li><li><a href="global.html#createContactSnack">createContactSnack</a></li><li><a href="global.html#createDetailedContactCard">createDetailedContactCard</a></li><li><a href="global.html#createEditContainer">createEditContainer</a></li><li><a href="global.html#createEditDeleteBtn">createEditDeleteBtn</a></li><li><a href="global.html#createEditOverlay">createEditOverlay</a></li><li><a href="global.html#createLetterCard">createLetterCard</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteContactMedia">deleteContactMedia</a></li><li><a href="global.html#deleteContactOverlay">deleteContactOverlay</a></li><li><a href="global.html#deselectContact">deselectContact</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#editSubtask">editSubtask</a></li><li><a href="global.html#filterContacts">filterContacts</a></li><li><a href="global.html#findAndUpdateOrRemoveSubtask">findAndUpdateOrRemoveSubtask</a></li><li><a href="global.html#getFirstLetterOfName">getFirstLetterOfName</a></li><li><a href="global.html#getObjectById">getObjectById</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#getUserLists">getUserLists</a></li><li><a href="global.html#giveGroupedContacts">giveGroupedContacts</a></li><li><a href="global.html#groupByInitials">groupByInitials</a></li><li><a href="global.html#handleBlurEvent">handleBlurEvent</a></li><li><a href="global.html#handleClickOutside">handleClickOutside</a></li><li><a href="global.html#handleContactAssignClick">handleContactAssignClick</a></li><li><a href="global.html#handleInputFocusAndEvents">handleInputFocusAndEvents</a></li><li><a href="global.html#handleKeyPressEvent">handleKeyPressEvent</a></li><li><a href="global.html#hideIcons">hideIcons</a></li><li><a href="global.html#loadContactList">loadContactList</a></li><li><a href="global.html#loadUserIdLocalStorage">loadUserIdLocalStorage</a></li><li><a href="global.html#makeEditable">makeEditable</a></li><li><a href="global.html#pushTaskToTasks">pushTaskToTasks</a></li><li><a href="global.html#removeCollaborator">removeCollaborator</a></li><li><a href="global.html#removeSubtask">removeSubtask</a></li><li><a href="global.html#renderAddOverlay">renderAddOverlay</a></li><li><a href="global.html#renderCollaborators">renderCollaborators</a></li><li><a href="global.html#renderContactDetailCard">renderContactDetailCard</a></li><li><a href="global.html#renderContactSnack">renderContactSnack</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderEditContainer">renderEditContainer</a></li><li><a href="global.html#renderEditOverlay">renderEditOverlay</a></li><li><a href="global.html#renderMobileEditBtn">renderMobileEditBtn</a></li><li><a href="global.html#renderSubtasks">renderSubtasks</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPriorityButtons">resetPriorityButtons</a></li><li><a href="global.html#resetUIElements">resetUIElements</a></li><li><a href="global.html#selectContact">selectContact</a></li><li><a href="global.html#selectPriority">selectPriority</a></li><li><a href="global.html#setContactActive">setContactActive</a></li><li><a href="global.html#setContactProperties">setContactProperties</a></li><li><a href="global.html#setTaskKind">setTaskKind</a></li><li><a href="global.html#setUserLists">setUserLists</a></li><li><a href="global.html#setupInputEvents">setupInputEvents</a></li><li><a href="global.html#showAnimation">showAnimation</a></li><li><a href="global.html#showIcons">showIcons</a></li><li><a href="global.html#sortContactsByName">sortContactsByName</a></li><li><a href="global.html#toggleCategoryList">toggleCategoryList</a></li><li><a href="global.html#updateErrorDisplay">updateErrorDisplay</a></li><li><a href="global.html#updateSubtask">updateSubtask</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Jul 29 2024 17:43:03 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jul 31 2024 15:54:42 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>
