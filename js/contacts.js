@@ -1,11 +1,21 @@
+/**
+ * @type {Array} Array to store contacts
+ */
 let contacts = [];
 
+/**
+ * Function to be called when the window loads
+ */
 window.onload = function () {
   includeHTML();
   renderContacts();
   getUser();
 };
 
+/**
+ * Asynchronously fetches user data and sets user initials and lists
+ * @returns {Promise<void>}
+ */
 async function getUser() {
   try {
     CURRENT_USER_DATA = await getUserData(USER_ID);
@@ -16,6 +26,9 @@ async function getUser() {
   }
 }
 
+/**
+ * Sets the user's contacts and tasks lists
+ */
 function setUserLists() {
   if (!CURRENT_USER_DATA.contacts) {
     contacts = [];
@@ -30,11 +43,17 @@ function setUserLists() {
   }
 }
 
+/**
+ * Loads the user ID from local storage
+ */
 function loadUserIdLocalStorage() {
   const idAsText = localStorage.getItem("userId");
   userId = idAsText ? JSON.parse(idAsText) : "";
 }
 
+/**
+ * Renders the contacts to the DOM
+ */
 function renderContacts() {
   const content = document.getElementById("contacts-content");
   content.innerHTML = "";
@@ -54,11 +73,20 @@ function renderContacts() {
   }
 }
 
+/**
+ * Groups and sorts contacts by their initials
+ * @returns {Object} Grouped contacts by initials
+ */
 function giveGroupedContacts() {
   let names = sortContactsByName();
   return (groupedNames = groupByInitials(names));
 }
 
+/**
+ * Renders the contact detail card
+ * @param {number} id - The ID of the contact
+ * @param {string} initials - The initials of the contact
+ */
 function renderContactDetailCard(id, initials) {
   renderMobileEditBtn(id, initials);
   const width = document.body.clientWidth;
@@ -71,6 +99,11 @@ function renderContactDetailCard(id, initials) {
   }
 }
 
+/**
+ * Renders the mobile edit button
+ * @param {number} id - The ID of the contact
+ * @param {string} initials - The initials of the contact
+ */
 function renderMobileEditBtn(id, initials) {
   const width = document.body.clientWidth;
   const editBtn = document.getElementById("edit-btn-media");
@@ -80,6 +113,9 @@ function renderMobileEditBtn(id, initials) {
   }
 }
 
+/**
+ * Closes the contact detail card with a slide-out animation
+ */
 function closeContactDetailCard() {
   const content = document.getElementById("contact-detail-card");
   content.classList.add("slide-out");
@@ -90,6 +126,9 @@ function closeContactDetailCard() {
   }, 400);
 }
 
+/**
+ * Closes the contact detail card without slide-in animation
+ */
 function closeContactDetailCardWithoutSlideIn() {
   const content = document.getElementById("contact-detail-card");
   const editBtn = document.getElementById("edit-btn-media");
@@ -100,6 +139,11 @@ function closeContactDetailCardWithoutSlideIn() {
   }, 0);
 }
 
+/**
+ * Renders the edit overlay for a contact
+ * @param {number} id - The ID of the contact
+ * @param {string} initials - The initials of the contact
+ */
 function renderEditOverlay(id, initials) {
   const content = document.getElementById("overlay-section");
   content.style.display = "block";
@@ -107,6 +151,10 @@ function renderEditOverlay(id, initials) {
   content.innerHTML = createEditOverlay(id, initials);
 }
 
+/**
+ * Renders the add overlay for a contact
+ * @param {number} id - The ID of the contact
+ */
 function renderAddOverlay(id) {
   const body = document.getElementsByTagName("body")[0];
   body.style.overflow = "hidden";
@@ -119,11 +167,17 @@ function renderAddOverlay(id) {
   }, 400);
 }
 
+/**
+ * Closes the overlay
+ */
 function closeOverlay() {
   const content = document.getElementById("overlay-section");
   content.style.display = "none";
 }
 
+/**
+ * Closes the edit overlay with a slide-out animation
+ */
 function closeOverlayEdit() {
   const content = document.getElementById("overlay-section");
   const card = document.getElementById("edit-overlay-container");
@@ -136,6 +190,9 @@ function closeOverlayEdit() {
   }, 400);
 }
 
+/**
+ * Closes the add overlay with a slide-out animation
+ */
 function closeOverlayAdd() {
   const content = document.getElementById("overlay-section");
   const card = document.getElementById("add-overlay-container");
@@ -148,6 +205,10 @@ function closeOverlayAdd() {
   }, 400);
 }
 
+/**
+ * Deletes a contact by ID
+ * @param {number} id - The ID of the contact to be deleted
+ */
 function deleteContact(id) {
   const index = contacts.findIndex((contact) => contact.id === id);
   if (index !== -1) {
@@ -163,6 +224,10 @@ function deleteContact(id) {
   );
 }
 
+/**
+ * Deletes a contact by ID for media view
+ * @param {number} id - The ID of the contact to be deleted
+ */
 function deleteContactMedia(id) {
   const index = contacts.findIndex((contact) => contact.id === id);
   if (index !== -1) {
@@ -178,6 +243,10 @@ function deleteContactMedia(id) {
   );
 }
 
+/**
+ * Deletes a contact by ID using overlay
+ * @param {number} id - The ID of the contact to be deleted
+ */
 function deleteContactOverlay(id) {
   closeOverlay();
   closeContactDetailCard();
@@ -196,6 +265,10 @@ function deleteContactOverlay(id) {
   );
 }
 
+/**
+ * Sorts contacts by their name
+ * @returns {Array} Sorted array of contacts
+ */
 function sortContactsByName() {
   let names = contacts.sort(function (a, b) {
     if (a.name.toLowerCase() < b.name.toLowerCase()) {
@@ -209,6 +282,11 @@ function sortContactsByName() {
   return names;
 }
 
+/**
+ * Groups contacts by their initials
+ * @param {Array} arr - Array of contacts
+ * @returns {Object} Grouped contacts by initials
+ */
 function groupByInitials(arr) {
   return arr.reduce((acc, user) => {
     const initial = user.name.charAt(0).toUpperCase();
@@ -227,15 +305,29 @@ function groupByInitials(arr) {
   }, {});
 }
 
+/**
+ * Gets the first letter of a name
+ * @param {string} name - The name to extract the first letter from
+ * @returns {string} The first letter of the name
+ */
 function getFirstLetterOfName(name) {
   name = name.slice(0, 1);
   return name.toUpperCase();
 }
 
+/**
+ * Finds an object by ID in an array
+ * @param {Array} array - The array to search in
+ * @param {number} id - The ID of the object to find
+ * @returns {Object} The object with the specified ID
+ */
 function getObjectById(array, id) {
   return array.find((obj) => obj.id === id);
 }
 
+/**
+ * Adds a new contact
+ */
 function addContact() {
   const [initials, id] = setContactProperties();
   closeOverlay();
@@ -254,6 +346,10 @@ function addContact() {
   }, 1000);
 }
 
+/**
+ * Sets the properties of a new contact
+ * @returns {Array} Array containing the initials and ID of the new contact
+ */
 function setContactProperties() {
   const [name, surname = ""] = document
     .getElementById("add-name-overlay")
@@ -276,6 +372,10 @@ function setContactProperties() {
   return [initials, id];
 }
 
+/**
+ * Randomizes and returns a color from a predefined array
+ * @returns {string} A random color
+ */
 function colorRandomizer() {
   const colorArr = [
     "#FF7A00",
@@ -299,17 +399,28 @@ function colorRandomizer() {
   return color;
 }
 
+/**
+ * Renders the contact snack notification
+ */
 function renderContactSnack() {
   const content = document.getElementById("snack");
   content.classList.add("slide-in-bottom");
   content.innerHTML = createContactSnack();
 }
 
+/**
+ * Closes the contact snack notification
+ */
 function closeContactSnack() {
   const content = document.getElementById("snack");
   content.classList.add("slide-out-bottom");
 }
 
+/**
+ * Edits a contact by ID and initials
+ * @param {number} id - The ID of the contact to be edited
+ * @param {string} initials - The initials of the contact
+ */
 function editContact(id, initials) {
   const contact = getObjectById(contacts, id);
   const [name, surname = ""] = document
@@ -333,6 +444,10 @@ function editContact(id, initials) {
   );
 }
 
+/**
+ * Sets the active contact
+ * @param {Event} e - The event object
+ */
 function setContactActive(e) {
   const activeE = document.getElementsByClassName("contact-card active");
   [...activeE].forEach((element) => element.classList.remove("active"));
@@ -340,6 +455,11 @@ function setContactActive(e) {
   currTarget.classList.add("active");
 }
 
+/**
+ * Renders the edit container for a contact
+ * @param {number} id - The ID of the contact
+ * @param {string} initials - The initials of the contact
+ */
 function renderEditContainer(id, initials) {
   const content = document.getElementById("edit-btn-media");
   content.innerHTML = createEditContainer(id, initials);
