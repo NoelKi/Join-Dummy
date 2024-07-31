@@ -297,10 +297,10 @@ function renderTaskOverlay(id) {
   const element = getObjectById(tasks, `${id}`);
   const content = document.getElementById("board-task-overlay-section");
   content.style.display = "block";
-  content.innerHTML = createTaskOverlay(element);
+  content.innerHTML = createTaskOverlay(element, id);
 }
 
-function createTaskOverlay(element) {
+function createTaskOverlay(element, id) {
   let a = `<div class="show-task-overlay">
         <div class="show-task-container">
             <div class="top-task-container">
@@ -335,7 +335,7 @@ function createTaskOverlay(element) {
                     <img class="delete-hover" src="../assets/img/deleteHover.svg">
                 </div>
                 <div class="horizontal-separator"></div>
-                <div class="edit-task-overlay-btn">
+                <div class="edit-task-overlay-btn" onclick="renderEditTaskOverlay(${id})">
                     <img class="edit-unhover" src="../assets/img/editUnhover.svg">
                     <img class="edit-hover" src="../assets/img/editHover.svg">
                 </div>
@@ -418,4 +418,26 @@ function closeContactDetailCard() {
   const content = (document.getElementsByClassName(
     "contact-detail-section"
   ).style.display = "none");
+}
+
+/**
+ * Finds an object by ID in an array
+ * @param {Array} array - The array to search in
+ * @param {number} id - The ID of the object to find
+ * @returns {Object} The object with the specified ID
+ */
+function getObjectById(array, id) {
+  return array.find((obj) => obj.id === id);
+}
+
+function renderEditTaskOverlay(id) {
+  console.log(id);
+  task = getObjectById(tasks, `${id}`);
+  console.log(task);
+  const title = task.title;
+  console.log(title);
+
+  document.getElementById("titel-filed").value = titel;
+  const indexOfTaskInTasks = getIndexById(id);
+  tasks.splice();
 }
