@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: contacts.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: contacts.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * @type {Array} Array to store contacts
  */
 let contacts = [];
@@ -14,7 +42,7 @@ window.onload = function () {
 
 /**
  * Asynchronously fetches user data and sets user initials and lists
- * @returns {Promise<void>}
+ * @returns {Promise&lt;void>}
  */
 async function getUser() {
   try {
@@ -108,7 +136,7 @@ function renderMobileEditBtn(id, initials) {
   const width = document.body.clientWidth;
   const editBtn = document.getElementById("edit-btn-media");
   editBtn.innerHTML = createEditDeleteBtn(id, initials);
-  if (width <= 800) {
+  if (width &lt;= 800) {
     editBtn.style.display = "flex";
   }
 }
@@ -271,7 +299,7 @@ function deleteContactOverlay(id) {
  */
 function sortContactsByName() {
   let names = contacts.sort(function (a, b) {
-    if (a.name.toLowerCase() < b.name.toLowerCase()) {
+    if (a.name.toLowerCase() &lt; b.name.toLowerCase()) {
       return -1;
     }
     if (a.name.toLowerCase() > b.name.toLowerCase()) {
@@ -464,3 +492,26 @@ function renderEditContainer(id, initials) {
   const content = document.getElementById("edit-btn-media");
   content.innerHTML = createEditContainer(id, initials);
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCollaborator">addCollaborator</a></li><li><a href="global.html#addContact">addContact</a></li><li><a href="global.html#addHoverEventListeners">addHoverEventListeners</a></li><li><a href="global.html#addSubtaskEventListeners">addSubtaskEventListeners</a></li><li><a href="global.html#addSubtaskList">addSubtaskList</a></li><li><a href="global.html#assignContactEventListeners">assignContactEventListeners</a></li><li><a href="global.html#changeToFocus">changeToFocus</a></li><li><a href="global.html#checkInputs">checkInputs</a></li><li><a href="global.html#clearAllInputs">clearAllInputs</a></li><li><a href="global.html#clearAllStates">clearAllStates</a></li><li><a href="global.html#clearCollaborators">clearCollaborators</a></li><li><a href="global.html#clearInputSubtask">clearInputSubtask</a></li><li><a href="global.html#clearSelectedContacts">clearSelectedContacts</a></li><li><a href="global.html#clearTaskKind">clearTaskKind</a></li><li><a href="global.html#closeContactDetailCard">closeContactDetailCard</a></li><li><a href="global.html#closeContactDetailCardWithoutSlideIn">closeContactDetailCardWithoutSlideIn</a></li><li><a href="global.html#closeContactSnack">closeContactSnack</a></li><li><a href="global.html#closeOverlay">closeOverlay</a></li><li><a href="global.html#closeOverlayAdd">closeOverlayAdd</a></li><li><a href="global.html#closeOverlayEdit">closeOverlayEdit</a></li><li><a href="global.html#colorRandomizer">colorRandomizer</a></li><li><a href="global.html#contacts">contacts</a></li><li><a href="global.html#createAddOverlay">createAddOverlay</a></li><li><a href="global.html#createButtonCard">createButtonCard</a></li><li><a href="global.html#createContactCard">createContactCard</a></li><li><a href="global.html#createContactSnack">createContactSnack</a></li><li><a href="global.html#createDetailedContactCard">createDetailedContactCard</a></li><li><a href="global.html#createEditContainer">createEditContainer</a></li><li><a href="global.html#createEditDeleteBtn">createEditDeleteBtn</a></li><li><a href="global.html#createEditOverlay">createEditOverlay</a></li><li><a href="global.html#createLetterCard">createLetterCard</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteContactMedia">deleteContactMedia</a></li><li><a href="global.html#deleteContactOverlay">deleteContactOverlay</a></li><li><a href="global.html#deselectContact">deselectContact</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#editSubtask">editSubtask</a></li><li><a href="global.html#filterContacts">filterContacts</a></li><li><a href="global.html#findAndUpdateOrRemoveSubtask">findAndUpdateOrRemoveSubtask</a></li><li><a href="global.html#getFirstLetterOfName">getFirstLetterOfName</a></li><li><a href="global.html#getObjectById">getObjectById</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#getUserLists">getUserLists</a></li><li><a href="global.html#giveGroupedContacts">giveGroupedContacts</a></li><li><a href="global.html#groupByInitials">groupByInitials</a></li><li><a href="global.html#handleBlurEvent">handleBlurEvent</a></li><li><a href="global.html#handleClickOutside">handleClickOutside</a></li><li><a href="global.html#handleContactAssignClick">handleContactAssignClick</a></li><li><a href="global.html#handleInputFocusAndEvents">handleInputFocusAndEvents</a></li><li><a href="global.html#handleKeyPressEvent">handleKeyPressEvent</a></li><li><a href="global.html#hideIcons">hideIcons</a></li><li><a href="global.html#loadContactList">loadContactList</a></li><li><a href="global.html#loadUserIdLocalStorage">loadUserIdLocalStorage</a></li><li><a href="global.html#makeEditable">makeEditable</a></li><li><a href="global.html#pushTaskToTasks">pushTaskToTasks</a></li><li><a href="global.html#removeCollaborator">removeCollaborator</a></li><li><a href="global.html#removeSubtask">removeSubtask</a></li><li><a href="global.html#renderAddOverlay">renderAddOverlay</a></li><li><a href="global.html#renderCollaborators">renderCollaborators</a></li><li><a href="global.html#renderContactDetailCard">renderContactDetailCard</a></li><li><a href="global.html#renderContactSnack">renderContactSnack</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderEditContainer">renderEditContainer</a></li><li><a href="global.html#renderEditOverlay">renderEditOverlay</a></li><li><a href="global.html#renderMobileEditBtn">renderMobileEditBtn</a></li><li><a href="global.html#renderSubtasks">renderSubtasks</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPriorityButtons">resetPriorityButtons</a></li><li><a href="global.html#resetUIElements">resetUIElements</a></li><li><a href="global.html#selectContact">selectContact</a></li><li><a href="global.html#selectPriority">selectPriority</a></li><li><a href="global.html#setContactActive">setContactActive</a></li><li><a href="global.html#setContactProperties">setContactProperties</a></li><li><a href="global.html#setTaskKind">setTaskKind</a></li><li><a href="global.html#setUserLists">setUserLists</a></li><li><a href="global.html#setupInputEvents">setupInputEvents</a></li><li><a href="global.html#showAnimation">showAnimation</a></li><li><a href="global.html#showIcons">showIcons</a></li><li><a href="global.html#sortContactsByName">sortContactsByName</a></li><li><a href="global.html#toggleCategoryList">toggleCategoryList</a></li><li><a href="global.html#updateErrorDisplay">updateErrorDisplay</a></li><li><a href="global.html#updateSubtask">updateSubtask</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jul 31 2024 15:54:42 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

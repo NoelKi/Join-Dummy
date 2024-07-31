@@ -4,7 +4,9 @@
         "./js/addTask.js",
         "./js/addTaskPart2.js",
         "./js/addTaskEvent.js",
-        "./js/loadContactListTask.js"
+        "./js/loadContactListTask.js",
+        "./js/contacts.js",
+        "./js/contactsHtml.js"
       ],  
       "exclude": [
         "../node_modules",  
