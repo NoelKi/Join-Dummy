@@ -4,8 +4,7 @@ function init() {
   getUserLists();
   loadContactList();
   checkInputs();
-};
-  
+}
 
 let priorityValue = null;
 let kindValue = "";
@@ -31,14 +30,11 @@ let selectBoxCategory = document.querySelector(".select-box-category");
 let selectCategoryOption = document.getElementById("select-category");
 let categoryList = document.getElementById("category-list");
 let changedInput = document.getElementById("change-to-focus");
-let generatedContatcs = document.getElementById('hide-box');
-let generateList = document.getElementById('generate-list');
-let inputField = document.getElementById('subtask-input-field');
-let priorityError = document.getElementById('priority-error');
-let categoryInput = document.getElementById('category-value');
-
-
-
+let generatedContatcs = document.getElementById("hide-box");
+let generateList = document.getElementById("generate-list");
+let inputField = document.getElementById("subtask-input-field");
+let priorityError = document.getElementById("priority-error");
+let categoryInput = document.getElementById("category-value");
 
 /**
  * Asynchronously retrieves user data and initializes the application's user-specific information.
@@ -61,7 +57,7 @@ async function getUserLists() {
     console.error("Error fetching user data:", error);
   }
 }
-    
+
 /**
  * Clears all input fields, UI elements, and internal states to reset the form or application state.
  * This function performs a complete reset by calling helper functions to handle inputs, UI, and application states.
@@ -92,7 +88,6 @@ function resetInputFields() {
   priorityValue = null;
 }
 
-
 /**
  * Resets UI elements to their default state.
  * This function hides or resets various UI elements such as dropdowns, error messages, and styling.
@@ -110,7 +105,6 @@ function resetUIElements() {
   titleInput.style.borderBottomColor = "";
   dateInput.style.borderBottomColor = "";
 }
-
 
 /**
  * Clears all internal states related to the form or application.
@@ -156,12 +150,19 @@ function checkInputs() {
   let isTitleValid = titleInput.value.trim() !== "";
   let isDateValid = dateInput.value.trim() !== "";
   let isPrioritySelected = priorityValue !== null;
-  let isCategoryValid = categoryInput.value === "Technical task" || categoryInput.value === "User story";
+  let isCategoryValid =
+    categoryInput.value === "Technical task" ||
+    categoryInput.value === "User story";
 
-  createTaskBtn.disabled = !(isTitleValid && isDateValid && isPrioritySelected && isCategoryValid);
+  createTaskBtn.disabled = !(
+    isTitleValid &&
+    isDateValid &&
+    isPrioritySelected &&
+    isCategoryValid
+  );
   updateErrorDisplay();
 }
-  
+
 /**
  * Selects a priority button and updates its visual state. Only one priority can be selected at a time.
  * This function manages the selection state of priority buttons, ensuring only the chosen button is marked as selected.
@@ -173,22 +174,22 @@ function checkInputs() {
  */
 /**
  * Selects a priority button and updates the UI based on the selection.
- * 
+ *
  * @param {string} priority - The priority level to select (e.g., "High", "Medium", "Low").
- * 
- * This function first identifies the button corresponding to the given priority and 
- * toggles its selected state. If the button is already selected, it will be deselected. 
+ *
+ * This function first identifies the button corresponding to the given priority and
+ * toggles its selected state. If the button is already selected, it will be deselected.
  * It also updates the error display based on whether a priority has been selected.
  */
 
 function selectPriority(priority) {
   let selectedButton = document.getElementById(priority.toLowerCase());
   let isSelected = selectedButton.classList.contains("selected-btn");
-   document.querySelectorAll(".buttons button").forEach((btn) => {
+  document.querySelectorAll(".buttons button").forEach((btn) => {
     btn.classList.remove("selected-btn");
     btn.querySelector(".button-img").classList.remove("selected-btn");
   });
-if (!isSelected) {
+  if (!isSelected) {
     selectedButton.classList.add("selected-btn");
     selectedButton.querySelector(".button-img").classList.add("selected-btn");
     priorityValue = priority;
@@ -201,7 +202,7 @@ if (!isSelected) {
 
 /**
  * Updates the display of the error message based on the selected priority value.
- * 
+ *
  * This function shows an error message if no priority is selected and hides it otherwise.
  */
 function updateErrorDisplay() {
@@ -211,7 +212,7 @@ function updateErrorDisplay() {
     priorityError.style.display = "none";
   }
 }
-  
+
 /**
  * Clears the list of collaborators and resets the selection state.
  * This function empties the `collaborators` array, clears the `selectionState` object,
@@ -235,19 +236,18 @@ function clearCollaborators() {
  * @returns {void}
  */
 function handleInputFocusAndEvents() {
-  
-  let inputField = document.getElementById('subtask-input-field');
+  let inputField = document.getElementById("subtask-input-field");
   inputField.focus();
-  inputField.addEventListener('blur', function () {
+  inputField.addEventListener("blur", function () {
     addSubtaskList();
   });
-  inputField.addEventListener('keypress', function (event) {
-    if (event.key === 'Enter') {
-      event.preventDefault(); 
+  inputField.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
       addSubtaskList();
     }
   });
-  document.addEventListener('click', handleClickOutside, true);
+  document.addEventListener("click", handleClickOutside, true);
 }
 
 /**
@@ -259,8 +259,7 @@ function handleInputFocusAndEvents() {
  * @returns {void}
  */
 function changeToFocus() {
-  
-  let changedInput = document.getElementById('input-subtask-add');
+  let changedInput = document.getElementById("input-subtask-add");
   changedInput.innerHTML = getSubtaskInputHTML();
   handleInputFocusAndEvents();
 }
@@ -275,20 +274,18 @@ function changeToFocus() {
  * @returns {void}
  */
 function addSubtaskList() {
-  
-  let subtaskInput = document.getElementById('subtask-input-field').value;
+  let subtaskInput = document.getElementById("subtask-input-field").value;
   if (subtaskInput.trim() !== "") {
     let uniqueId = Number(Date.now().toString());
     let newSubtask = {
       name: subtaskInput,
       id: uniqueId,
-      state: 'open'
+      state: "open",
     };
     subtaskArr.push(newSubtask);
-    document.getElementById('subtask-input-field').value = "";
+    document.getElementById("subtask-input-field").value = "";
     renderSubtasks();
   } else {
-    
     clearInputSubtask();
   }
 }
@@ -303,11 +300,10 @@ function addSubtaskList() {
  * @returns {void}
  */
 function handleClickOutside(event) {
-  
-  let inputWrapper = document.getElementById('subtask-input-wrapper');
+  let inputWrapper = document.getElementById("subtask-input-wrapper");
   if (inputWrapper && !inputWrapper.contains(event.target)) {
     clearInputSubtask();
-    document.removeEventListener('click', handleClickOutside, true);
+    document.removeEventListener("click", handleClickOutside, true);
   }
 }
 
@@ -322,13 +318,12 @@ function handleClickOutside(event) {
  * @returns {void}
  */
 function showIcons(event) {
-  
   let icons = event.currentTarget.querySelector(".subtask-add-icons");
   if (icons) {
     icons.classList.remove("d-none");
   }
 }
-  
+
 /**
  * Hides the icons inside the element that triggered the event.
  * This function is intended to be used as an event handler for mouse leave events.
@@ -340,7 +335,6 @@ function showIcons(event) {
  * @returns {void}
  */
 function hideIcons(event) {
-  
   let icons = event.currentTarget.querySelector(".subtask-add-icons");
   if (icons) {
     icons.classList.add("d-none");
@@ -357,9 +351,8 @@ function hideIcons(event) {
  * @returns {void}
  */
 function addHoverEventListeners() {
-  
   let taskDivs = document.querySelectorAll(".input-positioning-subtask");
-    taskDivs.forEach(function (taskDiv) {
+  taskDivs.forEach(function (taskDiv) {
     taskDiv.addEventListener("mouseenter", showIcons);
     taskDiv.addEventListener("mouseleave", hideIcons);
   });
@@ -381,9 +374,11 @@ function addHoverEventListeners() {
  * Updates the inner HTML of the element with ID 'added-subtask'.
  */
 function renderSubtasks() {
-  let addedSubtask = document.getElementById('added-subtask');
-  addedSubtask.innerHTML = subtaskArr.map(task => generateSubtaskHTML(task)).join("");
-  subtaskArr.forEach(task => addSubtaskEventListeners(task));
+  let addedSubtask = document.getElementById("added-subtask");
+  addedSubtask.innerHTML = subtaskArr
+    .map((task) => generateSubtaskHTML(task))
+    .join("");
+  subtaskArr.forEach((task) => addSubtaskEventListeners(task));
   addHoverEventListeners();
 }
 
@@ -395,25 +390,7 @@ function renderSubtasks() {
  * @param {number} task.id - The unique identifier for the subtask.
  */
 function addSubtaskEventListeners(task) {
-  document.getElementById(`subtask-input-field-sub-${task.id}`).addEventListener('dblclick', () => editSubtask(task.id));
+  document
+    .getElementById(`subtask-input-field-sub-${task.id}`)
+    .addEventListener("dblclick", () => editSubtask(task.id));
 }
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
