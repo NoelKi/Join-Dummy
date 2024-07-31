@@ -33,9 +33,10 @@ let changedInput = document.getElementById("change-to-focus");
 let generatedContatcs = document.getElementById('hide-box');
 let generateList = document.getElementById('generate-list');
 let inputField = document.getElementById('subtask-input-field');
-let priorityError = document.getElementById('priority-error');
 let categoryInput = document.getElementById('category-value');
+let priorityError = document.getElementById('priority-error');
 let selectErrorBlock = document.getElementById('select-error-block');
+let hiddenError = document.getElementById('hidden-error');
 
 
 
@@ -143,25 +144,28 @@ function resetPriorityButtons() {
 }
 
 /**
- * Validates the form inputs and enables or disables the task creation button accordingly.
- * This function checks if the title and date input fields are not empty and updates the `createTaskBtn` button's
- * disabled state based on the validity of these inputs.
- *
- * @function
- * @returns {void}
+ * Function to validate form inputs and enable/disable the create task button accordingly.
+ * 
+ * This function checks the validity of various form inputs such as title, date, priority, and category.
+ * Based on the validation results, it enables or disables the "Create Task" button.
  */
 function checkInputs() {
+  
   let isTitleValid = titleInput.value.trim() !== "";
   let isDateValid = dateInput.value.trim() !== "";
   let isPrioritySelected = priorityValue !== null;
-  let isCategoryValid =
-    categoryInput.value === "Technical task" ||
-    categoryInput.value === "User story";
-
+  let isCategoryValid = 
+      categoryInput.value === "Technical task" || 
+      categoryInput.value === "User story";
   createTaskBtn.disabled = !(isTitleValid && isDateValid && isPrioritySelected && isCategoryValid);
+  if (!isTitleValid || !isDateValid || !isPrioritySelected || !isCategoryValid) {
+      createTaskBtn.style.zIndex = '-1';
+  } else {
+      createTaskBtn.style.zIndex = '0';
+  }
   
 }
-
+  
 /**
  * Selects a priority button and updates its visual state. Only one priority can be selected at a time.
  * This function manages the selection state of priority buttons, ensuring only the chosen button is marked as selected.
@@ -388,11 +392,35 @@ function addSubtaskEventListeners(task) {
     .addEventListener("dblclick", () => editSubtask(task.id));
 }
 
-
+/**
+ * Disables the ability to click and shows error messages.
+ * This function sets the display style of error elements to 'block',
+ * making them visible to the user.
+ */
 function disabledClick() {
-
+  priorityError.style.display = 'block';
+  selectErrorBlock.style.display = 'block';
 }
 
+/**
+ * Enables the task creation button and hides error messages.
+ * This function makes the createTaskBtn clickable by setting its
+ * 'disabled' property to false and hides error elements by setting
+ * their display style to 'none'.
+ */
+function enableCreateTaskBtnAndShowErrors() {
+  createTaskBtn.disabled = false;
+  priorityError.style.display = 'none';
+  selectErrorBlock.style.display = 'none';
+}
+
+
+
+
+
+
+  
+  
   
 
 

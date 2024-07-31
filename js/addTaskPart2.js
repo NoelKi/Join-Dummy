@@ -221,6 +221,7 @@ function pushTaskToTasks(category = "toDo") {
     collaborators: collaborators,
     subtask: subtaskArr,
   });
+  enableCreateTaskBtnAndShowErrors();
 }
 
 /**

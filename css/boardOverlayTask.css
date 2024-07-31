@@ -70,3 +70,7 @@
   border-radius: 50%;
   background-color: rgba(128, 128, 128, 0.205);
 }
+
+.hidden-error-btn {
+  cursor: not-allowed !important;
+}
