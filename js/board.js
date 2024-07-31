@@ -70,13 +70,22 @@ function setUserListsBoard() {
 }
 
 function renderTasks() {
-  renderToDo();
-  renderInProgress();
-  renderAwaitFeedback();
-  renderDone();
+  const searchValue =
+    document.getElementsByClassName("searchbar-board")[0].value;
+  const filterTask = searchValue
+    ? tasks.filter(
+        (t) =>
+          t["title"].includes(searchValue) ||
+          t["description"].includes(searchValue)
+      )
+    : tasks;
+  renderToDo(filterTask);
+  renderInProgress(filterTask);
+  renderAwaitFeedback(filterTask);
+  renderDone(filterTask);
 }
 
-function renderToDo() {
+function renderToDo(tasks) {
   let toDo = tasks.filter((t) => t["category"] == "toDo");
   document.getElementById("toDo").innerHTML = "";
   for (let index = 0; index < toDo.length; index++) {
@@ -89,7 +98,7 @@ function renderToDo() {
   }
 }
 
-function renderAwaitFeedback() {
+function renderAwaitFeedback(tasks) {
   let awaitFeedback = tasks.filter((t) => t["category"] == "awaitFeedback");
 
   document.getElementById("awaitFeedback").innerHTML = "";
@@ -105,7 +114,7 @@ function renderAwaitFeedback() {
   }
 }
 
-function renderDone() {
+function renderDone(tasks) {
   let done = tasks.filter((t) => t["category"] == "done");
 
   document.getElementById("done").innerHTML = "";
@@ -119,7 +128,7 @@ function renderDone() {
   }
 }
 
-function renderInProgress() {
+function renderInProgress(tasks) {
   let inProgress = tasks.filter((t) => t["category"] == "inProgress");
 
   document.getElementById("inProgress").innerHTML = "";
@@ -440,4 +449,33 @@ function renderEditTaskOverlay(id) {
   document.getElementById("titel-filed").value = titel;
   const indexOfTaskInTasks = getIndexById(id);
   tasks.splice();
+}
+
+function filterTasks(event) {
+  const search = event.target.value.toLowerCase();
+  let counterTo = 0;
+  const content = document.getElementById("content");
+  content.innerHTML = "";
+  for (let i = 0; i < tasks.length; i++) {
+    const element = array[i];
+  }
+}
+
+function filterNames(event) {
+  const search = event.target.value.toLowerCase();
+  let counterTo = 0;
+  const content = document.getElementById("content");
+  content.innerHTML = "";
+  hideLoadButton();
+  for (let index = 0; index < names.length; index++) {
+    let name = names[index];
+    name = name.toLowerCase();
+    if (name.includes(search)) {
+      content.innerHTML += createCardHtml(index);
+      counterTo += 1;
+    }
+  }
+  if (counterTo === names.length) {
+    showLoadButton();
+  }
 }
