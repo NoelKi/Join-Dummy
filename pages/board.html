@@ -96,18 +96,17 @@
 
 
 
-        <div class="board-overlay-section">
+        <div class="board-overlay-section" onclick="closeOverlay()">
             <div class="board-overlay-container" id="board-overlay-container">
-                <div class="board-overlay-top-container">
-                    Add Task
-                    <button class="close-btn-overlay" onclick="closeOverlay()">
-                        <img src="../assets/img/closeTask.svg">
-                    </button>
-                </div>
-                <div class="board-overlay-main-container">
+                <div class="board-overlay-top-container" id="overlay-task-right" onclick="event.stopPropagation()">
+                   
+                     <span class="title-add-text">Add Task</span>
+                     <img class="close-btn-overlay" onclick="closeOverlay()" src="../assets/img/closeTask.svg">
+                  </div>
+                <div class="board-overlay-main-container" onclick="event.stopPropagation()">
                 
                 <div class="add-task-container">
-          <form id="task-form" class="task-css-board" onsubmit="createTask(event);">
+          <form id="task-form" class="task-css-board hide-scrollbar-board" onsubmit="createTask(event);">
     
             <div class="task-section-div">
               <input id="add-title" type="text" class="input-title-task" placeholder="Enter a title*" /><br />
@@ -192,8 +191,8 @@
                 </div>
               </div>
           
-              <div class="button-and-subtask">
-               <div id="added-subtask" class="added-subtask-input"> </div>
+              <div id="added-subtask" class="added-subtask-input"> </div>
+              <div class="button-and-subtask-board">
     
                   <div class="create-button-overlay">
              
@@ -244,7 +243,7 @@
                 
                 </div>
             </div>
-        </div>`
+        </div>
 
 
 

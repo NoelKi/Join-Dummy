@@ -254,3 +254,36 @@ categoryList.addEventListener("click", function (e) {
     checkInputs();
   }
 });
+
+
+/**
+ * Event listener for the 'scroll' event.
+ * Adds or removes a 'fixed' class to/from the create button overlay
+ * based on the position of the added subtask element.
+ */
+document.addEventListener('scroll', function() {
+  /**
+   * The element representing the added subtask.
+   * @type {HTMLElement}
+   */
+  let addedSubtask = document.getElementById('added-subtask');
+  /**
+   * The element representing the create button overlay.
+   * @type {HTMLElement}
+   */
+  let createButtonOverlay = document.querySelector('.create-button-overlay');
+
+  /**
+   * The top offset of the added subtask element relative to the viewport.
+   * @type {number}
+   */
+  let offsetTop = addedSubtask.getBoundingClientRect().top;
+  if (offsetTop <= 0) {
+      createButtonOverlay.classList.add('fixed');
+  } else {
+      createButtonOverlay.classList.remove('fixed');
+  }
+});
+
+
+ 

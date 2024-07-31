@@ -1,12 +1,4 @@
-.create-button-overlay {
- position: sticky;
-  gap: 24px;
 
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: flex-end;
- 
-}
 
 
 
@@ -19,10 +11,50 @@
 }
 
 .close-btn-overlay img {
-  margin-bottom: 26px;
-  margin-right: 16px;
+ height: 18px;
+ width: 18px;
 }
 
 #board-overlay-section {
   display: none;
 }
+
+.task-section-div.subtask-container {
+  position: relative;
+}
+
+
+#added-subtask {
+  position: relative;
+}
+
+.create-button-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+ padding: 18px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.create-button-overlay.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; 
+  background-color: white; 
+}
+
+.button-and-subtask-board {
+  padding-top: 50px;
+}
+
+.hide-scrollbar-board::-webkit-scrollbar  {
+  display: none;
+}
+.hide-scrollbar-board {
+  -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+

@@ -324,37 +324,41 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    font-size: 48px;
-    font-weight: 700;
     padding-left: 24px;
-    
 }
+    
+    
+    
+
+
+
+
+
 
 .close-btn-overlay {
-    
-    border: none;
-    background-color: transparent;
+
     cursor: pointer;
     display: flex;
     border-radius: 50%;
-    align-items: center;
     justify-content: center;
     user-select: none;
-    
-}
-
-.close-btn-overlay img {
+    padding: 6px;
     transition: background-color 100ms ease-out, padding 100ms ease-out, border-radius 100ms ease-out;
+    margin-bottom: 22px;
+    margin-right: 24px;
+  
 }
-
-.close-btn-overlay img:hover {
+    
+.close-btn-overlay:hover {
     border-radius: 50%;
     background-color: rgba(128, 128, 128, 0.205);
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 6px;
-    padding-right: 6px;
+   
     
+}
+
+.title-add-text {
+    font-size: 48px;
+    font-weight: 700;
 }
 
 .show-task-overlay {
