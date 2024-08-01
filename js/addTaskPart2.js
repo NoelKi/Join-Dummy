@@ -316,3 +316,9 @@ function showAnimation() {
     }, 500);
   }, 1000);
 }
+
+
+function closeOverlayEditTask() {
+  let editTaskOverlay = document.getElementById('edit-task-overlay');
+  editTaskOverlay.style.display = 'none';
+}

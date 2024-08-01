@@ -441,7 +441,10 @@ function getObjectById(array, id) {
 }
 
 function renderEditTaskOverlay(id) {
-  console.log(id);
+  closeTaskOverlay();
+  let editTaskOverlay = document.getElementById('edit-task-overlay');
+  editTaskOverlay.style.display = 'flex';
+  /*console.log(id);
   task = getObjectById(tasks, `${id}`);
   console.log(task);
   const title = task.title;
@@ -449,7 +452,7 @@ function renderEditTaskOverlay(id) {
 
   document.getElementById("titel-filed").value = titel;
   const indexOfTaskInTasks = getIndexById(id);
-  tasks.splice();
+  tasks.splice();*/
 }
 
 function filterTasks(event) {
