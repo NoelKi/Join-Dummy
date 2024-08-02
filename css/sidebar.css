@@ -117,7 +117,7 @@ aside {
     flex-direction: row;
     justify-content: space-between;
     padding: 0px 20px;
-    width: 320px;
+    width: 70%;
 }
 
 .nav-container-bottom {
@@ -134,11 +134,11 @@ aside {
     display: none;
 }
 
-.nav-container-bottom:hover .unactive-bottom{
+.nav-container-bottom:hover .unactive-bottom {
     display: none;
 }
 
-.nav-container-bottom:hover .active-bottom{
+.nav-container-bottom:hover .active-bottom {
     display: block;
 }
 
@@ -155,5 +155,11 @@ aside {
 @media(max-width: 800px) {
     aside {
         display: none;
+    }
+}
+
+@media(max-width: 640px) {
+    .bottom-nav-container {
+        width: 100%;
     }
 }
