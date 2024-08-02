@@ -33,7 +33,7 @@ async function getUserLists() {
 
     const tasks = userData.tasks || [];
     countTasks(tasks);
-    updateUrgentTaskDisplay(tasks);
+    updateUrgentTask(tasks);
   } catch (error) {
     console.error("Fehler beim Abrufen der Benutzerdaten:", error);
   }
@@ -97,7 +97,7 @@ function formatDeadline(date) {
   return new Date(date).toLocaleDateString('en-EN', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-function updateUrgentTaskDisplay(tasks) {
+function updateUrgentTask(tasks) {
   const urgentTasks = getUrgentTasks(tasks);
   const closestTask = getClosestDeadline(urgentTasks);
 
