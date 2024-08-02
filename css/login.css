@@ -77,6 +77,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .sign-up-button {
@@ -276,22 +277,17 @@ body {
 
 @media (max-width: 768px) {
     .login-content {
-        width: 80%;
-        padding: 10px;
-    }
-
-    .login-section {
-        width: 80%;
-    }
-}
-
-@media (max-width: 480px) {
-    .login-content {
         width: 90%;
+        padding: 15px;
     }
 
-    .login-section {
-        width: 95%;
+    .j-logo {
+        width: 64px;
+        height: 78px;
+    }
+
+    .h1-container {
+        height: 56px;
     }
 
     .h1-login {
@@ -299,16 +295,23 @@ body {
     }
 
     .sign-up-button {
-        font-size: 16px;
-        width: 120px;
-        height: 40px;
-        padding: 10px 20px;
+        position: unset;
+        justify-content: center;
+        height: 43px;
+        font-size: 19px;
+    }
+
+    .sign-up-button label,
+    .sign-up-button button {
+        font-size: 19px;
+    }
+
+    .seperator {
+        width: 100px;
     }
 
     .log-sign-buttons {
         display: flex;
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
         gap: 10px;
     }
@@ -318,8 +321,29 @@ body {
         width: 180px;
         font-size: 19px;
     }
+}
+
+
+@media (max-width: 480px) {
+    .j-logo {
+        width: 70px;
+    }
+
+    .login-button,
+    .guest-login {
+        width: 100%;
+        font-size: 19px;
+    }
 
     .seperator {
-        width: 88px;
+        width: 80px;
+    }
+
+    .login-content {
+        width: 95%;
+    }
+
+    .login-section {
+        width: 95%;
     }
 }

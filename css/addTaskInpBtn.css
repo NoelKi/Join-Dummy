@@ -76,10 +76,19 @@ input[type="date"]:focus {
   margin-left: 10px;
 }
 
+
+
 .buttons {
   display: flex;
-  gap: 16px;
   width: 100%;
+}
+
+.buttons > button:nth-child(1) {
+  margin-right: 16px; 
+}
+
+.buttons > button:nth-child(2) {
+  margin-right: 16px; 
 }
 
 .button-urgent:hover {
@@ -231,6 +240,7 @@ input[type="date"]:focus {
   cursor: pointer;
   padding: 4px 16px 4px 16px;
   transition: 100ms ease-out, color 100ms ease-out;
+  position: relative;
 }
 
 .input-positioning-subtask:hover input {
@@ -244,3 +254,4 @@ input[type="date"]:focus {
   justify-content: center;
   transition: 100ms ease-out, color 100ms ease-out;
 }
+

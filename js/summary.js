@@ -1,26 +1,40 @@
 function init() {
+  includeHTML();
   getUserLists();
   onloadFunc();
-  upcomingDate();
   includeHTML();
   updateGreeting();
 }
 
+//async function getUserLists() {
+//  try {
+//    CURRENT_USER_DATA = await getUserData(USER_ID);
+//    setUserInitals();
+//    if (!CURRENT_USER_DATA.contacts) {
+//      contacts = [];
+//    } else {
+//      contacts = CURRENT_USER_DATA.contacts;
+//    }
+//    if (!CURRENT_USER_DATA.tasks) {
+//      tasks = [];
+//    } else {
+//      tasks = CURRENT_USER_DATA.tasks;
+//      countTasks(CURRENT_USER_DATA.tasks);
+//    }
+//  } catch (error) {
+//    console.error("Fehler beim Abrufen der Benutzerdaten:", error);
+//  }
+//}
+
 async function getUserLists() {
   try {
-    CURRENT_USER_DATA = await getUserData(USER_ID);
-    setUserInitals();
-    if (!CURRENT_USER_DATA.contacts) {
-      contacts = [];
-    } else {
-      contacts = CURRENT_USER_DATA.contacts;
-    }
-    if (!CURRENT_USER_DATA.tasks) {
-      tasks = [];
-    } else {
-      tasks = CURRENT_USER_DATA.tasks;
-      countTasks(CURRENT_USER_DATA.tasks);
-    }
+    const userData = await getUserData(USER_ID);
+    CURRENT_USER_DATA = userData;
+    setTimeout(setUserInitals, 0);
+
+    const tasks = userData.tasks || [];
+    countTasks(tasks);
+    updateUrgentTask(tasks);
   } catch (error) {
     console.error("Fehler beim Abrufen der Benutzerdaten:", error);
   }
@@ -39,25 +53,63 @@ async function onloadFunc() {
 
 function updateGreeting(username) {
   let greetingElement = document.getElementById("greeting");
-  greetingElement.innerHTML = `Good morning, &nbsp; <span>${username}</span>`;
+  let currentTime = new Date().getHours();
+  let greeting;
+
+  if (currentTime < 12) {
+    greeting = "Good morning";
+  } else if (currentTime < 17) {
+    greeting = "Good afternoon";
+  } else {
+    greeting = "Good evening";
+  }
+
+  greetingElement.innerHTML = `${greeting}, &nbsp; <span>${username}</span>`;
 }
 
 function countTasks(tasks) {
-  let totalCount = tasks.length;
-  let toDoCount = tasks.filter(task => task.category === 'toDo').length;
-  let inProgressCount = tasks.filter(task => task.category === 'inProgress').length;
-  let awaitFeedbackCount = tasks.filter(task => task.category === 'awaitFeedback').length;
-  let doneCount = tasks.filter(task => task.category === 'done').length;
+  const taskCounts = {};
+  tasks.forEach((task) => {
+    taskCounts[task.category] = (taskCounts[task.category] || 0) + 1;
+  });
 
-  document.getElementById('todo-number').textContent = toDoCount;
-  document.getElementById('bord-tasks-number').textContent = totalCount;
-  document.getElementById('progress-task-number').textContent = inProgressCount;
-  document.getElementById('feedback-number').textContent = awaitFeedbackCount;
-  document.getElementById('done-number').textContent = doneCount;
+  document.getElementById('todo-number').textContent = taskCounts.toDo || 0;
+  document.getElementById('bord-tasks-number').textContent = tasks.length;
+  document.getElementById('progress-task-number').textContent = taskCounts.inProgress || 0;
+  document.getElementById('feedback-number').textContent = taskCounts.awaitFeedback || 0;
+  document.getElementById('done-number').textContent = taskCounts.done || 0;
 }
 
-function upcomingDate() {
-  document.getElementById('due-date').textContent = new Date().toLocaleDateString('en-EN',
-    { year: 'numeric', month: 'long', day: 'numeric' });
+function getUrgentTasks(tasks) {
+  return tasks.filter((task) => task.date);
 }
 
+function sortTasksByDate(tasks) {
+  return tasks.sort((a, b) => a.date - b.date);
+}
+
+function getClosestDeadline(tasks) {
+  return tasks.reduce((closest, current) => {
+    return current.date < closest.date ? current : closest;
+  }, tasks[0]);
+}
+
+function formatDeadline(date) {
+  return new Date(date).toLocaleDateString('en-EN', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function updateUrgentTask(tasks) {
+  const urgentTasks = getUrgentTasks(tasks);
+  const closestTask = getClosestDeadline(urgentTasks);
+
+  document.getElementById('urgent-number').textContent = urgentTasks.length;
+  if (closestTask) {
+    document.getElementById('due-date').textContent = formatDeadline(closestTask.date);
+  } else {
+    document.getElementById('due-date').textContent = '';
+  }
+}
+
+function loadBoard() {
+  window.location.href = '/pages/board.html'
+}
