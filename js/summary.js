@@ -84,3 +84,6 @@ function upcomingDate() {
     { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
+function loadBoard() {
+  window.location.href = '/pages/board.html'
+}
