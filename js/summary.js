@@ -88,7 +88,9 @@ function sortTasksByDate(tasks) {
 }
 
 function getClosestDeadline(tasks) {
-  return tasks[0] ? tasks[0].date : null;
+  return tasks.reduce((closest, current) => {
+    return current.date < closest.date ? current : closest;
+  }, tasks[0]);
 }
 
 function formatDeadline(date) {
@@ -97,12 +99,11 @@ function formatDeadline(date) {
 
 function updateUrgentTaskDisplay(tasks) {
   const urgentTasks = getUrgentTasks(tasks);
-  const sortedTasks = sortTasksByDate(urgentTasks);
-  const closestDeadline = getClosestDeadline(sortedTasks);
+  const closestTask = getClosestDeadline(urgentTasks);
 
   document.getElementById('urgent-number').textContent = urgentTasks.length;
-  if (closestDeadline) {
-    document.getElementById('due-date').textContent = formatDeadline(closestDeadline);
+  if (closestTask) {
+    document.getElementById('due-date').textContent = formatDeadline(closestTask.date);
   } else {
     document.getElementById('due-date').textContent = '';
   }
