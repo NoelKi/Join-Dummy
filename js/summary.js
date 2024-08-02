@@ -1,7 +1,6 @@
 function init() {
   getUserLists();
   onloadFunc();
-  upcomingDate();
   includeHTML();
   updateGreeting();
 }
@@ -34,6 +33,7 @@ async function getUserLists() {
 
     const tasks = userData.tasks || [];
     countTasks(tasks);
+    updateUrgentTaskDisplay(tasks);
   } catch (error) {
     console.error("Fehler beim Abrufen der Benutzerdaten:", error);
   }
@@ -79,9 +79,33 @@ function countTasks(tasks) {
   document.getElementById('done-number').textContent = taskCounts.done || 0;
 }
 
-function upcomingDate() {
-  document.getElementById('due-date').textContent = new Date().toLocaleDateString('en-EN',
-    { year: 'numeric', month: 'long', day: 'numeric' });
+function getUrgentTasks(tasks) {
+  return tasks.filter((task) => task.date);
+}
+
+function sortTasksByDate(tasks) {
+  return tasks.sort((a, b) => a.date - b.date);
+}
+
+function getClosestDeadline(tasks) {
+  return tasks[0] ? tasks[0].date : null;
+}
+
+function formatDeadline(date) {
+  return new Date(date).toLocaleDateString('en-EN', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function updateUrgentTaskDisplay(tasks) {
+  const urgentTasks = getUrgentTasks(tasks);
+  const sortedTasks = sortTasksByDate(urgentTasks);
+  const closestDeadline = getClosestDeadline(sortedTasks);
+
+  document.getElementById('urgent-number').textContent = urgentTasks.length;
+  if (closestDeadline) {
+    document.getElementById('due-date').textContent = formatDeadline(closestDeadline);
+  } else {
+    document.getElementById('due-date').textContent = '';
+  }
 }
 
 function loadBoard() {
