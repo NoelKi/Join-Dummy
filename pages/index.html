@@ -30,7 +30,7 @@
         <h1 class="greeting" id="greeting">Good morning</h1>
       </div>
       <div class="button-container">
-        <button class="urgent-button" onclick="">
+        <button class="urgent-button" onclick="loadBoard()">
           <div class="btn-urgent-front">
             <div class="todo-btn-row">
               <img src="../assets/img/urgent_task.svg" alt="clock icon">
@@ -44,16 +44,16 @@
             <p id="deadline">Upcoming Deadline</p>
           </div>
         </button>
-        <button class="todo-btn" onclick="">
-          <div class="button-center">
-          <div class="todo-btn-row">
-            <img src="../assets/img/todo_task.svg" alt="toDo Icon">
-            <h2 id="todo-number" class="task-number"></h2>
-          </div>
-          <p class="btn-text">Tasks To-do</p>
+        <button class="todo-btn" onclick="loadBoard()">
+          <div class="button-center todo">
+            <div class="todo-btn-row">
+              <img src="../assets/img/todo_task.svg" alt="toDo Icon">
+              <h2 id="todo-number" class="task-number"></h2>
+            </div>
+            <p class="btn-text">Tasks To-do</p>
           </div>
         </button>
-        <button class="light-task-btn board" onclick="">
+        <button class="light-task-btn board" onclick="loadBoard()">
           <div class="button-center">
             <div class="todo-btn-row">
               <div class="summary-boarder-icon">
@@ -68,49 +68,49 @@
             </p>
           </div>
         </button>
-        <button class="light-task-btn progress" onclick="">
+        <button class="light-task-btn progress" onclick="loadBoard()">
           <div class="button-center">
-          <div class="todo-btn-row">
-            <div class="summary-boarder-icon">
-              <img src="../assets/img/in_progress.svg" alt="">
+            <div class="todo-btn-row">
+              <div class="summary-boarder-icon">
+                <img src="../assets/img/in_progress.svg" alt="">
+              </div>
+              <h2 id="progress-task-number" class="task-number"></h2>
             </div>
-            <h2 id="progress-task-number" class="task-number"></h2>
-          </div>
-          <p class="btn-text">
-            Task in
-            <br>
-            Progress
-          </p>
+            <p class="btn-text">
+              Task in
+              <br>
+              Progress
+            </p>
           </div>
         </button>
-        <button class="light-task-btn feedback" onclick="">
+        <button class="light-task-btn feedback" onclick="loadBoard()">
           <div class="button-center">
-          <div class="todo-btn-row">
-            <div class="summary-boarder-icon">
-              <img src="../assets/img/awaiting_feedback.svg" alt="">
+            <div class="todo-btn-row">
+              <div class="summary-boarder-icon">
+                <img src="../assets/img/awaiting_feedback.svg" alt="">
+              </div>
+              <h2 id="feedback-number" class="task-number"></h2>
             </div>
-            <h2 id="feedback-number" class="task-number"></h2>
-          </div>
-          <p class="btn-text">
-            Awaiting
-            <br>
-            Feedback
-          </p>
+            <p class="btn-text">
+              Awaiting
+              <br>
+              Feedback
+            </p>
           </div>
         </button>
-        <button class="light-task-btn done" onclick="">
+        <button class="light-task-btn done" onclick="loadBoard()">
           <div class="button-center">
-          <div class="todo-btn-row">
-            <div class="summary-boarder-icon">
-              <img src="../assets/img/done.svg" alt="">
+            <div class="todo-btn-row">
+              <div class="summary-boarder-icon">
+                <img src="../assets/img/done.svg" alt="">
+              </div>
+              <h2 id="done-number" class="task-number"></h2>
             </div>
-            <h2 id="done-number" class="task-number"></h2>
-          </div>
-          <p class="btn-text">
-            Tasks
-            <br>
-            Done
-          </p>
+            <p class="btn-text">
+              Tasks
+              <br>
+              Done
+            </p>
           </div>
         </button>
       </div>

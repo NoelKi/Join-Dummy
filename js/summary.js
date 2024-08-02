@@ -1,4 +1,5 @@
 function init() {
+  includeHTML();
   getUserLists();
   onloadFunc();
   includeHTML();
@@ -29,7 +30,7 @@ async function getUserLists() {
   try {
     const userData = await getUserData(USER_ID);
     CURRENT_USER_DATA = userData;
-    setUserInitals();
+    setTimeout(setUserInitals, 0);
 
     const tasks = userData.tasks || [];
     countTasks(tasks);
