@@ -345,7 +345,7 @@ function createTaskOverlay(element, id) {
                     <img class="delete-hover" src="../assets/img/deleteHover.svg">
                 </div>
                 <div class="horizontal-separator"></div>
-                <div class="edit-task-overlay-btn" onclick="renderEditTaskOverlay(${id})">
+                <div class="edit-task-overlay-btn" onclick="openEditTaskOverlay(${id})">
                     <img class="edit-unhover" src="../assets/img/editUnhover.svg">
                     <img class="edit-hover" src="../assets/img/editHover.svg">
                 </div>
@@ -421,7 +421,7 @@ function deleteTask(id) {
     tasks
   );
   renderTasks();
-  closeOverlay();
+  closeTaskOverlay();
 }
 
 function closeContactDetailCard() {
@@ -438,18 +438,6 @@ function closeContactDetailCard() {
  */
 function getObjectById(array, id) {
   return array.find((obj) => obj.id === id);
-}
-
-function renderEditTaskOverlay(id) {
-  console.log(id);
-  task = getObjectById(tasks, `${id}`);
-  console.log(task);
-  const title = task.title;
-  console.log(title);
-
-  document.getElementById("titel-filed").value = titel;
-  const indexOfTaskInTasks = getIndexById(id);
-  tasks.splice();
 }
 
 function filterTasks(event) {
@@ -479,4 +467,34 @@ function filterNames(event) {
   if (counterTo === names.length) {
     showLoadButton();
   }
+}
+
+function renderEditTaskOverlay(id) {
+  console.log(id);
+  task = getObjectById(tasks, `${id}`);
+  console.log(task);
+  const title = task.title;
+  console.log(title);
+
+  document.getElementById("titel-filed").value = titel;
+  const indexOfTaskInTasks = getIndexById(id);
+  tasks.splice();
+}
+
+function closeEditTaskOverlay() {
+  // renderTaskOverlay();
+  const content = document.getElementById("edit-task-board-overlay");
+  content.style.display = "none";
+}
+
+function openEditTaskOverlay(id) {
+  closeTaskOverlay();
+  const content = document.getElementById("edit-task-board-overlay");
+  content.style.display = "block";
+  showEdibleTask();
+}
+
+function showEdibleTask(id) {
+  task = getObjectById(tasks, `${id}`);
+  task.title = document.getElementById("add-title");
 }
