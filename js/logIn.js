@@ -64,6 +64,7 @@ function displayLoadingScreens() {
   mainContent.style.display = 'none';
 }
 
+
 function hideLoadingScreens() {
   const loadingScreen = document.getElementById('loading-screen');
   const loadingScreenSummary = document.getElementById('loading-screen-summary');
@@ -71,6 +72,7 @@ function hideLoadingScreens() {
   loadingScreen.style.display = 'none';
   loadingScreenSummary.style.display = 'none';
 }
+
 
 function updateGreetingMessage() {
   const userName = JSON.parse(localStorage.getItem('userName')) || "Guest";
@@ -104,18 +106,14 @@ function toggleCheckBox() {
   image.src = image.src.includes('rememberDefault') ? '../assets/img/rememberChecked.svg' : '../assets/img/rememberDefault.svg';
 }
 
+
 async function guestLogin() {
-  await setupGuestUser();
+  await guestUser();
   showLoadingScreen(() => window.location.href = 'index.html');
 }
 
 
-
-function changeToSignUp() {
-  window.location.href = '../pages/signUp.html';
-}
-
-async function setupGuestUser() {
+async function guestUser() {
   const guestEmail = "guest@example.com";
   const users = await fetchUsers();
 
@@ -127,4 +125,9 @@ async function setupGuestUser() {
     }
   }
   console.error("Guest user not found in Firebase");
+}
+
+
+function changeToSignUp() {
+  window.location.href = '../pages/signUp.html';
 }
