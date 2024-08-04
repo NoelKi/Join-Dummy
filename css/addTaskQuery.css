@@ -1,7 +1,45 @@
-@media screen and (min-width: 1048px) {
-    .clear-create-buttons {
-        
-      
-    }
+@media screen and (max-width: 1048px) {
+  .clear-create-buttons {
+    flex-direction: column-reverse;
+  }
+}
 
+@media screen and (max-width: 925px) {
+  .clear-task-btn {
+    display: none;
+  }
+
+  .clear-create-buttons {
+    z-index: 1;
+    white-space: nowrap;
+    gap: 0;
+    right: 50%;
+    left: 50%;
+    bottom: 41px;
+  }
+
+  .hidden-error-btn {
+    margin-left: -75px;
+  }
+
+  .task-css {
+    height: calc(100vh - 250px);
+  }
+
+ 
+}
+
+@media screen and (max-width: 801px) {
+    
+    .clear-create-buttons {
+        bottom: 41px !important;
+    }
+      
+
+
+}
+
+
+@media screen and (max-width: 460px) {
+    
 }
