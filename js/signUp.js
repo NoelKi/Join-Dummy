@@ -31,9 +31,12 @@ function validateInputs({ name, email, password, confirmPassword }) {
     if (!isPolicyAccepted) return 'You must accept the privacy policy to sign up.';
     if (!name || !email || !password || !confirmPassword) return 'Please fill out all fields.';
     if (password !== confirmPassword) return 'Passwords do not match.';
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) return 'Please enter a valid email address.';
+
     return null;
 }
-
 
 async function signUp() {
     const { name, email, password, confirmPassword } = getInputValues();
@@ -46,6 +49,7 @@ async function signUp() {
 
     if (result) showSuccessMessage();
 }
+
 
 
 function toggleCheckBox() {
