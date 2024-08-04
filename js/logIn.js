@@ -76,7 +76,11 @@ function updateGreetingMessage() {
   const userName = JSON.parse(localStorage.getItem('userName')) || "Guest";
   const greeting = getGreeting();
 
-  document.getElementById('greetingLoading').innerHTML = `${greeting}, &nbsp; <span>${userName}</span>`;
+  if (userName === "Guest") {
+    document.getElementById('greetingLoading').innerHTML = `Hello, Guest`;
+  } else {
+    document.getElementById('greetingLoading').innerHTML = `${greeting}, &nbsp; <span>${userName}</span>`;
+  }
 }
 
 
@@ -100,7 +104,27 @@ function toggleCheckBox() {
   image.src = image.src.includes('rememberDefault') ? '../assets/img/rememberChecked.svg' : '../assets/img/rememberDefault.svg';
 }
 
+async function guestLogin() {
+  await setupGuestUser();
+  showLoadingScreen(() => window.location.href = 'index.html');
+}
+
+
 
 function changeToSignUp() {
   window.location.href = '../pages/signUp.html';
+}
+
+async function setupGuestUser() {
+  const guestEmail = "guest@example.com";
+  const users = await fetchUsers();
+
+  for (const key in users) {
+    const user = users[key];
+    if (user.email === guestEmail) {
+      saveUserIdLocalStorage(key, user.name);
+      return;
+    }
+  }
+  console.error("Guest user not found in Firebase");
 }
