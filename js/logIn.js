@@ -85,7 +85,7 @@ function updateGreetingMessage() {
   const greeting = getGreeting();
 
   if (userName === "Guest") {
-    document.getElementById('greetingLoading').innerHTML = `Hello, Guest`;
+    document.getElementById('greetingLoading').innerHTML = `Hello, &nbsp; <span>Guest</span>`;
   } else {
     document.getElementById('greetingLoading').innerHTML = `${greeting}, &nbsp; <span>${userName}</span>`;
   }
