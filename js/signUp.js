@@ -38,6 +38,7 @@ function validateInputs({ name, email, password, confirmPassword }) {
     return null;
 }
 
+
 async function signUp() {
     const { name, email, password, confirmPassword } = getInputValues();
     const error = validateInputs({ name, email, password, confirmPassword });
