@@ -214,6 +214,46 @@ body {
     z-index: 1;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    pointer-events: none;
+}
+
+.hidden {
+    display: none;
+}
+
+#success-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4589FF;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    z-index: 1000;
+}
+
+#success-message p {
+    margin: 0;
+}
+
+.signup-button:disabled {
+    background-color: #D2E3FF;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 @media (max-width: 768px) {
     .signup-content {
         width: 80%;

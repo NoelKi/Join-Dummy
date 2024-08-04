@@ -12,6 +12,7 @@
 
 <body>
     <img src="../assets/img/joinLoad.svg" class="j-logo" alt="SignUp Join Image">
+    <div class="overlay hidden" id="overlay"></div>
     <div class="main-content">
         <div class="second-content">
             <div class="signup-content">
@@ -24,30 +25,37 @@
                 <div class="signup-section">
                     <div class="signup-input">
                         <div class="input-wrapper">
-                            <input type="text" id="name" placeholder="Name" required>
-                            <img src="../assets/img/personOverlay.svg" alt="Password Icon">
+                            <input type="text" id="name" placeholder="Name" required autocomplete="name">
+                            <img src="../assets/img/personOverlay.svg" alt="Name Icon">
                         </div>
                         <div class="input-wrapper">
-                            <input type="text" id="email" placeholder="Email" required>
+                            <input type="text" id="email" placeholder="Email" required autocomplete="email">
                             <img src="../assets/img/mail.svg" alt="Email Icon">
                         </div>
                         <div class="input-wrapper">
-                            <input type="password" id="password" placeholder="Password" required>
+                            <input type="password" id="password" placeholder="Password" required
+                                autocomplete="new-password">
                             <img src="../assets/img/lock.svg" alt="Password Icon">
                         </div>
                         <div class="input-wrapper">
-                            <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                            <input type="password" id="confirm-password" placeholder="Confirm Password" required
+                                autocomplete="new-password">
                             <img src="../assets/img/lock.svg" alt="Password Icon">
                         </div>
                         <div class="checkbox-wrapper">
-                            <p for="acceptTerms" class="remember-me"><img id="checkbox-remember"
-                                    onclick="toggleCheckBox()" src="../assets/img/rememberDefault.svg" alt="">I
-                                accept the <a href="../pages/privacyPolicy.html">Privacy policy</a></p>
+                            <img id="checkbox-remember" src="../assets/img/rememberDefault.svg"
+                                alt="Privacy Policy Checkbox" onclick="toggleCheckBox()">
+                            <p class="remember-me">I accept the <a href="../pages/privacyPolicy.html"
+                                    target="_blank">Privacy policy</a></p>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <button class="signup-button" onclick="signUp()">Sign up</button>
+                    <button class="signup-button" id="signup-button" onclick="signUp()" disabled>Sign up</button>
+                </div>
+                <!-- Erfolgsmeldung -->
+                <div id="success-message" class="hidden">
+                    <p>Sign up successful!</p>
                 </div>
             </div>
         </div>
