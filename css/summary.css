@@ -56,15 +56,12 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 150px 106px 150px 150px;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
+    grid-template-rows: 190px 220px;
+    place-content: center;
+    gap: 20px;
     grid-template-areas:
-        "first first"
-        "second second"
-        "third fourth"
-        "fifth sixth";
+        "first first first third"
+        "second fourth fifth sixth";
     padding: 16px;
     max-width: 400px;
 }
@@ -128,8 +125,7 @@
     justify-content: center;
     gap: 16px;
     border-radius: 30px;
-    padding: 32px 28px;
-    /* Adjusted padding */
+    padding: 15px 40px;
     font-size: 16px;
     border: 0px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
@@ -259,8 +255,7 @@
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
     border: 0px;
-    padding: 12px 35px;
-    /* Adjusted padding */
+    padding: 40px;
     gap: 7px;
     max-height: 160px;
     max-width: 188px;
@@ -308,29 +303,6 @@
     font-size: 48px;
 }
 
-@media (max-width: 400px) {
-    .button-container {
-        width: 100%;
-    }
-
-    .light-task-btn {
-        width: 90%;
-    }
-
-    .urgent-button,
-    .todo-btn {
-        width: 95%;
-    }
-
-    .btn-text {
-        font-size: 19px;
-    }
-
-    .summary-overview {
-        padding: 0;
-    }
-}
-
 @media (min-width: 800px) {
     .light-task-btn {
         padding: 40px;
@@ -347,31 +319,14 @@
     }
 }
 
-@media (min-height: 850px) {
-    .summary-overview {
-        align-items: center;
-    }
-}
-
-@media (min-width: 900px) {
+@media (max-width: 1050px) {
     .button-container {
-        width: 650px;
-        gap: 20px;
-    }
-}
-
-@media (min-width: 1050px) {
-    .button-container {
-        max-width: 870px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 190px 220px;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
+        grid-template-rows: 150px 106px 150px 150px;
         grid-template-areas:
-            "first first first third"
-            "second fourth fifth sixth";
+            "first first"
+            "second second"
+            "third fourth"
+            "fifth sixth";
     }
 
     .board {
@@ -384,15 +339,7 @@
         gap: 32px;
         justify-content: space-evenly;
     }
-}
 
-@media (min-width: 1300px) {
-    .greeting-container {
-        flex-direction: row;
-    }
-}
-
-@media (max-width: 1050px) {
     .todo-btn {
         width: 100%;
         max-width: unset;
@@ -405,27 +352,28 @@
     }
 }
 
-@media (max-width: 920px) {
-    .button-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 150px 106px 150px 150px;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-        /* Reduced from 24px */
-        grid-template-areas:
-            "first first"
-            "second second"
-            "third fourth"
-            "fifth sixth";
-        padding: 16px;
-    }
-}
-
 @media (max-width: 768px) {
     .summary-overview.show {
         display: block;
         animation: slideUp 0.5s ease-out forwards;
+    }
+}
+
+@media (max-width: 414px) {
+    .summary-overview {
+        padding: 0;
+    }
+
+    .light-task-btn {
+        width: 95%;
+    }
+
+    .urgent-button,
+    .todo-btn {
+        width: 95%;
+    }
+
+    .btn-text {
+        font-size: 19px;
     }
 }
