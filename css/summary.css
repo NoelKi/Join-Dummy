@@ -1,5 +1,8 @@
 * {
     margin: 0;
+}
+
+.box-sizing-container * {
     box-sizing: border-box;
 }
 
@@ -8,8 +11,9 @@
     height: calc(100vh - 10rem);
     width: 100vw;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
     padding: 32px 16px;
     overflow-y: scroll;
     bottom: -100%;
@@ -55,12 +59,12 @@
     grid-template-rows: 150px 106px 150px 150px;
     justify-content: center;
     align-items: center;
-    gap: 24px;
+    gap: 16px;
     grid-template-areas:
-        " first first"
-        " second second"
-        "thrid fourth"
-        "fith sixed";
+        "first first"
+        "second second"
+        "third fourth"
+        "fifth sixth";
     padding: 16px;
     max-width: 400px;
 }
@@ -96,7 +100,7 @@
 .board {
     height: 100%;
     width: 100%;
-    grid-area: thrid;
+    grid-area: third;
 }
 
 .progress {
@@ -108,7 +112,7 @@
 }
 
 .done {
-    grid-area: sixed;
+    grid-area: sixth;
 }
 
 .button-container img {
@@ -124,7 +128,8 @@
     justify-content: center;
     gap: 16px;
     border-radius: 30px;
-    padding: 40px 35px;
+    padding: 32px 28px;
+    /* Adjusted padding */
     font-size: 16px;
     border: 0px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
@@ -208,20 +213,19 @@
 
 .todo-btn {
     background-color: #D2E3FF;
-    width: 100vw;
-    max-width: 400px;
+    width: 50vw;
+    max-width: 188px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
     gap: 16px;
     padding: 15px 40px;
     border-radius: 30px;
     border: 0px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
-    max-height: 106px;
     grid-area: second;
     transition: all 0.2s ease-in-out;
-
 }
 
 .todo-btn:hover {
@@ -255,7 +259,8 @@
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
     border: 0px;
-    padding: 15px 40px;
+    padding: 12px 35px;
+    /* Adjusted padding */
     gap: 7px;
     max-height: 160px;
     max-width: 188px;
@@ -303,23 +308,18 @@
     font-size: 48px;
 }
 
-/*.btn-fix {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 24px;
-}*/
-
 @media (max-width: 400px) {
     .button-container {
-        max-width: 100%;
+        width: 100%;
+    }
+
+    .light-task-btn {
+        width: 90%;
     }
 
     .urgent-button,
-    .todo-btn,
-    .light-task-btn {
-        width: 90%;
+    .todo-btn {
+        width: 95%;
     }
 
     .btn-text {
@@ -332,49 +332,9 @@
 }
 
 @media (min-width: 800px) {
-    .summary-overview {
-        height: calc(100vh - 5rem);
-        width: calc(100vw - 200px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 32px 16px;
-        flex-direction: column;
-        gap: 32px;
-    }
-
-    .todo-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-        padding: 40px;
-        max-width: 188px;
-        flex-direction: column;
-        max-height: 219px;
-        height: 209px;
-    }
-
     .light-task-btn {
         padding: 40px;
         max-height: none;
-    }
-
-    .button-container {
-        width: 100%;
-        min-width: 500px;
-        max-width: calc(100vw - 200px);
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 190px 220px 220px;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        grid-template-areas:
-            "first first first"
-            "second thrid fourth"
-            "fifth sixed ."
-        ;
     }
 
     .urgent-button {
@@ -396,24 +356,22 @@
 @media (min-width: 900px) {
     .button-container {
         width: 650px;
-        gap: 24px;
+        gap: 20px;
     }
 }
 
 @media (min-width: 1050px) {
     .button-container {
-        /*width: 100%;*/
         max-width: 870px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 190px 220px;
         justify-content: center;
         align-items: center;
-        gap: 24px;
+        gap: 20px;
         grid-template-areas:
-            "first first first thrid"
-            "second fourth fifth sixed"
-        ;
+            "first first first third"
+            "second fourth fifth sixth";
     }
 
     .board {
@@ -434,15 +392,18 @@
     }
 }
 
-/*@media (max-width: 1150px) {
-    .button-container {
-        grid-template-areas:
-            "first first first"
-            "second thrid fourth"
-            "fifth sixed ."
-        ;
+@media (max-width: 1050px) {
+    .todo-btn {
+        width: 100%;
+        max-width: unset;
+        justify-content: flex-start;
+        flex-direction: row;
     }
-}*/
+
+    .greeting-container {
+        display: none;
+    }
+}
 
 @media (max-width: 920px) {
     .button-container {
@@ -451,23 +412,15 @@
         grid-template-rows: 150px 106px 150px 150px;
         justify-content: center;
         align-items: center;
-        gap: 24px;
+        gap: 16px;
+        /* Reduced from 24px */
         grid-template-areas:
-            " first first"
-            " second second"
-            "thrid fourth"
-            "fifth sixed";
+            "first first"
+            "second second"
+            "third fourth"
+            "fifth sixth";
         padding: 16px;
     }
-
-    .todo {
-        flex-direction: unset;
-    }
-
-    .greeting-container {
-        display: none;
-    }
-
 }
 
 @media (max-width: 768px) {
