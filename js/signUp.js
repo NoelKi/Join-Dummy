@@ -4,57 +4,72 @@ async function postSignUpData(data) {
     try {
         const response = await fetch(`${BASE_URL}users.json`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         });
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const result = await response.json();
-        return result;
+        if (!response.ok) throw new Error('Network response was not ok');
+
+        return await response.json();
     } catch (error) {
         console.error('Error posting signup data:', error);
     }
 }
 
 
-async function signUp() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm-password').value;
-    if (!isPolicyAccepted) {
-        return alert('You must accept the privacy policy to sign up.');
-    }
-    if (password !== confirmPassword) {
-        return alert('Passwords do not match.');
-    }
-    const newUser = {
-        name,
-        email,
-        password,
-        id: Date.now().toString(),
+function getInputValues() {
+    return {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+        confirmPassword: document.getElementById('confirm-password').value
     };
-    const result = await postSignUpData(newUser);
-    if (result) {
-        alert('Sign up successful!');
-        window.location.href = 'login.html';
-    }
 }
 
 
-function backToLogIn() {
-    window.location.href = "login.html";
+function validateInputs({ name, email, password, confirmPassword }) {
+    if (!isPolicyAccepted) return 'You must accept the privacy policy to sign up.';
+    if (!name || !email || !password || !confirmPassword) return 'Please fill out all fields.';
+    if (password !== confirmPassword) return 'Passwords do not match.';
+    return null;
+}
+
+
+async function signUp() {
+    const { name, email, password, confirmPassword } = getInputValues();
+    const error = validateInputs({ name, email, password, confirmPassword });
+
+    if (error) return alert(error);
+
+    const newUser = { name, email, password, id: Date.now().toString() };
+    const result = await postSignUpData(newUser);
+
+    if (result) showSuccessMessage();
 }
 
 
 function toggleCheckBox() {
     const checkBoxImage = document.getElementById('checkbox-remember');
-    checkBoxImage.src = isPolicyAccepted
-        ? '../assets/img/rememberDefault.svg'
-        : '../assets/img/rememberChecked.svg';
+    const signUpButton = document.getElementById('signup-button');
+
     isPolicyAccepted = !isPolicyAccepted;
+    checkBoxImage.src = isPolicyAccepted ? '../assets/img/rememberChecked.svg' : '../assets/img/rememberDefault.svg';
+    signUpButton.disabled = !isPolicyAccepted;
+}
+
+
+function showSuccessMessage() {
+    const successMessageElement = document.getElementById('success-message');
+    const overlayElement = document.getElementById('overlay');
+
+    if (successMessageElement && overlayElement) {
+        successMessageElement.classList.toggle('hidden', false);
+        overlayElement.classList.toggle('hidden', false);
+
+        setTimeout(() => {
+            successMessageElement.classList.toggle('hidden', true);
+            overlayElement.classList.toggle('hidden', true);
+            window.location.href = 'login.html';
+        }, 2000);
+    }
 }
