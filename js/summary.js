@@ -40,6 +40,7 @@ async function getUserLists() {
   }
 }
 
+
 async function onloadFunc() {
   const userId = await loadUserIdLocalStorage();
   const userName = JSON.parse(localStorage.getItem('userName'));
@@ -50,6 +51,7 @@ async function onloadFunc() {
     updateGreeting('Guest!');
   }
 }
+
 
 function updateGreeting(username) {
   let greetingElement = document.getElementById("greeting");
@@ -67,6 +69,7 @@ function updateGreeting(username) {
   greetingElement.innerHTML = `${greeting}, &nbsp; <span>${username}</span>`;
 }
 
+
 function countTasks(tasks) {
   const taskCounts = {};
   tasks.forEach((task) => {
@@ -80,13 +83,16 @@ function countTasks(tasks) {
   document.getElementById('done-number').textContent = taskCounts.done || 0;
 }
 
+
 function getUrgentTasks(tasks) {
   return tasks.filter((task) => task.date);
 }
 
+
 function sortTasksByDate(tasks) {
   return tasks.sort((a, b) => a.date - b.date);
 }
+
 
 function getClosestDeadline(tasks) {
   return tasks.reduce((closest, current) => {
@@ -94,9 +100,11 @@ function getClosestDeadline(tasks) {
   }, tasks[0]);
 }
 
+
 function formatDeadline(date) {
   return new Date(date).toLocaleDateString('en-EN', { year: 'numeric', month: 'long', day: 'numeric' });
 }
+
 
 function updateUrgentTask(tasks) {
   const urgentTasks = getUrgentTasks(tasks);
@@ -109,6 +117,7 @@ function updateUrgentTask(tasks) {
     document.getElementById('due-date').textContent = '';
   }
 }
+
 
 function loadBoard() {
   window.location.href = '/pages/board.html'
