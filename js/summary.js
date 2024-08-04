@@ -2,35 +2,14 @@ function init() {
   includeHTML();
   getUserLists();
   onloadFunc();
-  includeHTML();
-  updateGreeting();
 }
 
-//async function getUserLists() {
-//  try {
-//    CURRENT_USER_DATA = await getUserData(USER_ID);
-//    setUserInitals();
-//    if (!CURRENT_USER_DATA.contacts) {
-//      contacts = [];
-//    } else {
-//      contacts = CURRENT_USER_DATA.contacts;
-//    }
-//    if (!CURRENT_USER_DATA.tasks) {
-//      tasks = [];
-//    } else {
-//      tasks = CURRENT_USER_DATA.tasks;
-//      countTasks(CURRENT_USER_DATA.tasks);
-//    }
-//  } catch (error) {
-//    console.error("Fehler beim Abrufen der Benutzerdaten:", error);
-//  }
-//}
 
 async function getUserLists() {
   try {
     const userData = await getUserData(USER_ID);
     CURRENT_USER_DATA = userData;
-    setTimeout(setUserInitals, 0);
+    setUserInitals();
 
     const tasks = userData.tasks || [];
     countTasks(tasks);
@@ -46,16 +25,21 @@ async function onloadFunc() {
   const userName = JSON.parse(localStorage.getItem('userName'));
 
   if (userId && userName) {
-    updateGreeting(userName);
+    updateGreeting(capitalizeFirstLetter(userName));
   } else {
-    updateGreeting('Guest!');
+    updateGreeting('Guest');
   }
 }
 
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
+
 function updateGreeting(username) {
-  let greetingElement = document.getElementById("greeting");
-  let currentTime = new Date().getHours();
+  const greetingElement = document.getElementById("greeting");
+  const currentTime = new Date().getHours();
   let greeting;
 
   if (currentTime < 12) {
@@ -120,5 +104,5 @@ function updateUrgentTask(tasks) {
 
 
 function loadBoard() {
-  window.location.href = '/pages/board.html'
+  window.location.href = '/pages/board.html';
 }

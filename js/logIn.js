@@ -80,14 +80,18 @@ function hideLoadingScreens() {
 }
 
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
+
 function updateGreetingMessage() {
   const userName = JSON.parse(localStorage.getItem('userName')) || "Guest";
   const greeting = getGreeting();
-
   if (userName === "Guest") {
     document.getElementById('greetingLoading').innerHTML = `Hello, &nbsp; <span>Guest</span>`;
   } else {
-    document.getElementById('greetingLoading').innerHTML = `${greeting}, &nbsp; <span>${userName}</span>`;
+    document.getElementById('greetingLoading').innerHTML = `${greeting}, &nbsp; <span>${capitalizeFirstLetter(userName)}</span>`;
   }
 }
 
