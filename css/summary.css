@@ -320,25 +320,9 @@
     gap: 24px;
 }*/
 
-@media (max-width: 400px) {
-    .button-container {
-        max-width: 300px;
-    }
-
-    .urgent-button {
-        width: 300px;
-    }
-
-    .light-task-btn {
-        width: 130px;
-    }
-
-    .todo-btn {
-        width: 300px;
-    }
-
-    .summary-overview {
-        padding: 0;
+@media (min-width: 1300px) {
+    .greeting-container {
+        flex-direction: row;
     }
 }
 
@@ -378,10 +362,37 @@
         flex-direction: unset;
     }
 
+    .greeting-container {
+        display: none;
+    }
+
 }
 
-@media (min-width: 1300px) {
-    .greeting-container {
-        flex-direction: row;
+@media (max-width: 768px) {
+    .summary-overview.show {
+        display: block;
+        animation: slideUp 0.5s ease-out forwards;
+    }
+}
+
+@media (max-width: 400px) {
+    .button-container {
+        max-width: 300px;
+    }
+
+    .urgent-button {
+        width: 300px;
+    }
+
+    .light-task-btn {
+        width: 130px;
+    }
+
+    .todo-btn {
+        width: 300px;
+    }
+
+    .summary-overview {
+        padding: 0;
     }
 }
