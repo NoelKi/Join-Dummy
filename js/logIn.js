@@ -31,6 +31,12 @@ async function login() {
 }
 
 
+async function guestLogin() {
+  await guestUser();
+  showLoadingScreen(() => window.location.href = 'index.html');
+}
+
+
 function getGreeting() {
   const currentTime = new Date().getHours();
   if (currentTime < 12) {
@@ -104,12 +110,6 @@ function loadUserIdLocalStorage() {
 function toggleCheckBox() {
   let image = document.getElementById('checkbox-remember');
   image.src = image.src.includes('rememberDefault') ? '../assets/img/rememberChecked.svg' : '../assets/img/rememberDefault.svg';
-}
-
-
-async function guestLogin() {
-  await guestUser();
-  showLoadingScreen(() => window.location.href = 'index.html');
 }
 
 
