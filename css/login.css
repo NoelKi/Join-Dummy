@@ -17,7 +17,6 @@ body {
     font-family: 'open sans', sans-serif;
     background-color: #ffffff;
     overflow-x: hidden;
-    /* Prevent horizontal scrolling */
 }
 
 .loading-screen {
@@ -240,7 +239,6 @@ body {
     align-items: center;
     gap: 35px;
     margin-top: 20px;
-    /* Space above the buttons */
 }
 
 .login-button,
@@ -318,7 +316,6 @@ body {
     color: #4589FF;
 }
 
-/* Media Queries */
 @media (max-width: 800px) {
     .j-logo {
         width: 80px;
