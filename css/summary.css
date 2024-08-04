@@ -1,5 +1,8 @@
 * {
     margin: 0;
+}
+
+.box-sizing-container * {
     box-sizing: border-box;
 }
 
@@ -313,13 +316,16 @@
 
 @media (max-width: 400px) {
     .button-container {
-        max-width: 100%;
+        width: 100%;
+    }
+
+    .light-task-btn {
+        width: 90%;
     }
 
     .urgent-button,
-    .todo-btn,
-    .light-task-btn {
-        width: 90%;
+    .todo-btn {
+        width: 95%;
     }
 
     .btn-text {
