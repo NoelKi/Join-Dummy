@@ -495,12 +495,31 @@ function openEditTaskOverlay(id) {
 }
 
 function showEdibleTask(id) {
-  console.log(id);
   task = getObjectById(tasks, `${id}`);
-  console.log(task);
+  setTitle(task);
+  setDate(task);
+  setDescription(task);
+  setProiority(task);
+  collaborators = task.collaborators || [];
+  renderCollaborators();
+  setHighlight();
+  setTaskCategory(task);
+  setSubtasks(task);
+}
+
+function setTitle(task) {
   document.getElementById("edit-add-title").value = task.title;
+}
+
+function setDate(task) {
   document.getElementById("edit-due-date").value = task.date;
+}
+
+function setDescription(task) {
   document.getElementById("edit-textarea-task").value = task.description;
+}
+
+function setProiority(task) {
   if (task.priority === "Urgent") {
     document.getElementById("edit-urgent").classList.add("selected-btn");
   }
@@ -510,14 +529,11 @@ function showEdibleTask(id) {
   if (task.priority === "Medium") {
     document.getElementById("edit-low").classList.add("selected-btn");
   }
-  collaborators = task.collaborators || [];
-  renderCollaborators();
-  setHighlight();
 }
 
 function setHighlight() {
   const elements = document.querySelectorAll(".contact-task-assign");
-  const collaboratorIds = getCollaboratorIds();
+  const collaboratorIds = setTaskCollaboratorIds();
   elements.forEach((element) => {
     if (collaboratorIds.includes(String(element.getAttribute("data-id")))) {
       element.classList.add("selected");
@@ -530,7 +546,7 @@ function setHighlight() {
   });
 }
 
-function getCollaboratorIds() {
+function setTaskCollaboratorIds() {
   const collaboratorIds = [];
   for (const collab in collaborators) {
     if (Object.hasOwnProperty.call(collaborators, collab)) {
@@ -540,3 +556,9 @@ function getCollaboratorIds() {
   }
   return collaboratorIds;
 }
+
+function setTaskCategory(task) {
+  categoryInput.value = task.kind;
+}
+
+function setSubtasks(task) {}

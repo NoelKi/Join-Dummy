@@ -165,7 +165,7 @@
               <div class="select-box-category">
                 <div class="select-option" id="select-category">
                   <div class="input-positioning">
-                    <input type="text" value="Select category" id="edit-category-value" readonly />
+                    <input type="text" value="Select category" id="category-value" readonly />
                     <div class="drop-down-arrow-cat center-flexbox">
                       <img src="../assets/img/arrow_drop_down.svg" alt="" />
                     </div>
@@ -173,7 +173,7 @@
                 </div>
                 <div id="select-error-block" class="error-block">This field is required*</div>
                 <div class="category-list-div">
-                  <ul id="edit-category-list" class="option-category">
+                  <ul id="category-list" class="option-category">
                     <li onclick="setTaskKind('TT')">Technical task</li>
                     <li onclick="setTaskKind('US')">User story</li>
                   </ul>
@@ -183,18 +183,17 @@
 
             <div class="task-section-div">
               <label for="subtask-optional">Subtasks <span class="optional-text">(optional)</span></label><br />
-              <div id="edit-subtask-list" class="subtask-list"></div>
-              <div id="edit-input-subtask-add" class="select-option" onclick="changeToFocus()">
+              <div id="subtask-list" class="subtask-list"></div>
+              <div id="input-subtask-add" class="select-option" onclick="changeToFocus()">
                 <div class="input-positioning">
-                  <input class="subtask-css-input" id="edit-subtask-input-field" type="text"
-                    placeholder="Add subtask" />
+                  <input class="subtask-css-input" id="subtask-input-field" type="text" placeholder="Add subtask" />
                   <div class="add-symbol-css center-flexbox">
                     <img src="../assets/img/add.svg" alt="" /><br />
                   </div>
                 </div>
               </div>
 
-              <div id="edit-added-subtask" class="added-subtask-input"></div>
+              <div id="added-subtask" class="added-subtask-input"></div>
             </div>
 
           </form>
