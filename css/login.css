@@ -316,7 +316,7 @@ body {
     color: #4589FF;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
     .j-logo {
         width: 80px;
     }
@@ -363,7 +363,7 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .j-logo {
         width: 70px;
         height: auto;
@@ -420,7 +420,7 @@ body {
     }
 }
 
-@media (max-width: 375px) {
+@media screen and (max-width: 375px) {
     .j-logo {
         width: 40px;
         height: auto;

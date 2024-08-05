@@ -254,7 +254,7 @@ body {
     opacity: 0.6;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .signup-content {
         width: 80%;
         padding: 10px;
@@ -265,7 +265,7 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .signup-content {
         width: 90%;
     }
@@ -294,7 +294,7 @@ body {
     }
 }
 
-@media (max-width: 375px) {
+@media screen and (max-width: 375px) {
     .j-logo {
         width: 40px;
         height: auto;
