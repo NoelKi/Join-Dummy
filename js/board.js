@@ -561,4 +561,15 @@ function setTaskCategory(task) {
   categoryInput.value = task.kind;
 }
 
-function setSubtasks(task) {}
+function setSubtasks(task) {
+  let subtaskField = document.getElementById("added-subtask");
+  if (task.subtask) {
+    console.log(task.subtask);
+    for (const subtask in task.subtask) {
+      if (Object.hasOwnProperty.call(task.subtask, subtask)) {
+        const element = task.subtask[subtask];
+        subtaskField.innerHTML += generateSubtaskHTML(element);
+      }
+    }
+  }
+}
