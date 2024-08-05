@@ -172,12 +172,6 @@
     color: #4589FF;
 }
 
-.btn-text {
-    font-size: 23px;
-    font-weight: 400;
-    color: #4589FF;
-}
-
 .with-line {
     height: 120px;
     border: 2px solid white;
@@ -284,6 +278,12 @@
     font-size: 48px;
 }
 
+.btn-text {
+    font-size: 23px;
+    font-weight: 400;
+    color: #4589FF;
+}
+
 @media screen and (max-width: 1150px) {
     .button-container {
         grid-template-columns: repeat(3, 204px);
@@ -309,10 +309,6 @@
     .greeting-container {
         display: none;
     }
-
-    .btn-text {
-        font-size: 19px;
-    }
 }
 
 @media screen and (max-width: 900px) {
@@ -336,10 +332,26 @@
     }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .summary-overview.show {
         display: block;
         animation: slideUp 0.5s ease-out forwards;
+    }
+
+    .btn-urgent-back h2 {
+        font-size: 23px;
+    }
+
+    .btn-urgent-back p {
+        font-size: 16px;
+    }
+
+    .task-number {
+        font-size: 40px;
+    }
+
+    .btn-text {
+        font-size: 19px;
     }
 }
 
