@@ -411,7 +411,10 @@ function getIndexById(arr, id) {
 }
 
 function deleteTask(id) {
-  const taskIndex = getIndexById(`${id}`);
+  const taskIndex = getIndexById(tasks, `${id}`);
+  console.log("id", id);
+  console.log("taskIndex", taskIndex);
+
   tasks.splice(taskIndex, 1);
   updateUser(
     CURRENT_USER_DATA.name,
@@ -508,26 +511,26 @@ function showEdibleTask(id) {
 }
 
 function setTitle(task) {
-  document.getElementById("edit-add-title").value = task.title;
+  document.getElementById("add-title").value = task.title;
 }
 
 function setDate(task) {
-  document.getElementById("edit-due-date").value = task.date;
+  document.getElementById("due-date").value = task.date;
 }
 
 function setDescription(task) {
-  document.getElementById("edit-textarea-task").value = task.description;
+  document.getElementById("textarea-task").value = task.description;
 }
 
 function setProiority(task) {
   if (task.priority === "Urgent") {
-    document.getElementById("edit-urgent").classList.add("selected-btn");
+    document.getElementById("urgent").classList.add("selected-btn");
   }
   if (task.priority === "Low") {
-    document.getElementById("edit-low").classList.add("selected-btn");
+    document.getElementById("low").classList.add("selected-btn");
   }
   if (task.priority === "Medium") {
-    document.getElementById("edit-low").classList.add("selected-btn");
+    document.getElementById("low").classList.add("selected-btn");
   }
 }
 
@@ -564,12 +567,45 @@ function setTaskCategory(task) {
 function setSubtasks(task) {
   let subtaskField = document.getElementById("added-subtask");
   if (task.subtask) {
+    subtaskArr = task.subtask;
     console.log(task.subtask);
-    for (const subtask in task.subtask) {
-      if (Object.hasOwnProperty.call(task.subtask, subtask)) {
-        const element = task.subtask[subtask];
+    for (const subtask in subtaskArr) {
+      if (Object.hasOwnProperty.call(subtaskArr, subtask)) {
+        const element = subtaskArr[subtask];
         subtaskField.innerHTML += generateSubtaskHTML(element);
       }
     }
   }
+  addHoverEventListeners();
+}
+
+function updateTask() {
+  console.log("hallo");
+  pushEditedTaskToTasks(CAT);
+  updateUser(
+    CURRENT_USER_DATA.name,
+    CURRENT_USER_DATA.email,
+    CURRENT_USER_DATA.password,
+    CURRENT_USER_DATA.contacts,
+    tasks
+  );
+  console.log("ballo");
+  closeEditTaskOverlay();
+  renderTasks();
+}
+
+function pushEditedTaskToTasks(category = "toDo") {
+  // Add a new task object to the tasks array
+  tasks.push({
+    id: Date.now().toString(),
+    date: dateInput.value,
+    title: titleInput.value,
+    kind: kindValue,
+    taskColor: kindColor,
+    description: textarea.value,
+    category: category,
+    priority: priorityValue,
+    collaborators: collaborators,
+    subtask: subtaskArr,
+  });
 }
