@@ -76,7 +76,7 @@ function countTasks(tasks) {
 
 
 function getUrgentTasks(tasks) {
-  return tasks.filter((task) => task.date);
+  return tasks.filter(task => task.priority === 'urgent' && task.date);
 }
 
 
