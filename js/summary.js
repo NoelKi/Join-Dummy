@@ -41,7 +41,6 @@ function updateGreeting(username) {
   const greetingElement = document.getElementById("greeting");
   const currentTime = new Date().getHours();
   let greeting;
-
   if (currentTime < 12) {
     greeting = "Good morning";
   } else if (currentTime < 17) {
@@ -49,8 +48,11 @@ function updateGreeting(username) {
   } else {
     greeting = "Good evening";
   }
-
-  greetingElement.innerHTML = `${greeting}, &nbsp; <span>${username}</span>`;
+  if (username === "Guest") {
+    greetingElement.innerHTML = `${greeting}`;
+  } else {
+    greetingElement.innerHTML = `${greeting}, &nbsp; <span>${username}</span>`;
+  }
 }
 
 
