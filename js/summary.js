@@ -80,7 +80,6 @@ function getUrgentTasks(tasks) {
 }
 
 
-
 function sortTasksByDate(tasks) {
   return tasks.sort((a, b) => a.date - b.date);
 }
