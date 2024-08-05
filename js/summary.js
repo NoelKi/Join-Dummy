@@ -32,7 +32,6 @@ async function onloadFunc() {
 }
 
 
-
 function capitalizeName(name) {
   return name.split(' ').map(capitalizeFirstLetter).join(' ');
 }
