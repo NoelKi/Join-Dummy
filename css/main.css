@@ -14,7 +14,7 @@ h2 {
 
 h4 {
   font-size: 23px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   margin: 0;
 }
@@ -45,12 +45,9 @@ h3 {
   overflow-x: hidden;
   padding-left: 45px;
   padding-right: 45px;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .legal-notice::-webkit-scrollbar {
-  display: none;
 }
 
 a {
@@ -133,3 +130,27 @@ a:hover .arrow-left {
   margin-block-end: 0;
 }
 /* Legal Notice, Privacy Policy, Help ends here */
+
+@media screen and (max-width: 801px) {
+  h3 {
+    font-size: 47px;
+  }
+
+  .legal-notice-policy-help {
+    padding-left: 16px;
+    padding-right: 16px;
+    height: calc(100vh - 185px);
+  }
+
+  .big-blue-text {
+    font-size: 23px;
+  }
+
+  .text-style {
+  font-size: 16px;
+  }
+
+  .big-blue-text-help {
+    font-size: 23px;
+  }
+}

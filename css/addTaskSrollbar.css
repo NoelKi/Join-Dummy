@@ -1,21 +1,17 @@
 
-.task-css::-webkit-scrollbar,
-.task-css-board::-webkit-scrollbar,
+
 .option::-webkit-scrollbar,
 .option-category::-webkit-scrollbar {
   width: 8px;
 }
 
-.task-css-board::-webkit-scrollbar,
-.task-css::-webkit-scrollbar-track,
+
 .option::-webkit-scrollbar-track,
 .option-category::-webkit-scrollbar-track {
   background: #ffffff;
   border-radius: 6px;
 }
 
-.task-css-board::-webkit-scrollbar,
-.task-css::-webkit-scrollbar-thumb,
 .option::-webkit-scrollbar-thumb,
 .option-category::-webkit-scrollbar-thumb {
   background: #a8a8a8;
@@ -41,3 +37,26 @@
   display: flex;
 }
 
+
+.task-css::-webkit-scrollbar,
+.task-css-board::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.task-css-board::-webkit-scrollbar,
+.task-css::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 6px;
+}
+
+.task-css-board::-webkit-scrollbar,
+.task-css::-webkit-scrollbar-thumb {
+  background: #a8a8a8;
+  border-radius: 10px;
+}
+
+.task-css-board::-webkit-scrollbar,
+.task-css::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
