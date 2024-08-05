@@ -499,6 +499,17 @@ function showEdibleTask(id) {
   task = getObjectById(tasks, `${id}`);
   console.log(task);
   document.getElementById("edit-add-title").value = task.title;
-  document.getElementById("");
-  console.log("hallo");
+  document.getElementById("edit-due-date").value = task.date;
+  document.getElementById("edit-textarea-task").value = task.description;
+  if (task.priority === "Urgent") {
+    document.getElementById("edit-urgent").classList.add("selected-btn");
+  }
+  if (task.priority === "Low") {
+    document.getElementById("edit-low").classList.add("selected-btn");
+  }
+  if (task.priority === "Medium") {
+    document.getElementById("edit-low").classList.add("selected-btn");
+  }
+  const collaborators = task.collaborators || [];
+  console.log(collaborators);
 }

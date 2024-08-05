@@ -110,13 +110,13 @@
                 <label>Description
                   <span class="optional-text">(optional)</span></label><br />
               </div>
-              <textarea class="task-text" id="textarea-task"></textarea>
+              <textarea class="task-text" id="edit-textarea-task"></textarea>
             </div>
 
             <div class="task-section-div">
               <label for="due-date">Due Date</label><br />
               <input class="date-css" id="edit-due-date" type="date" /><br />
-              <span id="date-error" class="error">This field is required*</span>
+              <span id="edit-date-error" class="error">This field is required*</span>
             </div>
 
             <div class="task-section-div">
@@ -124,26 +124,26 @@
                 <label for="Priotity">Priority</label><br />
               </div>
               <div class="buttons" id="unselected-error">
-                <button class="button-urgent" id="urgent" type="button" onclick="selectPriority('Urgent')">
+                <button class="button-urgent" id="edit-urgent" type="button" onclick="selectPriority('Urgent')">
                   Urgent
                   <img class="button-img" src="../assets/img/urgentIcon.svg" />
                 </button>
-                <button class="button-medium" id="medium" type="button" onclick="selectPriority('Medium')">
+                <button class="button-medium" id="edit-medium" type="button" onclick="selectPriority('Medium')">
                   Medium <img class="button-img" src="../assets/img/medium.svg" />
                 </button>
-                <button class="button-low" id="low" type="button" onclick="selectPriority('Low')">
+                <button class="button-low" id="edit-low" type="button" onclick="selectPriority('Low')">
                   Low <img class="button-img" src="../assets/img/low.svg" />
                 </button>
               </div>
-              <span id="priority-error" class="error-block">This field is required*</span>
+              <span id="edit-priority-error" class="error-block">This field is required*</span>
             </div>
 
             <div class="task-section-div">
               <label for="assigned-to">Assigned to <span class="optional-text">(optional)</span></label><br />
-              <div class="select-box" id="hide-box">
+              <div class="select-box" id="edit-hide-box">
                 <div class="select-option">
                   <div class="input-positioning">
-                    <input type="input-positioning" value="Select contacts to assign" id="select-value" readonly />
+                    <input type="input-positioning" value="Select contacts to assign" id="edit-select-value" readonly />
                     <div class="drop-down-arrow center-flexbox">
                       <img src="../assets/img/arrow_drop_down.svg" alt="" />
                     </div>
@@ -152,11 +152,11 @@
 
                 <div class="select-content">
                   <div class="search-assign">
-                    <input type="text" id="option-search" placeholder="  An" />
+                    <input type="text" id="edit-option-search" placeholder="  An" />
                   </div>
-                  <ul id="generate-list" class="option"></ul>
+                  <ul id="edit-generate-list" class="option"></ul>
                 </div>
-                <div class="circle-positioning" id="assign-contacts-circle"></div>
+                <div class="circle-positioning" id="edit-assign-contacts-circle"></div>
               </div>
             </div>
 
@@ -165,7 +165,7 @@
               <div class="select-box-category">
                 <div class="select-option" id="select-category">
                   <div class="input-positioning">
-                    <input type="text" value="Select category" id="category-value" readonly />
+                    <input type="text" value="Select category" id="edit-category-value" readonly />
                     <div class="drop-down-arrow-cat center-flexbox">
                       <img src="../assets/img/arrow_drop_down.svg" alt="" />
                     </div>
@@ -173,7 +173,7 @@
                 </div>
                 <div id="select-error-block" class="error-block">This field is required*</div>
                 <div class="category-list-div">
-                  <ul id="category-list" class="option-category">
+                  <ul id="edit-category-list" class="option-category">
                     <li onclick="setTaskKind('TT')">Technical task</li>
                     <li onclick="setTaskKind('US')">User story</li>
                   </ul>
@@ -183,22 +183,23 @@
 
             <div class="task-section-div">
               <label for="subtask-optional">Subtasks <span class="optional-text">(optional)</span></label><br />
-              <div id="subtask-list" class="subtask-list"></div>
-              <div id="input-subtask-add" class="select-option" onclick="changeToFocus()">
+              <div id="edit-subtask-list" class="subtask-list"></div>
+              <div id="edit-input-subtask-add" class="select-option" onclick="changeToFocus()">
                 <div class="input-positioning">
-                  <input class="subtask-css-input" id="subtask-input-field" type="text" placeholder="Add subtask" />
+                  <input class="subtask-css-input" id="edit-subtask-input-field" type="text"
+                    placeholder="Add subtask" />
                   <div class="add-symbol-css center-flexbox">
                     <img src="../assets/img/add.svg" alt="" /><br />
                   </div>
                 </div>
               </div>
 
-              <div id="added-subtask" class="added-subtask-input"></div>
+              <div id="edit-added-subtask" class="added-subtask-input"></div>
             </div>
 
           </form>
           <div class="ok-btn-container">
-            <button class="ok-btn" id="ok-btn" type="button">
+            <button class="ok-btn" id="edit-ok-btn" type="button">
               Ok <img src="../assets/img/checkSymbol.svg">
             </button>
           </div>

@@ -30,16 +30,13 @@ let selectBoxCategory = document.querySelector(".select-box-category");
 let selectCategoryOption = document.getElementById("select-category");
 let categoryList = document.getElementById("category-list");
 let changedInput = document.getElementById("change-to-focus");
-let generatedContatcs = document.getElementById('hide-box');
-let generateList = document.getElementById('generate-list');
-let inputField = document.getElementById('subtask-input-field');
-let categoryInput = document.getElementById('category-value');
-let priorityError = document.getElementById('priority-error');
-let selectErrorBlock = document.getElementById('select-error-block');
-let hiddenError = document.getElementById('hidden-error');
-
-
-
+let generatedContatcs = document.getElementById("hide-box");
+let generateList = document.getElementById("generate-list");
+let inputField = document.getElementById("subtask-input-field");
+let categoryInput = document.getElementById("category-value");
+let priorityError = document.getElementById("priority-error");
+let selectErrorBlock = document.getElementById("select-error-block");
+let hiddenError = document.getElementById("hidden-error");
 
 /**
  * Asynchronously retrieves user data and initializes the application's user-specific information.
@@ -126,7 +123,6 @@ function clearAllStates() {
   clearSelectedContacts();
   renderSubtasks();
   loadContactList();
- 
 }
 
 /**
@@ -145,27 +141,35 @@ function resetPriorityButtons() {
 
 /**
  * Function to validate form inputs and enable/disable the create task button accordingly.
- * 
+ *
  * This function checks the validity of various form inputs such as title, date, priority, and category.
  * Based on the validation results, it enables or disables the "Create Task" button.
  */
 function checkInputs() {
-  
   let isTitleValid = titleInput.value.trim() !== "";
   let isDateValid = dateInput.value.trim() !== "";
   let isPrioritySelected = priorityValue !== null;
-  let isCategoryValid = 
-      categoryInput.value === "Technical task" || 
-      categoryInput.value === "User story";
-  createTaskBtn.disabled = !(isTitleValid && isDateValid && isPrioritySelected && isCategoryValid);
-  if (!isTitleValid || !isDateValid || !isPrioritySelected || !isCategoryValid) {
-      createTaskBtn.style.zIndex = '-1';
+  let isCategoryValid =
+    categoryInput.value === "Technical task" ||
+    categoryInput.value === "User story";
+  createTaskBtn.disabled = !(
+    isTitleValid &&
+    isDateValid &&
+    isPrioritySelected &&
+    isCategoryValid
+  );
+  if (
+    !isTitleValid ||
+    !isDateValid ||
+    !isPrioritySelected ||
+    !isCategoryValid
+  ) {
+    createTaskBtn.style.zIndex = "-1";
   } else {
-      createTaskBtn.style.zIndex = '0';
+    createTaskBtn.style.zIndex = "0";
   }
-  
 }
-  
+
 /**
  * Selects a priority button and updates its visual state. Only one priority can be selected at a time.
  * This function manages the selection state of priority buttons, ensuring only the chosen button is marked as selected.
@@ -200,7 +204,6 @@ function selectPriority(priority) {
     priorityValue = null;
   }
   checkInputs();
-  
 }
 
 /**
@@ -209,7 +212,6 @@ function selectPriority(priority) {
  * This function shows an error message if no priority is selected and hides it otherwise.
  */
 
-  
 /**
  * Clears the list of collaborators and resets the selection state.
  * This function empties the `collaborators` array, clears the `selectionState` object,
@@ -398,8 +400,8 @@ function addSubtaskEventListeners(task) {
  * making them visible to the user.
  */
 function disabledClick() {
-  priorityError.style.display = 'block';
-  selectErrorBlock.style.display = 'block';
+  priorityError.style.display = "block";
+  selectErrorBlock.style.display = "block";
 }
 
 /**
@@ -410,21 +412,6 @@ function disabledClick() {
  */
 function enableCreateTaskBtnAndShowErrors() {
   createTaskBtn.disabled = false;
-  priorityError.style.display = 'none';
-  selectErrorBlock.style.display = 'none';
+  priorityError.style.display = "none";
+  selectErrorBlock.style.display = "none";
 }
-
-
-
-
-
-
-
-  
-  
-  
-
-
-
-
-
