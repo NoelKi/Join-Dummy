@@ -496,5 +496,5 @@ function openEditTaskOverlay(id) {
 
 function showEdibleTask(id) {
   task = getObjectById(tasks, `${id}`);
-  task.title = document.getElementById("add-title");
+  task.title = document.getElementById("edit-add-title").value;
 }
