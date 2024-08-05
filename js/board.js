@@ -491,10 +491,14 @@ function openEditTaskOverlay(id) {
   closeTaskOverlay();
   const content = document.getElementById("edit-task-board-overlay");
   content.style.display = "block";
-  showEdibleTask();
+  showEdibleTask(id);
 }
 
 function showEdibleTask(id) {
+  console.log(id);
   task = getObjectById(tasks, `${id}`);
-  task.title = document.getElementById("edit-add-title").value;
+  console.log(task);
+  document.getElementById("edit-add-title").value = task.title;
+  document.getElementById("");
+  console.log("hallo");
 }
