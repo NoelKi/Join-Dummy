@@ -76,18 +76,13 @@ function countTasks(tasks) {
 
 
 function getUrgentTasks(tasks) {
-  return tasks.filter(task => task.priority === 'urgent' && task.date);
-}
-
-
-function sortTasksByDate(tasks) {
-  return tasks.sort((a, b) => a.date - b.date);
+  return tasks.filter((task) => task.priority === 'Urgent' && task.category !== 'done');
 }
 
 
 function getClosestDeadline(tasks) {
   return tasks.reduce((closest, current) => {
-    return current.date < closest.date ? current : closest;
+    return new Date(current.date) < new Date(closest.date) ? current : closest;
   }, tasks[0]);
 }
 
@@ -99,12 +94,13 @@ function formatDeadline(date) {
 
 function updateUrgentTask(tasks) {
   const urgentTasks = getUrgentTasks(tasks);
-  const closestTask = getClosestDeadline(urgentTasks);
 
-  document.getElementById('urgent-number').textContent = urgentTasks.length;
-  if (closestTask) {
+  if (urgentTasks.length > 0) {
+    const closestTask = getClosestDeadline(urgentTasks);
+    document.getElementById('urgent-number').textContent = urgentTasks.length;
     document.getElementById('due-date').textContent = formatDeadline(closestTask.date);
   } else {
+    document.getElementById('urgent-number').textContent = '0';
     document.getElementById('due-date').textContent = '';
   }
 }
