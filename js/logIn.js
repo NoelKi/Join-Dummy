@@ -1,3 +1,7 @@
+function init() {
+  initializePasswordInputs();
+}
+
 function fetchUsers(options = {}) {
   return fetch(`${BASE_URL}users.json`, options)
     .then(response => response.json());
@@ -80,6 +84,11 @@ function hideLoadingScreens() {
 }
 
 
+function capitalizeName(name) {
+  return name.split(' ').map(capitalizeFirstLetter).join(' ');
+}
+
+
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
@@ -91,7 +100,7 @@ function updateGreetingMessage() {
   if (userName === "Guest") {
     document.getElementById('greetingLoading').innerHTML = `${greeting}`;
   } else {
-    document.getElementById('greetingLoading').innerHTML = `${greeting}, &nbsp; <span>${capitalizeFirstLetter(userName)}</span>`;
+    document.getElementById('greetingLoading').innerHTML = `${greeting}, &nbsp; <span>${capitalizeName(userName)}</span>`;
   }
 }
 
@@ -134,4 +143,44 @@ async function guestUser() {
 
 function changeToSignUp() {
   window.location.href = '../pages/signUp.html';
+}
+
+
+function initializePasswordInputs() {
+  const passwordInputs = document.querySelectorAll('.input-wrapper input[type="password"]');
+  passwordInputs.forEach(input => {
+    const passwordIcon = input.nextElementSibling;
+    const toggleVisibilityIcon = passwordIcon.nextElementSibling;
+    input.addEventListener('input', () => handlePasswordInput(input, passwordIcon, toggleVisibilityIcon));
+    toggleVisibilityIcon.addEventListener('click', () => togglePasswordVisibility(input, toggleVisibilityIcon));
+  });
+}
+
+
+function handlePasswordInput(passwordInput, passwordIcon, toggleVisibilityIcon) {
+  if (passwordInput.value.length > 0) {
+    showVisibilityIcon(passwordIcon, toggleVisibilityIcon);
+  } else {
+    showPasswordIcon(passwordIcon, toggleVisibilityIcon);
+  }
+}
+
+
+function togglePasswordVisibility(passwordInput, toggleVisibilityIcon) {
+  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+  const iconSrc = type === 'password' ? '../assets/img/pw_visibility_off.svg' : '../assets/img/pw_visibility.svg';
+  passwordInput.setAttribute('type', type);
+  toggleVisibilityIcon.setAttribute('src', iconSrc);
+}
+
+
+function showVisibilityIcon(passwordIcon, toggleVisibilityIcon) {
+  passwordIcon.classList.add('hidden');
+  toggleVisibilityIcon.classList.remove('hidden');
+}
+
+
+function showPasswordIcon(passwordIcon, toggleVisibilityIcon) {
+  passwordIcon.classList.remove('hidden');
+  toggleVisibilityIcon.classList.add('hidden');
 }
