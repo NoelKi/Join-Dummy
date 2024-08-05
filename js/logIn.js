@@ -141,11 +141,6 @@ async function guestUser() {
 }
 
 
-function changeToSignUp() {
-  window.location.href = '../pages/signUp.html';
-}
-
-
 function initializePasswordInputs() {
   const passwordInputs = document.querySelectorAll('.input-wrapper input[type="password"]');
   passwordInputs.forEach(input => {
@@ -183,4 +178,8 @@ function showVisibilityIcon(passwordIcon, toggleVisibilityIcon) {
 function showPasswordIcon(passwordIcon, toggleVisibilityIcon) {
   passwordIcon.classList.remove('hidden');
   toggleVisibilityIcon.classList.add('hidden');
+}
+
+function changeToSignUp() {
+  window.location.href = '../pages/signUp.html';
 }
