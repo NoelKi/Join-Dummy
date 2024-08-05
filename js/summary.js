@@ -8,10 +8,9 @@ function init() {
 async function getUserLists() {
   try {
     const userData = await getUserData(USER_ID);
+    const tasks = userData.tasks || [];
     CURRENT_USER_DATA = userData;
     setUserInitals();
-
-    const tasks = userData.tasks || [];
     countTasks(tasks);
     updateUrgentTask(tasks);
   } catch (error) {
@@ -29,16 +28,6 @@ async function onloadFunc() {
   } else {
     updateGreeting('Guest');
   }
-}
-
-
-function capitalizeName(name) {
-  return name.split(' ').map(capitalizeFirstLetter).join(' ');
-}
-
-
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
 
@@ -75,38 +64,44 @@ function countTasks(tasks) {
 }
 
 
-function getUrgentTasks(tasks) {
-  return tasks.filter(task => task.priority === 'urgent' && task.date);
+function updateUrgentTask(tasks) {
+  const urgentTasks = getUrgentTasks(tasks);
+
+  if (urgentTasks.length > 0) {
+    const closestTask = getClosestDeadline(urgentTasks);
+    document.getElementById('urgent-number').textContent = urgentTasks.length;
+    document.getElementById('due-date').textContent = formatDeadline(closestTask.date);
+  } else {
+    document.getElementById('urgent-number').textContent = '0';
+    document.getElementById('due-date').textContent = '';
+  }
 }
 
 
-function sortTasksByDate(tasks) {
-  return tasks.sort((a, b) => a.date - b.date);
+function capitalizeName(name) {
+  return name.split(' ').map(capitalizeFirstLetter).join(' ');
+}
+
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
+
+function getUrgentTasks(tasks) {
+  return tasks.filter((task) => task.priority === 'Urgent' && task.category !== 'done');
 }
 
 
 function getClosestDeadline(tasks) {
   return tasks.reduce((closest, current) => {
-    return current.date < closest.date ? current : closest;
+    return new Date(current.date) < new Date(closest.date) ? current : closest;
   }, tasks[0]);
 }
 
 
 function formatDeadline(date) {
   return new Date(date).toLocaleDateString('en-EN', { year: 'numeric', month: 'long', day: 'numeric' });
-}
-
-
-function updateUrgentTask(tasks) {
-  const urgentTasks = getUrgentTasks(tasks);
-  const closestTask = getClosestDeadline(urgentTasks);
-
-  document.getElementById('urgent-number').textContent = urgentTasks.length;
-  if (closestTask) {
-    document.getElementById('due-date').textContent = formatDeadline(closestTask.date);
-  } else {
-    document.getElementById('due-date').textContent = '';
-  }
 }
 
 
