@@ -8,10 +8,9 @@ function init() {
 async function getUserLists() {
   try {
     const userData = await getUserData(USER_ID);
+    const tasks = userData.tasks || [];
     CURRENT_USER_DATA = userData;
     setUserInitals();
-
-    const tasks = userData.tasks || [];
     countTasks(tasks);
     updateUrgentTask(tasks);
   } catch (error) {
