@@ -116,6 +116,10 @@
     font-size: 64px;
 }
 
+.greeting-guest {
+    color: black !important;
+}
+
 .urgent-button {
     background-color: #4589FF;
     color: white;
