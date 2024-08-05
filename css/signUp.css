@@ -205,15 +205,56 @@ body {
     color: #005DFF
 }
 
-.top-left-image {
+.j-logo {
     position: absolute;
-    top: 30px;
-    left: 30px;
+    top: 80px;
+    left: 77px;
     width: 100px;
     height: auto;
+    z-index: 1;
 }
 
-@media (max-width: 768px) {
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    pointer-events: none;
+}
+
+.hidden {
+    display: none;
+}
+
+#success-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4589FF;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    z-index: 1000;
+}
+
+#success-message p {
+    margin: 0;
+}
+
+.signup-button:disabled {
+    background-color: #D2E3FF;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 768px) {
     .signup-content {
         width: 80%;
         padding: 10px;
@@ -224,9 +265,16 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .signup-content {
         width: 90%;
+    }
+
+    .j-logo {
+        width: 60px;
+        height: auto;
+        top: 20px;
+        left: 20px;
     }
 
     .h1-signup {
@@ -243,5 +291,18 @@ body {
 
     .seperator {
         width: 88px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .j-logo {
+        width: 40px;
+        height: auto;
+        top: 10px;
+        left: 20px;
+    }
+
+    .signup-content {
+        height: 500px;
     }
 }

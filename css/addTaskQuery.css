@@ -1,0 +1,113 @@
+@media screen and (max-width: 1048px) {
+  .clear-create-buttons {
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 925px) {
+  .clear-task-btn {
+    display: none;
+  }
+
+  .clear-create-buttons {
+    z-index: 1;
+    white-space: nowrap;
+    gap: 0;
+    right: 50%;
+    left: 50%;
+    bottom: 41px;
+  }
+
+  .hidden-error-btn {
+    margin-left: -75px;
+  }
+
+  .task-css {
+    height: calc(100vh - 250px);
+  }
+}
+
+@media screen and (max-width: 801px) {
+  .clear-create-buttons {
+    bottom: 41px !important;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .input-title-task {
+    font-size: 28px !important;
+  }
+
+  .task-section-div {
+    margin-bottom: 16px;
+  }
+
+  .task-section-div label {
+    font-size: 16px;
+  }
+
+  .task-text::placeholder {
+    font-size: 16px;
+  }
+
+  .date-css {
+    font-size: 16px !important;
+  }
+
+  .button-urgent,
+  .button-medium,
+  .button-low {
+    font-size: 16px !important;
+  }
+
+  .select-option input {
+    font-size: 16px;
+  }
+
+  .option-category li {
+    font-size: 16px;
+  }
+
+  .search-assign input {
+    font-size: 16px !important;
+  }
+
+  .option-search::placeholder {
+    font-size: 16px;
+  }
+
+  .contact-text-task {
+    font-size: 16px;
+  }
+
+  .task-css {
+    padding: 10px;
+  }
+
+  .add-task-container {
+    margin: 0;
+    width: 440px;
+  }
+
+  .input-title-task {
+    padding-left: 0 !important;
+  }
+
+  .create-task-btn:disabled {
+    font-size: 19px;
+  }
+
+  .create-task-btn {
+    font-size: 19px !important;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .add-task-container {
+    width: 100%;
+    padding: 5px;
+  }
+}
+
+
+

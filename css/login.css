@@ -14,8 +14,9 @@
 
 body {
     margin: 0;
-    font-family: open sans;
+    font-family: 'open sans', sans-serif;
     background-color: #ffffff;
+    overflow-x: hidden;
 }
 
 .loading-screen {
@@ -59,51 +60,89 @@ body {
     }
 }
 
+.loading-screen-summary {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#greetingUser {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.greeting span {
+    display: flex;
+    color: #4589FF;
+    font-weight: 700;
+    font-size: 64px;
+}
+
+.greeting {
+    display: flex;
+    align-items: center;
+    color: #2A3647;
+    font-weight: 400;
+    font-size: 48px;
+}
+
 .main-content {
     width: 100%;
     height: 100vh;
-}
-
-.j-logo {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    width: 100px;
-    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .second-content {
     height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+}
+
+.j-logo {
+    position: absolute;
+    top: 80px;
+    left: 77px;
+    width: 100px;
+    height: auto;
+    z-index: 1;
 }
 
 .sign-up-button {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    height: 115px;
-    gap: 35px;
     position: absolute;
-    top: 0px;
+    top: 80px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1;
 }
 
 .sign-up-button label {
-    width: 168px;
-    height: 28px;
     font-weight: 400;
-    font-size: 23px;
+    font-size: 18px;
 }
 
 .sign-up-button button {
     font-weight: 400;
-    font-size: 23px;
-    width: 112px;
-    height: 48px;
-    margin-right: 20px;
+    font-size: 18px;
+    width: 120px;
+    height: 40px;
     border-radius: 8px;
     border: none;
     background: #4589FF;
@@ -112,31 +151,32 @@ body {
 }
 
 .sign-up-button button:hover {
-    background: #005DFF
+    background: #005DFF;
 }
 
 .login-content {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
     width: 652px;
     height: 491px;
     box-shadow: 0px 0px 10px 3px #00000014;
     border-radius: 30px;
-    gap: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
 .h1-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .h1-login {
     font-size: 48px;
-    margin: 20px 0 20px 0;
+    margin-bottom: 10px;
     text-align: center;
 }
 
@@ -149,25 +189,21 @@ body {
 .login-section {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    width: 65%;
-    height: 195px;
+    width: 100%;
 }
 
 .login-input {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    height: 152px;
-    gap: 32px;
+    width: 70%;
+    gap: 20px;
 }
 
 .input-wrapper {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #D1D1D1;
-    padding: 12px 0;
+    padding: 10px 0;
     position: relative;
     width: 100%;
 }
@@ -183,8 +219,9 @@ body {
     border: none;
     font-size: 19px;
     font-weight: 400;
-    opacity: 0.4;
+    opacity: 0.8;
     padding-left: 10px;
+    box-sizing: border-box;
 }
 
 .input-wrapper input:focus::placeholder {
@@ -195,17 +232,29 @@ body {
     outline: none;
 }
 
-.login-button {
-    font-weight: 400;
-    font-size: 23px;
+.log-sign-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin-top: 20px;
+}
+
+.login-button,
+.guest-login {
     width: 135px;
+    font-size: 23px;
     height: 48px;
     padding: 10px 35px;
     border-radius: 8px;
     border: none;
+    cursor: pointer;
+}
+
+.login-button {
     background: #4589FF;
     color: white;
-    cursor: pointer;
 }
 
 .login-button:hover {
@@ -213,16 +262,10 @@ body {
 }
 
 .guest-login {
-    font-weight: 400;
-    font-size: 23px;
     width: 197px;
-    height: 48px;
-    padding: 10px 35px;
-    border-radius: 8px;
     background: #FFFFFF;
     border: 1px solid #647188;
     color: #647188;
-    cursor: pointer;
 }
 
 .guest-login:hover {
@@ -232,6 +275,9 @@ body {
 
 .checkbox-wrapper {
     width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .remember-me {
@@ -251,19 +297,14 @@ body {
 
 .div-footer {
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
     width: 100%;
-    gap: 35px;
     display: flex;
     justify-content: center;
+    gap: 35px;
 }
 
 .div-footer a {
-    width: 108px;
-    height: 35px;
-    padding: 8px 0px 0px 0px;
-    gap: 8px;
-    opacity: 0px;
     font-weight: 400;
     font-size: 16px;
     color: #42526E;
@@ -275,43 +316,38 @@ body {
     color: #4589FF;
 }
 
-@media (max-width: 768px) {
-    .login-content {
-        width: 90%;
-        padding: 15px;
-    }
-
+@media screen and (max-width: 800px) {
     .j-logo {
-        width: 64px;
-        height: 78px;
-    }
-
-    .h1-container {
-        height: 56px;
+        width: 80px;
     }
 
     .h1-login {
-        font-size: 47px;
+        font-size: 40px;
+    }
+
+    .seperator {
+        width: 120px;
     }
 
     .sign-up-button {
-        position: unset;
-        justify-content: center;
-        height: 43px;
-        font-size: 19px;
+        top: 80px;
+        right: 10px;
+        gap: 5px;
+        font-size: 16px;
     }
 
     .sign-up-button label,
     .sign-up-button button {
-        font-size: 19px;
+        font-size: 16px;
     }
 
-    .seperator {
-        width: 100px;
+    .login-content {
+        width: 90%;
+        max-width: 652px;
+        margin-top: 0;
     }
 
     .log-sign-buttons {
-        display: flex;
         flex-direction: column;
         gap: 10px;
     }
@@ -321,29 +357,78 @@ body {
         width: 180px;
         font-size: 19px;
     }
+
+    .div-footer {
+        bottom: 10px;
+    }
 }
 
-
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .j-logo {
         width: 70px;
-    }
-
-    .login-button,
-    .guest-login {
-        width: 100%;
-        font-size: 19px;
+        height: auto;
+        top: 20px;
+        left: 20px;
     }
 
     .seperator {
-        width: 80px;
+        width: 100px;
     }
 
     .login-content {
         width: 95%;
+        padding: 32px 16px;
+        margin-top: 20px;
+    }
+
+    .login-input {
+        width: 100%;
+    }
+
+    .second-content {
+        flex-direction: column;
     }
 
     .login-section {
-        width: 95%;
+        width: 100%;
+    }
+
+    .log-sign-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .login-button,
+    .guest-login {
+        width: 180px;
+        font-size: 16px;
+        padding: 8px 0;
+    }
+
+    .sign-up-button {
+        position: static;
+        margin-top: 80px;
+        right: 0;
+        top: 0;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .div-footer {
+        bottom: 5px;
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .j-logo {
+        width: 40px;
+        height: auto;
+        top: 10px;
+        left: 20px;
+    }
+
+    .sign-up-button {
+        margin-top: 20px;
     }
 }

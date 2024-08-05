@@ -47,6 +47,7 @@
 
 .task-text::placeholder {
   color: #d1d1d1;
+  padding-left: 16px;
 }
 
 .task-section-div label {
@@ -58,10 +59,6 @@
 .display-flex {
   display: flex;
   align-items: center;
-}
-
-.date-css {
-  color: #d1d1d1;
 }
 
 .select-box {

@@ -14,6 +14,10 @@
     <div class="loading-screen" id="loading-screen">
         <img class="loading-logo" id="loading-logo" src="../assets/img/joinLoad.svg" alt="Loading">
     </div>
+    <div class="loading-screen-summary" id="loading-screen-summary">
+        <p id="greetingUserLoading" class="greetingUser"></p>
+        <h1 class="greeting" id="greetingLoading"></h1>
+    </div>
 
     <div class="main-content" id="main-content">
         <img class="j-logo" src="../assets/img/j.svg" alt="">
@@ -24,7 +28,7 @@
                     <div class="seperator"></div>
                 </div>
                 <div class="login-section">
-                    <div class="login-input">
+                    <form class="login-input">
                         <div class="input-wrapper">
                             <input type="text" id="email" placeholder="Email" required>
                             <img src="../assets/img/mail.svg" alt="Email Icon">
@@ -38,11 +42,11 @@
                                     onclick="toggleCheckBox()" src="../assets/img/rememberDefault.svg" alt="">
                                 Remember me</p>
                         </form>
-                    </div>
+                    </form>
                 </div>
                 <div class="log-sign-buttons">
                     <button class="login-button" id="login-button" onclick="login()">Log in</button>
-                    <button class="guest-login">Guest log in</button>
+                    <button class="guest-login" id="guest-login" onclick="guestLogin()">Guest log in</button>
                 </div>
             </div>
             <div class="sign-up-button">

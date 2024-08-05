@@ -2,35 +2,14 @@ function init() {
   includeHTML();
   getUserLists();
   onloadFunc();
-  includeHTML();
-  updateGreeting();
 }
 
-//async function getUserLists() {
-//  try {
-//    CURRENT_USER_DATA = await getUserData(USER_ID);
-//    setUserInitals();
-//    if (!CURRENT_USER_DATA.contacts) {
-//      contacts = [];
-//    } else {
-//      contacts = CURRENT_USER_DATA.contacts;
-//    }
-//    if (!CURRENT_USER_DATA.tasks) {
-//      tasks = [];
-//    } else {
-//      tasks = CURRENT_USER_DATA.tasks;
-//      countTasks(CURRENT_USER_DATA.tasks);
-//    }
-//  } catch (error) {
-//    console.error("Fehler beim Abrufen der Benutzerdaten:", error);
-//  }
-//}
 
 async function getUserLists() {
   try {
     const userData = await getUserData(USER_ID);
     CURRENT_USER_DATA = userData;
-    setTimeout(setUserInitals, 0);
+    setUserInitals();
 
     const tasks = userData.tasks || [];
     countTasks(tasks);
@@ -40,22 +19,28 @@ async function getUserLists() {
   }
 }
 
+
 async function onloadFunc() {
   const userId = await loadUserIdLocalStorage();
   const userName = JSON.parse(localStorage.getItem('userName'));
 
   if (userId && userName) {
-    updateGreeting(userName);
+    updateGreeting(capitalizeFirstLetter(userName));
   } else {
-    updateGreeting('Guest!');
+    updateGreeting('Guest');
   }
 }
 
-function updateGreeting(username) {
-  let greetingElement = document.getElementById("greeting");
-  let currentTime = new Date().getHours();
-  let greeting;
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
+
+function updateGreeting(username) {
+  const greetingElement = document.getElementById("greeting");
+  const currentTime = new Date().getHours();
+  let greeting;
   if (currentTime < 12) {
     greeting = "Good morning";
   } else if (currentTime < 17) {
@@ -63,9 +48,13 @@ function updateGreeting(username) {
   } else {
     greeting = "Good evening";
   }
-
-  greetingElement.innerHTML = `${greeting}, &nbsp; <span>${username}</span>`;
+  if (username === "Guest") {
+    greetingElement.innerHTML = `${greeting}`;
+  } else {
+    greetingElement.innerHTML = `${greeting}, &nbsp; <span>${username}</span>`;
+  }
 }
+
 
 function countTasks(tasks) {
   const taskCounts = {};
@@ -80,13 +69,16 @@ function countTasks(tasks) {
   document.getElementById('done-number').textContent = taskCounts.done || 0;
 }
 
+
 function getUrgentTasks(tasks) {
   return tasks.filter((task) => task.date);
 }
 
+
 function sortTasksByDate(tasks) {
   return tasks.sort((a, b) => a.date - b.date);
 }
+
 
 function getClosestDeadline(tasks) {
   return tasks.reduce((closest, current) => {
@@ -94,9 +86,11 @@ function getClosestDeadline(tasks) {
   }, tasks[0]);
 }
 
+
 function formatDeadline(date) {
   return new Date(date).toLocaleDateString('en-EN', { year: 'numeric', month: 'long', day: 'numeric' });
 }
+
 
 function updateUrgentTask(tasks) {
   const urgentTasks = getUrgentTasks(tasks);
@@ -110,6 +104,7 @@ function updateUrgentTask(tasks) {
   }
 }
 
+
 function loadBoard() {
-  window.location.href = '/pages/board.html'
+  window.location.href = '/pages/board.html';
 }
