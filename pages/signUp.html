@@ -23,7 +23,7 @@
                     <div class="seperator"></div>
                 </div>
                 <div class="signup-section">
-                    <div class="signup-input">
+                    <form class="signup-input">
                         <div class="input-wrapper">
                             <input type="text" id="name" placeholder="Name" required autocomplete="name">
                             <img src="../assets/img/personOverlay.svg" alt="Name Icon">
@@ -31,7 +31,7 @@
                         <div class="input-wrapper">
                             <input type="email" id="email" placeholder="Email" required autocomplete="email">
                             <img src="../assets/img/mail.svg" alt="Email Icon">
-                            <p id="email-error" class="error-message hidden">Invalid email address.</p>
+                            <p id="email-exists-message" class="error-message hidden">Invalid email address.</p>
                         </div>
 
                         <div class="input-wrapper">
@@ -50,7 +50,7 @@
                             <p class="remember-me">I accept the <a href="../pages/privacyPolicy.html"
                                     target="_blank">Privacy policy</a></p>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div>
                     <button class="signup-button" id="signup-button" onclick="signUp()" disabled>Sign up</button>
