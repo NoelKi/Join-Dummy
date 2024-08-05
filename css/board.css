@@ -389,7 +389,7 @@
 }
 
 #edit-task-board-overlay {
-  display: block;
+  display: none;
 }
 
 .show-task-container {

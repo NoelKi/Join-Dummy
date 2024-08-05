@@ -510,6 +510,33 @@ function showEdibleTask(id) {
   if (task.priority === "Medium") {
     document.getElementById("edit-low").classList.add("selected-btn");
   }
-  const collaborators = task.collaborators || [];
-  console.log(collaborators);
+  collaborators = task.collaborators || [];
+  renderCollaborators();
+  setHighlight();
+}
+
+function setHighlight() {
+  const elements = document.querySelectorAll(".contact-task-assign");
+  const collaboratorIds = getCollaboratorIds();
+  elements.forEach((element) => {
+    if (collaboratorIds.includes(String(element.getAttribute("data-id")))) {
+      element.classList.add("selected");
+      const imgElement = element.querySelector(".check-box-task img");
+      if (imgElement) {
+        console.log(imgElement.src);
+        imgElement.src = "../assets/img/checkedTaskHtml.svg";
+      }
+    }
+  });
+}
+
+function getCollaboratorIds() {
+  const collaboratorIds = [];
+  for (const collab in collaborators) {
+    if (Object.hasOwnProperty.call(collaborators, collab)) {
+      const element = collaborators[collab];
+      collaboratorIds.push(String(element.id));
+    }
+  }
+  return collaboratorIds;
 }
