@@ -10,7 +10,7 @@
     <script src="../js/logIn.js"></script>
 </head>
 
-<body>
+<body onload="initi()">
     <div class="loading-screen" id="loading-screen">
         <img class="loading-logo" id="loading-logo" src="../assets/img/joinLoad.svg" alt="Loading">
     </div>
@@ -30,18 +30,24 @@
                 <div class="login-section">
                     <form class="login-input">
                         <div class="input-wrapper">
-                            <input type="text" id="email" placeholder="Email" required>
+                            <input type="email" id="email" placeholder="Email" autocomplete="email" required>
                             <img src="../assets/img/mail.svg" alt="Email Icon">
                         </div>
                         <div class="input-wrapper">
-                            <input type="password" id="password" placeholder="Password" required>
-                            <img src="../assets/img/lock.svg" alt="Password Icon">
+                            <input type="password" id="password" placeholder="Password" autocomplete="current-password"
+                                required>
+                            <img src="../assets/img/lock.svg" alt="Password Icon" class="password-icon"
+                                id="password-icon">
+                            <img src="../assets/img/pw_visibility_off.svg" alt="Toggle Visibility"
+                                class="toggle-visibility hidden" id="toggle-password-visibility">
                         </div>
-                        <form class="checkbox-wrapper">
-                            <p for="rememberMe" class="remember-me"><img id="checkbox-remember"
-                                    onclick="toggleCheckBox()" src="../assets/img/rememberDefault.svg" alt="">
-                                Remember me</p>
-                        </form>
+                        <div class="checkbox-wrapper">
+                            <p class="remember-me">
+                                <img id="checkbox-remember" class="checkbox-img" onclick="toggleCheckBox()"
+                                    src="../assets/img/rememberDefault.svg" alt="">
+                                Remember me
+                            </p>
+                        </div>
                     </form>
                 </div>
                 <div class="log-sign-buttons">
@@ -59,6 +65,3 @@
             <a href="../pages/legalNoticeGuest.html">Legal Notice</a>
         </div>
     </div>
-</body>
-
-</html>

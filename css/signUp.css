@@ -109,6 +109,10 @@ body {
     width: 24px;
 }
 
+.toggle-visibility {
+    cursor: pointer;
+}
+
 .input-wrapper input {
     flex: 1;
     border: none;
@@ -158,10 +162,6 @@ body {
     align-items: center;
 }
 
-#checkBoxRemember {
-    cursor: pointer;
-}
-
 #checkBoxRemember:hover {
     background: #EDF2FA;
 }
@@ -171,6 +171,10 @@ body {
     text-decoration: none;
     cursor: pointer;
     margin-left: 5px;
+}
+
+.checkbox-img {
+    cursor: pointer;
 }
 
 .remember-me a:hover {

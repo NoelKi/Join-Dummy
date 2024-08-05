@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up Page</title>
     <script src="../js/signUp.js"></script>
+    <script src="../js/logIn.js"></script>
     <script src="../js/firebase.js"></script>
     <link rel="stylesheet" href="../css/signUp.css">
 </head>
 
-<body>
+<body onload="initi()">
     <img src="../assets/img/joinLoad.svg" class="j-logo" alt="SignUp Join Image">
     <div class="overlay hidden" id="overlay"></div>
     <div class="main-content">
@@ -37,15 +38,21 @@
                         <div class="input-wrapper">
                             <input type="password" id="password" placeholder="Password" required
                                 autocomplete="new-password">
-                            <img src="../assets/img/lock.svg" alt="Password Icon">
+                            <img src="../assets/img/lock.svg" alt="Password Icon" class="password-icon"
+                                id="password-icon">
+                            <img src="../assets/img/pw_visibility_off.svg" alt="Toggle Visibility"
+                                class="toggle-visibility hidden" id="toggle-password-visibility">
                         </div>
                         <div class="input-wrapper">
-                            <input type="password" id="confirm-password" placeholder="Confirm Password" required
-                                autocomplete="new-password">
-                            <img src="../assets/img/lock.svg" alt="Password Icon">
+                            <input type="password" id="confirm-password password" placeholder="Confirm Password"
+                                required autocomplete="new-password">
+                            <img src="../assets/img/lock.svg" alt="Password Icon" class="password-icon"
+                                id="password-icon">
+                            <img src="../assets/img/pw_visibility_off.svg" alt="Toggle Visibility"
+                                class="toggle-visibility hidden" id="toggle-password-visibility">
                         </div>
                         <div class="checkbox-wrapper">
-                            <img id="checkbox-remember" src="../assets/img/rememberDefault.svg"
+                            <img id="checkbox-remember" class="checkbox-img" src="../assets/img/rememberDefault.svg"
                                 alt="Privacy Policy Checkbox" onclick="toggleCheckBox()">
                             <p class="remember-me">I accept the <a href="../pages/privacyPolicy.html"
                                     target="_blank">Privacy policy</a></p>

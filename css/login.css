@@ -214,6 +214,10 @@ body {
     width: 24px;
 }
 
+.toggle-visibility {
+    cursor: pointer;
+}
+
 .input-wrapper input {
     flex: 1;
     border: none;
@@ -230,6 +234,14 @@ body {
 
 .input-wrapper input:focus {
     outline: none;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+}
+
+.hidden {
+    display: none;
 }
 
 .log-sign-buttons {
@@ -287,7 +299,7 @@ body {
     align-items: center;
 }
 
-#checkBoxRemember {
+.checkbox-img {
     cursor: pointer;
 }
 

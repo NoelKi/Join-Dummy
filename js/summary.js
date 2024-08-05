@@ -25,10 +25,15 @@ async function onloadFunc() {
   const userName = JSON.parse(localStorage.getItem('userName'));
 
   if (userId && userName) {
-    updateGreeting(capitalizeFirstLetter(userName));
+    updateGreeting(capitalizeName(userName));
   } else {
     updateGreeting('Guest');
   }
+}
+
+
+function capitalizeName(name) {
+  return name.split(' ').map(capitalizeFirstLetter).join(' ');
 }
 
 
@@ -49,7 +54,7 @@ function updateGreeting(username) {
     greeting = "Good evening";
   }
   if (username === "Guest") {
-    greetingElement.innerHTML = `${greeting}`;
+    greetingElement.innerHTML = `<span class="greeting-guest">${greeting}</span>`;
   } else {
     greetingElement.innerHTML = `${greeting}, &nbsp; <span>${username}</span>`;
   }
