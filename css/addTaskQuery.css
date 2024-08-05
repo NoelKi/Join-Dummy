@@ -1,3 +1,5 @@
+/*AddTask.html Starts here  */
+
 @media screen and (max-width: 1048px) {
   .clear-create-buttons {
     flex-direction: column-reverse;
@@ -58,6 +60,16 @@
   .button-medium,
   .button-low {
     font-size: 16px !important;
+    display: flex;
+    align-items: center;
+  }
+
+  .buttons > button:nth-child(1) {
+    margin-right: 0px !important;
+  }
+
+  .buttons > button:nth-child(2) {
+    margin-right: 0px !important;
   }
 
   .select-option input {
@@ -109,5 +121,4 @@
   }
 }
 
-
-
+/*AddTask.html ends here  */
