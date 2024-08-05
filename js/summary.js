@@ -31,16 +31,6 @@ async function onloadFunc() {
 }
 
 
-function capitalizeName(name) {
-  return name.split(' ').map(capitalizeFirstLetter).join(' ');
-}
-
-
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-}
-
-
 function updateGreeting(username) {
   const greetingElement = document.getElementById("greeting");
   const currentTime = new Date().getHours();
@@ -74,6 +64,30 @@ function countTasks(tasks) {
 }
 
 
+function updateUrgentTask(tasks) {
+  const urgentTasks = getUrgentTasks(tasks);
+
+  if (urgentTasks.length > 0) {
+    const closestTask = getClosestDeadline(urgentTasks);
+    document.getElementById('urgent-number').textContent = urgentTasks.length;
+    document.getElementById('due-date').textContent = formatDeadline(closestTask.date);
+  } else {
+    document.getElementById('urgent-number').textContent = '0';
+    document.getElementById('due-date').textContent = '';
+  }
+}
+
+
+function capitalizeName(name) {
+  return name.split(' ').map(capitalizeFirstLetter).join(' ');
+}
+
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
+
 function getUrgentTasks(tasks) {
   return tasks.filter((task) => task.priority === 'Urgent' && task.category !== 'done');
 }
@@ -88,20 +102,6 @@ function getClosestDeadline(tasks) {
 
 function formatDeadline(date) {
   return new Date(date).toLocaleDateString('en-EN', { year: 'numeric', month: 'long', day: 'numeric' });
-}
-
-
-function updateUrgentTask(tasks) {
-  const urgentTasks = getUrgentTasks(tasks);
-
-  if (urgentTasks.length > 0) {
-    const closestTask = getClosestDeadline(urgentTasks);
-    document.getElementById('urgent-number').textContent = urgentTasks.length;
-    document.getElementById('due-date').textContent = formatDeadline(closestTask.date);
-  } else {
-    document.getElementById('urgent-number').textContent = '0';
-    document.getElementById('due-date').textContent = '';
-  }
 }
 
 
