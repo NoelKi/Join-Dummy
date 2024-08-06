@@ -1,6 +1,6 @@
 /**
  * Initializes the application by including HTML components, retrieving user lists, and executing onload functions.
- *  * This function serves as the entry point of the application. It initializes the necessary HTML components,
+ * This function serves as the entry point of the application. It initializes the necessary HTML components,
  * retrieves user-specific data, and sets up the application state by calling `includeHTML`, `getUserLists`, and `onloadFunc`.
  * @function init
  */
