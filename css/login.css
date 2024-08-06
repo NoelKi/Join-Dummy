@@ -328,6 +328,13 @@ body {
     color: #4589FF;
 }
 
+@media screen and (max-width: 900px) {
+    .greeting {
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
 @media screen and (max-width: 800px) {
     .j-logo {
         width: 80px;
