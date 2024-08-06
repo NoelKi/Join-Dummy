@@ -393,20 +393,24 @@
     }
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 450px) {
     .button-container {
         grid-template-columns: repeat(2, 186px);
     }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 420px) {
     .button-container {
         grid-template-columns: repeat(2, 170px);
     }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 380px) {
     .button-container {
-        grid-template-columns: repeat(2, 150px);
+        grid-template-columns: repeat(2, 140px);
+    }
+
+    .urgent-button {
+        gap: 25px;
     }
 }
