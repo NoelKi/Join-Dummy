@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/sidebar.css" />
     <link rel="stylesheet" href="../assets/fonts/fonts.css" />
     <link rel="icon" type="image/png" href="../assets/img/j.svg" />
-
+    <script src="../js/auth.js"></script>
     <script src="../js/w3c.js"></script>
     <script src="../js/header.js"></script>
     <script src="../js/summary.js" defer></script>
@@ -20,92 +20,92 @@
 <body onload="includeHTML(); updateGreeting();">
     <div w3-include-html="../assets/templates/header.html"></div>
     <div class="wrap">
-      <div w3-include-html="../assets/templates/sidebar.html"></div>
+        <div w3-include-html="../assets/templates/sidebar.html"></div>
 
-    <div class="summaryOverview">
-        <div class="greetingContainer">
-            <p id="greetingUser" class="greetingUser"></p>
-            <h1 class="greeting" id="greeting">Good morning</h1>
+        <div class="summaryOverview">
+            <div class="greetingContainer">
+                <p id="greetingUser" class="greetingUser"></p>
+                <h1 class="greeting" id="greeting">Good morning</h1>
+            </div>
+            <div class="buttonContainer">
+                <button class="urgentButton" onclick="">
+                    <div class="btnUrgentFront">
+                        <div class="flexRow">
+                            <img src="" alt="clock icon">
+                            <h2 id="urgentNumber" class="taskNumber">2</h2>
+                        </div>
+                        <p btnText>Tasks urgent</p>
+                    </div>
+                    <div class="withLine"></div>
+                    <div class="btnUrgentBack missedDeadline">
+                        <h2 id="dueDate"></h2>
+                        <p id="deadline">Missed Deadline</p>
+                    </div>
+                </button>
+                <button class="toDoBtn" onclick="">
+                    <div class="toDoBtnRow">
+                        <img src="" alt="toDo Icon">
+                        <h2 id="ToDoNumber" class="classNumber">2</h2>
+                    </div>
+                    <p class="btnText">Tasks To-Do</p>
+                </button>
+
+                <button class="lightTaskBtn board" onclick="">
+                    <div class="flexRow gapBtnLight">
+                        <div class="summaryBoarderIcon">
+                            <img src="" alt="">
+                        </div>
+                        <h2 id="bordTasksNumber" class="TaskNumber">6</h2>
+                    </div>
+                    <p class="btnText">
+                        Tasks on
+                        <br>
+                        Board
+                    </p>
+                </button>
+
+                <button class="lightTaskBtn progress" onclick="">
+                    <div class="flexRow gapBtnLight">
+                        <div class="summaryBoarderIcon">
+                            <img src="" alt="">
+                        </div>
+                        <h2 id="progressTaskNumber" class="TaskNumber">6</h2>
+                    </div>
+                    <p class="btnText">
+                        Tasks in
+                        <br>
+                        Progress
+                    </p>
+                </button>
+
+                <button class="lightTaskBtn feedback" onclick="">
+                    <div class="flexRow gapBtnLight">
+                        <div class="summaryBoarderIcon">
+                            <img src="" alt="">
+                        </div>
+                        <h2 id="feedbackNumber" class="TaskNumber">6</h2>
+                    </div>
+                    <p class="btnText">
+                        Awaiting
+                        <br>
+                        Feedback
+                    </p>
+                </button>
+                <button class="lightTaskBtn done" onclick="">
+                    <div class="flexRow gapBtnLight">
+                        <div class="summaryBoarderIcon">
+                            <img src="" alt="">
+                        </div>
+                        <h2 id="doneNumber" class="TaskNumber">6</h2>
+                    </div>
+                    <p class="btnText">
+                        Tasks
+                        <br>
+                        done
+                    </p>
+                </button>
+            </div>
         </div>
-        <div class="buttonContainer">
-            <button class="urgentButton" onclick="">
-                <div class="btnUrgentFront">
-                    <div class="flexRow">
-                        <img src="" alt="clock icon">
-                        <h2 id="urgentNumber" class="taskNumber">2</h2>
-                    </div>
-                    <p btnText>Tasks urgent</p>
-                </div>
-                <div class="withLine"></div>
-                <div class="btnUrgentBack missedDeadline">
-                    <h2 id="dueDate"></h2>
-                    <p id="deadline">Missed Deadline</p>
-                </div>
-            </button>
-            <button class="toDoBtn" onclick="">
-                <div class="toDoBtnRow">
-                    <img src="" alt="toDo Icon">
-                    <h2 id="ToDoNumber" class="classNumber">2</h2>
-                </div>
-                <p class="btnText">Tasks To-Do</p>
-            </button>
-
-            <button class="lightTaskBtn board" onclick="">
-                <div class="flexRow gapBtnLight">
-                    <div class="summaryBoarderIcon">
-                        <img src="" alt="">
-                    </div>
-                    <h2 id="bordTasksNumber" class="TaskNumber">6</h2>
-                </div>
-                <p class="btnText">
-                    Tasks on
-                    <br>
-                    Board
-                </p>
-            </button>
-
-            <button class="lightTaskBtn progress" onclick="">
-                <div class="flexRow gapBtnLight">
-                    <div class="summaryBoarderIcon">
-                        <img src="" alt="">
-                    </div>
-                    <h2 id="progressTaskNumber" class="TaskNumber">6</h2>
-                </div>
-                <p class="btnText">
-                    Tasks in
-                    <br>
-                    Progress
-                </p>
-            </button>
-
-            <button class="lightTaskBtn feedback" onclick="">
-                <div class="flexRow gapBtnLight">
-                    <div class="summaryBoarderIcon">
-                        <img src="" alt="">
-                    </div>
-                    <h2 id="feedbackNumber" class="TaskNumber">6</h2>
-                </div>
-                <p class="btnText">
-                    Awaiting
-                    <br>
-                    Feedback
-                </p>
-            </button>
-            <button class="lightTaskBtn done" onclick="">
-                <div class="flexRow gapBtnLight">
-                    <div class="summaryBoarderIcon">
-                        <img src="" alt="">
-                    </div>
-                    <h2 id="doneNumber" class="TaskNumber">6</h2>
-                </div>
-                <p class="btnText">
-                    Tasks
-                    <br>
-                    done
-                </p>
-            </button>
-        </div>
-    </div>
 </body>
 
 </html>

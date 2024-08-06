@@ -112,3 +112,9 @@
     justify-content: center;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .board-top-container {
+    width: 95%;
+  }
+}
