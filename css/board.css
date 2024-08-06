@@ -1,5 +1,9 @@
+* {
+  margin: 0;
+}
+
 .board-section {
-  max-width: 100%;
+  width: 100%;
   padding-left: 10px;
   padding-right: 19px;
   margin: 0 auto;
@@ -80,7 +84,7 @@
   align-items: flex-start;
   overflow-x: scroll;
   justify-content: space-between;
-  width: 1080px;
+  width: 100%;
   height: calc(100vh -96px - 200px);
 }
 
@@ -610,4 +614,3 @@
   right: 60px;
   bottom: 30px;
 }
-
