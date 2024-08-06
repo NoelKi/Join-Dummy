@@ -61,3 +61,43 @@
   background: #555;
   cursor: pointer;
 }
+
+/* Legal-Notice Privacy-policy Help */
+
+.legal-notice-policy-help::-webkit-scrollbar {
+  width: 8px;
+}
+
+.legal-notice-policy-help::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 6px;
+}
+
+.legal-notice-policy-help::-webkit-scrollbar-thumb {
+  background: #a8a8a8;
+  border-radius: 10px;
+}
+
+.legal-notice-policy-help::-webkit-scrollbar-button {
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.legal-notice-policy-help::-webkit-scrollbar-button:start {
+  background-image: url("../assets/img/scrollUp.svg");
+}
+
+.legal-notice-policy-help::-webkit-scrollbar-button:end {
+  background-image: url("../assets/img/scrollDown.svg");
+}
+
+.legal-notice-policy-help::-webkit-scrollbar-button:decrement,
+.legal-notice-policy-help::-webkit-scrollbar-button:increment {
+  display: flex;
+}
+
+.legal-notice-policy-help::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  cursor: pointer;
+}

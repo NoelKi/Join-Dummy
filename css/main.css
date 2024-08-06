@@ -47,9 +47,6 @@ h3 {
   padding-right: 45px;
 }
 
-.legal-notice::-webkit-scrollbar {
-}
-
 a {
   display: inline-block;
   position: relative;
@@ -147,7 +144,7 @@ a:hover .arrow-left {
   }
 
   .text-style {
-  font-size: 16px;
+    font-size: 16px;
   }
 
   .big-blue-text-help {
