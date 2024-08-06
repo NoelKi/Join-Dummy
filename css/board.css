@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 .board-section {
   width: 100%;
   padding-left: 10px;

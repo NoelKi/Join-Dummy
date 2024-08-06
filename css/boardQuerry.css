@@ -18,7 +18,7 @@
 
   .outer-board-container {
     /*min-height: 50px;*/
-    width: calc(100vw - 196px);
+    width: 100%;
   }
 
   .task-container {
@@ -38,7 +38,7 @@
 
 @media (max-width: 800px) {
   .board-content-container {
-    width: calc(100vw - 5px);
+    width: 95%;
   }
 
   .board-section {
