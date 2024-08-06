@@ -95,12 +95,6 @@
     <div id="edit-task-board-overlay">
       <div class="show-task-overlay">
         <div class="show-task-container-edit">
-
-          <div class="ok-btn-container">
-            <button class="ok-btn" type="button" onclick="updateTask(editId);">
-              Ok <img src="../assets/img/checkSymbol.svg">
-            </button>
-          </div>
         </div>
       </div>
     </div>
@@ -116,7 +110,7 @@
           <span class="title-add-text">Add Task</span>
           <img class="close-btn-overlay-task" onclick="closeOverlay()" src="../assets/img/closeTask.svg">
         </div>
-        <div class="board-overlay-main-container" onclick="event.stopPropagation()" id="add-edit-task-template">
+        <div class="board-overlay-main-container" onclick="event.stopPropagation()">
           <div class="add-task-container">
             <form id="task-form" class="task-css-board hide-scrollbar-board" onsubmit="createTask(event);">
 
@@ -228,6 +222,11 @@
 
                       </button>
                     </div>
+                  </div>
+                  <div class="ok-btn-container" style="display: none;">
+                    <button class="ok-btn" type="button" onclick="updateTask(editId);">
+                      Ok <img src="../assets/img/checkSymbol.svg">
+                    </button>
                   </div>
                 </div>
                 <div class="hidden-error-btn" id="hidden-error" onclick="disabledClick()"></div>
