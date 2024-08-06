@@ -1,5 +1,13 @@
 let isPolicyAccepted = false;
 
+/**
+ * Sends sign-up data to the server.
+ * @async
+ * @function postSignUpData
+ * @param {Object} data - The user data to be posted.
+ * @returns {Object} The response from the server.
+ * @throws Will throw an error if the network response is not ok.
+ */
 async function postSignUpData(data) {
     try {
         const response = await fetch(`${BASE_URL}users.json`, {
@@ -17,6 +25,11 @@ async function postSignUpData(data) {
 }
 
 
+/**
+ * Handles the sign-up process by validating inputs, checking if the email already exists, and posting the user data.
+ * @async
+ * @function signUp
+ */
 async function signUp() {
     const { name, email, password, confirmPassword } = getInputValues();
     const error = validateInputs({ name, email, password, confirmPassword });
@@ -30,6 +43,11 @@ async function signUp() {
 }
 
 
+/**
+ * Retrieves the values from the input fields.
+ * @function getInputValues
+ * @returns {Object} An object containing the input values.
+ */
 function getInputValues() {
     return {
         name: document.getElementById('name').value,
@@ -40,6 +58,16 @@ function getInputValues() {
 }
 
 
+/**
+ * Validates the user inputs.
+ * @function validateInputs
+ * @param {Object} inputs - The inputs to be validated.
+ * @param {string} inputs.name - The name input.
+ * @param {string} inputs.email - The email input.
+ * @param {string} inputs.password - The password input.
+ * @param {string} inputs.confirmPassword - The confirm password input.
+ * @returns {string|null} An error message if validation fails, otherwise null.
+ */
 function validateInputs({ name, email, password, confirmPassword }) {
     if (!isPolicyAccepted) return 'You must accept the privacy policy to sign up.';
     if (!name || !email || !password || !confirmPassword) return 'Please fill out all fields.';
@@ -52,12 +80,23 @@ function validateInputs({ name, email, password, confirmPassword }) {
 }
 
 
+/**
+ * Checks if an email already exists in the user database.
+ * @async
+ * @function emailExists
+ * @param {string} email - The email to be checked.
+ * @returns {boolean} True if the email exists, otherwise false.
+ */
 async function emailExists(email) {
     const users = await fetchUsers();
     return Object.values(users).some(user => user.email === email);
 }
 
 
+/**
+ * Toggles the policy acceptance checkbox and enables/disables the sign-up button accordingly.
+ * @function toggleCheckBox
+ */
 function toggleCheckBox() {
     const checkBoxImage = document.getElementById('checkbox-remember');
     const signUpButton = document.getElementById('signup-button');
@@ -68,6 +107,10 @@ function toggleCheckBox() {
 }
 
 
+/**
+ * Displays a success message and redirects to the login page after a delay.
+ * @function showSuccessMessage
+ */
 function showSuccessMessage() {
     const successMessageElement = document.getElementById('success-message');
     const overlayElement = document.getElementById('overlay');

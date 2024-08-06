@@ -1,3 +1,7 @@
+/**
+ * Initializes the application by including HTML components, retrieving user lists, and executing onload functions.
+ * @function init
+ */
 function init() {
   includeHTML();
   getUserLists();
@@ -5,6 +9,12 @@ function init() {
 }
 
 
+/**
+ * Fetches user data and initializes user-related information.
+ * @async
+ * @function getUserLists
+ * @throws Will throw an error if user data cannot be fetched.
+ */
 async function getUserLists() {
   try {
     const userData = await getUserData(USER_ID);
@@ -19,6 +29,11 @@ async function getUserLists() {
 }
 
 
+/**
+ * Loads user ID and user name from local storage and updates the greeting message.
+ * @async
+ * @function onloadFunc
+ */
 async function onloadFunc() {
   const userId = await loadUserIdLocalStorage();
   const userName = JSON.parse(localStorage.getItem('userName'));
@@ -31,6 +46,11 @@ async function onloadFunc() {
 }
 
 
+/**
+ * Updates the greeting message on the page based on the current time and user name.
+ * @function updateGreeting
+ * @param {string} username - The name of the user to greet.
+ */
 function updateGreeting(username) {
   const greetingElement = document.getElementById("greeting");
   const currentTime = new Date().getHours();
@@ -50,6 +70,11 @@ function updateGreeting(username) {
 }
 
 
+/**
+ * Counts the number of tasks in each category and updates the corresponding elements on the page.
+ * @function countTasks
+ * @param {Object[]} tasks - The list of tasks to count.
+ */
 function countTasks(tasks) {
   const taskCounts = {};
   tasks.forEach((task) => {
@@ -64,47 +89,98 @@ function countTasks(tasks) {
 }
 
 
+/**
+ * Updates the urgent task information on the page.
+ * @function updateUrgentTask
+ * @param {Object[]} tasks - The list of tasks to check for urgency.
+ */
 function updateUrgentTask(tasks) {
-  const urgentTasks = getUrgentTasks(tasks);
+  const activeTasks = tasks.filter(task => task.category !== 'done');
+  const tasksDueInNextSevenDays = getTasksDueInNextSevenDays(activeTasks);
+  document.getElementById('urgent-number').textContent = tasksDueInNextSevenDays.length;
 
-  if (urgentTasks.length > 0) {
-    const closestTask = getClosestDeadline(urgentTasks);
-    document.getElementById('urgent-number').textContent = urgentTasks.length;
+  if (tasksDueInNextSevenDays.length > 0) {
+    const closestTask = getClosestDeadline(tasksDueInNextSevenDays);
     document.getElementById('due-date').textContent = formatDeadline(closestTask.date);
   } else {
-    document.getElementById('urgent-number').textContent = '0';
-    document.getElementById('due-date').textContent = '';
+    document.getElementById('due-date').textContent = 'Keine dringenden Aufgaben';
   }
 }
 
 
+/**
+ * Capitalizes the first letter of each word in a name.
+ * @function capitalizeName
+ * @param {string} name - The name to capitalize.
+ * @returns {string} - The capitalized name.
+ */
 function capitalizeName(name) {
   return name.split(' ').map(capitalizeFirstLetter).join(' ');
 }
 
 
+/**
+ * Capitalizes the first letter of a string.
+ * @function capitalizeFirstLetter
+ * @param {string} string - The string to capitalize.
+ * @returns {string} - The string with the first letter capitalized.
+ */
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
 
-function getUrgentTasks(tasks) {
-  return tasks.filter((task) => task.priority === 'Urgent' && task.category !== 'done');
+/**
+ * Retrieves tasks with deadlines within the next 7 days.
+ * @function getTasksDueInNextSevenDays
+ * @param {Object[]} tasks - The list of tasks to filter.
+ * @returns {Object[]} - The list of tasks due in the next 7 days.
+ */
+function getTasksDueInNextSevenDays(tasks) {
+  const now = new Date();
+  const sevenDaysFromNow = new Date();
+  sevenDaysFromNow.setDate(now.getDate() + 7);
+
+  return tasks.filter(task => {
+    const taskDate = new Date(task.date);
+    return taskDate >= now && taskDate <= sevenDaysFromNow;
+  });
 }
 
 
+/**
+ * Finds the task with the closest deadline.
+ * @function getClosestDeadline
+ * @param {Object[]} tasks - The list of tasks to check.
+ * @returns {Object} - The task with the closest deadline.
+ */
 function getClosestDeadline(tasks) {
+  if (tasks.length === 0) return {};
+
   return tasks.reduce((closest, current) => {
-    return new Date(current.date) < new Date(closest.date) ? current : closest;
-  }, tasks[0]);
+    const closestDate = new Date(closest.date);
+    const currentDate = new Date(current.date);
+    return currentDate < closestDate ? current : closest;
+  });
 }
 
 
+/**
+ * Formats a date string to a more readable format.
+ * @function formatDeadline
+ * @param {string} date - The date string to format.
+ * @returns {string} - The formatted date string.
+ */
 function formatDeadline(date) {
-  return new Date(date).toLocaleDateString('en-EN', { year: 'numeric', month: 'long', day: 'numeric' });
+  const formattedDate = new Date(date);
+  return isNaN(formattedDate) ? 'Invalid date' : formattedDate.toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 
+/**
+ * Redirects the user to the board page.
+ * @function loadBoard
+ */
 function loadBoard() {
   window.location.href = '/pages/board.html';
 }
