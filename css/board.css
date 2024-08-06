@@ -1,5 +1,5 @@
 .board-section {
-  max-width: 1440px;
+  max-width: 100%;
   padding-left: 10px;
   padding-right: 19px;
   margin: 0 auto;
@@ -629,7 +629,7 @@
   }
 
   .outer-board-container {
-    min-height: 50px;
+    /*min-height: 50px;*/
     width: calc(100vw - 196px);
   }
 
@@ -646,10 +646,6 @@
   .board-top-container {
     width: 300px;
   }
-
-  .board-headline-container {
-    overflow-y: scroll;
-  }
 }
 
 @media (max-width: 800px) {
@@ -659,6 +655,24 @@
 
   .board-section {
     padding: 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .add-task-btn {
+    display: none;
+  }
+
+  .top-board-section {
+    width: 100%;
+  }
+
+  .searchbar-container {
+    place-content: center;
+  }
+
+  .searchbar-board {
+    width: 95%;
   }
 }
 

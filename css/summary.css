@@ -8,7 +8,6 @@
 
 .summary-overview {
     position: relative;
-    /*height: 100vh;*/
     width: 100vw;
     display: flex;
     align-items: center;
@@ -56,11 +55,9 @@
         "first first first third"
         "second fourth fifth sixth"
     ;
-    /* padding: 16px;*/
 }
 
 .button-container>button {
-    /*height: 100%;*/
     overflow: hidden;
 }
 
@@ -128,7 +125,7 @@
     justify-content: center;
     gap: 35px;
     border-radius: 30px;
-    padding: 15px 40px;
+    padding: 28px 48px;
     font-size: 23px;
     border: 0px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
@@ -272,8 +269,6 @@
 }
 
 .light-task-btn:hover .btn-text {
-    /* font-size: 28px;
-    font-weight: 400;*/
     color: white;
 }
 
@@ -288,7 +283,7 @@
     color: #4589FF;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1190px) {
     .button-container {
         grid-template-columns: repeat(4, 153px);
         grid-template-rows: 150px 106px 152px 152px;
@@ -337,7 +332,7 @@
 
 @media screen and (max-width: 900px) {
     .button-container {
-        grid-template-columns: repeat(2, 204px);
+        grid-template-columns: repeat(2, 250px);
         gap: 20px;
         grid-template-areas:
             "first first"
@@ -393,20 +388,45 @@
     }
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 550px) {
+    .button-container {
+        grid-template-columns: repeat(2, 204px);
+    }
+
+    .urgent-button {
+        gap: 16px;
+        padding: 28px 10px;
+    }
+}
+
+@media screen and (max-width: 450px) {
     .button-container {
         grid-template-columns: repeat(2, 186px);
     }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 420px) {
     .button-container {
         grid-template-columns: repeat(2, 170px);
     }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 380px) {
     .button-container {
         grid-template-columns: repeat(2, 150px);
+    }
+
+    .todo-btn {
+        padding: 10px;
+    }
+
+    .light-task-btn {
+        gap: 7px;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .button-container {
+        grid-template-columns: repeat(2, 140px);
     }
 }
