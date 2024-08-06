@@ -45,6 +45,22 @@
     padding: 5px;
     height: calc(100vh - 170px);
   }
+
+  .board-overlay-container {
+    height: calc(100vh - 76px) !important;
+  }
+
+  .create-button-overlay {
+    justify-content: center;
+  }
+
+  .task-css-board {
+    height: calc(100vh - 220px) !important;
+  }
+
+  .hidden-error-btn {
+    margin-left: 0;
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -70,9 +86,7 @@
   .searchbar-board {
     padding-left: 20px;
   }
-}
 
-@media screen and (max-width: 550px) {
   .board-overlay-container {
     width: 100%;
     border-radius: 0px;
@@ -81,4 +95,23 @@
   .task-css-board {
     padding-left: 6px;
     padding-right: 18px;
+  }
+
+  .create-button-overlay {
+    border-bottom-left-radius: 0;
+  }
+
+  .hidden-error-btn {
+    margin-right: 70px;
+  }
+
+  .buttons {
+    gap: 15px;
+    
+  }
+
+  .board-overlay-main-container {
+    display: flex;
+    justify-content: center;
+  }
 }
