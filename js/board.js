@@ -413,6 +413,20 @@ function getIndexById(arr, id) {
 
 function deleteTask(id) {
   const taskIndex = getIndexById(tasks, `${id}`);
+  tasks.splice(taskIndex, 1);
+  updateUser(
+    CURRENT_USER_DATA.name,
+    CURRENT_USER_DATA.email,
+    CURRENT_USER_DATA.password,
+    CURRENT_USER_DATA.contacts,
+    tasks
+  );
+  renderTasks();
+  closeTaskOverlay();
+}
+
+function deleteTaskForEdit(id) {
+  const taskIndex = getIndexById(tasks, `${id}`);
   console.log("id", id);
   console.log("taskIndex", taskIndex);
   tasks.splice(taskIndex, 1);
@@ -482,17 +496,17 @@ function openEditTaskOverlay(id) {
   closeTaskOverlay();
   const content = document.getElementById("edit-task-board-overlay");
   content.style.display = "block";
-  showEdibleTask(id);
+  showEditableTask(id);
 }
 
-function showEdibleTask(id) {
+function showEditableTask(id) {
   task = getObjectById(tasks, `${id}`);
   editId = id;
   setTaskCategory(task);
   setTitle(task);
   setDate(task);
   setDescription(task);
-  setPriority(task);
+  setPriority(task.priority);
   collaborators = task.collaborators || [];
   renderCollaborators();
   setHighlight();
@@ -511,18 +525,20 @@ function setDescription(task) {
   document.getElementById("textarea-task").value = task.description;
 }
 
-function setPriority(task) {
-  if (task.priority === "Urgent") {
-    document.getElementById("urgent").classList.add("selected-btn");
-    priorityValue = "urgent";
-  }
-  if (task.priority === "Medium") {
-    document.getElementById("medium").classList.add("selected-btn");
-    priorityValue = "medium";
-  }
-  if (task.priority === "Low") {
-    document.getElementById("low").classList.add("selected-btn");
-    priorityValue = "low";
+function setPriority(priority) {
+  switch (priority) {
+    case "Urgent":
+      document.getElementById("urgent").classList.add("selected-btn");
+      priorityValue = "Urgent";
+      break;
+    case "Medium":
+      document.getElementById("medium").classList.add("selected-btn");
+      priorityValue = "Medium";
+      break;
+    case "Low":
+      document.getElementById("low").classList.add("selected-btn");
+      priorityValue = "Low";
+      break;
   }
 }
 
@@ -555,6 +571,7 @@ function setTaskCollaboratorIds() {
 function setTaskCategory(task) {
   categoryInput.value = task.kind;
   kindValue = task.kind;
+  kindColor = task.taskColor;
 }
 
 function setSubtasks(task) {
@@ -575,7 +592,7 @@ function setSubtasks(task) {
 function updateTask() {
   const indexOld = getIndexById(tasks, editId);
   deleteTask(editId);
-  // console.log("index", indexOld);
+  console.log("index", indexOld);
   pushEditedTaskToTasks(CAT);
   updateUser(
     CURRENT_USER_DATA.name,
@@ -584,7 +601,8 @@ function updateTask() {
     CURRENT_USER_DATA.contacts,
     tasks
   );
-  returnEditTaskOverlay();
+  returnEditTaskElementToAdd();
+  clearAllInputs();
   closeEditTaskOverlay();
   renderTasks();
 }
@@ -605,8 +623,27 @@ function pushEditedTaskToTasks(category = "toDo") {
   });
 }
 
-function returnEditTaskOverlay() {
-  // ----------------- return elements to modal view -------------------
+function renderEditTaskOverlay(id) {
+  closeTaskOverlay();
+  moveAddTaskElementToEdit();
+  const content = document.getElementById("edit-task-board-overlay");
+  content.style.display = "block";
+  showEditableTask(id);
+}
+
+function moveAddTaskElementToEdit() {
+  const showTaskEditOverlay = document.getElementsByClassName(
+    "show-task-container-edit"
+  )[0];
+  const addEditForm = document.getElementById("task-form");
+  showTaskEditOverlay.prepend(addEditForm);
+  const createBtn = document.getElementsByClassName("create-button-overlay")[0];
+  createBtn.style.display = "none";
+  const okBtn = document.getElementsByClassName("ok-btn-container")[0];
+  okBtn.style.display = "";
+}
+
+function returnEditTaskElementToAdd() {
   const showTaskEditOverlay =
     document.getElementsByClassName("add-task-container")[0];
   console.log(showTaskEditOverlay);
@@ -617,27 +654,4 @@ function returnEditTaskOverlay() {
   createBtn.style.display = "flex";
   const okBtn = document.getElementsByClassName("ok-btn-container")[0];
   okBtn.style.display = "none";
-  clearAllInputs();
-  // --------------- end ----------------
-}
-
-function renderEditTaskOverlay(id) {
-  console.log(id);
-  closeTaskOverlay();
-  const content = document.getElementById("edit-task-board-overlay");
-  // ----------------- move elements to modal view -------------------
-  const showTaskEditOverlay = document.getElementsByClassName(
-    "show-task-container-edit"
-  )[0];
-
-  const addEditForm = document.getElementById("task-form");
-  showTaskEditOverlay.prepend(addEditForm);
-  const createBtn = document.getElementsByClassName("create-button-overlay")[0];
-  createBtn.style.display = "none";
-  const okBtn = document.getElementsByClassName("ok-btn-container")[0];
-  okBtn.style.display = "";
-  // --------------- end ----------------
-
-  content.style.display = "block";
-  showEdibleTask(id);
 }
