@@ -413,4 +413,8 @@
     .urgent-button {
         gap: 25px;
     }
+
+    .todo-btn {
+        padding: 10px;
+    }
 }
