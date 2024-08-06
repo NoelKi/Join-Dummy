@@ -8,6 +8,7 @@ window.onload = function () {
 let currentTaskElement;
 let tasks = [];
 let currentDraggedElement;
+let editId = null;
 
 let tasksExample = [
   {
@@ -310,6 +311,20 @@ function renderTaskOverlay(id) {
   content.innerHTML = createTaskOverlay(element, id);
 }
 
+function attachEventListener() {
+  let selectedCategorys = document.getElementsByClassName(
+    "select-box-category"
+  );
+  const elementList = [...selectedCategorys];
+  elementList.forEach((element) => {
+    element.addEventListener("click", function () {
+      categoryList.style.display = "block";
+      console.log(categoryList);
+      dropDownArrowCat.style.transform = "rotate(0deg)";
+    });
+  });
+}
+
 function createTaskOverlay(element, id) {
   let a = `<div class="show-task-overlay">
         <div class="show-task-container">
@@ -345,7 +360,7 @@ function createTaskOverlay(element, id) {
                     <img class="delete-hover" src="../assets/img/deleteHover.svg">
                 </div>
                 <div class="horizontal-separator"></div>
-                <div class="edit-task-overlay-btn" onclick="openEditTaskOverlay(${id})">
+                <div class="edit-task-overlay-btn" onclick="renderEditTaskOverlay(${id})">
                     <img class="edit-unhover" src="../assets/img/editUnhover.svg">
                     <img class="edit-hover" src="../assets/img/editHover.svg">
                 </div>
@@ -472,22 +487,11 @@ function filterNames(event) {
   }
 }
 
-function renderEditTaskOverlay(id) {
-  console.log(id);
-  task = getObjectById(tasks, `${id}`);
-  console.log(task);
-  const title = task.title;
-  console.log(title);
-
-  document.getElementById("titel-filed").value = titel;
-  const indexOfTaskInTasks = getIndexById(id);
-  tasks.splice();
-}
-
 function closeEditTaskOverlay() {
-  // renderTaskOverlay();
   const content = document.getElementById("edit-task-board-overlay");
+  content.innerHTML = "";
   content.style.display = "none";
+  editId = null;
 }
 
 function openEditTaskOverlay(id) {
@@ -499,14 +503,15 @@ function openEditTaskOverlay(id) {
 
 function showEdibleTask(id) {
   task = getObjectById(tasks, `${id}`);
+  editId = id;
+  setTaskCategory(task);
   setTitle(task);
   setDate(task);
   setDescription(task);
-  setProiority(task);
+  setPriority(task);
   collaborators = task.collaborators || [];
   renderCollaborators();
   setHighlight();
-  setTaskCategory(task);
   setSubtasks(task);
 }
 
@@ -522,15 +527,18 @@ function setDescription(task) {
   document.getElementById("textarea-task").value = task.description;
 }
 
-function setProiority(task) {
+function setPriority(task) {
   if (task.priority === "Urgent") {
     document.getElementById("urgent").classList.add("selected-btn");
+    priorityValue = "urgent";
+  }
+  if (task.priority === "Medium") {
+    document.getElementById("medium").classList.add("selected-btn");
+    priorityValue = "medium";
   }
   if (task.priority === "Low") {
     document.getElementById("low").classList.add("selected-btn");
-  }
-  if (task.priority === "Medium") {
-    document.getElementById("low").classList.add("selected-btn");
+    priorityValue = "low";
   }
 }
 
@@ -562,6 +570,7 @@ function setTaskCollaboratorIds() {
 
 function setTaskCategory(task) {
   categoryInput.value = task.kind;
+  kindValue = task.kind;
 }
 
 function setSubtasks(task) {
@@ -575,12 +584,16 @@ function setSubtasks(task) {
         subtaskField.innerHTML += generateSubtaskHTML(element);
       }
     }
-  }
+  } else subtaskArr = null;
   addHoverEventListeners();
 }
 
 function updateTask() {
-  console.log("hallo");
+  // console.log("hallo");
+  // console.log(editId);
+  // deleteTask(editId);
+  // const indexOld = getIndexById(tasks, editId);
+  // console.log("index", indexOld);
   pushEditedTaskToTasks(CAT);
   updateUser(
     CURRENT_USER_DATA.name,
@@ -608,4 +621,133 @@ function pushEditedTaskToTasks(category = "toDo") {
     collaborators: collaborators,
     subtask: subtaskArr,
   });
+}
+
+function renderEditTaskOverlay(id) {
+  console.log(id);
+  closeTaskOverlay();
+  const content = document.getElementById("edit-task-board-overlay");
+  content.innerHTML = "";
+  content.style.display = "block";
+  content.innerHTML += createEditTaskOverlay();
+  setTimeout(() => {
+    showEdibleTask(id);
+  }, 0);
+  attachEventListener();
+}
+
+function createEditTaskOverlay(id) {
+  return `
+  <div class="show-task-overlay">
+        <div class="show-task-container-edit">
+          <div class="close-edit-task-container">
+            <button class="close-btn-edit-overlay" onclick="closeEditTaskOverlay()">
+              <img src="../assets/img/closeTask.svg">
+            </button>
+          </div>
+          <form id="task-form" class="task-css-board-edit">
+            <div class="task-section-div">
+              <input id="add-title" type="text" class="input-title-task" /><br />
+              <span id="title-error" class="error">This field is required*</span>
+            </div>
+
+            <div class="task-section-div">
+              <div class="margin-bottom-5">
+                <label>Description
+                  <span class="optional-text">(optional)</span></label><br />
+              </div>
+              <textarea class="task-text" id="textarea-task"></textarea>
+            </div>
+
+            <div class="task-section-div">
+              <label for="due-date">Due Date</label><br />
+              <input class="date-css" id="due-date" type="date" /><br />
+              <span id="date-error" class="error">This field is required*</span>
+            </div>
+
+            <div class="task-section-div">
+              <div class="buttons margin-bottom-8">
+                <label for="Priotity">Priority</label><br />
+              </div>
+              <div class="buttons" id="unselected-error">
+                <button class="button-urgent" id="urgent" type="button" onclick="selectPriority('Urgent')">
+                  Urgent
+                  <img class="button-img" src="../assets/img/urgentIcon.svg" />
+                </button>
+                <button class="button-medium" id="medium" type="button" onclick="selectPriority('Medium')">
+                  Medium <img class="button-img" src="../assets/img/medium.svg" />
+                </button>
+                <button class="button-low" id="low" type="button" onclick="selectPriority('Low')">
+                  Low <img class="button-img" src="../assets/img/low.svg" />
+                </button>
+              </div>
+              <span id="priority-error" class="error-block">This field is required*</span>
+            </div>
+
+            <div class="task-section-div">
+              <label for="assigned-to">Assigned to <span class="optional-text">(optional)</span></label><br />
+              <div class="select-box" id="hide-box">
+                <div class="select-option">
+                  <div class="input-positioning">
+                    <input type="input-positioning" value="Select contacts to assign" id="select-value" readonly />
+                    <div class="drop-down-arrow center-flexbox">
+                      <img src="../assets/img/arrow_drop_down.svg" alt="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="select-content">
+                  <div class="search-assign">
+                    <input type="text" id="option-search" placeholder="  An" />
+                  </div>
+                  <ul id="generate-list" class="option"></ul>
+                </div>
+                <div class="circle-positioning" id="assign-contacts-circle"></div>
+              </div>
+            </div>
+
+            <div class="task-section-div">
+              <label for="category-task">Category</label><br />
+              <div class="select-box-category">
+                <div class="select-option" id="select-category">
+                  <div class="input-positioning">
+                    <input type="text" value="Select category" id="category-value" readonly />
+                    <div class="drop-down-arrow-cat center-flexbox">
+                      <img src="../assets/img/arrow_drop_down.svg" alt="" />
+                    </div>
+                  </div>
+                </div>
+                <div id="select-error-block" class="error-block">This field is required*</div>
+                <div class="category-list-div">
+                  <ul id="category-list" class="option-category">
+                    <li onclick="setTaskKind('TT')">Technical task</li>
+                    <li onclick="setTaskKind('US')">User story</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="task-section-div">
+              <label for="subtask-optional">Subtasks <span class="optional-text">(optional)</span></label><br />
+              <div id="subtask-list" class="subtask-list"></div>
+              <div id="input-subtask-add" class="select-option" onclick="changeToFocus()">
+                <div class="input-positioning">
+                  <input class="subtask-css-input" id="subtask-input-field" type="text" placeholder="Add subtask" />
+                  <div class="add-symbol-css center-flexbox">
+                    <img src="../assets/img/add.svg" alt="" /><br />
+                  </div>
+                </div>
+              </div>
+
+              <div id="added-subtask" class="added-subtask-input"></div>
+            </div>
+
+            <div class="ok-btn-container">
+              <button class="ok-btn" type="button" onclick="updateTask(editId);">
+                Ok <img src="../assets/img/checkSymbol.svg">
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>`;
 }
