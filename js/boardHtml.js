@@ -1,45 +1,9 @@
-function renderTaskHtml(element) {
-  let a = `<li id="${element.id}" class="task-container" draggable="true" ondragstart="startDragging(${element["id"]},event)" ondragover="dragOver(event)" onclick="renderTaskOverlay(${element["id"]});">
-          <div class="task-kind-container" style="background-color: ${element.taskColor}">${element.kind}</div>
-          <div class="task-content-container">
-              <div class="task-title">${element.title}</div>
-              <div class="task-description">${element.description}</div>`;
-  if (element.subtask) {
-    let count = 0;
-    for (const subtask of element.subtask) {
-      if (subtask.state === "done") {
-        count += 1;
-      }
-    }
-    const width = (count / element.subtask.length) * 100;
-    a += `<div class="task-subtask" id="task-subtask">
-          <div class="task-progress-bar">
-              <div class="task-bar" style="width: ${width}%"></div>    
-          </div>
-          <div id="subtask">${count}/${element.subtask.length} Subtasks</div>
-          </div>`;
-  }
-  a += `<div class="task-bottom-container">
-              <div class="task-collaborators" id="task-collaborators-${element.id}">`;
-  if (element.collaborators) {
-    for (const collab of element.collaborators) {
-      [name, surname] = collab.name;
-      initials = getFirstLetterOfName(name) + getFirstLetterOfName(surname);
-      a += `<div class="initials" style="background-color: ${collab.color}">${initials}</div>`;
-    }
-  }
-  a += `</div>
-                  <div class="task-priority" id="task-priority">
-                      <img src="../assets/img/priority${element.priority}.svg">
-                  </div>
-              </div>
-          </div>
-      </li>`;
-  return a;
+function createEmptyBox(sign) {
+  return `<div class="empty-box">No tasks ${sign}</div>`;
 }
 
-function renderEmptyBox(sign) {
-  return `<div class="empty-box">No tasks ${sign}</div>`;
+function createCollabInitialsHtml(initials) {
+  return `<div class="initials">${initials}</div>`;
 }
 
 function createTaskOverlay(element, id) {
@@ -112,4 +76,48 @@ function createTaskOverlaySubtasks(subtasks, objectId) {
   }
   content += `</div>`;
   return content;
+}
+
+function renderTaskHtml(element) {
+  let a = `<li id="${element.id}" class="task-container" draggable="true" ondragstart="startDragging(${element["id"]},event)" ondragover="dragOver(event)" onclick="renderTaskOverlay(${element["id"]});">
+            <div class="task-kind-container" style="background-color: ${element.taskColor}">${element.kind}</div>
+            <div class="task-content-container">
+                <div class="task-title">${element.title}</div>
+                <div class="task-description">${element.description}</div>`;
+  if (element.subtask) {
+    a += createSubtaskBarHtml(element.subtask);
+  }
+  a += `<div class="task-bottom-container">
+                <div class="task-collaborators" id="task-collaborators-${element.id}">`;
+  if (element.collaborators) {
+    for (const collab of element.collaborators) {
+      [name, surname] = collab.name;
+      initials = getFirstLetterOfName(name) + getFirstLetterOfName(surname);
+      a += `<div class="initials" style="background-color: ${collab.color}">${initials}</div>`;
+    }
+  }
+  a += `</div>
+                    <div class="task-priority" id="task-priority">
+                        <img src="../assets/img/priority${element.priority}.svg">
+                    </div>
+                </div>
+            </div>
+        </li>`;
+  return a;
+}
+
+function createSubtaskBarHtml(subtasks) {
+  let count = 0;
+  for (const subtask of subtasks) {
+    if (subtask.state === "done") {
+      count += 1;
+    }
+  }
+  const width = (count / subtasks.length) * 100;
+  return `<div class="task-subtask" id="task-subtask">
+  <div class="task-progress-bar">
+      <div class="task-bar" style="width: ${width}%"></div>    
+  </div>
+  <div id="subtask">${count}/${subtasks.length} Subtasks</div>
+  </div>`;
 }

@@ -60,7 +60,7 @@ function renderToDo(tasks) {
     document.getElementById("toDo").innerHTML += renderTaskHtml(element);
   }
   if (toDo.length === 0) {
-    document.getElementById("toDo").innerHTML = renderEmptyBox("to do");
+    document.getElementById("toDo").innerHTML = createEmptyBox("to do");
   }
 }
 
@@ -76,7 +76,7 @@ function renderAwaitFeedback(tasks) {
   }
   if (awaitFeedback.length === 0) {
     document.getElementById("awaitFeedback").innerHTML =
-      renderEmptyBox("await feedback");
+      createEmptyBox("await feedback");
   }
 }
 
@@ -90,7 +90,7 @@ function renderDone(tasks) {
     document.getElementById("done").innerHTML += renderTaskHtml(element);
   }
   if (done.length === 0) {
-    document.getElementById("done").innerHTML = renderEmptyBox("done");
+    document.getElementById("done").innerHTML = createEmptyBox("done");
   }
 }
 
@@ -105,7 +105,7 @@ function renderInProgress(tasks) {
   }
   if (inProgress.length === 0) {
     document.getElementById("inProgress").innerHTML =
-      renderEmptyBox("in progress");
+      createEmptyBox("in progress");
   }
 }
 
@@ -196,10 +196,6 @@ function removeHighlight(event) {
 
 function renderCollabInitials(id) {
   const content = document.getElementById(`task-collaborators-${id}`);
-}
-
-function createCollabInitialsHtml(initials) {
-  return `<div class="initials">${initials}</div>`;
 }
 
 function getFirstLetterOfName(name) {
