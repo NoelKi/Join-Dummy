@@ -55,11 +55,9 @@
         "first first first third"
         "second fourth fifth sixth"
     ;
-    /* padding: 16px;*/
 }
 
 .button-container>button {
-    /*height: 100%;*/
     overflow: hidden;
 }
 
@@ -271,8 +269,6 @@
 }
 
 .light-task-btn:hover .btn-text {
-    /* font-size: 28px;
-    font-weight: 400;*/
     color: white;
 }
 
