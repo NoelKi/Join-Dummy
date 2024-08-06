@@ -311,20 +311,6 @@ function renderTaskOverlay(id) {
   content.innerHTML = createTaskOverlay(element, id);
 }
 
-function attachEventListener() {
-  let selectedCategorys = document.getElementsByClassName(
-    "select-box-category"
-  );
-  const elementList = [...selectedCategorys];
-  elementList.forEach((element) => {
-    element.addEventListener("click", function () {
-      categoryList.style.display = "block";
-      console.log(categoryList);
-      dropDownArrowCat.style.transform = "rotate(0deg)";
-    });
-  });
-}
-
 function createTaskOverlay(element, id) {
   let a = `<div class="show-task-overlay">
         <div class="show-task-container">
@@ -429,7 +415,6 @@ function deleteTask(id) {
   const taskIndex = getIndexById(tasks, `${id}`);
   console.log("id", id);
   console.log("taskIndex", taskIndex);
-
   tasks.splice(taskIndex, 1);
   updateUser(
     CURRENT_USER_DATA.name,
@@ -489,7 +474,6 @@ function filterNames(event) {
 
 function closeEditTaskOverlay() {
   const content = document.getElementById("edit-task-board-overlay");
-  content.innerHTML = "";
   content.style.display = "none";
   editId = null;
 }
@@ -589,10 +573,8 @@ function setSubtasks(task) {
 }
 
 function updateTask() {
-  // console.log("hallo");
-  // console.log(editId);
-  // deleteTask(editId);
-  // const indexOld = getIndexById(tasks, editId);
+  const indexOld = getIndexById(tasks, editId);
+  deleteTask(editId);
   // console.log("index", indexOld);
   pushEditedTaskToTasks(CAT);
   updateUser(
@@ -602,7 +584,7 @@ function updateTask() {
     CURRENT_USER_DATA.contacts,
     tasks
   );
-  console.log("ballo");
+  returnEditTaskOverlay();
   closeEditTaskOverlay();
   renderTasks();
 }
@@ -623,131 +605,39 @@ function pushEditedTaskToTasks(category = "toDo") {
   });
 }
 
+function returnEditTaskOverlay() {
+  // ----------------- return elements to modal view -------------------
+  const showTaskEditOverlay =
+    document.getElementsByClassName("add-task-container")[0];
+  console.log(showTaskEditOverlay);
+  const addEditForm = document.getElementById("task-form");
+  console.log(addEditForm);
+  showTaskEditOverlay.prepend(addEditForm);
+  const createBtn = document.getElementsByClassName("create-button-overlay")[0];
+  createBtn.style.display = "flex";
+  const okBtn = document.getElementsByClassName("ok-btn-container")[0];
+  okBtn.style.display = "none";
+  clearAllInputs();
+  // --------------- end ----------------
+}
+
 function renderEditTaskOverlay(id) {
   console.log(id);
   closeTaskOverlay();
   const content = document.getElementById("edit-task-board-overlay");
-  content.innerHTML = "";
+  // ----------------- move elements to modal view -------------------
+  const showTaskEditOverlay = document.getElementsByClassName(
+    "show-task-container-edit"
+  )[0];
+
+  const addEditForm = document.getElementById("task-form");
+  showTaskEditOverlay.prepend(addEditForm);
+  const createBtn = document.getElementsByClassName("create-button-overlay")[0];
+  createBtn.style.display = "none";
+  const okBtn = document.getElementsByClassName("ok-btn-container")[0];
+  okBtn.style.display = "";
+  // --------------- end ----------------
+
   content.style.display = "block";
-  content.innerHTML += createEditTaskOverlay();
-  setTimeout(() => {
-    showEdibleTask(id);
-  }, 0);
-  attachEventListener();
-}
-
-function createEditTaskOverlay(id) {
-  return `
-  <div class="show-task-overlay">
-        <div class="show-task-container-edit">
-          <div class="close-edit-task-container">
-            <button class="close-btn-edit-overlay" onclick="closeEditTaskOverlay()">
-              <img src="../assets/img/closeTask.svg">
-            </button>
-          </div>
-          <form id="task-form" class="task-css-board-edit">
-            <div class="task-section-div">
-              <input id="add-title" type="text" class="input-title-task" /><br />
-              <span id="title-error" class="error">This field is required*</span>
-            </div>
-
-            <div class="task-section-div">
-              <div class="margin-bottom-5">
-                <label>Description
-                  <span class="optional-text">(optional)</span></label><br />
-              </div>
-              <textarea class="task-text" id="textarea-task"></textarea>
-            </div>
-
-            <div class="task-section-div">
-              <label for="due-date">Due Date</label><br />
-              <input class="date-css" id="due-date" type="date" /><br />
-              <span id="date-error" class="error">This field is required*</span>
-            </div>
-
-            <div class="task-section-div">
-              <div class="buttons margin-bottom-8">
-                <label for="Priotity">Priority</label><br />
-              </div>
-              <div class="buttons" id="unselected-error">
-                <button class="button-urgent" id="urgent" type="button" onclick="selectPriority('Urgent')">
-                  Urgent
-                  <img class="button-img" src="../assets/img/urgentIcon.svg" />
-                </button>
-                <button class="button-medium" id="medium" type="button" onclick="selectPriority('Medium')">
-                  Medium <img class="button-img" src="../assets/img/medium.svg" />
-                </button>
-                <button class="button-low" id="low" type="button" onclick="selectPriority('Low')">
-                  Low <img class="button-img" src="../assets/img/low.svg" />
-                </button>
-              </div>
-              <span id="priority-error" class="error-block">This field is required*</span>
-            </div>
-
-            <div class="task-section-div">
-              <label for="assigned-to">Assigned to <span class="optional-text">(optional)</span></label><br />
-              <div class="select-box" id="hide-box">
-                <div class="select-option">
-                  <div class="input-positioning">
-                    <input type="input-positioning" value="Select contacts to assign" id="select-value" readonly />
-                    <div class="drop-down-arrow center-flexbox">
-                      <img src="../assets/img/arrow_drop_down.svg" alt="" />
-                    </div>
-                  </div>
-                </div>
-
-                <div class="select-content">
-                  <div class="search-assign">
-                    <input type="text" id="option-search" placeholder="  An" />
-                  </div>
-                  <ul id="generate-list" class="option"></ul>
-                </div>
-                <div class="circle-positioning" id="assign-contacts-circle"></div>
-              </div>
-            </div>
-
-            <div class="task-section-div">
-              <label for="category-task">Category</label><br />
-              <div class="select-box-category">
-                <div class="select-option" id="select-category">
-                  <div class="input-positioning">
-                    <input type="text" value="Select category" id="category-value" readonly />
-                    <div class="drop-down-arrow-cat center-flexbox">
-                      <img src="../assets/img/arrow_drop_down.svg" alt="" />
-                    </div>
-                  </div>
-                </div>
-                <div id="select-error-block" class="error-block">This field is required*</div>
-                <div class="category-list-div">
-                  <ul id="category-list" class="option-category">
-                    <li onclick="setTaskKind('TT')">Technical task</li>
-                    <li onclick="setTaskKind('US')">User story</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="task-section-div">
-              <label for="subtask-optional">Subtasks <span class="optional-text">(optional)</span></label><br />
-              <div id="subtask-list" class="subtask-list"></div>
-              <div id="input-subtask-add" class="select-option" onclick="changeToFocus()">
-                <div class="input-positioning">
-                  <input class="subtask-css-input" id="subtask-input-field" type="text" placeholder="Add subtask" />
-                  <div class="add-symbol-css center-flexbox">
-                    <img src="../assets/img/add.svg" alt="" /><br />
-                  </div>
-                </div>
-              </div>
-
-              <div id="added-subtask" class="added-subtask-input"></div>
-            </div>
-
-            <div class="ok-btn-container">
-              <button class="ok-btn" type="button" onclick="updateTask(editId);">
-                Ok <img src="../assets/img/checkSymbol.svg">
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>`;
+  showEdibleTask(id);
 }
