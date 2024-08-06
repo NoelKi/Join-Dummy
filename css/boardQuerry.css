@@ -70,9 +70,7 @@
   .searchbar-board {
     padding-left: 20px;
   }
-}
 
-@media screen and (max-width: 550px) {
   .board-overlay-container {
     width: 100%;
     border-radius: 0px;
@@ -81,5 +79,11 @@
   .task-css-board {
     padding-left: 6px;
     padding-right: 18px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .board-top-container {
+    width: 95%;
   }
 }
