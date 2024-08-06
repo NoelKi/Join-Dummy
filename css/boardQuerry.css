@@ -2,7 +2,6 @@
   .board-headline-container {
     flex-direction: column;
     overflow-y: scroll;
-    /* height: calc( 100vh -96px - 200px); */
   }
 
   .board-content-container {
@@ -17,7 +16,6 @@
   }
 
   .outer-board-container {
-    /*min-height: 50px;*/
     width: 100%;
   }
 
@@ -107,7 +105,6 @@
 
   .buttons {
     gap: 15px;
-    
   }
 
   .board-overlay-main-container {
