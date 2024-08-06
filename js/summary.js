@@ -43,7 +43,6 @@ async function getUserLists() {
 async function onloadFunc() {
   const userId = await loadUserIdLocalStorage();
   const userName = JSON.parse(localStorage.getItem('userName'));
-
   if (userId && userName) {
     updateGreeting(capitalizeName(userName));
   } else {
@@ -90,7 +89,6 @@ function countTasks(tasks) {
   tasks.forEach((task) => {
     taskCounts[task.category] = (taskCounts[task.category] || 0) + 1;
   });
-
   document.getElementById('todo-number').textContent = taskCounts.toDo || 0;
   document.getElementById('bord-tasks-number').textContent = tasks.length;
   document.getElementById('progress-task-number').textContent = taskCounts.inProgress || 0;
@@ -110,7 +108,6 @@ function updateUrgentTask(tasks) {
   const activeTasks = tasks.filter(task => task.category !== 'done');
   const tasksDueInNextSevenDays = getTasksDueInNextSevenDays(activeTasks);
   document.getElementById('urgent-number').textContent = tasksDueInNextSevenDays.length;
-
   if (tasksDueInNextSevenDays.length > 0) {
     const closestTask = getClosestDeadline(tasksDueInNextSevenDays);
     document.getElementById('due-date').textContent = formatDeadline(closestTask.date);
@@ -155,7 +152,6 @@ function getTasksDueInNextSevenDays(tasks) {
   const now = new Date();
   const sevenDaysFromNow = new Date();
   sevenDaysFromNow.setDate(now.getDate() + 7);
-
   return tasks.filter(task => {
     const taskDate = new Date(task.date);
     return taskDate >= now && taskDate <= sevenDaysFromNow;
@@ -172,7 +168,6 @@ function getTasksDueInNextSevenDays(tasks) {
  */
 function getClosestDeadline(tasks) {
   if (tasks.length === 0) return {};
-
   return tasks.reduce((closest, current) => {
     const closestDate = new Date(closest.date);
     const currentDate = new Date(current.date);
