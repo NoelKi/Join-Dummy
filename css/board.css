@@ -629,7 +629,7 @@
   }
 
   .outer-board-container {
-    min-height: 50px;
+    /*min-height: 50px;*/
     width: calc(100vw - 196px);
   }
 
@@ -645,10 +645,6 @@
 
   .board-top-container {
     width: 300px;
-  }
-
-  .board-headline-container {
-    overflow-y: scroll;
   }
 }
 
