@@ -2,7 +2,8 @@
 .task-css-board::-webkit-scrollbar,
 .option::-webkit-scrollbar,
 .option-category::-webkit-scrollbar,
-.contacts-container::-webkit-scrollbar {
+.contacts-container::-webkit-scrollbar,
+.board-headline-container::-webkit-scrollbar {
   width: 8px;
 }
 
@@ -10,7 +11,8 @@
 .task-css-board::-webkit-scrollbar-track,
 .option::-webkit-scrollbar-track,
 .option-category::-webkit-scrollbar-track,
-.contacts-container::-webkit-scrollbar-track {
+.contacts-container::-webkit-scrollbar-track,
+.board-headline-containe::-webkit-scrollbar-track {
   background: #ffffff;
   border-radius: 6px;
 }
@@ -19,7 +21,9 @@
 .task-css-board::-webkit-scrollbar-thumb,
 .option::-webkit-scrollbar-thumb,
 .option-category::-webkit-scrollbar-thumb,
-.contacts-container::-webkit-scrollbar-thumb {
+.contacts-container::-webkit-scrollbar-thumb,
+.board-headline-container::-webkit-scrollbar-thumb
+{
   background: #a8a8a8;
   border-radius: 10px;
 }
@@ -57,7 +61,8 @@
 .task-css-board::-webkit-scrollbar-thumb:hover,
 .option-category::-webkit-scrollbar-thumb:hover,
 .option::-webkit-scrollbar-thumb:hover,
-.contacts-container::-webkit-scrollbar-thumb:hover {
+.contacts-container::-webkit-scrollbar-thumb:hover,
+.board-headline-container::-webkit-scrollbar-thumb:hover {
   background: #555;
   cursor: pointer;
 }
