@@ -243,6 +243,3 @@ categoryList.addEventListener("click", function (e) {
 categoryInput.addEventListener("focus", function () {
   checkInputs();
 });
-
-
-
