@@ -206,7 +206,6 @@ function dropSameCategory(event) {
   for (let i = 0; i < array.length; i++) {
     const elId = array[i].id;
     const currIndex = getIndexById(tasks, elId);
-    // console.log(tasks[currIndex].title,i,'Element');
     const taskObj = tasks[currIndex];
     newTasks.push(taskObj);
   }
@@ -427,8 +426,6 @@ function deleteTask(id) {
 
 function deleteTaskForEdit(id) {
   const taskIndex = getIndexById(tasks, `${id}`);
-  console.log("id", id);
-  console.log("taskIndex", taskIndex);
   tasks.splice(taskIndex, 1);
   updateUser(
     CURRENT_USER_DATA.name,
@@ -501,11 +498,10 @@ function openEditTaskOverlay(id) {
 
 function showEditableTask(id) {
   task = getObjectById(tasks, `${id}`);
-  editId = id;
   setTaskCategory(task);
-  setTitle(task);
-  setDate(task);
-  setDescription(task);
+  setTitle(task.title);
+  setDate(task.date);
+  setDescription(task.description);
   setPriority(task.priority);
   collaborators = task.collaborators || [];
   renderCollaborators();
@@ -513,16 +509,22 @@ function showEditableTask(id) {
   setSubtasks(task);
 }
 
-function setTitle(task) {
-  document.getElementById("add-title").value = task.title;
+function setTaskCategory(task) {
+  categoryInput.value = task.kind;
+  kindValue = task.kind;
+  kindColor = task.taskColor;
 }
 
-function setDate(task) {
-  document.getElementById("due-date").value = task.date;
+function setTitle(title) {
+  document.getElementById("add-title").value = title;
 }
 
-function setDescription(task) {
-  document.getElementById("textarea-task").value = task.description;
+function setDate(date) {
+  document.getElementById("due-date").value = date;
+}
+
+function setDescription(description) {
+  document.getElementById("textarea-task").value = description;
 }
 
 function setPriority(priority) {
@@ -549,10 +551,7 @@ function setHighlight() {
     if (collaboratorIds.includes(String(element.getAttribute("data-id")))) {
       element.classList.add("selected");
       const imgElement = element.querySelector(".check-box-task img");
-      if (imgElement) {
-        console.log(imgElement.src);
-        imgElement.src = "../assets/img/checkedTaskHtml.svg";
-      }
+      if (imgElement) imgElement.src = "../assets/img/checkedTaskHtml.svg";
     }
   });
 }
@@ -568,17 +567,10 @@ function setTaskCollaboratorIds() {
   return collaboratorIds;
 }
 
-function setTaskCategory(task) {
-  categoryInput.value = task.kind;
-  kindValue = task.kind;
-  kindColor = task.taskColor;
-}
-
 function setSubtasks(task) {
   let subtaskField = document.getElementById("added-subtask");
   if (task.subtask) {
     subtaskArr = task.subtask;
-    console.log(task.subtask);
     for (const subtask in subtaskArr) {
       if (Object.hasOwnProperty.call(subtaskArr, subtask)) {
         const element = subtaskArr[subtask];
@@ -590,10 +582,10 @@ function setSubtasks(task) {
 }
 
 function updateTask() {
-  const indexOld = getIndexById(tasks, editId);
-  deleteTask(editId);
-  console.log("index", indexOld);
-  pushEditedTaskToTasks(CAT);
+  const content = document.getElementById("edit-task-board-overlay");
+  const currTaskId = content.getAttribute("currTaskId");
+  const indexOld = getIndexById(tasks, currTaskId);
+  pushEditedTaskToTasks(CAT, indexOld);
   updateUser(
     CURRENT_USER_DATA.name,
     CURRENT_USER_DATA.email,
@@ -607,9 +599,9 @@ function updateTask() {
   renderTasks();
 }
 
-function pushEditedTaskToTasks(category = "toDo") {
+function pushEditedTaskToTasks(category = "toDo", index) {
   // Add a new task object to the tasks array
-  tasks.push({
+  tasks.splice(index, 1, {
     id: Date.now().toString(),
     date: dateInput.value,
     title: titleInput.value,
@@ -628,6 +620,7 @@ function renderEditTaskOverlay(id) {
   moveAddTaskElementToEdit();
   const content = document.getElementById("edit-task-board-overlay");
   content.style.display = "block";
+  content.setAttribute("currTaskId", id);
   showEditableTask(id);
 }
 
@@ -646,9 +639,7 @@ function moveAddTaskElementToEdit() {
 function returnEditTaskElementToAdd() {
   const showTaskEditOverlay =
     document.getElementsByClassName("add-task-container")[0];
-  console.log(showTaskEditOverlay);
   const addEditForm = document.getElementById("task-form");
-  console.log(addEditForm);
   showTaskEditOverlay.prepend(addEditForm);
   const createBtn = document.getElementsByClassName("create-button-overlay")[0];
   createBtn.style.display = "flex";
