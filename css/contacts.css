@@ -103,7 +103,7 @@
   align-items: center;
 }
 
-.contacts-container::-webkit-scrollbar {
+/* .contacts-container::-webkit-scrollbar {
   width: 8px;
 }
 
@@ -120,6 +120,8 @@
 .contacts-container:-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+ ausgelagert und angepasst addTaskSrollbar.css    */
 
 .contact-card {
   margin-top: 5px;
