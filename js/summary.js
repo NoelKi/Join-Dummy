@@ -106,7 +106,7 @@ function countTasks(tasks) {
  */
 function updateUrgentTask(tasks) {
   const activeTasks = tasks.filter(task => task.category !== 'done');
-  const tasksDueInNextSevenDays = getTasksDueInNextSevenDays(activeTasks);
+  const tasksDueInNextSevenDays = setDeadline(activeTasks);
   document.getElementById('urgent-number').textContent = tasksDueInNextSevenDays.length;
   if (tasksDueInNextSevenDays.length > 0) {
     const closestTask = getClosestDeadline(tasksDueInNextSevenDays);
@@ -144,11 +144,11 @@ function capitalizeFirstLetter(string) {
 /**
  * Retrieves tasks with deadlines within the next 7 days.
  * This function filters the given tasks and returns only those that are due within the next 7 days.
- * @function getTasksDueInNextSevenDays
+ * @function getsetDeadline
  * @param {Object[]} tasks - The list of tasks to filter.
  * @returns {Object[]} - The list of tasks due in the next 7 days.
  */
-function getTasksDueInNextSevenDays(tasks) {
+function setDeadline(tasks) {
   const now = new Date();
   const sevenDaysFromNow = new Date();
   sevenDaysFromNow.setDate(now.getDate() + 7);
