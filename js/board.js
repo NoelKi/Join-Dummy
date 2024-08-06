@@ -6,44 +6,8 @@ window.onload = function () {
 };
 
 let currentTaskElement;
-let tasks = [];
 let currentDraggedElement;
-let editId = null;
-
-let tasksExample = [
-  {
-    id: 0,
-    date: "10/21/2024",
-    title: "Putzen",
-    kind: "Technical Task",
-    taskColor: "#0038FF",
-    description: "BlaBliBulb",
-    category: "inProgress",
-    priority: "Medium",
-    collaborators: [
-      {
-        name: "Anche Apfelgrün",
-        color: "#C3FF2B",
-      },
-      {
-        name: "Rosi Rot",
-        color: "#FF4646",
-      },
-    ],
-    subtask: [
-      {
-        name: "Küche putzen",
-        state: "done",
-        id: 2023,
-      },
-      {
-        name: "Flur putzen",
-        state: "done",
-        id: 206,
-      },
-    ],
-  },
-];
+let tasks = [];
 
 async function getUserBoard() {
   try {
@@ -230,50 +194,6 @@ function removeHighlight(event) {
   event.currentTarget.classList.remove("drag-area-highlight");
 }
 
-function renderTaskHtml(element) {
-  let a = `<li id="${element.id}" class="task-container" draggable="true" ondragstart="startDragging(${element["id"]},event)" ondragover="dragOver(event)" onclick="renderTaskOverlay(${element["id"]});">
-        <div class="task-kind-container" style="background-color: ${element.taskColor}">${element.kind}</div>
-        <div class="task-content-container">
-            <div class="task-title">${element.title}</div>
-            <div class="task-description">${element.description}</div>`;
-  if (element.subtask) {
-    let count = 0;
-    for (const subtask of element.subtask) {
-      if (subtask.state === "done") {
-        count += 1;
-      }
-    }
-    const width = (count / element.subtask.length) * 100;
-    a += `<div class="task-subtask" id="task-subtask">
-        <div class="task-progress-bar">
-            <div class="task-bar" style="width: ${width}%"></div>    
-        </div>
-        <div id="subtask">${count}/${element.subtask.length} Subtasks</div>
-        </div>`;
-  }
-  a += `<div class="task-bottom-container">
-            <div class="task-collaborators" id="task-collaborators-${element.id}">`;
-  if (element.collaborators) {
-    for (const collab of element.collaborators) {
-      [name, surname] = collab.name;
-      initials = getFirstLetterOfName(name) + getFirstLetterOfName(surname);
-      a += `<div class="initials" style="background-color: ${collab.color}">${initials}</div>`;
-    }
-  }
-  a += `</div>
-                <div class="task-priority" id="task-priority">
-                    <img src="../assets/img/priority${element.priority}.svg">
-                </div>
-            </div>
-        </div>
-    </li>`;
-  return a;
-}
-
-function renderEmptyBox(sign) {
-  return `<div class="empty-box">No tasks ${sign}</div>`;
-}
-
 function renderCollabInitials(id) {
   const content = document.getElementById(`task-collaborators-${id}`);
 }
@@ -308,78 +228,6 @@ function renderTaskOverlay(id) {
   const content = document.getElementById("board-task-overlay-section");
   content.style.display = "block";
   content.innerHTML = createTaskOverlay(element, id);
-}
-
-function createTaskOverlay(element, id) {
-  let a = `<div class="show-task-overlay">
-        <div class="show-task-container">
-            <div class="top-task-container">
-                <div class="task-kind-container no-margin font-size-19" style="background-color: ${element.taskColor}">
-                    ${element.kind}
-                </div>
-                <button class="close-btn-overlay no-margin" onclick="closeTaskOverlay()">
-                    <img src="../assets/img/closeTask.svg">
-                </button>
-            </div>
-            <div class="task-title-container">
-                ${element.title}
-            </div>
-            <div class="m-b-20">
-                ${element.description}
-            </div>
-            <div class="m-b-20">
-                <b>Due date:</b> &ensp; ${element.date}
-            </div>
-            <div class="task-overlay-priority">
-                <b>Priority:</b>&ensp;&ensp;&ensp; ${element.priority} <img src="../assets/img/priority${element.priority}.svg">
-            </div>`;
-  if (element.collaborators) {
-    a += createTaskOverlayCollaborators(element.collaborators);
-  }
-  if (element.subtask) {
-    a += createTaskOverlaySubtasks(element.subtask, element.id);
-  }
-  a += `  <div class="task-edit-container">
-                <div class="delete-task-overlay-btn" onclick="deleteTask(${element.id})">
-                    <img class="delete-unhover" src="../assets/img/deleteUnhover.svg">
-                    <img class="delete-hover" src="../assets/img/deleteHover.svg">
-                </div>
-                <div class="horizontal-separator"></div>
-                <div class="edit-task-overlay-btn" onclick="renderEditTaskOverlay(${id})">
-                    <img class="edit-unhover" src="../assets/img/editUnhover.svg">
-                    <img class="edit-hover" src="../assets/img/editHover.svg">
-                </div>
-            </div>
-        </div>
-    </div>`;
-  return a;
-}
-
-function createTaskOverlayCollaborators(collaborators) {
-  let content = `<div> <b>Assigned to:</b> <br>`;
-  for (const collab of collaborators) {
-    [name, surname] = collab.name;
-    initials = getFirstLetterOfName(name) + getFirstLetterOfName(surname);
-    content += `<div class="flex-row m-l-12 m-t-12"> 
-            <div class="initials m-r-10" style="background-color: ${collab.color}">${initials}</div> ${collab.name}
-            </div>`;
-  }
-  content += `</div>`;
-  return content;
-}
-
-function createTaskOverlaySubtasks(subtasks, objectId) {
-  let content = `<div class="task-subtask-container m-t-12" id="subtasks-overlay">
-                        <b>Subtasks</b>
-                            <div class="subtask-inner-container m-t-20">`;
-  for (const subtask of subtasks) {
-    content += `<div class="subtask-inner-inner-container" onclick="switchSubtaskState(${objectId},${subtask.id})">
-            <img src="../assets/img/${subtask.state}CheckButton.svg"> 
-                &ensp;${subtask.name}
-            </div>`;
-  }
-  content += `</div>`;
-  return content;
 }
 
 function getObjectById(array, id) {
