@@ -17,6 +17,19 @@ async function postSignUpData(data) {
 }
 
 
+async function signUp() {
+    const { name, email, password, confirmPassword } = getInputValues();
+    const error = validateInputs({ name, email, password, confirmPassword });
+    if (error) return alert(error);
+    if (await emailExists(email)) {
+        return alert('This email is already registered.');
+    }
+    const newUser = { name, email, password, id: Date.now().toString() };
+    const result = await postSignUpData(newUser);
+    if (result) showSuccessMessage();
+}
+
+
 function getInputValues() {
     return {
         name: document.getElementById('name').value,
@@ -39,18 +52,10 @@ function validateInputs({ name, email, password, confirmPassword }) {
 }
 
 
-async function signUp() {
-    const { name, email, password, confirmPassword } = getInputValues();
-    const error = validateInputs({ name, email, password, confirmPassword });
-
-    if (error) return alert(error);
-
-    const newUser = { name, email, password, id: Date.now().toString() };
-    const result = await postSignUpData(newUser);
-
-    if (result) showSuccessMessage();
+async function emailExists(email) {
+    const users = await fetchUsers();
+    return Object.values(users).some(user => user.email === email);
 }
-
 
 
 function toggleCheckBox() {
