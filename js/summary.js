@@ -103,7 +103,7 @@ function updateUrgentTask(tasks) {
     const closestTask = getClosestDeadline(tasksDueInNextSevenDays);
     document.getElementById('due-date').textContent = formatDeadline(closestTask.date);
   } else {
-    document.getElementById('due-date').textContent = 'Keine dringenden Aufgaben';
+    document.getElementById('due-date').textContent = 'No urgent Tasks';
   }
 }
 
