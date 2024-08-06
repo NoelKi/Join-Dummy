@@ -1,20 +1,23 @@
 {
-    "source": {
-      "include": [
-        "./js/addTask.js",
-        "./js/addTaskPart2.js",
-        "./js/addTaskEvent.js",
-        "./js/loadContactListTask.js",
-        "./js/contacts.js",
-        "./js/contactsHtml.js"
-      ],  
-      "exclude": [
-        "../node_modules",  
-        "../tests"  
-      ]
-    },
-    "opts": {
-      "destination": "./out",  
-      "recurse": true  
-    }
+  "source": {
+    "include": [
+      "./js/addTask.js",
+      "./js/addTaskPart2.js",
+      "./js/addTaskEvent.js",
+      "./js/loadContactListTask.js",
+      "./js/contacts.js",
+      "./js/contactsHtml.js",
+      "./js/logIn.js",
+      "./js/signUp.js",
+      "./js/summary.js"
+    ],
+    "exclude": [
+      "../node_modules",
+      "../tests"
+    ]
+  },
+  "opts": {
+    "destination": "./out",
+    "recurse": true
   }
+}
