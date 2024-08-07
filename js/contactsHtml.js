@@ -80,7 +80,7 @@ function createEditOverlay(id, initials) {
                               <input class="overlay-input-field input-person" id="edit-name-overlay" type="text" value="${contact.name} ${contact.surname}" required>
                           </div>
                           <div class="overlay-input-container">
-                              <input class="overlay-input-field input-letter" id="edit-email-overlay" type="email" value="${contact.email}" required>
+                              <input class="overlay-input-field input-letter" id="edit-email-overlay" pattern=".+@[^@]+\.+" type="email" value="${contact.email}" required>
                           </div>
                           <div class="overlay-input-container">
                               <input class="overlay-input-field input-tel" id="edit-phoneNumber-overlay" type="number" value="${contact.phoneNumber}" required>
@@ -132,7 +132,7 @@ function createAddOverlay() {
                               <p id="error-message" style="color: red; display: none;">Bitte geben Sie sowohl einen Vor- als auch einen Nachnamen ein.</p>
                           </div>
                           <div class="overlay-input-container">
-                              <input class="overlay-input-field input-letter" placeholder="Email" type="email" id="add-email-overlay" required>
+                              <input class="overlay-input-field input-letter" placeholder="Email" pattern=".+@[^@]+\.+" type="email" id="add-email-overlay" required>
                           </div>
                           <div class="overlay-input-container">
                               <input class="overlay-input-field input-tel" placeholder="Phone" type="number" id="add-phoneNumber-overlay" required>
