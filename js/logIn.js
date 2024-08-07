@@ -58,14 +58,9 @@ async function checkLogInData(email, password) {
 async function login() {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-
-  // Clear previous error messages
   document.getElementById('email-error').innerText = '';
   document.getElementById('password-error').innerText = '';
-
-  // Check login data
   const loginValid = await checkLogInData(email, password);
-
   if (loginValid) {
     showLoadingScreen(() => window.location.href = 'index.html');
   } else {
