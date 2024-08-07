@@ -388,7 +388,7 @@ function renderSubtasks() {
 
 /**
  * Adds event listeners to a subtask for handling specific interactions.
- * Currently, it adds a double-click event listener for editing the subtask.
+ * Currently, it adds a click event listener for editing the subtask.
  *
  * @param {Object} task - The subtask object containing task details.
  * @param {number} task.id - The unique identifier for the subtask.
@@ -396,7 +396,7 @@ function renderSubtasks() {
 function addSubtaskEventListeners(task) {
   document
     .getElementById(`subtask-input-field-sub-${task.id}`)
-    .addEventListener("dblclick", () => editSubtask(task.id));
+    .addEventListener("click", () => editSubtask(task.id));
 }
 
 /**
