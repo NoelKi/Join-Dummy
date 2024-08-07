@@ -409,6 +409,13 @@
   font-size: 19px;
   font-family: 400;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.21);
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.show-task-container::-webkit-scrollbar {
+  display: none;
+  /* Hide the scrollbar */
 }
 
 .show-task-container-edit {
