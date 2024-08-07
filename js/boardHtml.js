@@ -23,7 +23,7 @@ function createCollabInitialsHtml(initials) {
  * @returns {string} The HTML string of the task overlay.
  */
 function createTaskOverlay(element, id) {
-  let a = `<div class="show-task-overlay">
+  let a = `<div class="show-task-overlay" onclick="closeTaskOverlay()">
             <div class="show-task-container">
                 <div class="top-task-container">
                     <div class="task-kind-container no-margin font-size-19" style="background-color: ${element.taskColor}">
