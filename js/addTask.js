@@ -4,6 +4,7 @@ function init() {
   getUserLists();
   loadContactList();
   checkInputs();
+  selectPriority('Medium');
 }
 
 let priorityValue = null;
@@ -37,6 +38,7 @@ let categoryInput = document.getElementById("category-value");
 let priorityError = document.getElementById("priority-error");
 let selectErrorBlock = document.getElementById("select-error-block");
 let hiddenError = document.getElementById("hidden-error");
+document.getElementById('due-date').setAttribute('min', new Date().toISOString().split('T')[0]);
 
 /**
  * Asynchronously retrieves user data and initializes the application's user-specific information.
@@ -205,6 +207,9 @@ function selectPriority(priority) {
   }
   checkInputs();
 }
+
+
+
 
 /**
  * Updates the display of the error message based on the selected priority value.
@@ -383,7 +388,7 @@ function renderSubtasks() {
 
 /**
  * Adds event listeners to a subtask for handling specific interactions.
- * Currently, it adds a double-click event listener for editing the subtask.
+ * Currently, it adds a click event listener for editing the subtask.
  *
  * @param {Object} task - The subtask object containing task details.
  * @param {number} task.id - The unique identifier for the subtask.
@@ -391,7 +396,7 @@ function renderSubtasks() {
 function addSubtaskEventListeners(task) {
   document
     .getElementById(`subtask-input-field-sub-${task.id}`)
-    .addEventListener("dblclick", () => editSubtask(task.id));
+    .addEventListener("click", () => editSubtask(task.id));
 }
 
 /**

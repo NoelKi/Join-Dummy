@@ -87,6 +87,17 @@ dateInput.addEventListener("focusout", function () {
   checkInputs();
 });
 
+
+
+document.getElementById("hidden-error").onclick = function () {
+  dateInput.dispatchEvent(new Event('focusout'));
+  disabledClick();
+  
+};
+
+
+
+
 /**
  * Adds an event listener to the task form to handle form submission.
  *
