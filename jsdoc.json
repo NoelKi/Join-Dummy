@@ -12,7 +12,8 @@
       "./js/summary.js",
       "./js/help.js",
       "./js/legal.js",
-      "./js/privacy.js"
+      "./js/privacy.js",
+      "./js/landscape.js"
     ],
     "exclude": [
       "../node_modules",
