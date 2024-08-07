@@ -178,6 +178,7 @@ function clearErrorMessages() {
     errorMessages.forEach(msg => msg.classList.add('hidden'));
 }
 
+
 /**
  * Redirects to the log-in page.
  * This function redirects the user to the log-in page.
