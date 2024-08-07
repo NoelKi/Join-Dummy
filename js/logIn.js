@@ -338,6 +338,13 @@ function showPasswordIcon(passwordIcon, toggleVisibilityIcon) {
 }
 
 
+/**
+ * Retrieves the values from the input fields.
+ * This function collects values from input fields with IDs 'email' and 'password',
+ * and returns them in an object.
+ * @function getInputValues
+ * @returns {Object} An object containing the input values.
+ */
 function getInputValues() {
   return {
     email: document.getElementById('email').value,
@@ -346,6 +353,13 @@ function getInputValues() {
 }
 
 
+/**
+ * Clears all error messages.
+ * This function hides all error messages currently displayed on the page.
+ * It targets elements with the class 'error-message' and adds the 'hidden' class
+ * to them.
+ * @function clearErrorMessages
+ */
 function clearErrorMessages() {
   const errorMessages = document.querySelectorAll('.error-message');
   errorMessages.forEach(msg => {
