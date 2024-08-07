@@ -242,9 +242,8 @@ body {
 
 .error-message {
     color: red;
-    font-size: 14px;
-    margin-top: 5px;
-    height: 20px;
+    font-size: 10px;
+    height: 10px;
 }
 
 .hidden {
@@ -296,7 +295,6 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    margin-top: 20px;
 }
 
 .remember-me {
@@ -304,6 +302,7 @@ body {
     font-weight: 400;
     display: flex;
     align-items: center;
+    margin-block-start: 0;
 }
 
 .checkbox-img {

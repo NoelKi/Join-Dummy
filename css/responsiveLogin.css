@@ -1,3 +1,18 @@
+@media screen and (max-width: 1050px) {
+    .j-logo {
+        top: 40px;
+        left: 37px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .j-logo {
+        top: 20px;
+        left: 20px;
+        width: 80px;
+    }
+}
+
 @media screen and (max-width: 900px) {
     .greeting {
         justify-content: center;
@@ -39,6 +54,7 @@
     .log-sign-buttons {
         flex-direction: column;
         gap: 10px;
+        margin: 0;
     }
 
     .login-button,
@@ -54,10 +70,14 @@
 
 @media screen and (max-width: 480px) {
     .j-logo {
-        width: 70px;
+        width: 50px;
         height: auto;
-        top: 20px;
+        top: 12px;
         left: 20px;
+    }
+
+    .input-wrapper {
+        padding: 5px 0;
     }
 
     .seperator {
@@ -113,7 +133,7 @@
     .j-logo {
         width: 40px;
         height: auto;
-        top: 10px;
+        top: 30px;
         left: 20px;
     }
 
