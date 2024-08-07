@@ -51,19 +51,31 @@ async function checkLogInData(email, password) {
  * Handles the login process.
  * This function retrieves the email and password from the input fields,
  * checks them against the stored user data, and redirects to the main page if successful.
- * Otherwise, it shows an alert with a login failure message.
+ * Otherwise, it shows an error message below the respective input fields.
  * @async
  * @function login
  */
 async function login() {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-  if (await checkLogInData(email, password)) {
+  document.getElementById('email-error').innerText = '';
+  document.getElementById('password-error').innerText = '';
+  const loginValid = await checkLogInData(email, password);
+  if (loginValid) {
     showLoadingScreen(() => window.location.href = 'index.html');
   } else {
-    alert('Login failed: Incorrect email or password');
+    if (!email) {
+      document.getElementById('email-error').innerText = 'Email is required';
+    }
+    if (!password) {
+      document.getElementById('password-error').innerText = 'Password is required';
+    } else {
+      document.getElementById('email-error').innerText = 'Incorrect email or password';
+      document.getElementById('password-error').innerText = 'Incorrect email or password';
+    }
   }
 }
+
 
 
 /**
