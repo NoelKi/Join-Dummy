@@ -1,3 +1,6 @@
+// Declare isPopupVisible as a global variable
+let isPopupVisible = false;
+
 /**
  * Toggles the visibility of the popup navigation menu.
  * When the popup is shown, it adds the 'show' class and removes the 'hide' class.
@@ -21,7 +24,6 @@ function myFunction() {
   }
 }
 
-
 /**
  * Handles keypress events to close the popup when the Escape key is pressed.
  * @param {KeyboardEvent} e - The keypress event object.
@@ -32,7 +34,6 @@ function keyPress(e) {
     myFunction();
   }
 }
-
 
 /**
  * Closes the popup navigation menu when a click is detected outside the menu
@@ -46,7 +47,6 @@ function clickOutside(e) {
     myFunction();
   }
 }
-
 
 /**
  * Sets the user's initials in the profile button based on the `CURRENT_USER_DATA`.
