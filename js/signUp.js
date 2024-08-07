@@ -177,3 +177,12 @@ function clearErrorMessages() {
     const errorMessages = document.querySelectorAll('.error-message');
     errorMessages.forEach(msg => msg.classList.add('hidden'));
 }
+
+/**
+ * Redirects to the log-in page.
+ * This function redirects the user to the log-in page.
+ * @function changeToLogIn
+ */
+function changeToLogIn() {
+    window.location.href = '../pages/login.html';
+}
