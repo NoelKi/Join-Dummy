@@ -216,16 +216,16 @@ optionSearch.addEventListener("click", function (event) {
 });
 
 /**
- * Event listener for the click event on the document.
+ * Event listener for the focusout event on the document.
  * Closes the category list and resets the dropdown arrow's rotation
- * if the click occurs outside the `selectBoxCategory` element.
+ * if the focus moves outside the `selectBoxCategory` element.
  *
  * @function
- * @param {MouseEvent} event - The click event object containing details about the click event.
+ * @param {FocusEvent} event - The focusout event object containing details about the focus event.
  * @returns {void}
  */
-document.addEventListener("click", function (event) {
-  if (!selectBoxCategory.contains(event.target)) {
+document.addEventListener("focusout", function (event) {
+  if (!selectBoxCategory.contains(event.relatedTarget)) {
     categoryList.style.display = "none";
     dropDownArrowCat.style.transform = "rotate(0deg)";
   }
