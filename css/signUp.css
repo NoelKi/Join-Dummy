@@ -79,18 +79,13 @@ body {
 
 .signup-section {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     width: 65%;
-    height: 324px;
 }
 
 .signup-input {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    height: 152px;
     gap: 24px;
 }
 
@@ -296,7 +291,7 @@ body {
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 520px) {
     .signup-content {
         width: 90%;
         height: 530px;
@@ -307,7 +302,7 @@ body {
     }
 
     .j-logo {
-        width: 30px;
+        width: 40px;
         top: 15pxpx;
         left: 20px;
     }
@@ -332,8 +327,6 @@ body {
 
 @media screen and (max-width: 375px) {
     .j-logo {
-        width: 40px;
-        height: auto;
         top: 5px;
         left: 20px;
     }
