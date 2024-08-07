@@ -622,3 +622,14 @@
   right: 60px;
   bottom: 30px;
 }
+
+@media (max-width: 800px) {
+  .show-task-container {
+    width: 100vw;
+    max-height: 100vh;
+    height: 60vh;
+    margin: 0px 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+}
