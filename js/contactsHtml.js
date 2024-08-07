@@ -83,7 +83,7 @@ function createEditOverlay(id, initials) {
                               <input class="overlay-input-field input-letter" id="edit-email-overlay" type="email" value="${contact.email}" required>
                           </div>
                           <div class="overlay-input-container">
-                              <input class="overlay-input-field input-tel" id="edit-phoneNumber-overlay" value="${contact.phoneNumber}" required>
+                              <input class="overlay-input-field input-tel" id="edit-phoneNumber-overlay" type="number" value="${contact.phoneNumber}" required>
                           </div>
                           <div class="overlay-btn">
                               <button class="overlay-white-btn" onclick="deleteContactOverlay(${id})" type="button">
@@ -135,7 +135,7 @@ function createAddOverlay() {
                               <input class="overlay-input-field input-letter" placeholder="Email" type="email" id="add-email-overlay" required>
                           </div>
                           <div class="overlay-input-container">
-                              <input class="overlay-input-field input-tel" placeholder="Phone" type="tel" id="add-phoneNumber-overlay" required>
+                              <input class="overlay-input-field input-tel" placeholder="Phone" type="number" id="add-phoneNumber-overlay" required>
                           </div>
                           <div class="overlay-btn">
                               <button class="overlay-white-btn" id="cancel-btn-overlay" onclick="closeOverlay();" type="button">
