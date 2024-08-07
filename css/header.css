@@ -78,10 +78,31 @@ header {
   cursor: pointer;
 }
 
+@keyframes slideIn {
+  from {
+    right: -220px;
+  }
+
+  to {
+    right: 10px;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    right: 10px;
+  }
+
+  to {
+    right: -220px;
+  }
+}
+
 .popup-nav {
   position: absolute;
   display: none;
-  top: 101px;
+  top: 100px;
+  right: -220px;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -90,8 +111,16 @@ header {
   z-index: 1000;
   width: auto;
   height: auto;
-  max-width: none;
-  max-height: none;
+  max-width: 200px;
+}
+
+.popup-nav.show {
+  display: block;
+  animation: slideIn 0.3s forwards;
+}
+
+.popup-nav.hide {
+  animation: slideOut 0.3s forwards;
 }
 
 .popup-nav ul {
@@ -127,5 +156,4 @@ header {
   .tool-name {
     display: none;
   }
-
 }
