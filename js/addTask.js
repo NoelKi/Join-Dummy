@@ -142,45 +142,19 @@ function resetPriorityButtons() {
 }
 
 /**
- * Function to validate form inputs and enable/disable the create task button accordingly.
- *
- * This function checks the validity of various form inputs such as title, date, priority, and category.
- * Based on the validation results, it enables or disables the "Create Task" button.
+ * Validates input fields and toggles the create task button's state.
  */
 function checkInputs() {
   let isTitleValid = titleInput.value.trim() !== "";
   let isDateValid = dateInput.value.trim() !== "";
   let isPrioritySelected = priorityValue !== null;
-  let isCategoryValid =
-    categoryInput.value === "Technical task" ||
-    categoryInput.value === "User story";
-  createTaskBtn.disabled = !(
-    isTitleValid &&
-    isDateValid &&
-    isPrioritySelected &&
-    isCategoryValid
-  );
-  if (
-    !isTitleValid ||
-    !isDateValid ||
-    !isPrioritySelected ||
-    !isCategoryValid
-  ) {
-    createTaskBtn.style.zIndex = "-1";
-  } else {
-    createTaskBtn.style.zIndex = "0";
-  }
+  let isCategoryValid = ["Technical task", "User story"].includes(categoryInput.value);
+
+  let allValid = isTitleValid && isDateValid && isPrioritySelected && isCategoryValid;
+  createTaskBtn.disabled = !allValid;
+  createTaskBtn.style.zIndex = allValid ? "0" : "-1";
 }
 
-/**
- * Selects a priority button and updates its visual state. Only one priority can be selected at a time.
- * This function manages the selection state of priority buttons, ensuring only the chosen button is marked as selected.
- * If the button is already selected, it will be deselected.
- *
- * @function
- * @param {string} priority - The priority level to select, represented as a string. The string should match the ID of the button element.
- * @returns {void}
- */
 /**
  * Selects a priority button and updates the UI based on the selection.
  *
@@ -207,15 +181,6 @@ function selectPriority(priority) {
   }
   checkInputs();
 }
-
-
-
-
-/**
- * Updates the display of the error message based on the selected priority value.
- *
- * This function shows an error message if no priority is selected and hides it otherwise.
- */
 
 /**
  * Clears the list of collaborators and resets the selection state.
