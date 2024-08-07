@@ -60,7 +60,7 @@ function createDetailedContactCard(id, initials) {
 function createEditOverlay(id, initials) {
   const contact = getObjectById(contacts, id);
   return `
-      <div class="overlay-section">
+      <div class="overlay-section"  onclick="closeOverlayEdit()">
           <div class="edit-overlay-container slide-in-overlay-left" id="edit-overlay-container">
               <div class="edit-top-container">
                   <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
@@ -107,7 +107,7 @@ function createEditOverlay(id, initials) {
  */
 function createAddOverlay() {
   return `        
-      <div class="overlay-section">
+      <div class="overlay-section"  onclick="closeOverlayAdd()">>
           <div class="add-overlay-container slide-in-overlay" id="add-overlay-container">
               <div class="add-top-container">
                   <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
