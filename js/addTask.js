@@ -38,6 +38,7 @@ let categoryInput = document.getElementById("category-value");
 let priorityError = document.getElementById("priority-error");
 let selectErrorBlock = document.getElementById("select-error-block");
 let hiddenError = document.getElementById("hidden-error");
+document.getElementById('due-date').setAttribute('min', new Date().toISOString().split('T')[0]);
 
 /**
  * Asynchronously retrieves user data and initializes the application's user-specific information.
