@@ -240,7 +240,7 @@
 
 .task-bottom-container {
   padding-top: 16px;
-  height: 32px;
+  /*height: 32px;*/
   width: 195px;
   display: flex;
   flex-direction: row;
@@ -255,8 +255,8 @@
 .task-collaborators {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .initials {
