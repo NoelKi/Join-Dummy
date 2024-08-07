@@ -4,18 +4,20 @@
     <div class="right-header-section">
       <span class="tool-name cursor-pointer" id="toggle-nav" onclick="myFunction()">Kanban Project Management
         Tool</span>
-      <nav class="popup-nav" id="popup-nav">
-        <ul>
-          <li><a href="privacyPolicy.html">Privacy Policy</a></li>
-          <li><a href="legalNotice.html">Legal Notice</a></li>
-          <li><a href="login.html">Sign Out</a></li>
-        </ul>
-      </nav>
       <div class="help-icon-container">
         <a href="help.html"><img class="help-icon" src="../assets/img/help_icon.svg" alt="?" /></a>
       </div>
-      <div class="profil-btn-container" href="#">
-        <button id="profil-btn" class="profil-btn"></button>
+      <div class="profil-btn-container">
+        <button id="profil-btn" class="profil-btn" onclick="myFunction()">
+          <!-- User's initials will be shown here -->
+        </button>
+        <nav class="popup-nav" id="popup-nav">
+          <ul>
+            <li><a href="privacyPolicy.html">Privacy Policy</a></li>
+            <li><a href="legalNotice.html">Legal Notice</a></li>
+            <li><a href="login.html">Sign Out</a></li>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>
