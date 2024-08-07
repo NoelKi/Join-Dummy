@@ -157,6 +157,10 @@ aside {
     aside {
         display: none;
     }
+
+    #make-visible-bottom {
+        display: flex;
+    }
 }
 
 @media(max-width: 640px) {
