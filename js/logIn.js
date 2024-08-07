@@ -56,26 +56,37 @@ async function checkLogInData(email, password) {
  * @function login
  */
 async function login() {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  document.getElementById('email-error').innerText = '';
-  document.getElementById('password-error').innerText = '';
+  const { email, password } = getInputValues();
+  clearErrorMessages();
   const loginValid = await checkLogInData(email, password);
   if (loginValid) {
     showLoadingScreen(() => window.location.href = 'index.html');
   } else {
     if (!email) {
-      document.getElementById('email-error').innerText = 'Email is required';
+      showError('email-error', 'Email is required');
     }
     if (!password) {
-      document.getElementById('password-error').innerText = 'Password is required';
+      showError('password-error', 'Password is required');
     } else {
-      document.getElementById('email-error').innerText = 'Incorrect email or password';
-      document.getElementById('password-error').innerText = 'Incorrect email or password';
+      showError('email-error', 'Incorrect email or password');
+      showError('password-error', 'Incorrect email or password');
     }
   }
 }
 
+
+/**
+ * Shows an error message for the specified input field.
+ * This function sets the error message text and removes the 'hidden' class to display it.
+ * @function showError
+ * @param {string} fieldId - The ID of the field's error message element.
+ * @param {string} message - The error message text.
+ */
+function showError(fieldId, message) {
+  const errorElement = document.getElementById(fieldId);
+  errorElement.innerText = message;
+  errorElement.classList.remove('hidden');
+}
 
 
 /**
@@ -324,6 +335,23 @@ function showVisibilityIcon(passwordIcon, toggleVisibilityIcon) {
 function showPasswordIcon(passwordIcon, toggleVisibilityIcon) {
   passwordIcon.classList.remove('hidden');
   toggleVisibilityIcon.classList.add('hidden');
+}
+
+
+function getInputValues() {
+  return {
+    email: document.getElementById('email').value,
+    password: document.getElementById('password').value
+  };
+}
+
+
+function clearErrorMessages() {
+  const errorMessages = document.querySelectorAll('.error-message');
+  errorMessages.forEach(msg => {
+    msg.classList.add('hidden');
+    msg.innerText = '';
+  });
 }
 
 
