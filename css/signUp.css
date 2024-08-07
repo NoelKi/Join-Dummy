@@ -299,16 +299,22 @@ body {
 @media screen and (max-width: 480px) {
     .signup-content {
         width: 90%;
+        height: 530px;
+    }
+
+    .signup-input {
+        gap: 18px;
     }
 
     .j-logo {
         width: 30px;
-        top: 20px;
+        top: 15pxpx;
         left: 20px;
     }
 
     .h1-signup {
-        font-size: 47px;
+        font-size: 40px;
+        margin-block-start: 0;
     }
 
     .input-wrapper input {
@@ -328,7 +334,7 @@ body {
     .j-logo {
         width: 40px;
         height: auto;
-        top: 10px;
+        top: 5px;
         left: 20px;
     }
 }
