@@ -23,7 +23,7 @@
   flex-direction: column;
   padding: 16px;
   overflow-y: scroll;
-  height: calc(100vh - 125px);
+  height: calc(100vh - 160px);
 }
 
 .optional-text {

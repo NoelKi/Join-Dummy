@@ -92,8 +92,8 @@
   }
 
   .task-css-board {
-    padding-left: 6px;
-    padding-right: 18px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .create-button-overlay {
@@ -117,5 +117,11 @@
 @media screen and (max-width: 550px) {
   .board-top-container {
     width: 95%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .buttons {
+    gap: 4px;
   }
 }
