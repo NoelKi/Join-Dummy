@@ -6,8 +6,7 @@ window.onload = function () {
   getUserBoard();
   renderTasks();
   checkInputs();
-  selectPriority("Medium");
-};
+  };
 
 let currentTaskElement;
 let currentDraggedElement;
