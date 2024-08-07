@@ -24,7 +24,7 @@ function createCollabInitialsHtml(initials) {
  */
 function createTaskOverlay(element, id) {
   let a = `<div class="show-task-overlay" onclick="closeTaskOverlay()">
-            <div class="show-task-container">
+            <div class="show-task-container" onclick="event.stopPropagation()">
                 <div class="top-task-container">
                     <div class="task-kind-container no-margin font-size-19" style="background-color: ${element.taskColor}">
                         ${element.kind}
