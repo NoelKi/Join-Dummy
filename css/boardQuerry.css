@@ -13,7 +13,7 @@
     width: calc(100vw - 255px);
     margin: 0;
     padding-bottom: 10px;
-    height: 100%;
+    min-height: 0;
   }
 
   .outer-board-container {

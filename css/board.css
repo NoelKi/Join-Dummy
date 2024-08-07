@@ -131,7 +131,8 @@
 
 .board-content-container {
   width: 252px;
-  height: calc(100vh - 296px - 76px);
+  max-height: calc(100vh - 296px - 76px);
+  min-height: calc(100vh - 296px - 76px);
   padding-left: 6px;
   padding-right: 4px;
   padding-top: 10px;
