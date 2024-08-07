@@ -290,6 +290,8 @@
 
 .circle-positioning {
   display: flex;
+  overflow-x: scroll;
+  box-sizing: border-box;
 }
 
 .initials-task-circle {
