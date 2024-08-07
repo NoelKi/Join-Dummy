@@ -196,5 +196,5 @@ function formatDeadline(date) {
  * @function loadBoard
  */
 function loadBoard() {
-  window.location.href = '/pages/board.html';
+  window.location.href = 'board.html';
 }

@@ -11,12 +11,19 @@
   <link rel="stylesheet" href="../css/sidebar.css" />
   <link rel="stylesheet" href="../assets/fonts/fonts.css" />
   <link rel="icon" type="image/png" href="../assets/img/j.svg" />
+  <link rel="stylesheet" href="../css/landscape.css">
+  <script src="../js/landscape.js"></script>
   <script src="../js/auth.js"></script>
+  <script src="../js/firebase.js"></script>
   <script src="../js/w3c.js"></script>
   <script src="../js/header.js"></script>
+  <script src="../js/board.js"></script>
+  <script src="../js/summary.js"></script>
+  <script src="../js/logIn.js"></script>
+  <script src="../js/privacy.js"></script>
 </head>
 
-<body onload="includeHTML();">
+<body onload="init();">
   <div w3-include-html="../assets/templates/header.html"></div>
   <div class="wrap">
     <div w3-include-html="../assets/templates/sidebar.html"></div>
@@ -522,6 +529,7 @@
       </ul>
     </div>
   </div>
+  <div w3-include-html="../assets/templates/landscape.html"></div>
 </body>
 
 </html>

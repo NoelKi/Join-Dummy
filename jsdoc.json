@@ -9,7 +9,10 @@
       "./js/contactsHtml.js",
       "./js/logIn.js",
       "./js/signUp.js",
-      "./js/summary.js"
+      "./js/summary.js",
+      "./js/help.js",
+      "./js/legal.js",
+      "./js/privacy.js"
     ],
     "exclude": [
       "../node_modules",
