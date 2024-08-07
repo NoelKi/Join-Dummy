@@ -10,8 +10,6 @@ header {
 }
 
 .wrap-header {
-  /* margin: 0 auto;
-  max-width: 1362px; */
   display: flex;
   height: 56px;
   padding: 20px 39px;
@@ -73,6 +71,7 @@ header {
   height: 51px;
   font-size: 19px;
   color: #005dff;
+  cursor: pointer;
 }
 
 .cursor-pointer {
@@ -124,7 +123,7 @@ header {
   .right-header-section {
     width: 130px;
   }
-  
+
   .tool-name {
     display: none;
   }
