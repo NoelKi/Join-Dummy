@@ -37,8 +37,8 @@
                         <div class="input-wrapper">
                             <input type="email" id="email" placeholder="Email" required autocomplete="email">
                             <img src="../assets/img/mail.svg" alt="Email Icon">
-                            <p id="email-exists-message" class="error-message hidden">Invalid email address.</p>
                         </div>
+                        <span id="email-error-message" class="error-message hidden"></span>
                         <div class="input-wrapper">
                             <input type="password" id="password" placeholder="Password" required
                                 autocomplete="new-password">
@@ -55,6 +55,7 @@
                             <img src="../assets/img/pw_visibility_off.svg" alt="Toggle Visibility"
                                 class="toggle-visibility hidden" id="toggle-password-visibility">
                         </div>
+                        <span id="confirm-password-error-message" class="error-message hidden"></span>
                         <div class="checkbox-wrapper">
                             <img id="checkbox-remember" class="checkbox-img" src="../assets/img/rememberDefault.svg"
                                 alt="Privacy Policy Checkbox" onclick="toggleCheckBox()">

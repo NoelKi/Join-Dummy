@@ -258,9 +258,36 @@ body {
     opacity: 0.6;
 }
 
-@media screen and (max-width: 768px) {
+.error-message {
+    color: red;
+    font-size: 10px;
+    height: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media screen and (max-width: 1020px) {
+    .j-logo {
+        width: 70px;
+        height: auto;
+        top: 40px;
+        left: 40px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .j-logo {
+        width: 50px;
+        top: 20px;
+        left: 20px;
+    }
+}
+
+@media screen and (max-width: 800px) {
     .signup-content {
-        width: 80%;
+        width: 70%;
         padding: 10px;
     }
 
@@ -275,8 +302,7 @@ body {
     }
 
     .j-logo {
-        width: 60px;
-        height: auto;
+        width: 30px;
         top: 20px;
         left: 20px;
     }
@@ -304,9 +330,5 @@ body {
         height: auto;
         top: 10px;
         left: 20px;
-    }
-
-    .signup-content {
-        height: 500px;
     }
 }
