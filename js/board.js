@@ -6,7 +6,7 @@ window.onload = function () {
   getUserBoard();
   renderTasks();
   checkInputs();
-  selectPriority('Medium');
+  selectPriority("Medium");
 };
 
 let currentTaskElement;
@@ -332,3 +332,10 @@ function renderTaskOverlay(id) {
 function getObjectById(array, id) {
   return array.find((obj) => obj.id === id);
 }
+
+document.addEventListener("click", function (event) {
+  if (!contains(event.target)) {
+    categoryList.style.display = "none";
+    dropDownArrowCat.style.transform = "rotate(0deg)";
+  }
+});

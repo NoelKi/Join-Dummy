@@ -60,8 +60,8 @@ function createDetailedContactCard(id, initials) {
 function createEditOverlay(id, initials) {
   const contact = getObjectById(contacts, id);
   return `
-      <div class="overlay-section">
-          <div class="edit-overlay-container slide-in-overlay-left" id="edit-overlay-container">
+      <div class="overlay-section"  onclick="closeOverlayEdit()">
+          <div class="edit-overlay-container slide-in-overlay-left" id="edit-overlay-container"  onclick="event.stopPropagation()">
               <div class="edit-top-container">
                   <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
                   <p class="overlay-headline">Edit contact</p>
@@ -83,7 +83,7 @@ function createEditOverlay(id, initials) {
                               <input class="overlay-input-field input-letter" id="edit-email-overlay" type="email" value="${contact.email}" required>
                           </div>
                           <div class="overlay-input-container">
-                              <input class="overlay-input-field input-tel" id="edit-phoneNumber-overlay" value="${contact.phoneNumber}" required>
+                              <input class="overlay-input-field input-tel" id="edit-phoneNumber-overlay" type="number" value="${contact.phoneNumber}" required>
                           </div>
                           <div class="overlay-btn">
                               <button class="overlay-white-btn" onclick="deleteContactOverlay(${id})" type="button">
@@ -107,8 +107,8 @@ function createEditOverlay(id, initials) {
  */
 function createAddOverlay() {
   return `        
-      <div class="overlay-section">
-          <div class="add-overlay-container slide-in-overlay" id="add-overlay-container">
+      <div class="overlay-section"  onclick="closeOverlayAdd()">>
+          <div class="add-overlay-container slide-in-overlay" id="add-overlay-container"  onclick="event.stopPropagation()">
               <div class="add-top-container">
                   <img src="../assets/img/join.svg" alt="Join" class="join-logo-overlay">
                   <p class="overlay-headline">Add contact</p>
@@ -135,7 +135,7 @@ function createAddOverlay() {
                               <input class="overlay-input-field input-letter" placeholder="Email" type="email" id="add-email-overlay" required>
                           </div>
                           <div class="overlay-input-container">
-                              <input class="overlay-input-field input-tel" placeholder="Phone" type="tel" id="add-phoneNumber-overlay" required>
+                              <input class="overlay-input-field input-tel" placeholder="Phone" type="number" id="add-phoneNumber-overlay" required>
                           </div>
                           <div class="overlay-btn">
                               <button class="overlay-white-btn" id="cancel-btn-overlay" onclick="closeOverlay();" type="button">
