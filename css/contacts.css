@@ -613,6 +613,13 @@
   background-position: calc(100% - 16px) center;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 .overlay-input-field {
   border: none;
   font-size: 19px;
