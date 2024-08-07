@@ -4,6 +4,7 @@ function init() {
   getUserLists();
   loadContactList();
   checkInputs();
+  selectPriority('Medium');
 }
 
 let priorityValue = null;
@@ -205,6 +206,9 @@ function selectPriority(priority) {
   }
   checkInputs();
 }
+
+
+
 
 /**
  * Updates the display of the error message based on the selected priority value.
