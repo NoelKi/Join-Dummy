@@ -142,20 +142,38 @@ function capitalizeFirstLetter(string) {
 
 
 /**
- * Retrieves tasks with deadlines within the next 7 days.
- * This function filters the given tasks and returns only those that are due within the next 7 days.
- * @function getsetDeadline
+ * Retrieves tasks with deadlines that fall within the next 7 days.
+ * This function filters the provided list of tasks to include only those
+ * that have a deadline from today up to 7 days in the future.
+ * @function setDeadline
  * @param {Object[]} tasks - The list of tasks to filter.
- * @returns {Object[]} - The list of tasks due in the next 7 days.
+ * @param {string} tasks[].date - The deadline date of the task in ISO string format.
+ * @returns {Object[]} An array of tasks whose deadlines fall within the next 7 days.
  */
 function setDeadline(tasks) {
-  const now = new Date();
-  const sevenDaysFromNow = new Date();
-  sevenDaysFromNow.setDate(now.getDate() + 7);
+  const { today, sevenDaysFromToday } = calculateDeadlineRange();
   return tasks.filter(task => {
     const taskDate = new Date(task.date);
-    return taskDate >= now && taskDate <= sevenDaysFromNow;
+    return taskDate >= today && taskDate <= sevenDaysFromToday;
   });
+}
+
+
+/**
+ * Calculates the range of dates from today to 7 days in the future.
+ * This function determines the start date (today) and the end date (7 days from today)
+ * to be used for filtering tasks based on their deadlines.
+ * @function calculateDeadlineRange
+ * @returns {Object} An object containing the start and end dates of the range.
+ * @property {Date} today - The start date of the range, set to the start of today.
+ * @property {Date} sevenDaysFromToday - The end date of the range, set to 7 days from today.
+ */
+function calculateDeadlineRange() {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const sevenDaysFromToday = new Date(today);
+  sevenDaysFromToday.setDate(today.getDate() + 7);
+  return { today, sevenDaysFromToday };
 }
 
 
