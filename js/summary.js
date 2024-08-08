@@ -177,7 +177,6 @@ function calculateDeadlineRange() {
 }
 
 
-
 /**
  * Finds the task with the closest deadline.
  * This function takes a list of tasks and returns the one with the closest deadline.
