@@ -185,22 +185,6 @@ async function emailExists(email) {
 
 
 /**
- * Toggles the policy acceptance checkbox and enables/disables the sign-up button accordingly.
- * This function toggles the state of the privacy policy acceptance checkbox.
- * It updates the checkbox image and enables or disables the sign-up button
- * based on whether the policy is accepted.
- * @function toggleCheckBox
- */
-function toggleCheckBox() {
-    const checkBoxImage = document.getElementById('checkbox-remember');
-    const signUpButton = document.getElementById('signup-button');
-    isPolicyAccepted = !isPolicyAccepted;
-    checkBoxImage.src = isPolicyAccepted ? '../assets/img/rememberChecked.svg' : '../assets/img/rememberDefault.svg';
-    signUpButton.disabled = !isPolicyAccepted;
-}
-
-
-/**
  * Displays a success message and redirects to the login page after a delay.
  * This function shows a success message and an overlay for 2 seconds.
  * After that, it hides the success message and redirects the user to the login page.
@@ -236,19 +220,6 @@ function showError(field, message) {
         errorMessageElement.textContent = message;
         errorMessageElement.classList.remove('hidden');
     }
-}
-
-
-/**
- * Clears all error messages.
- * This function hides all error messages currently displayed on the page.
- * It targets elements with the class 'error-message' and adds the 'hidden' class
- * to them.
- * @function clearErrorMessages
- */
-function clearErrorMessages() {
-    const errorMessages = document.querySelectorAll('.error-message');
-    errorMessages.forEach(msg => msg.classList.add('hidden'));
 }
 
 

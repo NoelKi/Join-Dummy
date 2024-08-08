@@ -237,8 +237,11 @@ function loadUserIdLocalStorage() {
  * @function toggleCheckBox
  */
 function toggleCheckBox() {
-  let image = document.getElementById('checkbox-remember');
-  image.src = image.src.includes('rememberDefault') ? '../assets/img/rememberChecked.svg' : '../assets/img/rememberDefault.svg';
+  const checkBoxImage = document.getElementById('checkbox-remember');
+  const signUpButton = document.getElementById('signup-button');
+  isPolicyAccepted = !isPolicyAccepted;
+  checkBoxImage.src = isPolicyAccepted ? '../assets/img/rememberChecked.svg' : '../assets/img/rememberDefault.svg';
+  signUpButton.disabled = !isPolicyAccepted;
 }
 
 
@@ -348,7 +351,7 @@ function showPasswordIcon(passwordIcon, toggleVisibilityIcon) {
 function getInputValues() {
   return {
     email: document.getElementById('email').value,
-    password: document.getElementById('password').value
+    password: document.getElementById('password').value,
   };
 }
 
