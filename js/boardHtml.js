@@ -111,7 +111,7 @@ function createTaskOverlaySubtasks(subtasks, objectId) {
  * @returns {string} The HTML string of the task.
  */
 function renderTaskHtml(element) {
-  let a = `<li id="${element.id}" class="task-container" draggable="true" ondragstart="startDragging(${element["id"]},event)" ondragover="dragOver(event)" onclick="renderTaskOverlay(${element["id"]});">
+  let a = `<li id="${element.id}" class="task-container draggable" draggable="true" ondragstart="startDragging(${element["id"]},event)" ondragover="dragOver(event)" onclick="renderTaskOverlay(${element["id"]});">
               <div class="task-kind-container" style="background-color: ${element.taskColor}">${element.kind}</div>
               <div class="task-content-container">
                   <div class="task-title">${element.title}</div>
