@@ -41,7 +41,7 @@
       <div class="top-board-section">
         <div class="searchbar-container">
           <input type="text" class="searchbar-board" placeholder="Find Task" oninput="renderTasks()">
-          <button class="add-task-btn" onclick="renderAddTaskOverlay()">
+          <button class="add-task-btn" onclick="renderAddTaskOverlay(); selectPriority('Medium');">
             Add Task
             <img src="../assets/img/plus.svg" alt="+">
           </button>
@@ -51,7 +51,7 @@
         <div class="outer-board-container">
           <div class="board-top-container">
             <h4>To do</h4>
-            <button class="add-task-btn-small" onclick="renderAddTaskOverlay()">
+            <button class="add-task-btn-small" onclick="renderAddTaskOverlay(); selectPriority('Medium');">
               <img class="add-task-btn-unhover" src="../assets/img/addTaskBtn.svg" alt="+">
               <img class="add-task-btn-hover" src="../assets/img/addTaskBtnHover.svg" alt="+">
             </button>
@@ -63,7 +63,7 @@
         <div class="outer-board-container">
           <div class="board-top-container">
             <h4>In progress</h4>
-            <button class="add-task-btn-small" onclick="renderAddTaskOverlay('inProgress')">
+            <button class="add-task-btn-small" onclick="renderAddTaskOverlay('inProgress'); selectPriority('Medium');">
               <img class="add-task-btn-unhover" src="../assets/img/addTaskBtn.svg" alt="+">
               <img class="add-task-btn-hover" src="../assets/img/addTaskBtnHover.svg" alt="+">
             </button>
@@ -75,7 +75,7 @@
         <div class="outer-board-container">
           <div class="board-top-container">
             <h4>Await feedback</h4>
-            <button class="add-task-btn-small" onclick="renderAddTaskOverlay('awaitFeedback')">
+            <button class="add-task-btn-small" onclick="renderAddTaskOverlay('awaitFeedback'); selectPriority('Medium');">
               <img class="add-task-btn-unhover" src="../assets/img/addTaskBtn.svg" alt="+">
               <img class="add-task-btn-hover" src="../assets/img/addTaskBtnHover.svg" alt="+">
             </button>

@@ -366,7 +366,7 @@ function handleTouchMove(event) {
   touchElement.style.position = "absolute";
   touchElement.style.left = `${touch.clientX - touchStartX}px`;
   touchElement.style.top = `${touch.clientY - touchStartY}px`;
-  console.log("Penis");
+  console.log("moving");
 }
 
 // Funktion zum Behandeln des Touch-End-Events
