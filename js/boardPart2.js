@@ -323,3 +323,12 @@ function returnEditTaskElementToAdd() {
   const okBtn = document.getElementsByClassName("ok-btn-container")[0];
   okBtn.style.display = "none";
 }
+
+/**
+ * Closes the overlay for editing a task by setting its display style to 'none'.
+ * This function is typically used to hide the overlay when a user finishes editing a task.
+ */
+function closeOverlayEditTask() {
+  let editTaskOverlay = document.getElementById("edit-task-overlay");
+  editTaskOverlay.style.display = "none";
+}
