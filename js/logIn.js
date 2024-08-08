@@ -372,6 +372,7 @@ function clearErrorMessages() {
 }
 
 
+
 /**
  * Redirects to the sign-up page.
  * This function redirects the user to the sign-up page.
