@@ -2,7 +2,7 @@ let isPolicyAccepted = false;
 
 /**
  * Sends sign-up data to the server.
- *  * This function sends a POST request to the server with the user data. It handles
+ * This function sends a POST request to the server with the user data. It handles
  * the conversion of the data to JSON format and checks the response status.
  * If the response is not OK, it throws an error.
  * @async
@@ -14,7 +14,7 @@ let isPolicyAccepted = false;
  * @param {string} data.id - The unique ID of the user.
  * @returns {Object} The response from the server.
  * @throws Will throw an error if the network response is not ok.
-  */
+ */
 async function postSignUpData(data) {
     try {
         const response = await fetch(`${BASE_URL}users.json`, {
@@ -26,6 +26,7 @@ async function postSignUpData(data) {
         return await response.json();
     } catch (error) {
         console.error('Error posting signup data:', error);
+        return null;
     }
 }
 
@@ -37,22 +38,94 @@ async function postSignUpData(data) {
  * On success, it triggers a success message display.
  * @async
  * @function signUp
-*/
+ */
 async function signUp() {
     const { name, email, password, confirmPassword } = getInputValues();
     clearErrorMessages();
     const errors = validateInputs({ name, email, password, confirmPassword });
     if (errors.length > 0) {
-        errors.forEach(({ field, message }) => showError(field, message));
+        displayErrors(errors);
         return;
     }
     if (await emailExists(email)) {
         showError('email', 'This email is already registered.');
         return;
     }
-    const newUser = { name, email, password, id: Date.now().toString() };
+    const newUser = createNewUser({ name, email, password });
     const result = await postSignUpData(newUser);
-    if (result) showSuccessMessage();
+    if (result) {
+        showSuccessMessage();
+    }
+}
+
+
+/**
+ * Displays a list of error messages.
+ * This function takes an array of error objects and displays them under the corresponding input fields.
+ * @function displayErrors
+ * @param {Array} errors - An array of error objects.
+ */
+function displayErrors(errors) {
+    errors.forEach(({ field, message }) => showError(field, message));
+}
+
+
+/**
+ * Creates a new user object.
+ * This function constructs a new user object with the provided details and a default contact.
+ * @function createNewUser
+ * @param {Object} userDetails - The details of the user.
+ * @param {string} userDetails.name - The name of the user.
+ * @param {string} userDetails.email - The email address of the user.
+ * @param {string} userDetails.password - The password of the user.
+ * @returns {Object} The new user object.
+ */
+function createNewUser({ name, email, password }) {
+    return {
+        name,
+        email,
+        password,
+        id: Date.now().toString(),
+        contacts: [createDefaultContact(name, email)]
+    };
+}
+
+
+/**
+ * Creates a default contact for the user.
+ * This function constructs a contact object with default values and the user's information.
+ * @function createDefaultContact
+ * @param {string} name - The name of the user.
+ * @param {string} email - The email address of the user.
+ * @returns {Object} The default contact object.
+ */
+function createDefaultContact(name, email) {
+    const id = Date.now();
+    return {
+        id,
+        name: `${name} (You)`,
+        surname: '',
+        email: email,
+        phoneNumber: '',
+        color: colorRandomizer()
+    };
+}
+
+
+/**
+ * Randomizes and returns a color from a predefined array.
+ * This function selects a random color from a predefined array of colors.
+ * @function colorRandomizer
+ * @returns {string} A random color.
+ */
+function colorRandomizer() {
+    const colorArr = [
+        "#FF7A00", "#FF5EB3", "#6E52FF", "#9327FF", "#00BEE8",
+        "#1FD7C1", "#FF745E", "#FFA35E", "#FC71FF", "#FFC701",
+        "#0038FF", "#C3FF2B", "#FFE62B", "#FF4646", "#FFBB2B",
+    ];
+    const rand = Math.floor(Math.random() * colorArr.length);
+    return colorArr[rand];
 }
 
 
@@ -108,6 +181,25 @@ function validateInputs({ name, email, password, confirmPassword }) {
 async function emailExists(email) {
     const users = await fetchUsers();
     return Object.values(users).some(user => user.email === email);
+}
+
+
+/**
+ * Fetches the list of users from the server.
+ * This function sends a GET request to the server to retrieve the list of registered users.
+ * @async
+ * @function fetchUsers
+ * @returns {Object} The list of users.
+ */
+async function fetchUsers() {
+    try {
+        const response = await fetch(`${BASE_URL}users.json`);
+        if (!response.ok) throw new Error('Network response was not ok');
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        return {};
+    }
 }
 
 
