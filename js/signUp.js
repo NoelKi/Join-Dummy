@@ -185,25 +185,6 @@ async function emailExists(email) {
 
 
 /**
- * Fetches the list of users from the server.
- * This function sends a GET request to the server to retrieve the list of registered users.
- * @async
- * @function fetchUsers
- * @returns {Object} The list of users.
- */
-async function fetchUsers() {
-    try {
-        const response = await fetch(`${BASE_URL}users.json`);
-        if (!response.ok) throw new Error('Network response was not ok');
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching users:', error);
-        return {};
-    }
-}
-
-
-/**
  * Toggles the policy acceptance checkbox and enables/disables the sign-up button accordingly.
  * This function toggles the state of the privacy policy acceptance checkbox.
  * It updates the checkbox image and enables or disables the sign-up button
