@@ -6,10 +6,10 @@ window.onload = function () {
   getUserBoard();
   renderTasks();
   checkInputs();
-  };
+};
 
-let currentTaskElement;
-let currentDraggedElement;
+let currentTaskElement = null;
+let currentDraggedElement = null;
 let tasks = [];
 
 /**
@@ -60,6 +60,8 @@ function renderTasks() {
   renderInProgress(filterTask);
   renderAwaitFeedback(filterTask);
   renderDone(filterTask);
+
+  addTouchEventListeners();
 }
 
 /**
@@ -160,6 +162,7 @@ function allowDrop(ev) {
  * @param {string} category - The new category for the task.
  */
 function moveTo(category) {
+  console.log(currentTaskElement);
   tasks[currentTaskElement]["category"] = category;
   renderTasks();
 }
@@ -347,3 +350,58 @@ document.addEventListener("focusout", function (event) {
     dropDownArrowCat.style.transform = "rotate(0deg)";
   }
 });
+
+// Funktion zum Hinzufügen von Touch-Event-Listenern
+function addTouchEventListeners() {
+  const draggableItems = document.querySelectorAll(".task-container.draggable");
+  draggableItems.forEach((item) => {
+    item.addEventListener("touchstart", handleTouchStart, false);
+    item.addEventListener("touchmove", handleTouchMove, false);
+    item.addEventListener("touchend", handleTouchEnd, false);
+  });
+}
+
+// Funktion zum Behandeln des Touch-Start-Events
+function handleTouchStart(event) {
+  touchElement = event.target.closest(".task-container");
+  touchStartX = event.touches[0].clientX;
+  touchStartY = event.touches[0].clientY;
+  console.log("touchStart");
+
+  // Berechnung der Anfangsposition des Elements relativ zur Touch-Position
+  const rect = touchElement.getBoundingClientRect();
+  elementStartX = rect.left;
+  elementStartY = rect.top;
+  console.log("touchStart");
+}
+
+// Funktion zum Behandeln des Touch-Move-Events
+function handleTouchMove(event) {
+  event.preventDefault();
+  const touch = event.touches[0];
+  touchElement.style.position = "absolute";
+  touchElement.style.left = `${touch.clientX - touchStartX}px`;
+  touchElement.style.top = `${touch.clientY - touchStartY}px`;
+  console.log("Penis");
+}
+
+// Funktion zum Behandeln des Touch-End-Events
+function handleTouchEnd(event) {
+  const touchEndX = event.changedTouches[0].clientX;
+  const touchEndY = event.changedTouches[0].clientY;
+  const dropTarget = document.elementFromPoint(touchEndX, touchEndY);
+
+  if (dropTarget && dropTarget.classList.contains("drag-area")) {
+    const category = dropTarget.id;
+    console.log(category);
+    moveTo(category);
+  }
+
+  touchElement.style.position = "static";
+}
+
+let touchStartX = 0,
+  touchStartY = 0,
+  elementStartX = 0,
+  elementStartY = 0,
+  touchElement;
