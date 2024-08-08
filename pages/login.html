@@ -12,6 +12,7 @@
     <script src="../js/w3c.js"></script>
     <script src="../js/landscape.js"></script>
     <script src="../js/firebase.js"></script>
+    <script src="../js/signUp.js"></script>
     <script src="../js/logIn.js"></script>
 </head>
 
@@ -38,7 +39,7 @@
                             <input type="email" id="email" placeholder="Email" autocomplete="email" required>
                             <img src="../assets/img/mail.svg" alt="Email Icon">
                         </div>
-                        <span class="error-message" id="email-error"></span>
+                        <span class="error-message hidden" id="email-error"></span>
                         <div class="input-wrapper">
                             <input type="password" id="password" placeholder="Password" autocomplete="current-password"
                                 required>
@@ -47,7 +48,7 @@
                             <img src="../assets/img/pw_visibility_off.svg" alt="Toggle Visibility"
                                 class="toggle-visibility hidden" id="toggle-password-visibility">
                         </div>
-                        <span class="error-message" id="password-error"></span>
+                        <span class="error-message hidden" id="password-error"></span>
                         <div class="checkbox-wrapper">
                             <p class="remember-me">
                                 <img id="checkbox-remember" class="checkbox-img" onclick="toggleCheckBox()"

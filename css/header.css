@@ -7,6 +7,7 @@ header {
   background-color: #4589ff;
   box-shadow: 2px 0px 4px #2a36472e;
   user-select: none;
+  position: relative;
 }
 
 .wrap-header {
@@ -53,6 +54,7 @@ header {
 }
 
 .profil-btn-container {
+  position: relative;
   border: 3px solid white;
   border-radius: 50%;
   width: 56px;
@@ -84,13 +86,13 @@ header {
   }
 
   to {
-    right: 10px;
+    right: -40px;
   }
 }
 
 @keyframes slideOut {
   from {
-    right: 10px;
+    right: -40px;
   }
 
   to {
@@ -100,18 +102,18 @@ header {
 
 .popup-nav {
   position: absolute;
-  display: none;
-  top: 100px;
-  right: -220px;
+  top: 80px;
+  right: 0;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 30px 0 30px 30px;
   padding: 8px 16px;
   z-index: 1000;
-  width: auto;
   height: auto;
-  max-width: 200px;
+  width: 150px;
+  display: none;
+  text-align: end;
 }
 
 .popup-nav.show {
@@ -147,6 +149,17 @@ header {
 .d-none {
   display: none;
 }
+
+@media (max-width: 700px) {
+  .right-header-section {
+    width: 130px;
+  }
+
+  .tool-name {
+    display: none;
+  }
+}
+
 
 @media(max-width: 700px) {
   .right-header-section {

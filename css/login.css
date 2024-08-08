@@ -178,6 +178,7 @@ body {
     font-size: 48px;
     margin-bottom: 10px;
     text-align: center;
+    margin-block-start: 0;
 }
 
 .seperator {
@@ -196,14 +197,14 @@ body {
     display: flex;
     flex-direction: column;
     width: 70%;
-    gap: 20px;
+    gap: 24px;
 }
 
 .input-wrapper {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #D1D1D1;
-    padding: 10px 0;
+    padding: 12px 0;
     position: relative;
     width: 100%;
 }
@@ -295,6 +296,7 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
+    margin-top: 20px;
 }
 
 .remember-me {
@@ -302,7 +304,6 @@ body {
     font-weight: 400;
     display: flex;
     align-items: center;
-    margin-block-start: 0;
 }
 
 .checkbox-img {
