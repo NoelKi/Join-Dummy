@@ -224,19 +224,6 @@ function showError(field, message) {
 
 
 /**
- * Clears all error messages.
- * This function hides all error messages currently displayed on the page.
- * It targets elements with the class 'error-message' and adds the 'hidden' class
- * to them.
- * @function clearErrorMessages
- */
-function clearErrorMessages() {
-    const errorMessages = document.querySelectorAll('.error-message');
-    errorMessages.forEach(msg => msg.classList.add('hidden'));
-}
-
-
-/**
  * Redirects to the log-in page.
  * This function redirects the user to the log-in page.
  * @function changeToLogIn
