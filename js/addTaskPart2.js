@@ -247,7 +247,7 @@ function setTaskKind(kind) {
     kindColor = "#FF7A00";
     kindValue = "User Story";
   }
-  applyRotation();
+  toggleCategoryList();
 }
 
 /**
@@ -318,28 +318,6 @@ function showAnimation() {
   }, 1000);
 }
 
-/**
- * Closes the overlay for editing a task by setting its display style to 'none'.
- * This function is typically used to hide the overlay when a user finishes editing a task.
- */
-function closeOverlayEditTask() {
-  let editTaskOverlay = document.getElementById("edit-task-overlay");
-  editTaskOverlay.style.display = "none";
-}
 
-/**
- * Applies rotation to the dropdown arrow based on the value of the category input field.
- * If the category value is "Technical task" or "User story", the dropdown arrow rotates 180 degrees.
- * Otherwise, it rotates back to 0 degrees.
- */
-function applyRotation() {
-  let categoryValue = categoryInput.value.trim();
-
-  if (categoryValue === "Technical task" || categoryValue === "User story") {
-    dropDownArrowCat.style.transform = "rotate(180deg)";
-  } else {
-    dropDownArrowCat.style.transform = "rotate(0deg)";
-  }
-}
 
 

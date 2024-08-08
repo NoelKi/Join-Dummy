@@ -335,22 +335,6 @@ function getObjectById(array, id) {
   return array.find((obj) => obj.id === id);
 }
 
-/**
- * Event listener for the focusout event on the document.
- * Closes the category list and resets the dropdown arrow's rotation
- * if the focus moves outside the `selectBoxCategory` element.
- *
- * @function
- * @param {FocusEvent} event - The focusout event object containing details about the focus event.
- * @returns {void}
- */
-document.addEventListener("focusout", function (event) {
-  if (!selectBoxCategory.contains(event.relatedTarget)) {
-    categoryList.style.display = "none";
-    dropDownArrowCat.style.transform = "rotate(0deg)";
-  }
-});
-
 // Funktion zum Hinzufügen von Touch-Event-Listenern
 function addTouchEventListeners() {
   const draggableItems = document.querySelectorAll(".task-container.draggable");
