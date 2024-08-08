@@ -5,7 +5,7 @@ function init() {
   loadContactList();
   checkInputs();
   selectPriority('Medium');
-}
+ }
 
 let priorityValue = null;
 let kindValue = "";
@@ -153,7 +153,11 @@ function checkInputs() {
   let allValid = isTitleValid && isDateValid && isPrioritySelected && isCategoryValid;
   createTaskBtn.disabled = !allValid;
   createTaskBtn.style.zIndex = allValid ? "0" : "-1";
+  closeOverlayEditTask();
+  applyRotation();
 }
+
+
 
 /**
  * Selects a priority button and updates the UI based on the selection.
