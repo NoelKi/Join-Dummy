@@ -1,5 +1,3 @@
-console.log(dragula); // Fügt dies zu Beginn deiner board.js hinzu.
-
 /**
  * Initializes the board on window load.
  */
