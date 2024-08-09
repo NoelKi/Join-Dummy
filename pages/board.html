@@ -16,8 +16,10 @@
   <link rel="stylesheet" href="../css/addTaskSrollbar.css" />
   <link rel="stylesheet" href="../css/addTaskQuery.css" />
   <link rel="stylesheet" href="../css/addTaskInpBtn.css" />
+  <link rel="stylesheet" href="../node_modules/dragula/dist/dragula.min.css" />
   <link rel="icon" type="image/png" href="../assets/img/j.svg">
   <link rel="stylesheet" href="../css/landscape.css">
+  <script src="../node_modules/dragula/dist/dragula.min.js"></script>
   <script src="../js/landscape.js"></script>
   <script src="../js/auth.js"></script>
   <script src="../js/w3c.js"></script>
@@ -75,7 +77,8 @@
         <div class="outer-board-container">
           <div class="board-top-container">
             <h4>Await feedback</h4>
-            <button class="add-task-btn-small" onclick="renderAddTaskOverlay('awaitFeedback'); selectPriority('Medium');">
+            <button class="add-task-btn-small"
+              onclick="renderAddTaskOverlay('awaitFeedback'); selectPriority('Medium');">
               <img class="add-task-btn-unhover" src="../assets/img/addTaskBtn.svg" alt="+">
               <img class="add-task-btn-hover" src="../assets/img/addTaskBtnHover.svg" alt="+">
             </button>

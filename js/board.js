@@ -1,3 +1,5 @@
+console.log(dragula); // Fügt dies zu Beginn deiner board.js hinzu.
+
 /**
  * Initializes the board on window load.
  */
@@ -60,8 +62,7 @@ function renderTasks() {
   renderInProgress(filterTask);
   renderAwaitFeedback(filterTask);
   renderDone(filterTask);
-
-  addTouchEventListeners();
+  console.log("gerednert");
 }
 
 /**
@@ -140,137 +141,6 @@ function renderInProgress(tasks) {
 }
 
 /**
- * Starts the dragging process for a task.
- * @param {string} id - The ID of the task to be dragged.
- * @param {Event} event - The drag event.
- */
-function startDragging(id, event) {
-  currentTaskElement = getIndexById(tasks, `${id}`);
-  currentDraggedElement = event.target;
-}
-
-/**
- * Allows the drop event to happen.
- * @param {Event} ev - The dragover event.
- */
-function allowDrop(ev) {
-  ev.preventDefault();
-}
-
-/**
- * Moves a task to a new category.
- * @param {string} category - The new category for the task.
- */
-function moveTo(category) {
-  console.log(currentTaskElement);
-  tasks[currentTaskElement]["category"] = category;
-  renderTasks();
-}
-
-/**
- * Checks if an element is before another element in the DOM.
- * @param {Element} el1 - The first element.
- * @param {Element} el2 - The second element.
- * @returns {boolean} True if el1 is before el2, false otherwise.
- */
-function isBefore(el1, el2) {
-  if (el2.parentNode === el1.parentNode)
-    for (
-      let cur = el1.previousSibling;
-      cur && cur.nodeType !== 9;
-      cur = cur.previousSibling
-    )
-      if (cur === el2) return true;
-  return false;
-}
-
-/**
- * Handles the dragover event for dragging tasks.
- * @param {Event} e - The dragover event.
- */
-function dragOver(e) {
-  if (isBefore(currentDraggedElement, e.currentTarget)) {
-    e.currentTarget.parentNode.insertBefore(
-      currentDraggedElement,
-      e.currentTarget
-    );
-  } else {
-    e.currentTarget.parentNode.insertBefore(
-      currentDraggedElement,
-      e.currentTarget.nextSibling
-    );
-  }
-}
-
-/**
- * Handles the drop event for dropping tasks.
- * @param {Event} event - The drop event.
- */
-function drop(event) {
-  const category = event.currentTarget.id;
-  if (category !== tasks[currentTaskElement]["category"]) {
-    dropDifferentCategory(event, category);
-  } else {
-    dropSameCategory(event);
-  }
-  updateUser(
-    CURRENT_USER_DATA.name,
-    CURRENT_USER_DATA.email,
-    CURRENT_USER_DATA.password,
-    CURRENT_USER_DATA.contacts,
-    tasks
-  );
-}
-
-/**
- * Handles dropping a task within the same category.
- * @param {Event} event - The drop event.
- */
-function dropSameCategory(event) {
-  const array = event.currentTarget.children;
-  const idList = [];
-  const newTasks = [];
-  for (let i = 0; i < array.length; i++) {
-    const elId = array[i].id;
-    const currIndex = getIndexById(tasks, elId);
-    const taskObj = tasks[currIndex];
-    newTasks.push(taskObj);
-  }
-  tasks = newTasks;
-  removeHighlight(event);
-  renderTasks();
-  currentDraggedElement = null;
-}
-
-/**
- * Handles dropping a task into a different category.
- * @param {Event} event - The drop event.
- * @param {string} category - The new category for the task.
- */
-function dropDifferentCategory(event, category) {
-  tasks[currentTaskElement]["category"] = category;
-  removeHighlight(event);
-  renderTasks();
-  currentDraggedElement = null;
-}
-
-/**
- * Highlights the drop area during a drag event.
- * @param {Event} event - The dragenter event.
- */
-function highlight(event) {
-  event.currentTarget.classList.add("drag-area-highlight");
-}
-
-/**
- * Removes the highlight from the drop area after a drag event.
- * @param {Event} event - The dragleave event.
- */
-function removeHighlight(event) {
-  event.currentTarget.classList.remove("drag-area-highlight");
-}
-
-/**
  * Renders the collaborator initials.
  * @param {string} id - The ID of the task.
  */
@@ -335,57 +205,99 @@ function getObjectById(array, id) {
   return array.find((obj) => obj.id === id);
 }
 
-// Funktion zum Hinzufügen von Touch-Event-Listenern
-function addTouchEventListeners() {
-  const draggableItems = document.querySelectorAll(".task-container.draggable");
-  draggableItems.forEach((item) => {
-    item.addEventListener("touchstart", handleTouchStart, false);
-    item.addEventListener("touchmove", handleTouchMove, false);
-    item.addEventListener("touchend", handleTouchEnd, false);
-  });
-}
+document.addEventListener("DOMContentLoaded", function () {
+  const containers = [
+    document.getElementById("toDo"),
+    document.getElementById("inProgress"),
+    document.getElementById("awaitFeedback"),
+    document.getElementById("done"),
+  ];
 
-// Funktion zum Behandeln des Touch-Start-Events
-function handleTouchStart(event) {
-  touchElement = event.target.closest(".task-container");
-  touchStartX = event.touches[0].clientX;
-  touchStartY = event.touches[0].clientY;
-  console.log("touchStart");
+  // Funktion zum Überprüfen und Hinzufügen eines Platzhalters
+  function updatePlaceholders() {
+    containers.forEach((container) => {
+      const hasItems = container.querySelector(".task-container"); // Prüft, ob der Container Elemente hat
+      let placeholder = container.querySelector(".empty-box");
 
-  // Berechnung der Anfangsposition des Elements relativ zur Touch-Position
-  const rect = touchElement.getBoundingClientRect();
-  elementStartX = rect.left;
-  elementStartY = rect.top;
-  console.log("touchStart");
-}
-
-// Funktion zum Behandeln des Touch-Move-Events
-function handleTouchMove(event) {
-  event.preventDefault();
-  const touch = event.touches[0];
-  touchElement.style.position = "absolute";
-  touchElement.style.left = `${touch.clientX - touchStartX}px`;
-  touchElement.style.top = `${touch.clientY - touchStartY}px`;
-  console.log("moving");
-}
-
-// Funktion zum Behandeln des Touch-End-Events
-function handleTouchEnd(event) {
-  const touchEndX = event.changedTouches[0].clientX;
-  const touchEndY = event.changedTouches[0].clientY;
-  const dropTarget = document.elementFromPoint(touchEndX, touchEndY);
-
-  if (dropTarget && dropTarget.classList.contains("drag-area")) {
-    const category = dropTarget.id;
-    console.log(category);
-    moveTo(category);
+      if (!hasItems && !placeholder) {
+        // Wenn keine Elemente vorhanden sind und noch kein Platzhalter da ist, füge den Platzhalter hinzu
+        container.innerHTML = createEmptyBox("here");
+      } else if (hasItems && placeholder) {
+        // Wenn Elemente vorhanden sind und ein Platzhalter existiert, entferne den Platzhalter
+        placeholder.remove();
+      }
+    });
   }
 
-  touchElement.style.position = "static";
+  const drake = dragula(containers);
+
+  // Event, das ausgelöst wird, wenn ein Element zu ziehen beginnt
+  drake.on("drag", function (el) {
+    // Hier kannst du die ID der Aufgabe und das zu ziehende Element erfassen
+    const taskId = el.getAttribute("id");
+    if (taskId) {
+      startDragging(taskId, el);
+    }
+  });
+
+  // Funktion zum Handhaben des Drop-Events
+  function dropHandler(el, target) {
+    console.log("nase");
+    updateUser(
+      CURRENT_USER_DATA.name,
+      CURRENT_USER_DATA.email,
+      CURRENT_USER_DATA.password,
+      CURRENT_USER_DATA.contacts,
+      tasks
+    );
+
+    console.log("userUpdate");
+  }
+
+  // Event, das ausgelöst wird, wenn ein Element fallen gelassen wird
+  drake.on("drop", function (el, target, source, sibling) {
+    let newCategory;
+
+    if (target.id === "toDo") {
+      newCategory = "toDo";
+    } else if (target.id === "inProgress") {
+      newCategory = "inProgress";
+    } else if (target.id === "awaitFeedback") {
+      newCategory = "awaitFeedback";
+    } else if (target.id === "done") {
+      newCategory = "done";
+    }
+
+    if (newCategory) {
+      moveTo(newCategory, el);
+    }
+    dropHandler(el, target);
+    updatePlaceholders(); // Aktualisiere Platzhalter nach dem Drop-Event
+  });
+});
+
+/**
+ * Starts the dragging process for a task.
+ * @param {string} id - The ID of the task to be dragged.
+ * @param {HTMLElement} draggedElement - The element that is being dragged.
+ */
+function startDragging(id, draggedElement) {
+  // Setze den aktuellen Task-Index und das aktuell gezogene Element
+  currentTaskElement = getIndexById(tasks, `${id}`);
+  currentDraggedElement = draggedElement;
+  console.log(
+    `CurrentTaskElement: ${currentTaskElement}. CurrentDraggedElement ${currentDraggedElement}`
+  );
 }
 
-let touchStartX = 0,
-  touchStartY = 0,
-  elementStartX = 0,
-  elementStartY = 0,
-  touchElement;
+/**
+ * Moves a task to a new category.
+ * @param {string} category - The new category for the task.
+ * @param {HTMLElement} taskElement - The task element that was moved.
+ */
+function moveTo(category, taskElement) {
+  // Finde die aktuelle Aufgabe basierend auf dem Element
+  console.log(currentTaskElement);
+  tasks[currentTaskElement]["category"] = category;
+  // renderTasks();
+}
