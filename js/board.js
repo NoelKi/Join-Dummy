@@ -202,7 +202,6 @@ function renderTaskOverlay(id) {
 function getObjectById(array, id) {
   return array.find((obj) => obj.id === id);
 }
-
 document.addEventListener("DOMContentLoaded", function () {
   const containers = [
     document.getElementById("toDo"),
@@ -211,17 +210,19 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("done"),
   ];
 
-  // Funktion zum Überprüfen und Hinzufügen eines Platzhalters
+  /**
+   * Updates the placeholders in the containers.
+   * If a container is empty, a placeholder is added.
+   * If a container has items, the placeholder is removed.
+   */
   function updatePlaceholders() {
     containers.forEach((container) => {
-      const hasItems = container.querySelector(".task-container"); // Prüft, ob der Container Elemente hat
+      const hasItems = container.querySelector(".task-container"); // Checks if the container has items
       let placeholder = container.querySelector(".empty-box");
 
       if (!hasItems && !placeholder) {
-        // Wenn keine Elemente vorhanden sind und noch kein Platzhalter da ist, füge den Platzhalter hinzu
         container.innerHTML = createEmptyBox("here");
       } else if (hasItems && placeholder) {
-        // Wenn Elemente vorhanden sind und ein Platzhalter existiert, entferne den Platzhalter
         placeholder.remove();
       }
     });
@@ -229,16 +230,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const drake = dragula(containers);
 
-  // Event, das ausgelöst wird, wenn ein Element zu ziehen beginnt
+  /**
+   * Event handler for when an element starts being dragged.
+   * @param {HTMLElement} el - The element being dragged.
+   */
   drake.on("drag", function (el) {
-    // Hier kannst du die ID der Aufgabe und das zu ziehende Element erfassen
     const taskId = el.getAttribute("id");
     if (taskId) {
       startDragging(taskId, el);
     }
   });
 
-  // Funktion zum Handhaben des Drop-Events
+  /**
+   * Handles the drop event after a task is dropped into a container.
+   * Updates the user data.
+   * @param {HTMLElement} el - The dropped element.
+   * @param {HTMLElement} target - The container where the element was dropped.
+   */
   function dropHandler(el, target) {
     console.log("nase");
     updateUser(
@@ -248,11 +256,17 @@ document.addEventListener("DOMContentLoaded", function () {
       CURRENT_USER_DATA.contacts,
       tasks
     );
-
     console.log("userUpdate");
   }
 
-  // Event, das ausgelöst wird, wenn ein Element fallen gelassen wird
+  /**
+   * Event handler for when an element is dropped.
+   * Determines the new category of the task and moves it accordingly.
+   * @param {HTMLElement} el - The dropped element.
+   * @param {HTMLElement} target - The container where the element was dropped.
+   * @param {HTMLElement} source - The container where the element was dragged from.
+   * @param {HTMLElement} sibling - The next sibling of the dropped element.
+   */
   drake.on("drop", function (el, target, source, sibling) {
     let newCategory;
 
@@ -270,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function () {
       moveTo(newCategory, el);
     }
     dropHandler(el, target);
-    updatePlaceholders(); // Aktualisiere Platzhalter nach dem Drop-Event
+    updatePlaceholders(); // Update placeholders after the drop event
   });
 });
 
