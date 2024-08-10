@@ -139,6 +139,12 @@ a:hover .arrow-left {
     height: calc(100vh - 185px);
   }
 
+  .guest-policy-notice {
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 100vh !important;
+  }
+
   .big-blue-text {
     font-size: 23px;
   }
