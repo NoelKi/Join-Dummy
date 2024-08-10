@@ -7,6 +7,10 @@
   width: 8px;
 }
 
+.option::-webkit-scrollbar {
+  display: none !important;
+}
+
 .circle-positioning::-webkit-scrollbar {
   height: 8px;
   width: 8px;
