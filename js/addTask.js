@@ -372,6 +372,8 @@ function addSubtaskEventListeners(task) {
 function disabledClick() {
   priorityError.style.display = "block";
   selectErrorBlock.style.display = "block";
+  titleError.style.display = "block";
+
 }
 
 /**
