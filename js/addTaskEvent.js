@@ -92,7 +92,7 @@ dateInput.addEventListener("focusout", function () {
  * Dispatches a 'focusout' event on the `dateInput` element and calls the `disabledClick` function.
  */
 document.getElementById("hidden-error").onclick = function () {
-  dateInput.dispatchEvent(new Event('focusout'));
+  dateInput.dispatchEvent(new Event("focusout"));
   disabledClick();
 };
 
@@ -215,10 +215,6 @@ optionSearch.addEventListener("click", function (event) {
   event.stopPropagation();
 });
 
-
-
-
-
 /**
  * Event listener for the click event on the `categoryList` element.
  * Updates the value of the input within the `selectCategoryOption` element
@@ -239,5 +235,4 @@ categoryList.addEventListener("click", function (e) {
 
 categoryInput.addEventListener("focus", function () {
   checkInputs();
-  
 });

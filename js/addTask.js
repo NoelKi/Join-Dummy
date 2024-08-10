@@ -4,8 +4,8 @@ function init() {
   getUserLists();
   loadContactList();
   checkInputs();
-  selectPriority('Medium');
- }
+  selectPriority("Medium");
+}
 
 let priorityValue = null;
 let kindValue = "";
@@ -38,7 +38,9 @@ let categoryInput = document.getElementById("category-value");
 let priorityError = document.getElementById("priority-error");
 let selectErrorBlock = document.getElementById("select-error-block");
 let hiddenError = document.getElementById("hidden-error");
-document.getElementById('due-date').setAttribute('min', new Date().toISOString().split('T')[0]);
+document
+  .getElementById("due-date")
+  .setAttribute("min", new Date().toISOString().split("T")[0]);
 
 /**
  * Asynchronously retrieves user data and initializes the application's user-specific information.
@@ -148,13 +150,16 @@ function checkInputs() {
   let isTitleValid = titleInput.value.trim() !== "";
   let isDateValid = dateInput.value.trim() !== "";
   let isPrioritySelected = priorityValue !== null;
-  let isCategoryValid = ["Technical task", "User story"].includes(categoryInput.value);
+  let isCategoryValid = ["Technical task", "User story"].includes(
+    categoryInput.value
+  );
 
-  let allValid = isTitleValid && isDateValid && isPrioritySelected && isCategoryValid;
+  let allValid =
+    isTitleValid && isDateValid && isPrioritySelected && isCategoryValid;
   createTaskBtn.disabled = !allValid;
   createTaskBtn.style.zIndex = allValid ? "0" : "-1";
 }
-  
+
 /**
  * Selects a priority button and updates the UI based on the selection.
  *
@@ -373,7 +378,6 @@ function disabledClick() {
   priorityError.style.display = "block";
   selectErrorBlock.style.display = "block";
   titleError.style.display = "block";
-
 }
 
 /**

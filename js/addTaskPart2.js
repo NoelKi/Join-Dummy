@@ -317,7 +317,3 @@ function showAnimation() {
     }, 500);
   }, 1000);
 }
-
-
-
-
