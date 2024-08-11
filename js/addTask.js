@@ -392,21 +392,3 @@ function enableCreateTaskBtnAndShowErrors() {
   priorityError.style.display = "none";
   selectErrorBlock.style.display = "none";
 }
-
-/* function showContactsClick() {
-  const content = document.querySelector('.select-content');
-  const arrow = document.getElementById('arrow-click');
-
-  if (content.classList.contains('show')) {
-    content.classList.remove('show');
-    content.classList.add('hidden');
-    arrow.classList.remove('rotate');
-  } else {
-    content.classList.remove('hidden');
-    content.classList.add('show');
-    arrow.classList.add('rotate');
-  }
-} */
-
-
-  

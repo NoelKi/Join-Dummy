@@ -60,7 +60,6 @@ function renderTasks() {
   renderInProgress(filterTask);
   renderAwaitFeedback(filterTask);
   renderDone(filterTask);
-  console.log("gerednert");
 }
 
 /**
@@ -189,7 +188,7 @@ function renderAddTaskOverlay(category = "toDo") {
 function renderTaskOverlay(id) {
   const element = getObjectById(tasks, `${id}`);
   const content = document.getElementById("board-task-overlay-section");
-  document.getElementById('task-form').classList.add('style-edit-task-mobile');
+  document.getElementById("task-form").classList.add("style-edit-task-mobile");
   content.style.display = "block";
   content.innerHTML = createTaskOverlay(element, id);
 }
