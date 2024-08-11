@@ -1,5 +1,3 @@
-/*AddTask.html Starts here  */
-
 @media screen and (max-width: 1048px) {
   .clear-create-buttons {
     flex-direction: column-reverse;
@@ -54,6 +52,12 @@
 
   .date-css {
     font-size: 16px !important;
+  }
+
+  @media screen and (max-width: 550px) {
+    .show-task-container-edit {
+      width: 90%;
+    }
   }
 
   .button-urgent,
@@ -119,6 +123,49 @@
     width: 100%;
     padding: 5px;
   }
+
+  .style-edit-task-mobile {
+    all: unset;
+    background-color: white;
+    width: 95%;
+    overflow: scroll;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 6px;
+  }
+
+  .button-urgent,
+  .button-medium,
+  .button-low {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .task-css {
+    width: 95%;
+  }
 }
 
-/*AddTask.html ends here  */
+@media screen and (max-width: 350px) {
+  .button-urgent,
+  .button-medium,
+  .button-low {
+    display: flex !important;
+    justify-content: center !important;
+    width: 95px !important;
+    height: 40px !important;
+  }
+  .buttons {
+    width: 98px !important;
+  }
+}
+@media screen and (max-width: 330px) {
+  .button-urgent,
+  .button-medium,
+  .button-low {
+    width: 90px !important;
+    height: 30px !important;
+  }
+}

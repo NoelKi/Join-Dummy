@@ -120,6 +120,12 @@
   }
 }
 
+@media screen and (max-width: 460px) {
+  .task-title-container {
+    font-size: 28px;
+  }
+}
+
 @media screen and (max-width: 380px) {
   .buttons {
     gap: 4px;
