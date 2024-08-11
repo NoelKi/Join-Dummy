@@ -18,7 +18,11 @@ clearTaskBtn.addEventListener("click", function () {
  * @returns {void}
  */
 selectOption.addEventListener("click", function () {
-  selectBox.classList.toggle("active-task");
+  generatedContatcs.classList.toggle("active-task");
+});
+
+arrowClick.addEventListener("click", function () {
+  generatedContatcs.classList.toggle("active-task");
 });
 
 /**
@@ -148,6 +152,10 @@ document.addEventListener("click", (e) => {
  * @returns {void}
  */
 generateList.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+arrowClick.addEventListener("click", (e) => {
   e.stopPropagation();
 });
 

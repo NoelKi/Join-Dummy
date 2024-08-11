@@ -37,6 +37,7 @@ let inputField = document.getElementById("subtask-input-field");
 let categoryInput = document.getElementById("category-value");
 let priorityError = document.getElementById("priority-error");
 let selectErrorBlock = document.getElementById("select-error-block");
+let arrowClick = document.querySelector(".arrow-click");
 let hiddenError = document.getElementById("hidden-error");
 document
   .getElementById("due-date")
@@ -391,3 +392,21 @@ function enableCreateTaskBtnAndShowErrors() {
   priorityError.style.display = "none";
   selectErrorBlock.style.display = "none";
 }
+
+/* function showContactsClick() {
+  const content = document.querySelector('.select-content');
+  const arrow = document.getElementById('arrow-click');
+
+  if (content.classList.contains('show')) {
+    content.classList.remove('show');
+    content.classList.add('hidden');
+    arrow.classList.remove('rotate');
+  } else {
+    content.classList.remove('hidden');
+    content.classList.add('show');
+    arrow.classList.add('rotate');
+  }
+} */
+
+
+  
