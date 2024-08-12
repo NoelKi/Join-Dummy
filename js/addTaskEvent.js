@@ -97,7 +97,16 @@ dateInput.addEventListener("focusout", function () {
  */
 document.getElementById("hidden-error").onclick = function () {
   dateInput.dispatchEvent(new Event("focusout"));
-  disabledClick();
+  console.log(categoryInput.value);
+  if (!priorityValue) {
+    disabledClick();
+  }
+  if (categoryInput.value == "Select Category") {
+    disabledClick2();
+  }
+  if (!titleInput.value) {
+    disabledClick3();
+  }
 };
 
 /**
