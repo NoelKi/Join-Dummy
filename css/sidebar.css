@@ -99,7 +99,7 @@ aside {
 }
 
 .bottom-nav {
-    width: 100%;
+    width: 100vw;
     height: 76px;
     position: fixed;
     bottom: 0;
@@ -165,6 +165,6 @@ aside {
 
 @media(max-width: 640px) {
     .bottom-nav-container {
-        width: 100%;
+        width: 100vw;
     }
 }

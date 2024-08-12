@@ -42,7 +42,7 @@
 
   .board-section {
     padding: 5px;
-    height: calc(100vh - 170px);
+    height: calc(100vh - 172px);
   }
 
   .board-overlay-container {
@@ -60,6 +60,26 @@
   .hidden-error-btn {
     margin-left: 0;
   }
+
+  .show-task-container {
+    width: 100vw;
+    max-height: 100vh;
+    height: 60vh;
+    margin: 0px 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    font-size: 16px;
+  }
+
+  .task-title-container {
+    font-size: 45px;
+  }
+
+  .-container {
+    width: calc(100% - 10px);
+  }
+
+
 }
 
 @media screen and (max-width: 550px) {
