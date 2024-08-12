@@ -33,6 +33,12 @@
   }
 }
 
+@media screen and (max-width: 550px) {
+  .show-task-container-edit {
+    width: 90%;
+  }
+}
+
 @media screen and (max-width: 460px) {
   .input-title-task {
     font-size: 28px !important;
@@ -54,12 +60,6 @@
     font-size: 16px !important;
   }
 
-  @media screen and (max-width: 550px) {
-    .show-task-container-edit {
-      width: 90%;
-    }
-  }
-
   .button-urgent,
   .button-medium,
   .button-low {
@@ -68,11 +68,11 @@
     align-items: center;
   }
 
-  .buttons > button:nth-child(1) {
+  .buttons>button:nth-child(1) {
     margin-right: 0px !important;
   }
 
-  .buttons > button:nth-child(2) {
+  .buttons>button:nth-child(2) {
     margin-right: 0px !important;
   }
 
@@ -121,7 +121,6 @@
 @media screen and (max-width: 460px) {
   .add-task-container {
     width: 100%;
-    padding: 5px;
   }
 
   .style-edit-task-mobile {
@@ -144,11 +143,12 @@
   }
 
   .task-css {
-    width: 95%;
+    width: calc(100vw - 40px);
   }
 }
 
 @media screen and (max-width: 350px) {
+
   .button-urgent,
   .button-medium,
   .button-low {
@@ -157,11 +157,14 @@
     width: 95px !important;
     height: 40px !important;
   }
+
   .buttons {
     width: 98px !important;
   }
 }
+
 @media screen and (max-width: 330px) {
+
   .button-urgent,
   .button-medium,
   .button-low {
