@@ -92,6 +92,32 @@ dateInput.addEventListener("focusout", function () {
 });
 
 /**
+ * Event listener for the focusout event on the `categoryInput` element.
+ * Validates the input value when the element loses focus. If the input is empty,
+ * displays an error message, changes the border color to indicate an error, and sets
+ * the text color to black. If the input is not empty, hides the error message, resets
+ * the border color, and maintains the text color as black.
+ * Calls the `checkInputs` function to perform additional validation or actions.
+ *
+ * @function
+ * @returns {void}
+ */
+categoryInput.addEventListener("focusout", function () {
+  setTimeout(() => {
+    if (categoryInput.value === "Select Category") {
+      selectErrorBlock.style.display = "inline";
+      categoryInput.style.borderBottomColor = "#ff8190";
+      categoryInput.style.color = "black";
+    } else {
+      selectErrorBlock.style.display = "none";
+      categoryInput.style.borderBottomColor = "";
+      categoryInput.style.color = "black";
+    }
+  }, 100);
+  checkInputs();
+});
+
+/**
  * Event handler for when the element with ID "hidden-error" is clicked.
  * Dispatches a 'focusout' event on the `dateInput` element and calls the `disabledClick` function.
  */
@@ -252,4 +278,10 @@ categoryList.addEventListener("click", function (e) {
 
 categoryInput.addEventListener("focus", function () {
   checkInputs();
+});
+
+document.addEventListener("click", function (event) {
+  if (priorityValue != null) {
+    priorityError.style.display = "none";
+  }
 });

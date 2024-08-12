@@ -379,10 +379,20 @@ function disabledClick() {
   priorityError.style.display = "block";
 }
 
+/**
+ * Disables the ability to click and shows error messages.
+ * This function sets the display style of error elements to 'block',
+ * making them visible to the user.
+ */
 function disabledClick2() {
   selectErrorBlock.style.display = "block";
 }
 
+/**
+ * Disables the ability to click and shows error messages.
+ * This function sets the display style of error elements to 'block',
+ * making them visible to the user.
+ */
 function disabledClick3() {
   titleError.style.display = "block";
 }
