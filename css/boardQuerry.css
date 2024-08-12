@@ -51,14 +51,17 @@
 
   .create-button-overlay {
     justify-content: center;
+    width: calc(100px);
   }
 
   .task-css-board {
     height: calc(100vh - 220px) !important;
   }
 
+
   .hidden-error-btn {
     margin-left: 0;
+    margin-bottom: 20px;
   }
 
   .show-task-container {
@@ -120,10 +123,6 @@
     border-bottom-left-radius: 0;
   }
 
-  .hidden-error-btn {
-    margin-right: 70px;
-  }
-
   .buttons {
     gap: 15px;
   }
@@ -137,6 +136,11 @@
 @media screen and (max-width: 550px) {
   .board-top-container {
     width: 95%;
+  }
+
+  .create-button-overlay {
+    justify-content: center;
+    width: calc(100vw - 40px);
   }
 }
 
