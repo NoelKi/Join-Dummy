@@ -276,10 +276,30 @@ categoryList.addEventListener("click", function (e) {
   }
 });
 
+/**
+ * Event listener for the click event on the `categoryList` element.
+ * Updates the value of the input within the `selectCategoryOption` element
+ * with the text content of the clicked list item (LI). Hides the `categoryList`
+ * and performs additional validation or actions by calling `checkInputs`.
+ *
+ * @function
+ * @param {MouseEvent} e - The click event object containing details about the click event.
+ * @returns {void}
+ */
 categoryInput.addEventListener("focus", function () {
   checkInputs();
 });
 
+/**
+ * Event listener for the click event on the `categoryList` element.
+ * Updates the value of the input within the `selectCategoryOption` element
+ * with the text content of the clicked list item (LI). Hides the `categoryList`
+ * and performs additional validation or actions by calling `checkInputs`.
+ *
+ * @function
+ * @param {MouseEvent} e - The click event object containing details about the click event.
+ * @returns {void}
+ */
 document.addEventListener("click", function (event) {
   if (priorityValue != null) {
     priorityError.style.display = "none";
