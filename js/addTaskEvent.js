@@ -123,7 +123,6 @@ categoryInput.addEventListener("focusout", function () {
  */
 document.getElementById("hidden-error").onclick = function () {
   dateInput.dispatchEvent(new Event("focusout"));
-  console.log(categoryInput.value);
   if (!priorityValue) {
     disabledClick();
   }

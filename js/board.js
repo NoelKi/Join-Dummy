@@ -248,7 +248,6 @@ document.addEventListener("DOMContentLoaded", function () {
    * @param {HTMLElement} target - The container where the element was dropped.
    */
   function dropHandler(el, target) {
-    console.log("nase");
     updateUser(
       CURRENT_USER_DATA.name,
       CURRENT_USER_DATA.email,
@@ -256,7 +255,6 @@ document.addEventListener("DOMContentLoaded", function () {
       CURRENT_USER_DATA.contacts,
       tasks
     );
-    console.log("userUpdate");
   }
 
   /**
@@ -297,9 +295,6 @@ function startDragging(id, draggedElement) {
   // Setze den aktuellen Task-Index und das aktuell gezogene Element
   currentTaskElement = getIndexById(tasks, `${id}`);
   currentDraggedElement = draggedElement;
-  console.log(
-    `CurrentTaskElement: ${currentTaskElement}. CurrentDraggedElement ${currentDraggedElement}`
-  );
 }
 
 /**
@@ -309,7 +304,6 @@ function startDragging(id, draggedElement) {
  */
 function moveTo(category, taskElement) {
   // Finde die aktuelle Aufgabe basierend auf dem Element
-  console.log(currentTaskElement);
   tasks[currentTaskElement]["category"] = category;
   // renderTasks();
 }
