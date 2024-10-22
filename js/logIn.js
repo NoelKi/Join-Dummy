@@ -7,7 +7,6 @@ function initi() {
   initializePasswordInputs();
 }
 
-
 /**
  * Fetches the user data from the server.
  * This function fetches the user data from the server using the provided options and returns the data as a JSON object.
@@ -16,10 +15,10 @@ function initi() {
  * @returns {Promise<Object>} The user data.
  */
 function fetchUsers(options = {}) {
-  return fetch(`${BASE_URL}users.json`, options)
-    .then(response => response.json());
+  return fetch(`${BASE_URL}users.json`, options).then((response) =>
+    response.json()
+  );
 }
-
 
 /**
  * Checks the login data against the stored user data.
@@ -46,7 +45,6 @@ async function checkLogInData(email, password) {
   return false;
 }
 
-
 /**
  * Handles the login process.
  * This function retrieves the email and password from the input fields,
@@ -60,20 +58,19 @@ async function login() {
   clearErrorMessages();
   const loginValid = await checkLogInData(email, password);
   if (loginValid) {
-    showLoadingScreen(() => window.location.href = 'index.html');
+    showLoadingScreen(() => (window.location.href = "index.html"));
   } else {
     if (!email) {
-      showError('email-error', 'Email is required');
+      showError("email-error", "Email is required");
     }
     if (!password) {
-      showError('password-error', 'Password is required');
+      showError("password-error", "Password is required");
     } else {
-      showError('email-error', 'Incorrect email or password');
-      showError('password-error', 'Incorrect email or password');
+      showError("email-error", "Incorrect email or password");
+      showError("password-error", "Incorrect email or password");
     }
   }
 }
-
 
 /**
  * Shows an error message for the specified input field.
@@ -85,9 +82,8 @@ async function login() {
 function showError(fieldId, message) {
   const errorElement = document.getElementById(fieldId);
   errorElement.innerText = message;
-  errorElement.classList.remove('hidden');
+  errorElement.classList.remove("hidden");
 }
-
 
 /**
  * Handles the guest login process.
@@ -97,9 +93,8 @@ function showError(fieldId, message) {
  */
 async function guestLogin() {
   await guestUser();
-  showLoadingScreen(() => window.location.href = 'index.html');
+  showLoadingScreen(() => (window.location.href = "index.html"));
 }
-
 
 /**
  * Returns an appropriate greeting based on the current time.
@@ -118,7 +113,6 @@ function getGreeting() {
   }
 }
 
-
 /**
  * Displays the loading screen and executes a callback after a delay.
  * This function displays a loading screen, waits for a short delay, and then executes the provided callback function.
@@ -134,21 +128,21 @@ function showLoadingScreen(callback) {
   }, 2000);
 }
 
-
 /**
  * Displays the loading screens.
  * This function makes the loading screens visible and hides the main content.
  * @function displayLoadingScreens
  */
 function displayLoadingScreens() {
-  const loadingScreen = document.getElementById('loading-screen');
-  const loadingScreenSummary = document.getElementById('loading-screen-summary');
-  const mainContent = document.getElementById('main-content');
-  loadingScreen.style.display = 'flex';
-  loadingScreenSummary.style.display = 'flex';
-  mainContent.style.display = 'none';
+  const loadingScreen = document.getElementById("loading-screen");
+  const loadingScreenSummary = document.getElementById(
+    "loading-screen-summary"
+  );
+  const mainContent = document.getElementById("main-content");
+  loadingScreen.style.display = "flex";
+  loadingScreenSummary.style.display = "flex";
+  mainContent.style.display = "none";
 }
-
 
 /**
  * Hides the loading screens.
@@ -156,12 +150,13 @@ function displayLoadingScreens() {
  * @function hideLoadingScreens
  */
 function hideLoadingScreens() {
-  const loadingScreen = document.getElementById('loading-screen');
-  const loadingScreenSummary = document.getElementById('loading-screen-summary');
-  loadingScreen.style.display = 'none';
-  loadingScreenSummary.style.display = 'none';
+  const loadingScreen = document.getElementById("loading-screen");
+  const loadingScreenSummary = document.getElementById(
+    "loading-screen-summary"
+  );
+  loadingScreen.style.display = "none";
+  loadingScreenSummary.style.display = "none";
 }
-
 
 /**
  * Capitalizes the first letter of each word in a name.
@@ -171,9 +166,8 @@ function hideLoadingScreens() {
  * @returns {string} The capitalized name.
  */
 function capitalizeName(name) {
-  return name.split(' ').map(capitalizeFirstLetter).join(' ');
+  return name.split(" ").map(capitalizeFirstLetter).join(" ");
 }
-
 
 /**
  * Capitalizes the first letter of a string.
@@ -186,22 +180,24 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
-
 /**
  * Updates the greeting message based on the user's name.
  * This function updates the greeting message with the user's name if available, or uses "Guest" otherwise.
  * @function updateGreetingMessage
  */
 function updateGreetingMessage() {
-  const userName = JSON.parse(localStorage.getItem('userName')) || "Guest";
+  const userName = JSON.parse(localStorage.getItem("userName")) || "Guest";
   const greeting = getGreeting();
   if (userName === "Guest") {
-    document.getElementById('greetingLoading').innerHTML = `${greeting}`;
+    document.getElementById("greetingLoading").innerHTML = `${greeting}`;
   } else {
-    document.getElementById('greetingLoading').innerHTML = `${greeting}, &nbsp; <span>${capitalizeName(userName)}</span>`;
+    document.getElementById(
+      "greetingLoading"
+    ).innerHTML = `${greeting}, &nbsp; <span>${capitalizeName(
+      userName
+    )}</span>`;
   }
 }
-
 
 /**
  * Saves the user ID and name to localStorage.
@@ -213,10 +209,9 @@ function updateGreetingMessage() {
 function saveUserIdLocalStorage(id, name) {
   const idAsText = JSON.stringify(id);
   const nameAsText = JSON.stringify(name);
-  localStorage.setItem('userId', idAsText);
-  localStorage.setItem('userName', nameAsText);
+  localStorage.setItem("userId", idAsText);
+  localStorage.setItem("userName", nameAsText);
 }
-
 
 /**
  * Loads the user ID from localStorage and redirects to login if not found.
@@ -225,11 +220,10 @@ function saveUserIdLocalStorage(id, name) {
  * @returns {string} The user ID.
  */
 function loadUserIdLocalStorage() {
-  const idAsText = localStorage.getItem('userId');
-  if (!idAsText) return window.location.href = 'login.html';
+  const idAsText = localStorage.getItem("userId");
+  if (!idAsText) return (window.location.href = "login.html");
   return JSON.parse(idAsText);
 }
-
 
 /**
  * Toggles the checkbox image between checked and unchecked states.
@@ -237,13 +231,14 @@ function loadUserIdLocalStorage() {
  * @function toggleCheckBox
  */
 function toggleCheckBox() {
-  const checkBoxImage = document.getElementById('checkbox-remember');
-  const signUpButton = document.getElementById('signup-button');
+  const checkBoxImage = document.getElementById("checkbox-remember");
+  const signUpButton = document.getElementById("signup-button");
   isPolicyAccepted = !isPolicyAccepted;
-  checkBoxImage.src = isPolicyAccepted ? '../assets/img/rememberChecked.svg' : '../assets/img/rememberDefault.svg';
+  checkBoxImage.src = isPolicyAccepted
+    ? "../assets/img/rememberChecked.svg"
+    : "../assets/img/rememberDefault.svg";
   signUpButton.disabled = !isPolicyAccepted;
 }
-
 
 /**
  * Handles the guest user login process.
@@ -266,22 +261,26 @@ async function guestUser() {
   console.error("Guest user not found in Firebase");
 }
 
-
 /**
  * Initializes the password input fields by adding event listeners.
  * This function sets up event listeners on the password input fields to handle input events and toggle visibility.
  * @function initializePasswordInputs
  */
 function initializePasswordInputs() {
-  const passwordInputs = document.querySelectorAll('.input-wrapper input[type="password"]');
-  passwordInputs.forEach(input => {
+  const passwordInputs = document.querySelectorAll(
+    '.input-wrapper input[type="password"]'
+  );
+  passwordInputs.forEach((input) => {
     const passwordIcon = input.nextElementSibling;
     const toggleVisibilityIcon = passwordIcon.nextElementSibling;
-    input.addEventListener('input', () => handlePasswordInput(input, passwordIcon, toggleVisibilityIcon));
-    toggleVisibilityIcon.addEventListener('click', () => togglePasswordVisibility(input, toggleVisibilityIcon));
+    input.addEventListener("input", () =>
+      handlePasswordInput(input, passwordIcon, toggleVisibilityIcon)
+    );
+    toggleVisibilityIcon.addEventListener("click", () =>
+      togglePasswordVisibility(input, toggleVisibilityIcon)
+    );
   });
 }
-
 
 /**
  * Handles the password input event to show or hide the visibility icon.
@@ -291,14 +290,17 @@ function initializePasswordInputs() {
  * @param {HTMLElement} passwordIcon - The password icon element.
  * @param {HTMLElement} toggleVisibilityIcon - The toggle visibility icon element.
  */
-function handlePasswordInput(passwordInput, passwordIcon, toggleVisibilityIcon) {
+function handlePasswordInput(
+  passwordInput,
+  passwordIcon,
+  toggleVisibilityIcon
+) {
   if (passwordInput.value.length > 0) {
     showVisibilityIcon(passwordIcon, toggleVisibilityIcon);
   } else {
     showPasswordIcon(passwordIcon, toggleVisibilityIcon);
   }
 }
-
 
 /**
  * Toggles the visibility of the password input field.
@@ -308,12 +310,15 @@ function handlePasswordInput(passwordInput, passwordIcon, toggleVisibilityIcon) 
  * @param {HTMLElement} toggleVisibilityIcon - The toggle visibility icon element.
  */
 function togglePasswordVisibility(passwordInput, toggleVisibilityIcon) {
-  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  const iconSrc = type === 'password' ? '../assets/img/pw_visibility_off.svg' : '../assets/img/pw_visibility.svg';
-  passwordInput.setAttribute('type', type);
-  toggleVisibilityIcon.setAttribute('src', iconSrc);
+  const type =
+    passwordInput.getAttribute("type") === "password" ? "text" : "password";
+  const iconSrc =
+    type === "password"
+      ? "../assets/img/pw_visibility_off.svg"
+      : "../assets/img/pw_visibility.svg";
+  passwordInput.setAttribute("type", type);
+  toggleVisibilityIcon.setAttribute("src", iconSrc);
 }
-
 
 /**
  * Shows the visibility icon and hides the password icon.
@@ -323,10 +328,9 @@ function togglePasswordVisibility(passwordInput, toggleVisibilityIcon) {
  * @param {HTMLElement} toggleVisibilityIcon - The toggle visibility icon element.
  */
 function showVisibilityIcon(passwordIcon, toggleVisibilityIcon) {
-  passwordIcon.classList.add('hidden');
-  toggleVisibilityIcon.classList.remove('hidden');
+  passwordIcon.classList.add("hidden");
+  toggleVisibilityIcon.classList.remove("hidden");
 }
-
 
 /**
  * Shows the password icon and hides the visibility icon.
@@ -336,10 +340,9 @@ function showVisibilityIcon(passwordIcon, toggleVisibilityIcon) {
  * @param {HTMLElement} toggleVisibilityIcon - The toggle visibility icon element.
  */
 function showPasswordIcon(passwordIcon, toggleVisibilityIcon) {
-  passwordIcon.classList.remove('hidden');
-  toggleVisibilityIcon.classList.add('hidden');
+  passwordIcon.classList.remove("hidden");
+  toggleVisibilityIcon.classList.add("hidden");
 }
-
 
 /**
  * Retrieves the values from the input fields.
@@ -350,27 +353,25 @@ function showPasswordIcon(passwordIcon, toggleVisibilityIcon) {
  */
 function getInputValues() {
   return {
-    email: document.getElementById('email').value,
-    password: document.getElementById('password').value,
+    email: document.getElementById("email").value,
+    password: document.getElementById("password").value,
   };
 }
 
-
-/**
- * Clears all error messages.
- * This function hides all error messages currently displayed on the page.
- * It targets elements with the class 'error-message' and adds the 'hidden' class
- * to them.
- * @function clearErrorMessages
- */
-function clearErrorMessages() {
-  const errorMessages = document.querySelectorAll('.error-message');
-  errorMessages.forEach(msg => {
-    msg.classList.add('hidden');
-    msg.innerText = '';
-  });
-}
-
+// /**
+//  * Clears all error messages.
+//  * This function hides all error messages currently displayed on the page.
+//  * It targets elements with the class 'error-message' and adds the 'hidden' class
+//  * to them.
+//  * @function clearErrorMessages
+//  */
+// function clearErrorMessages() {
+//   const errorMessages = document.querySelectorAll('.error-message');
+//   errorMessages.forEach(msg => {
+//     msg.classList.add('hidden');
+//     msg.innerText = '';
+//   });
+// }
 
 /**
  * Redirects to the sign-up page.
@@ -378,5 +379,5 @@ function clearErrorMessages() {
  * @function changeToSignUp
  */
 function changeToSignUp() {
-  window.location.href = '../pages/signUp.html';
+  window.location.href = "../pages/signUp.html";
 }

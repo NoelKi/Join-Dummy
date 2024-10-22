@@ -16,20 +16,19 @@ let isPolicyAccepted = false;
  * @throws Will throw an error if the network response is not ok.
  */
 async function postSignUpData(data) {
-    try {
-        const response = await fetch(`${BASE_URL}users.json`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        });
-        if (!response.ok) throw new Error('Network response was not ok');
-        return await response.json();
-    } catch (error) {
-        console.error('Error posting signup data:', error);
-        return null;
-    }
+  try {
+    const response = await fetch(`${BASE_URL}users.json`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) throw new Error("Network response was not ok");
+    return await response.json();
+  } catch (error) {
+    console.error("Error posting signup data:", error);
+    return null;
+  }
 }
-
 
 /**
  * Handles the sign-up process by validating inputs, checking if the email already exists, and posting the user data.
@@ -40,24 +39,23 @@ async function postSignUpData(data) {
  * @function signUp
  */
 async function signUp() {
-    const { name, email, password, confirmPassword } = getInputValues();
-    clearErrorMessages();
-    const errors = validateInputs({ name, email, password, confirmPassword });
-    if (errors.length > 0) {
-        displayErrors(errors);
-        return;
-    }
-    if (await emailExists(email)) {
-        showError('email', 'This email is already registered.');
-        return;
-    }
-    const newUser = createNewUser({ name, email, password });
-    const result = await postSignUpData(newUser);
-    if (result) {
-        showSuccessMessage();
-    }
+  const { name, email, password, confirmPassword } = getInputValues();
+  // clearErrorMessages();
+  const errors = validateInputs({ name, email, password, confirmPassword });
+  if (errors.length > 0) {
+    displayErrors(errors);
+    return;
+  }
+  if (await emailExists(email)) {
+    showError("email", "This email is already registered.");
+    return;
+  }
+  const newUser = createNewUser({ name, email, password });
+  const result = await postSignUpData(newUser);
+  if (result) {
+    showSuccessMessage();
+  }
 }
-
 
 /**
  * Displays a list of error messages.
@@ -66,9 +64,8 @@ async function signUp() {
  * @param {Array} errors - An array of error objects.
  */
 function displayErrors(errors) {
-    errors.forEach(({ field, message }) => showError(field, message));
+  errors.forEach(({ field, message }) => showError(field, message));
 }
-
 
 /**
  * Creates a new user object.
@@ -81,15 +78,14 @@ function displayErrors(errors) {
  * @returns {Object} The new user object.
  */
 function createNewUser({ name, email, password }) {
-    return {
-        name,
-        email,
-        password,
-        id: Date.now().toString(),
-        contacts: [createDefaultContact(name, email)]
-    };
+  return {
+    name,
+    email,
+    password,
+    id: Date.now().toString(),
+    contacts: [createDefaultContact(name, email)],
+  };
 }
-
 
 /**
  * Creates a default contact for the user.
@@ -100,17 +96,16 @@ function createNewUser({ name, email, password }) {
  * @returns {Object} The default contact object.
  */
 function createDefaultContact(name, email) {
-    const id = Date.now();
-    return {
-        id,
-        name: `${name} (You)`,
-        surname: '',
-        email: email,
-        phoneNumber: '',
-        color: colorRandomizer()
-    };
+  const id = Date.now();
+  return {
+    id,
+    name: `${name} (You)`,
+    surname: "",
+    email: email,
+    phoneNumber: "",
+    color: colorRandomizer(),
+  };
 }
-
 
 /**
  * Randomizes and returns a color from a predefined array.
@@ -119,15 +114,26 @@ function createDefaultContact(name, email) {
  * @returns {string} A random color.
  */
 function colorRandomizer() {
-    const colorArr = [
-        "#FF7A00", "#FF5EB3", "#6E52FF", "#9327FF", "#00BEE8",
-        "#1FD7C1", "#FF745E", "#FFA35E", "#FC71FF", "#FFC701",
-        "#0038FF", "#C3FF2B", "#FFE62B", "#FF4646", "#FFBB2B",
-    ];
-    const rand = Math.floor(Math.random() * colorArr.length);
-    return colorArr[rand];
+  const colorArr = [
+    "#FF7A00",
+    "#FF5EB3",
+    "#6E52FF",
+    "#9327FF",
+    "#00BEE8",
+    "#1FD7C1",
+    "#FF745E",
+    "#FFA35E",
+    "#FC71FF",
+    "#FFC701",
+    "#0038FF",
+    "#C3FF2B",
+    "#FFE62B",
+    "#FF4646",
+    "#FFBB2B",
+  ];
+  const rand = Math.floor(Math.random() * colorArr.length);
+  return colorArr[rand];
 }
-
 
 /**
  * Retrieves the values from the input fields.
@@ -137,14 +143,13 @@ function colorRandomizer() {
  * @returns {Object} An object containing the input values.
  */
 function getInputValues() {
-    return {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
-        confirmPassword: document.getElementById('confirm-password').value
-    };
+  return {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    password: document.getElementById("password").value,
+    confirmPassword: document.getElementById("confirm-password").value,
+  };
 }
-
 
 /**
  * Validates the user inputs.
@@ -159,15 +164,24 @@ function getInputValues() {
  * @returns {Array} An array of error objects if validation fails, otherwise an empty array.
  */
 function validateInputs({ name, email, password, confirmPassword }) {
-    const errors = [];
-    if (!isPolicyAccepted) errors.push({ field: 'policy', message: 'You must accept the privacy policy to sign up.' });
-    if (!name || !email || !password || !confirmPassword) errors.push({ field: 'general', message: 'Please fill out all fields.' });
-    if (password !== confirmPassword) errors.push({ field: 'confirm-password', message: 'Passwords do not match.' });
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) errors.push({ field: 'email', message: 'Invalid email address.' });
-    return errors;
+  const errors = [];
+  if (!isPolicyAccepted)
+    errors.push({
+      field: "policy",
+      message: "You must accept the privacy policy to sign up.",
+    });
+  if (!name || !email || !password || !confirmPassword)
+    errors.push({ field: "general", message: "Please fill out all fields." });
+  if (password !== confirmPassword)
+    errors.push({
+      field: "confirm-password",
+      message: "Passwords do not match.",
+    });
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email))
+    errors.push({ field: "email", message: "Invalid email address." });
+  return errors;
 }
-
 
 /**
  * Checks if an email already exists in the user database.
@@ -179,10 +193,9 @@ function validateInputs({ name, email, password, confirmPassword }) {
  * @returns {boolean} True if the email exists, otherwise false.
  */
 async function emailExists(email) {
-    const users = await fetchUsers();
-    return Object.values(users).some(user => user.email === email);
+  const users = await fetchUsers();
+  return Object.values(users).some((user) => user.email === email);
 }
-
 
 /**
  * Displays a success message and redirects to the login page after a delay.
@@ -191,19 +204,18 @@ async function emailExists(email) {
  * @function showSuccessMessage
  */
 function showSuccessMessage() {
-    const successMessageElement = document.getElementById('success-message');
-    const overlayElement = document.getElementById('overlay');
-    if (successMessageElement && overlayElement) {
-        successMessageElement.classList.remove('hidden');
-        overlayElement.classList.remove('hidden');
-        setTimeout(() => {
-            successMessageElement.classList.add('hidden');
-            overlayElement.classList.add('hidden');
-            window.location.href = 'login.html';
-        }, 2000);
-    }
+  const successMessageElement = document.getElementById("success-message");
+  const overlayElement = document.getElementById("overlay");
+  if (successMessageElement && overlayElement) {
+    successMessageElement.classList.remove("hidden");
+    overlayElement.classList.remove("hidden");
+    setTimeout(() => {
+      successMessageElement.classList.add("hidden");
+      overlayElement.classList.add("hidden");
+      window.location.href = "login.html";
+    }, 2000);
+  }
 }
-
 
 /**
  * Displays an error message below the specified input field.
@@ -215,13 +227,12 @@ function showSuccessMessage() {
  * @param {string} message - The error message to display.
  */
 function showError(field, message) {
-    const errorMessageElement = document.getElementById(`${field}-error-message`);
-    if (errorMessageElement) {
-        errorMessageElement.textContent = message;
-        errorMessageElement.classList.remove('hidden');
-    }
+  const errorMessageElement = document.getElementById(`${field}-error-message`);
+  if (errorMessageElement) {
+    errorMessageElement.textContent = message;
+    errorMessageElement.classList.remove("hidden");
+  }
 }
-
 
 /**
  * Redirects to the log-in page.
@@ -229,5 +240,5 @@ function showError(field, message) {
  * @function changeToLogIn
  */
 function changeToLogIn() {
-    window.location.href = '../pages/login.html';
+  window.location.href = "../pages/login.html";
 }
